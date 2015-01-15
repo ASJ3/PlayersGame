@@ -2,6 +2,17 @@
 
 import UIKit
 
+/* 
+***************************
+Note: try to make the game class in such a way that the first player to play is random
+
+Also need to fix the playMatch function so that the loop ends if the second player's health went to 0 or under after the first player's attack
+
+Get a name property for the player class
+
+***************************
+*/
+
 class Player {
     var attacks = ["regAttack1", "regAttack2", "regAttack3","regAttack4"]
     var health = 100
