@@ -54,7 +54,7 @@ class Match {
     }
     
     func playGame() {
-        
+        println("let the game begin!!")
     }
     
 }
