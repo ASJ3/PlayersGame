@@ -45,7 +45,17 @@ class BadPlayer: Player {
 }
 
 class Match {
+    var player1: Player
+    var player2: Player
     
+    init(player1: Player, player2: Player) {
+        self.player1 = player1
+        self.player2 = player2
+    }
+    
+    func playGame() {
+        
+    }
     
 }
 
