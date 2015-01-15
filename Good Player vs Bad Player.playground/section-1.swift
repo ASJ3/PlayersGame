@@ -3,13 +3,22 @@
 import UIKit
 
 class Player {
-    
-    var attacks = ["gralAttack1", "gralAttack2", "gralAttack3"]
+    var attacks = ["regAttack1", "regAttack2", "regAttack3","regAttack4"]
+    var health = 100
     
     func attack()->(message: String, damage: Int) {
-        var message = ""
+        let randomIndex = Int(arc4random_uniform(UInt32(attacks.count)))
+        var message = attacks[randomIndex]
         var damage = 0
         return (message, damage)
+    }
+    
+    func isAlive()->Bool {
+        if health > 0 {
+            return true
+        } else {
+            return false
+        }
     }
     
 }
@@ -39,6 +48,39 @@ class Match {
     
     
 }
+
+var player1 = Player()
+player1.attacks
+
+var goodplayer1 = GoodPlayer()
+goodplayer1.attacks
+
+player1.attack()
+player1.attack()
+player1.attack()
+player1.attack()
+player1.attack()
+
+goodplayer1.attack()
+goodplayer1.attack()
+goodplayer1.attack()
+goodplayer1.attack()
+goodplayer1.attack()
+
+var badplayer1 = BadPlayer()
+
+badplayer1.attack()
+badplayer1.attack()
+badplayer1.attack()
+badplayer1.attack()
+badplayer1.attack()
+badplayer1.attack()
+badplayer1.attack()
+badplayer1.attack()
+
+
+
+
 
 
 
