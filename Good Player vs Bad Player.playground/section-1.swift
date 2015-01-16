@@ -2,20 +2,15 @@
 
 import UIKit
 
-/* 
-***************************
-Note: try to make the game class in such a way that the first player to play is random
-
-Also need to fix the playMatch function so that the loop ends if the second player's health went to 0 or under after the first player's attack
-
-Get a name property for the player class
-
-***************************
-*/
 
 class Player {
     var attacks = ["regAttack1", "regAttack2", "regAttack3","regAttack4"]
     var health = 100
+    var name = ""
+    
+    init (playerName: String) {
+        self.name = playerName
+    }
     
     func attack()->(message: String, damage: Int) {
         let randomIndex = Int(arc4random_uniform(UInt32(attacks.count)))
@@ -37,8 +32,9 @@ class Player {
 class GoodPlayer: Player {
     var goodAttacks = ["goodAttack1", "goodAttack2", "goodAttack3"]
     
-    override init() {
-        super.init()
+    
+    override init(playerName: String) {
+        super.init(playerName: playerName)
         attacks += goodAttacks
     }
     
@@ -48,8 +44,8 @@ class GoodPlayer: Player {
 class BadPlayer: Player {
     var badAttacks = ["badAttack1", "badAttack2", "badAttack3"]
     
-    override init() {
-        super.init()
+    override init(playerName: String) {
+        super.init(playerName: playerName)
         attacks += badAttacks
     }
     
@@ -59,47 +55,72 @@ class Match {
     var player1: Player
     var player2: Player
     
+
+    
     init(player1: Player, player2: Player) {
-        self.player1 = player1
-        self.player2 = player2
+            self.player1 = player1
+            self.player2 = player2
     }
     
     func playGame() {
-        println("let the game begin!!")
-        // Reset the health of each player to 100 in case we are playing
-        // multiple consecutive games
-        player1.health = 100
-        player2.health = 100
+        var randomFirst = Int(arc4random_uniform(2))+1
+        var startingPlayer: Player
+        var followingPlayer: Player
         
-        // This while loop will keep going as long as both player's health is above 0, which is checked by using the isAlive method for each player
-        // While the loop is valid each player will take turn and attack its opponent
-        // each attack will reduce the health of the opponent by a random number between 5 and 20, so the minimum number of rounds should be 5
-        while player1.isAlive() && player2.isAlive() {
-        var player1Attack = player1.attack()
-        player2.health -= player1Attack.damage
-        println("Player 1 used: \(player1Attack.message), with a damage of \(player1Attack.damage)")
-        var player2Attack = player2.attack()
-        player1.health -= player2Attack.damage
-        println("Player 2 used: \(player2Attack.message), with a damage of \(player2Attack.damage)")
+        if randomFirst == 1 {
+            startingPlayer = self.player1
+            followingPlayer = self.player2
+        } else {
+            startingPlayer = self.player2
+            followingPlayer = self.player1
         }
         
-        println("Game ended! Player 1 health is: \(player1.health). Player 2 health is: \(player2.health)")
+        println("Let the game begin!! \(startingPlayer.name) will start. \(followingPlayer.name) will play second.")
+        // Reset the health of each player to 100 in case we are playing
+        // multiple consecutive games
+        startingPlayer.health = 100
+        followingPlayer.health = 100
+        
+        // This while loop will keep going as long as both players' health is above 0, which is checked by using the isAlive method for each player
+        // While the loop is valid each player will take turn and attack its opponent
+        // each attack will reduce the health of the opponent by a random number between 5 and 20, so the minimum number of rounds should be 5
+        while startingPlayer.isAlive() && followingPlayer.isAlive() {
+            
+            var startingPlayerAttack = startingPlayer.attack()
+            followingPlayer.health -= startingPlayerAttack.damage
+            println("1. \(startingPlayer.name) used: \(startingPlayerAttack.message) (-\(startingPlayerAttack.damage) pts)")
+        // After the attack of the first player checks whether the second player has enough health to launch an attack
+            if !followingPlayer.isAlive() {
+                break
+            }
+            
+            var followingPlayerAttack = followingPlayer.attack()
+            startingPlayer.health -= followingPlayerAttack.damage
+            println("2. \(followingPlayer.name) used: \(followingPlayerAttack.message) (-\(followingPlayerAttack.damage) pts)")
+        }
+        
+        if startingPlayer.isAlive() {
+            println("\(startingPlayer.name) wins!! \(startingPlayer.name)'s health is \(startingPlayer.health), whereas \(followingPlayer.name)'s health is \(followingPlayer.health)")
+        } else {
+            println("\(followingPlayer.name) wins!! \(followingPlayer.name)'s health is \(followingPlayer.health), whereas \(startingPlayer.name)'s health is \(startingPlayer.health)")
+        }
+        println(" ")
         
         
     }
     
 }
 
-var player1 = Player()
+var player1 = Player(playerName: "Alexis")
 player1.attacks
 player1.attack()
 
-var goodplayer1 = GoodPlayer()
+var goodplayer1 = GoodPlayer(playerName: "Aurelien")
 goodplayer1.attacks
 goodplayer1.attack()
 
 
-var badplayer1 = BadPlayer()
+var badplayer1 = BadPlayer(playerName: "Tim")
 badplayer1.attacks
 badplayer1.attack()
 
@@ -108,6 +129,15 @@ var newMatch = Match(player1: goodplayer1, player2: badplayer1)
 newMatch.playGame()
 newMatch.playGame()
 newMatch.playGame()
+newMatch.playGame()
+newMatch.playGame()
+newMatch.playGame()
+
+
+
+
+
+
 
 
 
