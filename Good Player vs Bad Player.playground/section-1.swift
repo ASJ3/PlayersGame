@@ -4,6 +4,7 @@ import UIKit
 
 
 class Player {
+    // The name of the various attacks is listed  in an array
     var attacks = ["regAttack1", "regAttack2", "regAttack3","regAttack4"]
     var health = 100
     var name = ""
