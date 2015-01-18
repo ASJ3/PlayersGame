@@ -49,12 +49,12 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yu5-BH-0q8">
-                                <rect key="frame" x="16" y="210" width="563" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Enter your name, then click on the 'Next' button" translatesAutoresizingMaskIntoConstraints="NO" id="U2q-r8-23F">
+                                <rect key="frame" x="16" y="210" width="563" height="62"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KeR-gf-ZIc">
                                 <rect key="frame" x="270" y="285" width="60" height="30"/>
                                 <color key="backgroundColor" red="0.62993331870000002" green="0.80740821630000004" blue="0.92501027960000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -101,21 +101,22 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="KeR-gf-ZIc" firstAttribute="top" secondItem="Yu5-BH-0q8" secondAttribute="bottom" constant="54" id="046-JS-wLA"/>
                             <constraint firstItem="Zad-7V-RPd" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="13h-cf-58V"/>
                             <constraint firstItem="jc9-Zu-Qm1" firstAttribute="top" secondItem="xwL-zZ-PlI" secondAttribute="bottom" constant="8" id="5pg-PG-4WA"/>
+                            <constraint firstItem="KeR-gf-ZIc" firstAttribute="top" secondItem="U2q-r8-23F" secondAttribute="bottom" constant="13" id="66z-gq-hkK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="iKs-yu-eYS" secondAttribute="trailing" constant="5" id="6No-Vh-1oF"/>
                             <constraint firstItem="jc9-Zu-Qm1" firstAttribute="trailing" secondItem="OcS-g1-nj3" secondAttribute="trailing" id="AnJ-oL-RTY"/>
-                            <constraint firstItem="Yu5-BH-0q8" firstAttribute="leading" secondItem="OcS-g1-nj3" secondAttribute="leading" id="GQr-fc-wxS"/>
+                            <constraint firstItem="U2q-r8-23F" firstAttribute="leading" secondItem="OcS-g1-nj3" secondAttribute="leading" id="Fl7-fN-l7S"/>
+                            <constraint firstItem="U2q-r8-23F" firstAttribute="trailing" secondItem="aPG-qR-cdI" secondAttribute="trailing" id="HfF-1o-dXV"/>
                             <constraint firstItem="jc9-Zu-Qm1" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="IfN-wY-G60"/>
+                            <constraint firstItem="U2q-r8-23F" firstAttribute="top" secondItem="OcS-g1-nj3" secondAttribute="bottom" constant="50" id="Mqj-oU-qwe"/>
                             <constraint firstItem="xwL-zZ-PlI" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="Ob3-EQ-zk1"/>
                             <constraint firstItem="ZZk-yx-8cA" firstAttribute="top" secondItem="KeR-gf-ZIc" secondAttribute="bottom" constant="27" id="QxP-Lk-2nO"/>
                             <constraint firstAttribute="trailingMargin" secondItem="rFj-2z-v5D" secondAttribute="trailing" constant="5" id="TTK-lx-XMl"/>
-                            <constraint firstItem="Yu5-BH-0q8" firstAttribute="top" secondItem="OcS-g1-nj3" secondAttribute="bottom" constant="50" id="W29-gf-i7e"/>
+                            <constraint firstItem="KeR-gf-ZIc" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="UMb-14-yaF"/>
                             <constraint firstItem="OcS-g1-nj3" firstAttribute="top" secondItem="rFj-2z-v5D" secondAttribute="bottom" constant="8" id="Wak-sJ-aDl"/>
                             <constraint firstItem="rFj-2z-v5D" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="XJs-Kz-WUs"/>
                             <constraint firstItem="Zad-7V-RPd" firstAttribute="top" secondItem="KeR-gf-ZIc" secondAttribute="bottom" constant="27" id="aO7-By-5CL"/>
-                            <constraint firstItem="Yu5-BH-0q8" firstAttribute="trailing" secondItem="aPG-qR-cdI" secondAttribute="trailing" id="ayo-K3-cEM"/>
                             <constraint firstItem="Eeo-TI-LdE" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="bNL-sj-pba"/>
                             <constraint firstAttribute="centerX" secondItem="KeR-gf-ZIc" secondAttribute="centerX" id="dHO-YO-3ph"/>
                             <constraint firstItem="fZP-tx-KB9" firstAttribute="top" secondItem="KeR-gf-ZIc" secondAttribute="bottom" constant="72" id="feh-X6-zgG"/>
@@ -137,7 +138,7 @@
                         <outlet property="badPlayerSchool" destination="OcS-g1-nj3" id="Xb9-0c-1xc"/>
                         <outlet property="goodPlayerHealth" destination="iKs-yu-eYS" id="7ak-lE-h0f"/>
                         <outlet property="goodPlayerSchool" destination="jc9-Zu-Qm1" id="V4j-WC-pOf"/>
-                        <outlet property="mainLabel" destination="Yu5-BH-0q8" id="0mx-R1-jsR"/>
+                        <outlet property="mainLabel" destination="U2q-r8-23F" id="vbs-Uh-rnf"/>
                         <outlet property="playerName" destination="xwL-zZ-PlI" id="XXC-6d-i7c"/>
                     </connections>
                 </viewController>

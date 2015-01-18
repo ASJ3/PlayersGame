@@ -16,8 +16,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var badPlayerName: UILabel!
     @IBOutlet weak var badPlayerSchool: UILabel!
     @IBOutlet weak var badPlayerHealth: UILabel!
-    
-    @IBOutlet weak var mainLabel: UILabel!
+    @IBOutlet weak var mainLabel: UITextView!
     
     var player1 = Player(playerName: "")
     var player2 = Player(playerName: "")
@@ -38,6 +37,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
             badPlayerName.text = player2.name
             badPlayerSchool.text = player2.school
             
+            mainLabel.text = "Let the game begin! \n\(player1.name) from \(player1.school) will play against \(player2.name) from \(player2.school)"
+            
             readyToPlay = 0
             println("readyToPlay has been changed to: \(readyToPlay)")
             
@@ -49,6 +50,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
             goodPlayerSchool.text = "School"
             badPlayerName.text = "Name"
             badPlayerSchool.text = "School"
+            
+            mainLabel.text = "Enter your name, then click on 'Next'"
             
         }
         
