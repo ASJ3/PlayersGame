@@ -19,14 +19,32 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var mainLabel: UILabel!
     
+    var player1 = Player(playerName: "")
+    var player2 = Player(playerName: "")
+    // readyToPlay is a var created to indicate whether a name has been entered by the player
+    // It starts at 0 (player did not enter name in the textField so game is not ready to play
+    // Then it changes to 1 (game is ready)
+    var readyToPlay = 0
+    
     @IBAction func mainFunction(sender: AnyObject) {
+        
+        if readyToPlay == 1 {
+            println("readyToPlay is now: \(readyToPlay)")
+            readyToPlay = 0
+            println("readyToPlay has been changed to: \(readyToPlay)")
+            
+        } else {
+            println("readyToPlay is now: \(readyToPlay)")
+            
+        }
         
     }
     // Function that ensures the keyboard disappear after the player enters 'Return'
     // on the pop-up keyboard when they are done entering their name
     func textFieldShouldReturn(textField: UITextField!) -> Bool {
         textField.resignFirstResponder()
-        return true;
+        readyToPlay = 1
+        return true
     }
 
     override func viewDidLoad() {
