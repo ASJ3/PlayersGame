@@ -16,6 +16,7 @@
 		7829FC441A6B7E4600C1D034 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7829FC431A6B7E4600C1D034 /* Player.swift */; };
 		7829FC461A6B7E5B00C1D034 /* GoodPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7829FC451A6B7E5B00C1D034 /* GoodPlayer.swift */; };
 		7829FC481A6B7E7900C1D034 /* BadPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7829FC471A6B7E7900C1D034 /* BadPlayer.swift */; };
+		7829FC4A1A6B7F1300C1D034 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7829FC491A6B7F1300C1D034 /* Match.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		7829FC431A6B7E4600C1D034 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		7829FC451A6B7E5B00C1D034 /* GoodPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoodPlayer.swift; sourceTree = "<group>"; };
 		7829FC471A6B7E7900C1D034 /* BadPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadPlayer.swift; sourceTree = "<group>"; };
+		7829FC491A6B7F1300C1D034 /* Match.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				7829FC431A6B7E4600C1D034 /* Player.swift */,
 				7829FC451A6B7E5B00C1D034 /* GoodPlayer.swift */,
 				7829FC471A6B7E7900C1D034 /* BadPlayer.swift */,
+				7829FC491A6B7F1300C1D034 /* Match.swift */,
 				7829FC2A1A6B7C2400C1D034 /* Images.xcassets */,
 				7829FC2C1A6B7C2400C1D034 /* LaunchScreen.xib */,
 				7829FC211A6B7C2400C1D034 /* Supporting Files */,
@@ -226,6 +229,7 @@
 				7829FC461A6B7E5B00C1D034 /* GoodPlayer.swift in Sources */,
 				7829FC441A6B7E4600C1D034 /* Player.swift in Sources */,
 				7829FC241A6B7C2400C1D034 /* AppDelegate.swift in Sources */,
+				7829FC4A1A6B7F1300C1D034 /* Match.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
