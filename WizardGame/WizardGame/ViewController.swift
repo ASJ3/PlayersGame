@@ -30,11 +30,25 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         if readyToPlay == 1 {
             println("readyToPlay is now: \(readyToPlay)")
+            
+            player1 = GoodPlayer(playerName: playerName.text)
+            player2 = BadPlayer(playerName: "Draco")
+            
+            goodPlayerSchool.text = player1.school
+            badPlayerName.text = player2.name
+            badPlayerSchool.text = player2.school
+            
             readyToPlay = 0
             println("readyToPlay has been changed to: \(readyToPlay)")
             
         } else {
             println("readyToPlay is now: \(readyToPlay)")
+            
+            playerName.text = ""
+            playerName.placeholder = "Enter your name"
+            goodPlayerSchool.text = "School"
+            badPlayerName.text = "Name"
+            badPlayerSchool.text = "School"
             
         }
         
