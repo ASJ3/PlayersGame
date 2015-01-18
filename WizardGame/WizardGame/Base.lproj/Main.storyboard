@@ -137,9 +137,9 @@
                         <outlet property="badPlayerName" destination="rFj-2z-v5D" id="ZnZ-XR-CYb"/>
                         <outlet property="badPlayerSchool" destination="OcS-g1-nj3" id="Xb9-0c-1xc"/>
                         <outlet property="goodPlayerHealth" destination="iKs-yu-eYS" id="7ak-lE-h0f"/>
+                        <outlet property="goodPlayerName" destination="xwL-zZ-PlI" id="SA7-Ch-WY1"/>
                         <outlet property="goodPlayerSchool" destination="jc9-Zu-Qm1" id="V4j-WC-pOf"/>
                         <outlet property="mainLabel" destination="U2q-r8-23F" id="vbs-Uh-rnf"/>
-                        <outlet property="playerName" destination="xwL-zZ-PlI" id="XXC-6d-i7c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

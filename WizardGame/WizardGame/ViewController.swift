@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
-    @IBOutlet weak var playerName: UITextField!
+    @IBOutlet weak var goodPlayerName: UITextField!
     @IBOutlet weak var goodPlayerSchool: UILabel!
     @IBOutlet weak var goodPlayerHealth: UILabel!
     
@@ -30,7 +30,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if readyToPlay == 1 {
             println("readyToPlay is now: \(readyToPlay)")
             
-            player1 = GoodPlayer(playerName: playerName.text)
+            player1 = GoodPlayer(playerName: goodPlayerName.text)
             player2 = BadPlayer(playerName: "Draco")
             
             goodPlayerSchool.text = player1.school
@@ -45,13 +45,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
         } else {
             println("readyToPlay is now: \(readyToPlay)")
             
-            playerName.text = ""
-            playerName.placeholder = "Enter your name"
+            goodPlayerName.text = ""
+            goodPlayerName.placeholder = "Enter your name"
             goodPlayerSchool.text = "School"
             badPlayerName.text = "Name"
             badPlayerSchool.text = "School"
             
             mainLabel.text = "Enter your name, then click on 'Next'"
+            
             
         }
         
@@ -66,7 +67,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.playerName.delegate = self;
+        self.goodPlayerName.delegate = self;
         // Do any additional setup after loading the view, typically from a nib.
     }
 
