@@ -34,8 +34,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
             player2 = BadPlayer(playerName: "Draco")
             
             goodPlayerSchool.text = player1.school
+            goodPlayerHealth.text = String(player1.health)
+            
             badPlayerName.text = player2.name
             badPlayerSchool.text = player2.school
+            badPlayerHealth.text = String(player2.health)
             
             mainLabel.text = "Let the game begin! \n\(player1.name) from \(player1.school) will play against \(player2.name) from \(player2.school)"
             
@@ -48,10 +51,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
             goodPlayerName.text = ""
             goodPlayerName.placeholder = "Enter your name"
             goodPlayerSchool.text = "School"
+            goodPlayerHealth.text = "0"
             badPlayerName.text = "Name"
             badPlayerSchool.text = "School"
+            badPlayerHealth.text = "0"
             
             mainLabel.text = "Enter your name, then click on 'Next'"
+            
             
             
         }
