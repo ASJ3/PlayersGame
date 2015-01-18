@@ -64,6 +64,9 @@
                                 <state key="normal" title="Next">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="mainFunction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="cc5-Rc-2Py"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zad-7V-RPd">
                                 <rect key="frame" x="16" y="342" width="46" height="30"/>
@@ -129,6 +132,12 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="badPlayerHealth" destination="aPG-qR-cdI" id="Jbb-CH-X9f"/>
+                        <outlet property="badPlayerName" destination="rFj-2z-v5D" id="ZnZ-XR-CYb"/>
+                        <outlet property="badPlayerSchool" destination="OcS-g1-nj3" id="Xb9-0c-1xc"/>
+                        <outlet property="goodPlayerHealth" destination="iKs-yu-eYS" id="7ak-lE-h0f"/>
+                        <outlet property="goodPlayerSchool" destination="jc9-Zu-Qm1" id="V4j-WC-pOf"/>
+                        <outlet property="mainLabel" destination="Yu5-BH-0q8" id="0mx-R1-jsR"/>
                         <outlet property="playerName" destination="xwL-zZ-PlI" id="XXC-6d-i7c"/>
                     </connections>
                 </viewController>

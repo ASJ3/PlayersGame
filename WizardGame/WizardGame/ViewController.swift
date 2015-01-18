@@ -10,7 +10,18 @@ import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var playerName: UITextField!
+    @IBOutlet weak var goodPlayerSchool: UILabel!
+    @IBOutlet weak var goodPlayerHealth: UILabel!
     
+    @IBOutlet weak var badPlayerName: UILabel!
+    @IBOutlet weak var badPlayerSchool: UILabel!
+    @IBOutlet weak var badPlayerHealth: UILabel!
+    
+    @IBOutlet weak var mainLabel: UILabel!
+    
+    @IBAction func mainFunction(sender: AnyObject) {
+        
+    }
     // Function that ensures the keyboard disappear after the player enters 'Return'
     // on the pop-up keyboard when they are done entering their name
     func textFieldShouldReturn(textField: UITextField!) -> Bool {
