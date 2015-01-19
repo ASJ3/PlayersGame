@@ -9,13 +9,14 @@
 import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
-    @IBOutlet weak var goodPlayerName: UITextField!
-    @IBOutlet weak var goodPlayerSchool: UILabel!
-    @IBOutlet weak var goodPlayerHealth: UILabel!
+    @IBOutlet weak var humanPlayerName: UITextField!
+    @IBOutlet weak var humanPlayerSchool: UILabel!
+    @IBOutlet weak var humanPlayerHealth: UILabel!
     
-    @IBOutlet weak var badPlayerName: UILabel!
-    @IBOutlet weak var badPlayerSchool: UILabel!
-    @IBOutlet weak var badPlayerHealth: UILabel!
+
+    @IBOutlet weak var computerPlayerName: UILabel!
+    @IBOutlet weak var computerPlayerSchool: UILabel!
+    @IBOutlet weak var computerPlayerHealth: UILabel!
     @IBOutlet weak var mainLabel: UITextView!
     
     var player1 = Player(playerName: "")
@@ -30,17 +31,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if readyToPlay == 1 {
             println("readyToPlay is now: \(readyToPlay)")
             
-            player1 = GoodPlayer(playerName: goodPlayerName.text)
+            player1 = GoodPlayer(playerName: humanPlayerName.text)
             player2 = BadPlayer(playerName: "Draco")
             
-            goodPlayerSchool.text = player1.school
-            goodPlayerHealth.text = String(player1.health)
+            humanPlayerSchool.text = player1.school
+            humanPlayerHealth.text = String(player1.health)
             
-            badPlayerName.text = player2.name
-            badPlayerSchool.text = player2.school
-            badPlayerHealth.text = String(player2.health)
+            computerPlayerName.text = player2.name
+            computerPlayerSchool.text = player2.school
+            computerPlayerHealth.text = String(player2.health)
             
-            mainLabel.text = "Let the game begin! \n\(player1.name) from \(player1.school) will play against \(player2.name) from \(player2.school)"
+            mainLabel.text = "Let the game begin!\n\(player1.name) from \(player1.school) will play against \(player2.name) from \(player2.school)"
             
             readyToPlay = 0
             println("readyToPlay has been changed to: \(readyToPlay)")
@@ -48,13 +49,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
         } else {
             println("readyToPlay is now: \(readyToPlay)")
             
-            goodPlayerName.text = ""
-            goodPlayerName.placeholder = "Enter your name"
-            goodPlayerSchool.text = "School"
-            goodPlayerHealth.text = "0"
-            badPlayerName.text = "Name"
-            badPlayerSchool.text = "School"
-            badPlayerHealth.text = "0"
+            humanPlayerName.text = ""
+            humanPlayerName.placeholder = "Enter your name"
+            humanPlayerSchool.text = "School"
+            humanPlayerHealth.text = "0"
+            computerPlayerName.text = "Name"
+            computerPlayerSchool.text = "School"
+            computerPlayerHealth.text = "0"
             
             mainLabel.text = "Enter your name, then click on 'Next'"
             
@@ -73,7 +74,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.goodPlayerName.delegate = self;
+        self.humanPlayerName.delegate = self;
         // Do any additional setup after loading the view, typically from a nib.
     }
 

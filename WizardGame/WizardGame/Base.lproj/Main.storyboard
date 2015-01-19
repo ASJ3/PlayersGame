@@ -143,17 +143,18 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="badPlayerHealth" destination="aPG-qR-cdI" id="Jbb-CH-X9f"/>
-                        <outlet property="badPlayerName" destination="rFj-2z-v5D" id="ZnZ-XR-CYb"/>
-                        <outlet property="badPlayerSchool" destination="OcS-g1-nj3" id="Xb9-0c-1xc"/>
-                        <outlet property="goodPlayerHealth" destination="iKs-yu-eYS" id="7ak-lE-h0f"/>
-                        <outlet property="goodPlayerName" destination="xwL-zZ-PlI" id="SA7-Ch-WY1"/>
-                        <outlet property="goodPlayerSchool" destination="jc9-Zu-Qm1" id="V4j-WC-pOf"/>
+                        <outlet property="computerPlayerHealth" destination="aPG-qR-cdI" id="DoY-xH-RB9"/>
+                        <outlet property="computerPlayerName" destination="rFj-2z-v5D" id="2YY-K1-fcY"/>
+                        <outlet property="computerPlayerSchool" destination="OcS-g1-nj3" id="ebY-v6-Map"/>
+                        <outlet property="humanPlayerHealth" destination="iKs-yu-eYS" id="DAg-T1-QyV"/>
+                        <outlet property="humanPlayerName" destination="xwL-zZ-PlI" id="Zpd-is-MFn"/>
+                        <outlet property="humanPlayerSchool" destination="jc9-Zu-Qm1" id="W8R-NN-Zci"/>
                         <outlet property="mainLabel" destination="U2q-r8-23F" id="vbs-Uh-rnf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="48" y="281"/>
         </scene>
     </scenes>
 </document>
