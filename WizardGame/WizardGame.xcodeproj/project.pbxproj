@@ -17,6 +17,7 @@
 		7829FC461A6B7E5B00C1D034 /* GoodPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7829FC451A6B7E5B00C1D034 /* GoodPlayer.swift */; };
 		7829FC481A6B7E7900C1D034 /* BadPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7829FC471A6B7E7900C1D034 /* BadPlayer.swift */; };
 		7829FC4A1A6B7F1300C1D034 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7829FC491A6B7F1300C1D034 /* Match.swift */; };
+		78E24E011A6F550700C2C7EE /* Pottermore_stemmedelleCASE.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 78E24E001A6F550700C2C7EE /* Pottermore_stemmedelleCASE.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		7829FC451A6B7E5B00C1D034 /* GoodPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoodPlayer.swift; sourceTree = "<group>"; };
 		7829FC471A6B7E7900C1D034 /* BadPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadPlayer.swift; sourceTree = "<group>"; };
 		7829FC491A6B7F1300C1D034 /* Match.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
+		78E24E001A6F550700C2C7EE /* Pottermore_stemmedelleCASE.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Pottermore_stemmedelleCASE.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 				7829FC491A6B7F1300C1D034 /* Match.swift */,
 				7829FC2A1A6B7C2400C1D034 /* Images.xcassets */,
 				7829FC2C1A6B7C2400C1D034 /* LaunchScreen.xib */,
+				78E24E001A6F550700C2C7EE /* Pottermore_stemmedelleCASE.jpg */,
 				7829FC211A6B7C2400C1D034 /* Supporting Files */,
 			);
 			path = WizardGame;
@@ -206,6 +209,7 @@
 			files = (
 				7829FC291A6B7C2400C1D034 /* Main.storyboard in Resources */,
 				7829FC2E1A6B7C2400C1D034 /* LaunchScreen.xib in Resources */,
+				78E24E011A6F550700C2C7EE /* Pottermore_stemmedelleCASE.jpg in Resources */,
 				7829FC2B1A6B7C2400C1D034 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -421,6 +425,7 @@
 				7829FC3F1A6B7C2400C1D034 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7829FC401A6B7C2400C1D034 /* Build configuration list for PBXNativeTarget "WizardGameTests" */ = {
 			isa = XCConfigurationList;
@@ -429,6 +434,7 @@
 				7829FC421A6B7C2400C1D034 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

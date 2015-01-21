@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -104,6 +105,12 @@
                                 <color key="textColor" red="0.2955639572" green="0.41081505419999997" blue="0.78578756309999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pottermore_stemmedelleCASE.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="KKE-OX-pdv">
+                                <rect key="frame" x="26" y="442" width="548" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="KKE-OX-pdv" secondAttribute="height" multiplier="274:75" id="jmH-vN-U1g"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -120,17 +127,21 @@
                             <constraint firstItem="xwL-zZ-PlI" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="GoX-rd-5Rb"/>
                             <constraint firstItem="fZP-tx-KB9" firstAttribute="top" secondItem="KeR-gf-ZIc" secondAttribute="bottom" constant="72" id="JCP-d2-ZCS"/>
                             <constraint firstItem="jc9-Zu-Qm1" firstAttribute="trailing" secondItem="OcS-g1-nj3" secondAttribute="trailing" id="Lbo-FA-H4k"/>
+                            <constraint firstAttribute="centerX" secondItem="KKE-OX-pdv" secondAttribute="centerX" id="PR0-4s-ZSd"/>
                             <constraint firstItem="iKs-yu-eYS" firstAttribute="leading" secondItem="jc9-Zu-Qm1" secondAttribute="trailing" constant="77" id="PYV-sa-CLi"/>
                             <constraint firstAttribute="trailingMargin" secondItem="iKs-yu-eYS" secondAttribute="trailing" constant="5" id="U9H-Qm-wn9"/>
                             <constraint firstItem="xwL-zZ-PlI" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="Uaw-WR-QRt"/>
                             <constraint firstItem="Eeo-TI-LdE" firstAttribute="top" secondItem="KeR-gf-ZIc" secondAttribute="bottom" constant="72" id="XHe-lS-WAF"/>
                             <constraint firstItem="U2q-r8-23F" firstAttribute="top" secondItem="OcS-g1-nj3" secondAttribute="bottom" constant="65" id="XYg-Gz-TUM"/>
                             <constraint firstItem="Eeo-TI-LdE" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="abK-92-y89"/>
+                            <constraint firstItem="KKE-OX-pdv" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="10" id="b4r-2M-344"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aPG-qR-cdI" secondAttribute="trailing" constant="5" id="bMe-26-obh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ZZk-yx-8cA" secondAttribute="trailing" constant="5" id="cvB-25-IqL"/>
                             <constraint firstAttribute="trailingMargin" secondItem="rFj-2z-v5D" secondAttribute="trailing" constant="5" id="ffH-cy-vpb"/>
                             <constraint firstItem="aPG-qR-cdI" firstAttribute="top" secondItem="rFj-2z-v5D" secondAttribute="bottom" constant="8" id="gdM-yx-0I3"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="KKE-OX-pdv" secondAttribute="bottom" constant="8" id="hnb-hy-fb2"/>
                             <constraint firstItem="aPG-qR-cdI" firstAttribute="leading" secondItem="iKs-yu-eYS" secondAttribute="leading" id="jX0-L9-N9y"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KKE-OX-pdv" secondAttribute="trailing" constant="10" id="lK8-5K-JMd"/>
                             <constraint firstItem="jc9-Zu-Qm1" firstAttribute="baseline" secondItem="iKs-yu-eYS" secondAttribute="baseline" id="nex-B8-JZA"/>
                             <constraint firstItem="OcS-g1-nj3" firstAttribute="baseline" secondItem="aPG-qR-cdI" secondAttribute="baseline" id="oTX-zG-FkQ"/>
                             <constraint firstItem="iKs-yu-eYS" firstAttribute="top" secondItem="xwL-zZ-PlI" secondAttribute="bottom" constant="8" id="oY3-je-58b"/>
@@ -161,4 +172,7 @@
             <point key="canvasLocation" x="48" y="281"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Pottermore_stemmedelleCASE.jpg" width="544" height="150"/>
+    </resources>
 </document>
