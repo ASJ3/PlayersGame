@@ -143,6 +143,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottomLeft" destination="Eeo-TI-LdE" id="3El-qg-N2Y"/>
+                        <outlet property="bottomRight" destination="fZP-tx-KB9" id="kFS-6A-46w"/>
                         <outlet property="computerPlayerHealth" destination="aPG-qR-cdI" id="DoY-xH-RB9"/>
                         <outlet property="computerPlayerName" destination="rFj-2z-v5D" id="2YY-K1-fcY"/>
                         <outlet property="computerPlayerSchool" destination="OcS-g1-nj3" id="ebY-v6-Map"/>
@@ -150,6 +152,8 @@
                         <outlet property="humanPlayerName" destination="xwL-zZ-PlI" id="Zpd-is-MFn"/>
                         <outlet property="humanPlayerSchool" destination="jc9-Zu-Qm1" id="W8R-NN-Zci"/>
                         <outlet property="mainLabel" destination="U2q-r8-23F" id="vbs-Uh-rnf"/>
+                        <outlet property="topLeft" destination="Zad-7V-RPd" id="yTF-Km-0d2"/>
+                        <outlet property="topRight" destination="ZZk-yx-8cA" id="FJz-0O-fVP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

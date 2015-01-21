@@ -19,6 +19,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var computerPlayerHealth: UILabel!
     @IBOutlet weak var mainLabel: UITextView!
     
+    @IBOutlet weak var topLeft: UIButton!
+    @IBOutlet weak var topRight: UIButton!
+    @IBOutlet weak var bottomLeft: UIButton!
+    @IBOutlet weak var bottomRight: UIButton!
+    
     // Creating 5 global variables
     var player1 = Player(playerName: "")
     var player2 = Player(playerName: "")
@@ -33,11 +38,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     // readyToPlay is a var created to indicate whether a name has been entered by the player
     // It starts at 0 (player did not enter name in the textField so game is not ready to play
-    // Then it changes to 1 (game is ready)
+    // Then it changes to 1 (game is being set up)
     var readyToPlay = 0
     
     @IBAction func mainFunction(sender: AnyObject) {
-        
+        // readyToPlay at 1 is to set up a new game
         if readyToPlay == 1 {
             println("readyToPlay is now: \(readyToPlay)")
             
@@ -60,11 +65,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
             // Changing playerTurn to 1 ('1st player to play')
             playerTurn = 1
             
-            println("readyToPlay has been changed to: \(readyToPlay)")
+            // Changing the name of the buttons to the name of each attack possible
+            topLeft.setTitle(player1.attacks[0], forState: .Normal)
+            topRight.setTitle(player1.attacks[1], forState: .Normal)
+            bottomLeft.setTitle(player1.attacks[2], forState: .Normal)
+            bottomRight.setTitle(player1.attacks[3], forState: .Normal)
             
+            println("readyToPlay has been changed to: \(readyToPlay)")
+           
+        // the following loop where readyToPlay = 2 alterns between both players casting spell at each other (i.e playerTurn = 1 or 2)
         } else if readyToPlay == 2 {
 
-            if playerTurn == 1 {
+            if playerTurn == 1 && player1.isAlive() {
                 var attackResults = newMatch.attackRound(attackingPlayer: player1, defendingPlayer: player2)
                 
                 player2.health = attackResults.attackDamage
@@ -75,7 +87,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 // Indicates that it is the second player's turn to play on the next round
                 playerTurn = 2
                 
-            } else {
+            } else if playerTurn == 2 && player2.isAlive() {
                 var attackResults = newMatch.attackRound(attackingPlayer: player2, defendingPlayer: player1)
 
                 player1.health = attackResults.attackDamage
@@ -85,6 +97,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 
                 // Indicates that it is the first player's turn to play on the next round
                 playerTurn = 1
+            } else if !player1.isAlive() {
+                mainLabel.text = "\(player2.name) won!"
+                readyToPlay = 0
+                
+            } else if !player2.isAlive() {
+                mainLabel.text = "\(player1.name) won!"
+                readyToPlay = 0
+                
             }
             
             
@@ -102,6 +122,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
             mainLabel.text = "Enter your name, then click on 'Next'"
             
+            // Changing the name of the buttons back to the default
+            topLeft.setTitle("button", forState: .Normal)
+            topRight.setTitle("button", forState: .Normal)
+            bottomLeft.setTitle("button", forState: .Normal)
+            bottomRight.setTitle("button", forState: .Normal)
+            
             
             
         }
@@ -111,6 +137,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     // on the pop-up keyboard when they are done entering their name
     func textFieldShouldReturn(textField: UITextField!) -> Bool {
         textField.resignFirstResponder()
+        // After the player has entered a name, the game is now ready to play
+        // so the readyToPlay variable is changed to 1
         readyToPlay = 1
         return true
     }

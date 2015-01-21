@@ -10,7 +10,7 @@ import Foundation
 
 class Player {
     // The name of the various attacks is listed  in an array
-    var attacks = ["regAttack1", "regAttack2"]
+    var attacks = ["Aguamenti", "Confundus"]
     var health = 100
     var name = ""
     var school = ""

@@ -9,7 +9,7 @@
 import Foundation
 
 class BadPlayer: Player {
-    var badAttacks = ["badAttack1", "badAttack2"]
+    var badAttacks = ["Confringo", "Furnunculus"]
     
     override init(playerName: String) {
         super.init(playerName: playerName)
