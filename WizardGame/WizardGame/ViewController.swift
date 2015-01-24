@@ -34,7 +34,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     // For some reason I can't instantiate Match() by using the player1 and player2
     // variables as properties
     // If I do I get an error message saying ViewController.Type does not have a member named...
-    var newMatch = Match(player1: Player(playerName: ""), player2: Player(playerName: ""))
+
+    
+    
+    
     
     // readyToPlay is a var created to indicate whether a name has been entered by the player
     // It starts at 0 (player did not enter name in the textField so game is not ready to play
@@ -57,7 +60,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             computerPlayerHealth.text = String(player2.health)
             
             // We're now starting a new match with player1 against player2
-            newMatch = Match(player1: player1, player2: player2)
+            newMatch = Match(player1: self.player1, player2: self.player2)
             
             mainLabel.text = "Let the game begin!\n\(player1.name) from \(player1.school) will play against \(player2.name) from \(player2.school)"
             // Changing readyToPlay to 2 ('game is started')
@@ -146,6 +149,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.humanPlayerName.delegate = self;
+        var newMatch = Match(player1: Player(playerName: ""), player2: Player(playerName: ""))
         // Do any additional setup after loading the view, typically from a nib.
     }
 
