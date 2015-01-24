@@ -8,12 +8,15 @@
 
 import UIKit
 
+
 class ViewController: UIViewController, UITextFieldDelegate {
+    @IBOutlet weak var humanPlayerSchoolPic: UIImageView!
     @IBOutlet weak var humanPlayerName: UITextField!
     @IBOutlet weak var humanPlayerSchool: UILabel!
     @IBOutlet weak var humanPlayerHealth: UILabel!
     
 
+    @IBOutlet weak var computerPlayerSchoolPic: UIImageView!
     @IBOutlet weak var computerPlayerName: UILabel!
     @IBOutlet weak var computerPlayerSchool: UILabel!
     @IBOutlet weak var computerPlayerHealth: UILabel!
@@ -148,6 +151,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         self.humanPlayerName.delegate = self;
         var newMatch = Match(player1: Player(playerName: ""), player2: Player(playerName: ""))
+        mainLabel.layer.cornerRadius = 4
+        humanPlayerSchoolPic.layer.cornerRadius = 2
+        humanPlayerSchoolPic.clipsToBounds = true
+        
+        computerPlayerSchoolPic.layer.cornerRadius = 2
+        computerPlayerSchoolPic.clipsToBounds = true
         // Do any additional setup after loading the view, typically from a nib.
     }
 
