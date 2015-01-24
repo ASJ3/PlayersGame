@@ -34,9 +34,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     // For some reason I can't instantiate Match() by using the player1 and player2
     // variables as properties
     // If I do I get an error message saying ViewController.Type does not have a member named...
-
-    
-    
+    var newMatch = Match(player1: Player(playerName: ""), player2: Player(playerName: ""))
     
     
     // readyToPlay is a var created to indicate whether a name has been entered by the player
