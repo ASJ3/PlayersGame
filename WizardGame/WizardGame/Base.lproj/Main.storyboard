@@ -106,7 +106,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Schools Shields" translatesAutoresizingMaskIntoConstraints="NO" id="KKE-OX-pdv">
-                                <rect key="frame" x="16" y="437" width="568" height="155"/>
+                                <rect key="frame" x="0.0" y="436" width="600" height="164"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="KKE-OX-pdv" secondAttribute="height" multiplier="274:75" id="jmH-vN-U1g"/>
                                 </constraints>
@@ -122,6 +122,7 @@
                             <constraint firstItem="jc9-Zu-Qm1" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="8Mz-UG-ynX"/>
                             <constraint firstItem="Zad-7V-RPd" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="BJ4-aP-Bzs"/>
                             <constraint firstItem="Zad-7V-RPd" firstAttribute="top" secondItem="KeR-gf-ZIc" secondAttribute="bottom" constant="27" id="CuD-hD-j6S"/>
+                            <constraint firstItem="KKE-OX-pdv" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="D8Q-qV-prP"/>
                             <constraint firstItem="xwL-zZ-PlI" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="ERH-Sh-RbZ"/>
                             <constraint firstAttribute="centerX" secondItem="KeR-gf-ZIc" secondAttribute="centerX" id="F5o-xA-TWe"/>
                             <constraint firstItem="xwL-zZ-PlI" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="GoX-rd-5Rb"/>
@@ -129,10 +130,12 @@
                             <constraint firstItem="jc9-Zu-Qm1" firstAttribute="trailing" secondItem="OcS-g1-nj3" secondAttribute="trailing" id="Lbo-FA-H4k"/>
                             <constraint firstAttribute="centerX" secondItem="KKE-OX-pdv" secondAttribute="centerX" id="PR0-4s-ZSd"/>
                             <constraint firstItem="iKs-yu-eYS" firstAttribute="leading" secondItem="jc9-Zu-Qm1" secondAttribute="trailing" constant="77" id="PYV-sa-CLi"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="KKE-OX-pdv" secondAttribute="bottom" id="RvU-w9-YCs"/>
                             <constraint firstAttribute="trailingMargin" secondItem="iKs-yu-eYS" secondAttribute="trailing" constant="5" id="U9H-Qm-wn9"/>
                             <constraint firstItem="xwL-zZ-PlI" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="Uaw-WR-QRt"/>
                             <constraint firstItem="Eeo-TI-LdE" firstAttribute="top" secondItem="KeR-gf-ZIc" secondAttribute="bottom" constant="72" id="XHe-lS-WAF"/>
                             <constraint firstItem="U2q-r8-23F" firstAttribute="top" secondItem="OcS-g1-nj3" secondAttribute="bottom" constant="65" id="XYg-Gz-TUM"/>
+                            <constraint firstAttribute="trailing" secondItem="KKE-OX-pdv" secondAttribute="trailing" id="YRz-qH-2Dx"/>
                             <constraint firstItem="Eeo-TI-LdE" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="abK-92-y89"/>
                             <constraint firstItem="KKE-OX-pdv" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="b4r-2M-344"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aPG-qR-cdI" secondAttribute="trailing" constant="5" id="bMe-26-obh"/>
@@ -152,6 +155,13 @@
                             <constraint firstItem="KeR-gf-ZIc" firstAttribute="top" secondItem="U2q-r8-23F" secondAttribute="bottom" constant="13" id="yX5-mc-O5K"/>
                             <constraint firstItem="KeR-gf-ZIc" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="zq6-mK-jcI"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="b4r-2M-344"/>
+                                <exclude reference="lK8-5K-JMd"/>
+                                <exclude reference="hnb-hy-fb2"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="bottomLeft" destination="Eeo-TI-LdE" id="3El-qg-N2Y"/>
