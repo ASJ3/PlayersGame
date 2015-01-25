@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7824A07A1A748D4B00EDECF0 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7824A0791A748D4B00EDECF0 /* FirstViewController.swift */; };
 		7829FC241A6B7C2400C1D034 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7829FC231A6B7C2400C1D034 /* AppDelegate.swift */; };
 		7829FC261A6B7C2400C1D034 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7829FC251A6B7C2400C1D034 /* ViewController.swift */; };
 		7829FC291A6B7C2400C1D034 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7829FC271A6B7C2400C1D034 /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7824A0791A748D4B00EDECF0 /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		7829FC1E1A6B7C2400C1D034 /* WizardGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WizardGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7829FC221A6B7C2400C1D034 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7829FC231A6B7C2400C1D034 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				7829FC231A6B7C2400C1D034 /* AppDelegate.swift */,
 				7829FC251A6B7C2400C1D034 /* ViewController.swift */,
 				7829FC271A6B7C2400C1D034 /* Main.storyboard */,
+				7824A0791A748D4B00EDECF0 /* FirstViewController.swift */,
 				7829FC431A6B7E4600C1D034 /* Player.swift */,
 				7829FC451A6B7E5B00C1D034 /* GoodPlayer.swift */,
 				7829FC471A6B7E7900C1D034 /* BadPlayer.swift */,
@@ -230,6 +233,7 @@
 				7829FC441A6B7E4600C1D034 /* Player.swift in Sources */,
 				7829FC241A6B7C2400C1D034 /* AppDelegate.swift in Sources */,
 				7829FC4A1A6B7F1300C1D034 /* Match.swift in Sources */,
+				7824A07A1A748D4B00EDECF0 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

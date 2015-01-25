@@ -10,6 +10,9 @@ import UIKit
 
 
 class ViewController: UIViewController, UITextFieldDelegate {
+    // The receivedName variable will hold the player name entered in the previous view controller
+    var receivedName = ""
+    
     @IBOutlet weak var humanPlayerSchoolPic: UIImageView!
     @IBOutlet weak var humanPlayerName: UITextField!
     @IBOutlet weak var humanPlayerSchool: UILabel!
@@ -151,12 +154,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         self.humanPlayerName.delegate = self;
         var newMatch = Match(player1: Player(playerName: ""), player2: Player(playerName: ""))
+        // Adding rounded corners to the textfield and two pictures
         mainLabel.layer.cornerRadius = 4
         humanPlayerSchoolPic.layer.cornerRadius = 2
         humanPlayerSchoolPic.clipsToBounds = true
         
         computerPlayerSchoolPic.layer.cornerRadius = 2
         computerPlayerSchoolPic.clipsToBounds = true
+        
+        // Setting up the name of the human player to the string received from the first view controller
+        humanPlayerName.text = receivedName
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
