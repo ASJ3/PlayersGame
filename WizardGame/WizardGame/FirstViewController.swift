@@ -11,9 +11,10 @@ import UIKit
 class FirstViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var nameField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.nameField.delegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -35,6 +36,7 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
         var secondViewController: ViewController = segue.destinationViewController as ViewController
         
         secondViewController.receivedName = nameField.text
+        secondViewController.readyToPlay = 1
         
     }
     
