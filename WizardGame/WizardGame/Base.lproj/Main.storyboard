@@ -102,7 +102,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rUq-T9-11B">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rUq-T9-11B">
                                 <rect key="frame" x="261" y="285" width="79" height="30"/>
                                 <color key="backgroundColor" red="0.030038418088526846" green="0.59290903575883824" blue="0.76479640151515149" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Let's play !!">

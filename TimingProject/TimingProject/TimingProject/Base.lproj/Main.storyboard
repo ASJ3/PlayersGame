@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TimingProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of your goal" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UDS-di-OP7">
+                                <rect key="frame" x="200" y="28" width="200" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="400" id="3Yb-UM-n2K"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="aUo-nI-veh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U9w-Ub-LMX">
+                                <rect key="frame" x="16" y="96" width="568" height="129"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minutes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="08D-8O-1tL">
+                                        <rect key="frame" x="199" y="43" width="61" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time to dedicate to this goal each week:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yRI-l3-cwa">
+                                        <rect key="frame" x="8" y="8" width="311" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Hz-eW-mZN">
+                                        <rect key="frame" x="8" y="39" width="55" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="55" id="nq1-qe-J4h"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nad-fU-Xrd">
+                                        <rect key="frame" x="136" y="39" width="55" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="55" id="oxD-Qb-IjI"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hours" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oxI-TU-gEv">
+                                        <rect key="frame" x="71" y="43" width="46" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.60346422697368418" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="oxI-TU-gEv" firstAttribute="top" secondItem="yRI-l3-cwa" secondAttribute="bottom" constant="17" id="1ff-fj-AC2"/>
+                                    <constraint firstItem="oxI-TU-gEv" firstAttribute="leading" secondItem="1Hz-eW-mZN" secondAttribute="trailing" constant="8" id="DEA-ga-nLC"/>
+                                    <constraint firstItem="08D-8O-1tL" firstAttribute="top" secondItem="yRI-l3-cwa" secondAttribute="bottom" constant="17" id="G9h-Ea-HNc"/>
+                                    <constraint firstItem="08D-8O-1tL" firstAttribute="leading" secondItem="Nad-fU-Xrd" secondAttribute="trailing" constant="8" id="Ge2-1E-aHp"/>
+                                    <constraint firstItem="1Hz-eW-mZN" firstAttribute="top" secondItem="yRI-l3-cwa" secondAttribute="bottom" constant="13" id="S6E-ZC-p5s"/>
+                                    <constraint firstItem="Nad-fU-Xrd" firstAttribute="top" secondItem="yRI-l3-cwa" secondAttribute="bottom" constant="13" id="WEk-HW-QSv"/>
+                                    <constraint firstItem="Nad-fU-Xrd" firstAttribute="centerX" secondItem="yRI-l3-cwa" secondAttribute="centerX" id="d7L-o4-oM5"/>
+                                    <constraint firstItem="Nad-fU-Xrd" firstAttribute="leading" secondItem="oxI-TU-gEv" secondAttribute="trailing" constant="19" id="fPw-K6-GuD"/>
+                                    <constraint firstItem="yRI-l3-cwa" firstAttribute="top" secondItem="U9w-Ub-LMX" secondAttribute="top" constant="8" id="ph6-Xd-7B0"/>
+                                    <constraint firstItem="yRI-l3-cwa" firstAttribute="leading" secondItem="U9w-Ub-LMX" secondAttribute="leading" constant="8" id="q0v-Cf-sae"/>
+                                    <constraint firstItem="1Hz-eW-mZN" firstAttribute="leading" secondItem="U9w-Ub-LMX" secondAttribute="leading" constant="8" id="zKu-8h-JnA"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y48-2b-XDz">
+                                <rect key="frame" x="16" y="251" width="568" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# of days in the week to work on goal:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vij-EZ-s4a">
+                                        <rect key="frame" x="8" y="8" width="261" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="irr-et-s26">
+                                        <rect key="frame" x="257" y="34" width="55" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="55" id="beH-uS-hIJ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.97590754385949241" blue="0.58000546072166681" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="irr-et-s26" firstAttribute="top" secondItem="vij-EZ-s4a" secondAttribute="bottom" constant="8" id="EJn-x1-Rt6"/>
+                                    <constraint firstItem="vij-EZ-s4a" firstAttribute="top" secondItem="Y48-2b-XDz" secondAttribute="top" constant="8" id="J6Q-hG-Hck"/>
+                                    <constraint firstAttribute="centerX" secondItem="irr-et-s26" secondAttribute="centerX" constant="-0.5" id="NgF-PA-ajx"/>
+                                    <constraint firstAttribute="bottom" secondItem="irr-et-s26" secondAttribute="bottom" constant="36" id="eDr-XE-ZTB"/>
+                                    <constraint firstItem="vij-EZ-s4a" firstAttribute="leading" secondItem="Y48-2b-XDz" secondAttribute="leading" constant="8" id="yLG-uz-Rtf"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96285116792929293" green="0.96285116792929293" blue="0.96285116792929293" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="U9w-Ub-LMX" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="2L8-NC-lJJ"/>
+                            <constraint firstItem="Y48-2b-XDz" firstAttribute="top" secondItem="U9w-Ub-LMX" secondAttribute="bottom" constant="26" id="CfN-eb-ofA"/>
+                            <constraint firstAttribute="centerX" secondItem="UDS-di-OP7" secondAttribute="centerX" id="Dku-p0-EXe"/>
+                            <constraint firstItem="U9w-Ub-LMX" firstAttribute="top" secondItem="UDS-di-OP7" secondAttribute="bottom" constant="38" id="FIG-QE-xy0"/>
+                            <constraint firstItem="Y48-2b-XDz" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="GGO-Uw-RpI"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Y48-2b-XDz" secondAttribute="bottom" constant="249" id="H97-ct-kSw"/>
+                            <constraint firstItem="U9w-Ub-LMX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="KVa-mk-axa"/>
+                            <constraint firstItem="Y48-2b-XDz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="M8R-LZ-fmy"/>
+                            <constraint firstItem="UDS-di-OP7" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="w3M-16-l7E"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="goalDaysField" destination="irr-et-s26" id="eRz-Sh-QRb"/>
+                        <outlet property="goalHoursField" destination="1Hz-eW-mZN" id="iig-l3-sX9"/>
+                        <outlet property="goalMinutesField" destination="Nad-fU-Xrd" id="Ff1-XE-rau"/>
+                        <outlet property="goalNameField" destination="UDS-di-OP7" id="qeI-zu-X9f"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="351" y="360"/>
+        </scene>
+    </scenes>
+</document>
