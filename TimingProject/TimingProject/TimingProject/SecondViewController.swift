@@ -48,11 +48,20 @@ class SecondViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         return goalTimeData[component][row]
     }
     
+    // Set the width of each component on the UIPicker
+    // components 1 and 3 (i.e. columns 2 and 4) only display
+    // the 'hours' and 'min' labels and need more width
     func pickerView(pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
         if component  % 2 == 0 {
-            return 45
+            return 40
         }
         else { return 70 }
+    }
+    
+    // Set the height of the UIPicker
+    // A bigger number means more space between numbers of each column
+    func pickerView(pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 35
     }
     
     // Catpure the picker view selection   
