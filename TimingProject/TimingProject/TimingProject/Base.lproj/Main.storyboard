@@ -144,32 +144,56 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H3f-hF-xBa">
-                                <rect key="frame" x="71" y="219" width="458" height="162"/>
+                                <rect key="frame" x="71" y="165" width="458" height="162"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="500" id="HJL-Qu-kVh"/>
                                 </constraints>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rlv-Rb-B4j">
-                                <rect key="frame" x="269" y="459" width="63" height="30"/>
-                                <state key="normal" title="# chosen">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="numbersPicked:" destination="Hzj-RH-RMa" eventType="touchUpInside" id="gFR-t0-iI1"/>
-                                </connections>
-                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of your goal" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BLo-WX-AuD">
+                                <rect key="frame" x="16" y="28" width="568" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How many hours should you practice each:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9a-N6-Syz">
+                                <rect key="frame" x="16" y="80" width="568" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="P9s-fT-hXU">
+                                <rect key="frame" x="254" y="120" width="93" height="29"/>
+                                <segments>
+                                    <segment title="week"/>
+                                    <segment title="day"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="H3f-hF-xBa" secondAttribute="trailing" constant="55" id="5ob-V4-Q6F"/>
+                            <constraint firstItem="P9s-fT-hXU" firstAttribute="top" secondItem="R9a-N6-Syz" secondAttribute="bottom" constant="19" id="7nu-hc-0Y4"/>
+                            <constraint firstAttribute="centerX" secondItem="P9s-fT-hXU" secondAttribute="centerX" constant="-0.5" id="BaH-2v-KZI"/>
                             <constraint firstAttribute="centerX" secondItem="H3f-hF-xBa" secondAttribute="centerX" id="BpV-Au-btu"/>
+                            <constraint firstItem="BLo-WX-AuD" firstAttribute="top" secondItem="FVL-1r-Fed" secondAttribute="bottom" constant="8" id="Dne-WM-aiG"/>
+                            <constraint firstItem="BLo-WX-AuD" firstAttribute="trailing" secondItem="ixh-8p-dzT" secondAttribute="trailingMargin" id="UoB-yd-7fA"/>
                             <constraint firstItem="H3f-hF-xBa" firstAttribute="leading" relation="lessThanOrEqual" secondItem="ixh-8p-dzT" secondAttribute="leadingMargin" constant="55" id="ZDc-Ep-pfL"/>
-                            <constraint firstItem="rlv-Rb-B4j" firstAttribute="top" secondItem="H3f-hF-xBa" secondAttribute="bottom" constant="78" id="kXS-sm-cEm"/>
-                            <constraint firstAttribute="centerX" secondItem="rlv-Rb-B4j" secondAttribute="centerX" constant="-0.5" id="myv-RP-QyR"/>
+                            <constraint firstItem="R9a-N6-Syz" firstAttribute="top" secondItem="BLo-WX-AuD" secondAttribute="bottom" constant="22" id="bfY-1L-ZLH"/>
+                            <constraint firstItem="BLo-WX-AuD" firstAttribute="leading" secondItem="ixh-8p-dzT" secondAttribute="leadingMargin" id="mn7-uV-yzh"/>
+                            <constraint firstAttribute="centerY" secondItem="H3f-hF-xBa" secondAttribute="centerY" constant="16" id="o4k-4m-wdA"/>
+                            <constraint firstItem="H3f-hF-xBa" firstAttribute="top" secondItem="P9s-fT-hXU" secondAttribute="bottom" constant="17" id="oJi-kG-yyb"/>
+                            <constraint firstItem="R9a-N6-Syz" firstAttribute="leading" secondItem="ixh-8p-dzT" secondAttribute="leadingMargin" id="udQ-7P-xGp"/>
+                            <constraint firstItem="R9a-N6-Syz" firstAttribute="trailing" secondItem="ixh-8p-dzT" secondAttribute="trailingMargin" id="uwO-Cc-lWl"/>
                             <constraint firstAttribute="centerY" secondItem="H3f-hF-xBa" secondAttribute="centerY" id="y8C-ce-IWY"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="o4k-4m-wdA"/>
+                                <exclude reference="y8C-ce-IWY"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
+                        <outlet property="goalName" destination="BLo-WX-AuD" id="Q2V-IL-OcZ"/>
                         <outlet property="picker" destination="H3f-hF-xBa" id="CLp-t8-gnY"/>
                     </connections>
                 </viewController>
