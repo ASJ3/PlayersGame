@@ -14,16 +14,33 @@ class SecondViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     }
     @IBOutlet weak var picker: UIPickerView!
     
-    var goalTimeData = [ [" 0"," 1"," 2"," 3"," 4"," 5"," 6"," 7"," 8"," 9", "10","11","12","13","14","15","16","17","18","19","20","21","22","23","24"],["hours"],["05","10","15","20","30","40","45","50","55"],["min"]]
+    // I want the minutes component in the UIPicker to look like it is an infinite loop
+    // As a solution I create a really long array 'lotsOfMintues' which is going to be
+    // multiples of the 'minutesArray'
+    var minutesArray = ["00","05","10","15","20","25","30","35","40","45","50","55"]
+    var lotsOfMinutes = [String] ()
+    
+    var goalTimeData = [ [" 0"," 1"," 2"," 3"," 4"," 5"," 6"," 7"," 8"," 9", "10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48"],["hours"],["min"]]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.picker.dataSource = self
         self.picker.delegate = self
-        println("\(goalTimeData[0][0])")
-        println("\(goalTimeData[1][0])")
 
+        // Here I add multiple copies of 'minutesArray' into the 'lotsOfMinutes' array
+        for i in 0...99 {
+            self.lotsOfMinutes += self.minutesArray
+            println("\(self.lotsOfMinutes.count)")
+        }
+        
+        // I then insert the 'lotsOfMinutes' array at the second-to-last position in 
+        // the 'goaltTimeData' array of arrays
+        self.goalTimeData.insert(self.lotsOfMinutes, atIndex: self.goalTimeData.count-1)
+        
+        // Finally I select a row right in the middle of the minutes array of 'goalTimeData'
+        // So it looks like minutes is an infinite loop
+        self.picker.selectRow(self.goalTimeData[2].count / 2, inComponent: 2, animated: false)
    
     }
     
@@ -63,6 +80,7 @@ class SecondViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     func pickerView(pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return 35
     }
+    
     
     // Catpure the picker view selection   
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
