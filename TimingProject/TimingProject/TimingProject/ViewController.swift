@@ -15,7 +15,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var goalDaysField: UITextField!
 
     
-    
     // Function that ensures the keyboard disappear after the player enters 'Return'
     // on the pop-up keyboard when they are done entering their name
     func textFieldShouldReturn(textField: UITextField!) -> Bool {
@@ -33,6 +32,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.goalDaysField.delegate = self
         
     }
+    
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

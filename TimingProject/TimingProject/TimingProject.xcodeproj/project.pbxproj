@@ -13,6 +13,7 @@
 		782DD8D11A7AC0270067BD1B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 782DD8D01A7AC0270067BD1B /* Images.xcassets */; };
 		782DD8D41A7AC0270067BD1B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 782DD8D21A7AC0270067BD1B /* LaunchScreen.xib */; };
 		782DD8E01A7AC0270067BD1B /* TimingProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782DD8DF1A7AC0270067BD1B /* TimingProjectTests.swift */; };
+		78F5AD991A7C95DA00C33309 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F5AD981A7C95DA00C33309 /* SecondViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		782DD8D91A7AC0270067BD1B /* TimingProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimingProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		782DD8DE1A7AC0270067BD1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		782DD8DF1A7AC0270067BD1B /* TimingProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimingProjectTests.swift; sourceTree = "<group>"; };
+		78F5AD981A7C95DA00C33309 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				782DD8C91A7AC0270067BD1B /* AppDelegate.swift */,
 				782DD8CB1A7AC0270067BD1B /* ViewController.swift */,
 				782DD8CD1A7AC0270067BD1B /* Main.storyboard */,
+				78F5AD981A7C95DA00C33309 /* SecondViewController.swift */,
 				782DD8D01A7AC0270067BD1B /* Images.xcassets */,
 				782DD8D21A7AC0270067BD1B /* LaunchScreen.xib */,
 				782DD8C71A7AC0270067BD1B /* Supporting Files */,
@@ -212,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78F5AD991A7C95DA00C33309 /* SecondViewController.swift in Sources */,
 				782DD8CC1A7AC0270067BD1B /* ViewController.swift in Sources */,
 				782DD8CA1A7AC0270067BD1B /* AppDelegate.swift in Sources */,
 			);
@@ -407,6 +411,7 @@
 				782DD8E51A7AC0270067BD1B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		782DD8E61A7AC0270067BD1B /* Build configuration list for PBXNativeTarget "TimingProjectTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +420,7 @@
 				782DD8E81A7AC0270067BD1B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
