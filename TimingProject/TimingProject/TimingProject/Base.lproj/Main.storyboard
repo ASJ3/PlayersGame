@@ -145,6 +145,9 @@
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H3f-hF-xBa">
                                 <rect key="frame" x="71" y="219" width="458" height="162"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="500" id="HJL-Qu-kVh"/>
+                                </constraints>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rlv-Rb-B4j">
                                 <rect key="frame" x="269" y="459" width="63" height="30"/>
@@ -158,9 +161,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="H3f-hF-xBa" secondAttribute="trailing" constant="55" id="5ob-V4-Q6F"/>
+                            <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="H3f-hF-xBa" secondAttribute="trailing" constant="55" id="5ob-V4-Q6F"/>
                             <constraint firstAttribute="centerX" secondItem="H3f-hF-xBa" secondAttribute="centerX" id="BpV-Au-btu"/>
-                            <constraint firstItem="H3f-hF-xBa" firstAttribute="leading" secondItem="ixh-8p-dzT" secondAttribute="leadingMargin" constant="55" id="ZDc-Ep-pfL"/>
+                            <constraint firstItem="H3f-hF-xBa" firstAttribute="leading" relation="lessThanOrEqual" secondItem="ixh-8p-dzT" secondAttribute="leadingMargin" constant="55" id="ZDc-Ep-pfL"/>
                             <constraint firstItem="rlv-Rb-B4j" firstAttribute="top" secondItem="H3f-hF-xBa" secondAttribute="bottom" constant="78" id="kXS-sm-cEm"/>
                             <constraint firstAttribute="centerX" secondItem="rlv-Rb-B4j" secondAttribute="centerX" constant="-0.5" id="myv-RP-QyR"/>
                             <constraint firstAttribute="centerY" secondItem="H3f-hF-xBa" secondAttribute="centerY" id="y8C-ce-IWY"/>
