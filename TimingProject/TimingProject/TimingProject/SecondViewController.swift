@@ -9,6 +9,8 @@
 import UIKit
 
 class SecondViewController: UIViewController, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
+    @IBOutlet weak var allWeekBox: UIView!
+    
     @IBOutlet weak var goalName: UITextField!
 
     @IBOutlet weak var picker: UIPickerView!
@@ -75,6 +77,12 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+////        self.allWeekBox.layer.borderColor = UIColor.blackColor().CGColor
+//
+//        
+//        self.allWeekBox.layer.borderColor = UIColor.blueColor().CGColor
+        
         
         self.goalName.delegate = self
         
