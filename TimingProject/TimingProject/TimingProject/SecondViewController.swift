@@ -9,7 +9,28 @@
 import UIKit
 
 class SecondViewController: UIViewController, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
+    // Creates outlets for the day 'boxes' at the bottom of the screen
+    // Also creates outlets for the checkboxes inside each 'day box'
     @IBOutlet weak var allWeekBox: UIView!
+    @IBOutlet weak var allWeekCheckbox: UIView!
+    @IBOutlet weak var mondayBox: UIView!
+    @IBOutlet weak var mondayCheckbox: UIView!
+    @IBOutlet weak var tuesdayBox: UIView!
+    @IBOutlet weak var tuesdayCheckbox: UIView!
+    @IBOutlet weak var wednesdayBox: UIView!
+    @IBOutlet weak var wednesdayCheckbox: UIView!
+    @IBOutlet weak var thursdayBox: UIView!
+    @IBOutlet weak var thursdayCheckbox: UIView!
+    @IBOutlet weak var fridayBox: UIView!
+    @IBOutlet weak var fridayCheckbox: UIView!
+    @IBOutlet weak var saturdayBox: UIView!
+    @IBOutlet weak var saturdayCheckbox: UIView!
+    @IBOutlet weak var sundayBox: UIView!
+    @IBOutlet weak var sundayCheckbox: UIView!
+    
+    // allCheckboxesOn will store all the day checkboxes that are ticked on
+    var allCheckboxesOn = [UIView]()
+
     
     @IBOutlet weak var goalName: UITextField!
 
@@ -74,13 +95,17 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         println("the value from component \(self.goalTimeData[component].count) is \(self.goalTimeData[component][row])")
     }
     
+    func tickCheckboxes() {
+        for i in self.allCheckboxesOn {
+            i.backgroundColor = UIColor(red:0.0, green:128.0 / 255.0, blue:255.0 / 255.0, alpha:1.0)
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-////        self.allWeekBox.layer.borderColor = UIColor.blackColor().CGColor
-//
-//        
+//        self.allWeekBox.layer.borderColor = UIColor.blackColor().CGColor
 //        self.allWeekBox.layer.borderColor = UIColor.blueColor().CGColor
         
         
@@ -88,6 +113,13 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         
         self.picker.dataSource = self
         self.picker.delegate = self
+        
+        // By default all the checkboxes inside the day boxes will be ticked on
+        // first assign all the checkboxes to the allCheckboxesOn array
+        self.allCheckboxesOn = [self.allWeekCheckbox, self.mondayCheckbox, self.tuesdayCheckbox,self.wednesdayCheckbox, self.thursdayCheckbox, self.fridayCheckbox, self.saturdayCheckbox, self.sundayCheckbox]
+        // Then call the tickCheckboxes function to change the color of all checkboxes to blue (i.e. 'ticked')
+        self.tickCheckboxes()
+        
         
         // Here I add multiple copies of 'minutesArray' into the 'lotsOfMinutes' array
         for i in 0...99 {

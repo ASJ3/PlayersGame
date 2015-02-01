@@ -155,14 +155,17 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How many hours should you practice each:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9a-N6-Syz">
-                                <rect key="frame" x="16" y="72" width="568" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How many hours should you practice each:" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="R9a-N6-Syz">
+                                <rect key="frame" x="16" y="71" width="568" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="P9s-fT-hXU">
-                                <rect key="frame" x="254" y="98" width="93" height="29"/>
+                                <rect key="frame" x="254" y="100" width="93" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="ztt-ko-osC"/>
+                                </constraints>
                                 <segments>
                                     <segment title="week"/>
                                     <segment title="day"/>
@@ -180,7 +183,7 @@
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="7"/>
+                                                <integer key="value" value="8"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
@@ -219,7 +222,7 @@
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="7"/>
+                                                <integer key="value" value="8"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
@@ -232,7 +235,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.96999999999999997" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="4Jm-nh-AyU" secondAttribute="bottom" constant="4" id="Gmm-bK-iyA"/>
+                                    <constraint firstAttribute="bottom" secondItem="4Jm-nh-AyU" secondAttribute="bottom" constant="7" id="Gmm-bK-iyA"/>
                                     <constraint firstAttribute="width" constant="150" id="LgZ-bz-fkd"/>
                                     <constraint firstItem="4Jm-nh-AyU" firstAttribute="leading" secondItem="f7Y-pU-gFI" secondAttribute="trailing" constant="23" id="P2c-Bh-xW5"/>
                                     <constraint firstItem="4Jm-nh-AyU" firstAttribute="top" secondItem="rTR-nj-m4d" secondAttribute="top" constant="5" id="Rqa-ci-KZx"/>
@@ -258,7 +261,7 @@
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="7"/>
+                                                <integer key="value" value="8"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
@@ -297,7 +300,7 @@
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="7"/>
+                                                <integer key="value" value="8"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
@@ -336,7 +339,7 @@
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="7"/>
+                                                <integer key="value" value="8"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
@@ -375,7 +378,7 @@
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="7"/>
+                                                <integer key="value" value="8"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
@@ -414,7 +417,7 @@
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="7"/>
+                                                <integer key="value" value="8"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
@@ -453,7 +456,7 @@
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="7"/>
+                                                <integer key="value" value="8"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
@@ -480,16 +483,52 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aWG-qT-vhv">
+                                <rect key="frame" x="16" y="444" width="150" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196078430000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="3xf-uv-l2J"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3XQ-cc-AHS">
+                                <rect key="frame" x="434" y="444" width="150" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="ApS-7g-gca"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="PPA-WA-qwO" firstAttribute="top" secondItem="H3f-hF-xBa" secondAttribute="bottom" constant="2" id="0yX-MX-a8m"/>
+                            <constraint firstItem="3XQ-cc-AHS" firstAttribute="trailing" secondItem="ixh-8p-dzT" secondAttribute="trailingMargin" id="1GZ-cn-uxd"/>
+                            <constraint firstItem="3XQ-cc-AHS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="aWG-qT-vhv" secondAttribute="trailing" constant="10" id="3UW-wM-ogb"/>
                             <constraint firstItem="Xwi-UA-TDk" firstAttribute="trailing" secondItem="ixh-8p-dzT" secondAttribute="trailingMargin" id="3uc-6S-m9j"/>
                             <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="H3f-hF-xBa" secondAttribute="trailing" constant="55" id="5ob-V4-Q6F"/>
                             <constraint firstItem="AgM-XD-GY8" firstAttribute="top" secondItem="qM2-kc-BQI" secondAttribute="bottom" constant="8" id="6gi-7h-1Du"/>
                             <constraint firstItem="yyt-Ub-q8s" firstAttribute="top" secondItem="PPA-WA-qwO" secondAttribute="bottom" constant="8" id="6h9-pO-U6n"/>
                             <constraint firstItem="rTR-nj-m4d" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="PPA-WA-qwO" secondAttribute="trailing" constant="10" id="6yI-5Q-Caq"/>
-                            <constraint firstItem="P9s-fT-hXU" firstAttribute="top" secondItem="R9a-N6-Syz" secondAttribute="bottom" constant="5" id="7nu-hc-0Y4"/>
+                            <constraint firstItem="P9s-fT-hXU" firstAttribute="top" secondItem="R9a-N6-Syz" secondAttribute="bottom" constant="8" id="7nu-hc-0Y4"/>
                             <constraint firstAttribute="centerX" secondItem="P9s-fT-hXU" secondAttribute="centerX" constant="-0.5" id="BaH-2v-KZI"/>
                             <constraint firstAttribute="centerX" secondItem="H3f-hF-xBa" secondAttribute="centerX" id="BpV-Au-btu"/>
                             <constraint firstItem="BLo-WX-AuD" firstAttribute="top" secondItem="FVL-1r-Fed" secondAttribute="bottom" constant="8" id="Dne-WM-aiG"/>
@@ -497,23 +536,29 @@
                             <constraint firstItem="PPA-WA-qwO" firstAttribute="leading" secondItem="ixh-8p-dzT" secondAttribute="leadingMargin" id="Huu-T5-tJz"/>
                             <constraint firstItem="0lt-yr-WoL" firstAttribute="top" secondItem="yyt-Ub-q8s" secondAttribute="bottom" constant="8" id="J7g-TM-3ad"/>
                             <constraint firstItem="qM2-kc-BQI" firstAttribute="top" secondItem="rTR-nj-m4d" secondAttribute="bottom" constant="8" id="JDK-LX-KJO"/>
+                            <constraint firstItem="yhQ-DR-gx9" firstAttribute="top" secondItem="3XQ-cc-AHS" secondAttribute="bottom" constant="16" id="JYp-XI-MCD"/>
+                            <constraint firstItem="aWG-qT-vhv" firstAttribute="leading" secondItem="ixh-8p-dzT" secondAttribute="leadingMargin" id="Je5-dP-BVm"/>
                             <constraint firstItem="AgM-XD-GY8" firstAttribute="trailing" secondItem="ixh-8p-dzT" secondAttribute="trailingMargin" id="Lcn-5G-tgC"/>
                             <constraint firstItem="0lt-yr-WoL" firstAttribute="leading" secondItem="ixh-8p-dzT" secondAttribute="leadingMargin" id="PRm-Ai-f5Z"/>
                             <constraint firstItem="rTR-nj-m4d" firstAttribute="trailing" secondItem="ixh-8p-dzT" secondAttribute="trailingMargin" id="Tdw-Tl-BHq"/>
+                            <constraint firstItem="yhQ-DR-gx9" firstAttribute="top" secondItem="aWG-qT-vhv" secondAttribute="bottom" constant="16" id="UZb-Gm-f9L"/>
                             <constraint firstItem="BLo-WX-AuD" firstAttribute="trailing" secondItem="ixh-8p-dzT" secondAttribute="trailingMargin" id="UoB-yd-7fA"/>
                             <constraint firstItem="rTR-nj-m4d" firstAttribute="top" secondItem="H3f-hF-xBa" secondAttribute="bottom" constant="2" id="YBK-1d-hDN"/>
                             <constraint firstItem="H3f-hF-xBa" firstAttribute="leading" relation="lessThanOrEqual" secondItem="ixh-8p-dzT" secondAttribute="leadingMargin" constant="55" id="ZDc-Ep-pfL"/>
                             <constraint firstItem="qM2-kc-BQI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yyt-Ub-q8s" secondAttribute="trailing" constant="10" id="ar7-6Z-fPq"/>
-                            <constraint firstItem="R9a-N6-Syz" firstAttribute="top" secondItem="BLo-WX-AuD" secondAttribute="bottom" constant="14" id="bfY-1L-ZLH"/>
+                            <constraint firstItem="R9a-N6-Syz" firstAttribute="top" secondItem="BLo-WX-AuD" secondAttribute="bottom" constant="13" id="bfY-1L-ZLH"/>
                             <constraint firstItem="Xwi-UA-TDk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="mgZ-kV-bah" secondAttribute="trailing" constant="10" id="bqE-e4-dmF"/>
                             <constraint firstItem="AgM-XD-GY8" firstAttribute="width" secondItem="0lt-yr-WoL" secondAttribute="width" id="dLe-wd-6v4"/>
+                            <constraint firstItem="aWG-qT-vhv" firstAttribute="top" relation="greaterThanOrEqual" secondItem="mgZ-kV-bah" secondAttribute="bottom" constant="8" id="fBz-rC-dRg"/>
                             <constraint firstItem="Xwi-UA-TDk" firstAttribute="width" secondItem="mgZ-kV-bah" secondAttribute="width" id="hT4-SG-P0N"/>
+                            <constraint firstItem="3XQ-cc-AHS" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Xwi-UA-TDk" secondAttribute="bottom" constant="8" id="i0m-DJ-I4H"/>
                             <constraint firstItem="qM2-kc-BQI" firstAttribute="width" secondItem="yyt-Ub-q8s" secondAttribute="width" id="kkS-ae-WKs"/>
                             <constraint firstItem="yyt-Ub-q8s" firstAttribute="leading" secondItem="ixh-8p-dzT" secondAttribute="leadingMargin" id="l3H-lI-gvf"/>
+                            <constraint firstItem="aWG-qT-vhv" firstAttribute="width" secondItem="3XQ-cc-AHS" secondAttribute="width" id="mgU-Pi-0oH"/>
                             <constraint firstItem="BLo-WX-AuD" firstAttribute="leading" secondItem="ixh-8p-dzT" secondAttribute="leadingMargin" id="mn7-uV-yzh"/>
                             <constraint firstItem="rTR-nj-m4d" firstAttribute="width" secondItem="PPA-WA-qwO" secondAttribute="width" id="nlW-XL-OiB"/>
                             <constraint firstAttribute="centerY" secondItem="H3f-hF-xBa" secondAttribute="centerY" constant="16" id="o4k-4m-wdA"/>
-                            <constraint firstItem="H3f-hF-xBa" firstAttribute="top" secondItem="P9s-fT-hXU" secondAttribute="bottom" constant="2" id="oJi-kG-yyb"/>
+                            <constraint firstItem="H3f-hF-xBa" firstAttribute="top" secondItem="P9s-fT-hXU" secondAttribute="bottom" id="oJi-kG-yyb"/>
                             <constraint firstItem="mgZ-kV-bah" firstAttribute="top" secondItem="0lt-yr-WoL" secondAttribute="bottom" constant="8" id="rj1-Jo-fot"/>
                             <constraint firstItem="qM2-kc-BQI" firstAttribute="trailing" secondItem="ixh-8p-dzT" secondAttribute="trailingMargin" id="sBW-rQ-ws2"/>
                             <constraint firstItem="R9a-N6-Syz" firstAttribute="leading" secondItem="ixh-8p-dzT" secondAttribute="leadingMargin" id="udQ-7P-xGp"/>
@@ -531,8 +576,23 @@
                     </view>
                     <connections>
                         <outlet property="allWeekBox" destination="PPA-WA-qwO" id="SnA-Mm-WRW"/>
+                        <outlet property="allWeekCheckbox" destination="ZBX-sc-pfx" id="ei6-Kk-Ci8"/>
+                        <outlet property="fridayBox" destination="qM2-kc-BQI" id="4RG-To-uxC"/>
+                        <outlet property="fridayCheckbox" destination="Z20-8J-cQe" id="6iM-qA-UUs"/>
                         <outlet property="goalName" destination="BLo-WX-AuD" id="Q2V-IL-OcZ"/>
+                        <outlet property="mondayBox" destination="yyt-Ub-q8s" id="58N-mY-TnE"/>
+                        <outlet property="mondayCheckbox" destination="D2e-bg-n1p" id="WKk-WH-49v"/>
                         <outlet property="picker" destination="H3f-hF-xBa" id="CLp-t8-gnY"/>
+                        <outlet property="saturdayBox" destination="AgM-XD-GY8" id="t0U-4R-Nqz"/>
+                        <outlet property="saturdayCheckbox" destination="SJC-6Q-41n" id="aXc-Te-wXg"/>
+                        <outlet property="sundayBox" destination="Xwi-UA-TDk" id="ebd-RQ-TMf"/>
+                        <outlet property="sundayCheckbox" destination="YvT-No-MsI" id="KPi-wC-ddK"/>
+                        <outlet property="thursdayBox" destination="rTR-nj-m4d" id="Cb1-5j-4AB"/>
+                        <outlet property="thursdayCheckbox" destination="f7Y-pU-gFI" id="Tk1-TH-Djk"/>
+                        <outlet property="tuesdayBox" destination="0lt-yr-WoL" id="2ND-dm-kqw"/>
+                        <outlet property="tuesdayCheckbox" destination="6dU-o1-cUe" id="hGI-2B-c1D"/>
+                        <outlet property="wednesdayBox" destination="mgZ-kV-bah" id="Cyc-wC-IFS"/>
+                        <outlet property="wednesdayCheckbox" destination="jxc-bc-YTn" id="Uga-v6-JIU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bUT-bZ-Vj6" userLabel="First Responder" sceneMemberID="firstResponder"/>
