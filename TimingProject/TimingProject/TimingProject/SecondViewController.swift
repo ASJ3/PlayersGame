@@ -28,15 +28,15 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     @IBOutlet weak var sundayBox: UIView!
     @IBOutlet weak var sundayCheckbox: UIView!
     @IBAction func saveButton(sender: AnyObject) {
-        tickAllCheckboxes() 
+        tickAllCheckboxes()
     }
     
     // create a dictionary that will store a UIView-Bool key-value pair to indciate whether a day checkboxes is ticked on or off
     var checkBoxState = [String: Bool]()
     var checkBoxView = [String: UIView]()
     
-    // variable that indicates whether all checkboxes are checked
-    var allBoxesChecked = true
+    // variable that indicates the nubmer of checkboxes that are checked (which is 0 when ViewDidLoad begins)
+    var boxesChecked = 0
 
     
     @IBOutlet weak var goalName: UITextField!
@@ -110,17 +110,48 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
                     self.checkBoxView[name]?.backgroundColor = UIColor(red:0.0, green:128.0 / 255.0, blue:255.0 / 255.0, alpha:1.0)
                 }
             }
+            self.boxesChecked = 8
         }
         else {
             for (name, state) in self.checkBoxState {
                 self.checkBoxState[name] = false
                 self.checkBoxView[name]?.backgroundColor = UIColor.whiteColor()
             }
+            self.boxesChecked = 0
         }
+        
     }
     
-    func tickCheckboxes() {
-        if self.checkBoxState["All week"] == false {
+    // the tickCheckbox function is for the day-of-the-week 'buttons'
+    // to check/uncheck them. If it is called and all the days of the
+    // week are checked, then the "All Week" checkbox also needs to be checked on.
+    // If all days of the week (and the "All Week" checkbox) were checked on
+    // and it is called, then the checkboxes for both the day clicked and "All Week" are checked off
+    func tickCheckbox(dayCheckBox: String) {
+        if self.checkBoxState[dayCheckBox] == true {
+            self.checkBoxState[dayCheckBox] = false
+            self.checkBoxView[dayCheckBox]?.backgroundColor = UIColor.whiteColor()
+            self.boxesChecked -= 1
+            
+            // checks whether unchecking the day checkbox now means that "All Week" should also be unchecked
+            if self.boxesChecked == 7 {
+                self.checkBoxState["All Week"] = false
+                self.checkBoxView["All Week"]?.backgroundColor = UIColor.whiteColor()
+                self.boxesChecked -= 1
+            }
+            
+        }
+        if self.checkBoxState[dayCheckBox] == false {
+            self.checkBoxState[dayCheckBox] = true
+            self.checkBoxView[dayCheckBox]?.backgroundColor = UIColor(red:0.0, green:128.0 / 255.0, blue:255.0 / 255.0, alpha:1.0)
+            self.boxesChecked += 1
+            
+            // checks whether checking the day checkbox now means that "All Week" should also be checked
+            if self.boxesChecked == 7 {
+                self.checkBoxState["All Week"] = true
+                self.checkBoxView["All Week"]?.backgroundColor = UIColor.whiteColor()
+                self.boxesChecked += 1
+            }
             
         }
         
