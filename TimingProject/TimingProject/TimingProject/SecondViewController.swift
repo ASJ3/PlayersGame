@@ -27,9 +27,16 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     @IBOutlet weak var saturdayCheckbox: UIView!
     @IBOutlet weak var sundayBox: UIView!
     @IBOutlet weak var sundayCheckbox: UIView!
+    @IBAction func saveButton(sender: AnyObject) {
+        tickAllCheckboxes() 
+    }
     
-    // allCheckboxesOn will store all the day checkboxes that are ticked on
-    var allCheckboxesOn = [UIView]()
+    // create a dictionary that will store a UIView-Bool key-value pair to indciate whether a day checkboxes is ticked on or off
+    var checkBoxState = [String: Bool]()
+    var checkBoxView = [String: UIView]()
+    
+    // variable that indicates whether all checkboxes are checked
+    var allBoxesChecked = true
 
     
     @IBOutlet weak var goalName: UITextField!
@@ -95,11 +102,30 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         println("the value from component \(self.goalTimeData[component].count) is \(self.goalTimeData[component][row])")
     }
     
-    func tickCheckboxes() {
-        for i in self.allCheckboxesOn {
-            i.backgroundColor = UIColor(red:0.0, green:128.0 / 255.0, blue:255.0 / 255.0, alpha:1.0)
+    func tickAllCheckboxes() {
+        if self.checkBoxState["All Week"] == false {
+            for (name, state) in self.checkBoxState {
+                if self.checkBoxState[name] == false {
+                    self.checkBoxState[name] = true
+                    self.checkBoxView[name]?.backgroundColor = UIColor(red:0.0, green:128.0 / 255.0, blue:255.0 / 255.0, alpha:1.0)
+                }
+            }
+        }
+        else {
+            for (name, state) in self.checkBoxState {
+                self.checkBoxState[name] = false
+                self.checkBoxView[name]?.backgroundColor = UIColor.whiteColor()
+            }
         }
     }
+    
+    func tickCheckboxes() {
+        if self.checkBoxState["All week"] == false {
+            
+        }
+        
+    }
+    
     
     
     override func viewDidLoad() {
@@ -114,11 +140,12 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         self.picker.dataSource = self
         self.picker.delegate = self
         
-        // By default all the checkboxes inside the day boxes will be ticked on
-        // first assign all the checkboxes to the allCheckboxesOn array
-        self.allCheckboxesOn = [self.allWeekCheckbox, self.mondayCheckbox, self.tuesdayCheckbox,self.wednesdayCheckbox, self.thursdayCheckbox, self.fridayCheckbox, self.saturdayCheckbox, self.sundayCheckbox]
-        // Then call the tickCheckboxes function to change the color of all checkboxes to blue (i.e. 'ticked')
-        self.tickCheckboxes()
+        // At first, all the checkboxes inside the day boxes will be ticked on (i.e. their value in the checkBoxState dictionary should be 'false')
+        self.checkBoxState = ["All Week": false,"Monday":false,"Tuesday":false,"Wednesday":false,"Thursday":false,"Friday":false,"Saturday":false,"Sunday":false]
+        self.checkBoxView = ["All Week": self.allWeekCheckbox,"Monday":self.mondayCheckbox,"Tuesday":self.tuesdayCheckbox,"Wednesday":self.wednesdayCheckbox,"Thursday":self.thursdayCheckbox,"Friday":self.fridayCheckbox,"Saturday":self.saturdayCheckbox,"Sunday":self.sundayCheckbox]
+        
+        // Then call the tickAllCheckboxes function to change the color of all checkboxes to blue (i.e. 'ticked')
+        self.tickAllCheckboxes()
         
         
         // Here I add multiple copies of 'minutesArray' into the 'lotsOfMinutes' array
