@@ -628,6 +628,7 @@
                         <outlet property="fridayBox" destination="qM2-kc-BQI" id="4RG-To-uxC"/>
                         <outlet property="fridayCheckbox" destination="Z20-8J-cQe" id="6iM-qA-UUs"/>
                         <outlet property="goalName" destination="BLo-WX-AuD" id="Q2V-IL-OcZ"/>
+                        <outlet property="hoursAndMinutesPicker" destination="H3f-hF-xBa" id="iS1-dt-9dL"/>
                         <outlet property="mondayBox" destination="yyt-Ub-q8s" id="58N-mY-TnE"/>
                         <outlet property="mondayCheckbox" destination="D2e-bg-n1p" id="WKk-WH-49v"/>
                         <outlet property="picker" destination="H3f-hF-xBa" id="CLp-t8-gnY"/>

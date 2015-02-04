@@ -30,13 +30,47 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     @IBAction func saveButton(sender: AnyObject) {
         tickAllCheckboxes()
     }
+    
+    @IBOutlet weak var hoursAndMinutesPicker: UIPickerView!
+    
+    // The weekDaySelect function is to ensure that the 'right' number of hours is displayed in the Hours component of the UIPicker
+    // When the segmented control is set to 'Week' (default) then there should be a number of hours > 24 because the goal could be 
+    // for 30,35,40...hours. However when the segmented control is set to 'Day' then there should be no more than 24 hours to select
     @IBAction func weekDaySelect(sender: AnyObject) {
         var segmentedControl = sender as UISegmentedControl
         var selectionInteger = segmentedControl.selectedSegmentIndex
+        var componentSelectedinHours = hoursAndMinutesPicker.selectedRowInComponent(0)
+        
+        // if the selection is 0 ('Week') then the weekGoalHours array (with > 24 hours) is used to populate the hours component of the UIPicker
         if selectionInteger == 0 {
-            println("Week is selected")
-        } else {
-            println("Day is selected")
+            println("*****\nWeek is selected")
+            println("component selected in 0 is \(componentSelectedinHours)")
+            self.picker.selectRow(0, inComponent: 0, animated: true)
+            self.picker.selectRow(self.goalTimeData[2].count / 2, inComponent: 2, animated: true)
+            
+            self.goalTimeData[0] = self.weekGoalHours
+            self.hoursAndMinutesPicker.reloadAllComponents()
+            println("finished reloadingAllComponents with the weekGoalHours")
+            
+        }
+        // if the selection is not set to 0 then it has to be set to 1 ('Day') and the the dayGoalHours array (with 0 to 24 hours) is used to populate the hours component of the UIPicker
+        else {
+            println("*****\nDay is selected")
+            println("component selected in 0 is \(componentSelectedinHours)")
+            
+            // This first condition is checked to ensure that the hours reset animation works properly (since the number of values in dayGoalHours is < weekGoalHours, then there were issues with the hour reset animation when the selected number on the picker was above 24
+            if componentSelectedinHours >= 25 {
+                println("reducing fast")
+                self.picker.selectRow(24, inComponent: 0, animated: false)
+            }
+ 
+                // Go back to 0 for both
+                self.picker.selectRow(0, inComponent: 0, animated: true)
+                self.picker.selectRow(self.goalTimeData[2].count / 2, inComponent: 2, animated: true)
+            
+            self.goalTimeData[0] = self.dayGoalHours
+            self.hoursAndMinutesPicker.reloadAllComponents()
+            println("finished reloadingAllComponents with the dayGoalHours")
         }
     }
 
@@ -113,7 +147,6 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     // UIPickerViewDataSource. It indicates how many
     // 'components' (i.e. columns) are in the UIPickerView
     func numberOfComponentsInPickerView(pickerView: UIPickerView)->Int {
-        
         return 4
     }
     
@@ -121,12 +154,14 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     // UIPickerViewDataSource. It indicates how many
     // rows of data are in the UIPickerView
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+//        println("the number of rows in component: \(component) is \(goalTimeData[component].count)")
         return goalTimeData[component].count
 
     }
     
     // this method returns a plain NSString to display the row for each component.
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+//        println("calling third function of picker")
         return goalTimeData[component][row]
     }
     
