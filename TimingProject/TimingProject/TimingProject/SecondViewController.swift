@@ -30,6 +30,15 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     @IBAction func saveButton(sender: AnyObject) {
         tickAllCheckboxes()
     }
+    @IBAction func weekDaySelect(sender: AnyObject) {
+        var segmentedControl = sender as UISegmentedControl
+        var selectionInteger = segmentedControl.selectedSegmentIndex
+        if selectionInteger == 0 {
+            println("Week is selected")
+        } else {
+            println("Day is selected")
+        }
+    }
 
     @IBAction func allWeekTap(sender: UITapGestureRecognizer) {
         tickAllCheckboxes()
@@ -70,6 +79,11 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     
     // variable that indicates the nubmer of checkboxes that are checked (which is 0 when ViewDidLoad begins)
     var boxesChecked = 0
+    
+    // The checkboxes for each day switch to blue when they are checked and to white when they are unchecked
+    // The whiteTransition and blueTransition store the UIColor and are called by some functions
+    var whiteTransition = UIColor.whiteColor()
+    var blueTransition = UIColor(red:0.0, green:128.0 / 255.0, blue:255.0 / 255.0, alpha:1.0)
 
     
     @IBOutlet weak var goalName: UITextField!
@@ -135,34 +149,34 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         println("the value from component \(self.goalTimeData[component].count) is \(self.goalTimeData[component][row])")
     }
     
+    // Ensure all the checkboxes are either checked or unchecked
     func tickAllCheckboxes() {
         if self.checkBoxState["All Week"] == false {
-            println("\n**********")
-            println("Loop to check all the checkboxes")
+
             for (name, state) in self.checkBoxState {
                 if self.checkBoxState[name] == false {
                     self.checkBoxState[name] = true
-                    println("the value for \(name) is now: \(self.checkBoxState[name])")
-                    self.checkBoxView[name]?.backgroundColor = UIColor(red:0.0, green:128.0 / 255.0, blue:255.0 / 255.0, alpha:1.0)
-                } else {
-                    println("the value for \(name) wasn't changed and stayed: \(self.checkBoxState[name])")
+                    animateCheckbox(self.checkBoxView[name]!, color: self.blueTransition)
                 }
             }
             self.boxesChecked = 8
-        }
-        else {
-            println("\n**********")
-            println("Loop to UNcheck all the checkboxes")
+        } else {
             for (name, state) in self.checkBoxState {
                 self.checkBoxState[name] = false
-                println("the value for \(name) is now: \(self.checkBoxState[name])")
-                self.checkBoxView[name]?.backgroundColor = UIColor.whiteColor()
+                animateCheckbox(self.checkBoxView[name]!, color: self.whiteTransition)
             }
             self.boxesChecked = 0
         }
         println("number of boxesChecked \(self.boxesChecked)")
         var naming = "All Week"
         println("status of All Week: \(self.checkBoxState[naming])")
+        
+    }
+    
+    // the animateCheckbox color helps transition a checkbox from one color to another
+    func animateCheckbox(checkbox: UIView, color: UIColor){
+        UIView.animateWithDuration(0.4, animations: {checkbox.backgroundColor = color})
+        println("ANIMATE")
         
     }
     
@@ -175,10 +189,10 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         var checkboxIcon = self.checkBoxView[dayCheckBox]
         
         if self.checkBoxState[dayCheckBox] == true {
-            println("First loop: status for \(dayCheckBox) is: \(self.checkBoxState[dayCheckBox])")
             self.checkBoxState[dayCheckBox] = false
             println("First loop: status for \(dayCheckBox) changed to: \(self.checkBoxState[dayCheckBox])")
-            checkboxIcon?.backgroundColor = UIColor.whiteColor()
+            var transitionColor = UIColor.whiteColor()
+            animateCheckbox(checkboxIcon!, color: transitionColor)
             
             self.boxesChecked -= 1
             println("First loop: boxesChecked is now at \(self.boxesChecked)")
@@ -186,7 +200,7 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             // checks whether unchecking the day checkbox now means that "All Week" should also be unchecked
             if self.boxesChecked == 7 {
                 self.checkBoxState["All Week"] = false
-                self.checkBoxView["All Week"]?.backgroundColor = UIColor.whiteColor()
+                animateCheckbox(self.checkBoxView["All Week"]!, color: whiteTransition)
                 var naming = "All Week"
                 println("first loop sub: the status for All Week is now: \(self.checkBoxState[naming])")
                 self.boxesChecked -= 1
@@ -198,27 +212,18 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             println("entering the else loop")
             self.checkBoxState[dayCheckBox] = true
             println("the checkbox value for the day is: \(self.checkBoxState[dayCheckBox])")
-            checkboxIcon?.backgroundColor = UIColor(red:0.0, green:128.0 / 255.0, blue:255.0 / 255.0, alpha:1.0)
+            animateCheckbox(checkboxIcon!, color: blueTransition)
             self.boxesChecked += 1
             println("else loop: boxesChecked is now at \(self.boxesChecked)")
             
             // checks whether checking the day checkbox now means that "All Week" should also be checked
             if self.boxesChecked == 7 {
                 self.checkBoxState["All Week"] = true
-                self.checkBoxView["All Week"]?.backgroundColor = UIColor(red:0.0, green:128.0 / 255.0, blue:255.0 / 255.0, alpha:1.0)
+                animateCheckbox(self.checkBoxView["All Week"]!, color: blueTransition)
                 self.boxesChecked += 1
                 println("End else loop: boxesChecked is now at \(self.boxesChecked)")
             }
         }
-//        println("######")
-//        var naming = "Monday"
-//        println("end of the tickCheckbox function. The status of Monday is \(self.checkBoxState[naming])")
-//        naming = "Wednesday"
-//        println("end of the tickCheckbox function. The status of Wednesday is \(self.checkBoxState[naming])")
-//        naming = "All Week"
-//        println("end of the tickCheckbox function. The status of All Week is \(self.checkBoxState[naming])")
-        
-        
     }
     
     
