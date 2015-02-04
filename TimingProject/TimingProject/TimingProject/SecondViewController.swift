@@ -52,7 +52,6 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     @IBAction func wednesdayTap(sender: UITapGestureRecognizer) {
         tickCheckbox("Wednesday")
     }
-    
     @IBAction func thursdayTap(sender: UITapGestureRecognizer) {
         tickCheckbox("Thursday")
     }
@@ -67,11 +66,27 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     }
     
     
-    
     @IBAction func cancelButton(sender: AnyObject) {
 
     }
     
+    @IBOutlet weak var goalName: UITextField!
+
+    @IBOutlet weak var picker: UIPickerView!
+    
+    // I want the minutes component in the UIPicker to look like it is an infinite loop
+    // As a solution I create a really long array 'lotsOfMintues' which is going to be
+    // multiples of the 'WeekGoalMinutes' array
+    var weekGoalMinutes = ["00","05","10","15","20","25","30","35","40","45","50","55"]
+    var lotsOfWeekGoalMinutes = [String] ()
+    var dayGoalMinutes = ["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59"]
+    var lotsOfDayGoalMinutes: [String] = []
+    
+    var weekGoalHours = [" 0"," 1"," 2"," 3"," 4"," 5"," 6"," 7"," 8"," 9", "10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48"]
+    
+    var dayGoalHours = [" 0"," 1"," 2"," 3"," 4"," 5"," 6"," 7"," 8"," 9", "10","11","12","13","14","15","16","17","18","19","20","21","22","23","24"]
+    
+    var goalTimeData = [[""],["hours"],[""],["min"]]
     
     // create a dictionary that will store a UIView-Bool key-value pair to indciate whether a day checkboxes is ticked on or off
     var checkBoxState = [String: Bool]()
@@ -84,19 +99,6 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     // The whiteTransition and blueTransition store the UIColor and are called by some functions
     var whiteTransition = UIColor.whiteColor()
     var blueTransition = UIColor(red:0.0, green:128.0 / 255.0, blue:255.0 / 255.0, alpha:1.0)
-
-    
-    @IBOutlet weak var goalName: UITextField!
-
-    @IBOutlet weak var picker: UIPickerView!
-    
-    // I want the minutes component in the UIPicker to look like it is an infinite loop
-    // As a solution I create a really long array 'lotsOfMintues' which is going to be
-    // multiples of the 'minutesArray'
-    var minutesArray = ["00","05","10","15","20","25","30","35","40","45","50","55"]
-    var lotsOfMinutes = [String] ()
-    
-    var goalTimeData = [ [" 0"," 1"," 2"," 3"," 4"," 5"," 6"," 7"," 8"," 9", "10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48"],["hours"],["min"]]
 
 
     
@@ -175,7 +177,7 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     
     // the animateCheckbox color helps transition a checkbox from one color to another
     func animateCheckbox(checkbox: UIView, color: UIColor){
-        UIView.animateWithDuration(0.4, animations: {checkbox.backgroundColor = color})
+        UIView.animateWithDuration(0.2, animations: {checkbox.backgroundColor = color})
         println("ANIMATE")
         
     }
@@ -209,7 +211,6 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             
         }
         else {
-            println("entering the else loop")
             self.checkBoxState[dayCheckBox] = true
             println("the checkbox value for the day is: \(self.checkBoxState[dayCheckBox])")
             animateCheckbox(checkboxIcon!, color: blueTransition)
@@ -244,15 +245,17 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         self.tickAllCheckboxes()
         
         
-        // Here I add multiple copies of 'minutesArray' into the 'lotsOfMinutes' array
+        // Here I add multiple copies of 'weekGoalMinutes' into the 'lotsOfWeekGoalMinutes' array. I do the same for 'dayGoalMinutes' and 'lotsOfdayGoalMinutes'
         for i in 0...99 {
-            self.lotsOfMinutes += self.minutesArray
-//            println("\(self.lotsOfMinutes.count)")
+            self.lotsOfWeekGoalMinutes += self.weekGoalMinutes
+            self.lotsOfDayGoalMinutes += self.dayGoalMinutes
         }
         
-        // I then insert the 'lotsOfMinutes' array at the second-to-last position in
+        // I then set up the 'weekGoalHours' (0 to 48) as the array for the hours and the 'lotsOfDayGoalMinutes' (many times 0 to 59) as the array for the minutes
         // the 'goaltTimeData' array of arrays
-        self.goalTimeData.insert(self.lotsOfMinutes, atIndex: self.goalTimeData.count-1)
+//        self.goalTimeData.insert(self.lotsOfDayGoalMinutes, atIndex: self.goalTimeData.count-1)
+        self.goalTimeData[0] = self.weekGoalHours
+        self.goalTimeData[2] = self.lotsOfDayGoalMinutes
         
         // Finally I select a row right in the middle of the minutes array of 'goalTimeData'
         // So it looks like minutes is an infinite loop
