@@ -30,10 +30,21 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     @IBAction func saveButton(sender: AnyObject) {
         if self.goalName.text.isEmpty {
             println("you didn't enter a name")
+        } else {
+            // Instantiate a object of the Goal class to store all the info about the goal we're about to make
+            var currentGoal = Goal(goalName: self.goalName.text, goalDays: self.checkBoxState, goalMinutes:  self.hoursChosen * 60 + self.minutesChosen)
+            var result = currentGoal.description()
+            println(result)
+            println(currentGoal.goalDays)
         }
     }
     
     @IBOutlet weak var hoursAndMinutesPicker: UIPickerView!
+    // Create two variables, hourChosen and minutesChosen, which will store
+    // the Int values chosen in the picker
+    // (the picker actually contains strings showing numbers, but we can convert them to Int)
+    var hoursChosen = 0
+    var minutesChosen = 0
     
     // The weekDaySelect function is to ensure that the 'right' number of hours is displayed in the Hours component of the UIPicker
     // When the segmented control is set to 'Week' (default) then there should be a number of hours > 24 because the goal could be 
@@ -185,7 +196,19 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     
     // Catpure the picker view selection   
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        println("the value from component \(self.goalTimeData[component].count) is \(self.goalTimeData[component][row])")
+//        println("the value from component \(self.goalTimeData[component].count) is \(self.goalTimeData[component][row])")
+        
+        var timeJustPicked = self.goalTimeData[component][row]
+        
+        if self.goalTimeData[component] == self.goalTimeData[0] {
+            self.hoursChosen = timeJustPicked.stringByReplacingOccurrencesOfString(" ", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil).toInt()!
+            println("hours chosen in picker: \(self.hoursChosen)")
+            println("And to see if this work: \(self.hoursChosen + 1)")
+        } else if self.goalTimeData[component] == self.goalTimeData[2]{
+            self.minutesChosen = timeJustPicked.stringByReplacingOccurrencesOfString(" ", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil).toInt()!
+            println("minute chosen in picker: \(self.minutesChosen)")
+            println("And to see if this work: \(self.minutesChosen + 1)")
+        }
     }
     
     // Ensure all the checkboxes are either checked or unchecked
