@@ -1,0 +1,24 @@
+//
+//  Goal.swift
+//  TimingProject
+//
+//  Created by Alexis Saint-Jean on 2/5/15.
+//  Copyright (c) 2015 Alexis Saint-Jean. All rights reserved.
+//
+
+import Foundation
+class Goal: NSObject {
+    var goalName = ""
+    var goalDays = [String: Bool]()
+    var goalMinutes = 0
+    var timeLogged  = 0
+    init(goalName: String, goalDays: [String: Bool], goalMinutes: Int){
+        self.goalName = goalName
+        self.goalDays = goalDays
+        self.goalMinutes = goalMinutes
+    }
+    
+    func description()->String {
+        return "Name of the goal: \(self.goalName)\nMinutes per week:\(self.goalMinutes)\nTime logged so far: \(self.timeLogged)"
+    }
+}

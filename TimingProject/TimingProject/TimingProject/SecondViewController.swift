@@ -28,7 +28,9 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     @IBOutlet weak var sundayBox: UIView!
     @IBOutlet weak var sundayCheckbox: UIView!
     @IBAction func saveButton(sender: AnyObject) {
-        tickAllCheckboxes()
+        if self.goalName.text.isEmpty {
+            println("you didn't enter a name")
+        }
     }
     
     @IBOutlet weak var hoursAndMinutesPicker: UIPickerView!

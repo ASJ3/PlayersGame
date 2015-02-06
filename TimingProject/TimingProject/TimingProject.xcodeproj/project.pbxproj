@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		782725B61A84505C00D2327A /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782725B51A84505C00D2327A /* Goal.swift */; };
 		782DD8CA1A7AC0270067BD1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782DD8C91A7AC0270067BD1B /* AppDelegate.swift */; };
 		782DD8CC1A7AC0270067BD1B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782DD8CB1A7AC0270067BD1B /* ViewController.swift */; };
 		782DD8CF1A7AC0270067BD1B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 782DD8CD1A7AC0270067BD1B /* Main.storyboard */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		782725B51A84505C00D2327A /* Goal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		782DD8C41A7AC0270067BD1B /* TimingProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimingProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		782DD8C81A7AC0270067BD1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		782DD8C91A7AC0270067BD1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				782DD8C91A7AC0270067BD1B /* AppDelegate.swift */,
 				782DD8CB1A7AC0270067BD1B /* ViewController.swift */,
 				782DD8CD1A7AC0270067BD1B /* Main.storyboard */,
+				782725B51A84505C00D2327A /* Goal.swift */,
 				78F5AD981A7C95DA00C33309 /* SecondViewController.swift */,
 				782DD8D01A7AC0270067BD1B /* Images.xcassets */,
 				782DD8D21A7AC0270067BD1B /* LaunchScreen.xib */,
@@ -215,6 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				782725B61A84505C00D2327A /* Goal.swift in Sources */,
 				78F5AD991A7C95DA00C33309 /* SecondViewController.swift in Sources */,
 				782DD8CC1A7AC0270067BD1B /* ViewController.swift in Sources */,
 				782DD8CA1A7AC0270067BD1B /* AppDelegate.swift in Sources */,
