@@ -54,7 +54,7 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
                 totalGoalTime = self.hoursChosen * 60 + self.minutesChosen
             }
             // Instantiate the object with the totalGoalTime we just calculated
-            var currentGoal = Goal(goalName: self.goalName.text, goalDays: self.checkBoxState, goalMinutes:  totalGoalTime)
+            var currentGoal = Goal(goalName: self.goalName.text, goalDays: self.checkBoxState, goalMinutes:  totalGoalTime, goalSetPerWeek: self.goalSetPerWeek)
     
             println(currentGoal.description())
             println(currentGoal.goalDays)

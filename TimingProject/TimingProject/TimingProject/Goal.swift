@@ -12,13 +12,15 @@ class Goal: NSObject {
     var goalDays = [String: Bool]()
     var goalMinutes = 0
     var timeLogged  = 0
-    init(goalName: String, goalDays: [String: Bool], goalMinutes: Int){
+    var goalSetPerWeek = true
+    init(goalName: String, goalDays: [String: Bool], goalMinutes: Int, goalSetPerWeek: Bool){
         self.goalName = goalName
         self.goalDays = goalDays
         self.goalMinutes = goalMinutes
+        self.goalSetPerWeek = goalSetPerWeek
     }
     
     func description()->String {
-        return "Name of the goal: \(self.goalName)\nMinutes per week:\(self.goalMinutes)\nTime logged so far: \(self.timeLogged)"
+        return "Name of the goal: \(self.goalName)\nMinutes per week:\(self.goalMinutes)\nTime logged so far: \(self.timeLogged)\nGoal is set on a weekly basis: \(self.goalSetPerWeek)"
     }
 }
