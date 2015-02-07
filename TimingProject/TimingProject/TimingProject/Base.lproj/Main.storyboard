@@ -1,11 +1,44 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Hzj-RH-RMa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="YM7-sb-9ip">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Table View Controller-->
+        <scene sceneID="H1F-tL-9pN">
+            <objects>
+                <tableViewController id="F3b-fV-jar" customClass="TableViewController" customModule="TimingProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="xSE-sh-VZ3">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="FKZ-Vh-e5y">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FKZ-Vh-e5y" id="O2p-eL-Zgu">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="F3b-fV-jar" id="hmg-Tv-3K7"/>
+                            <outlet property="delegate" destination="F3b-fV-jar" id="GcC-A0-k7f"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="jbi-w7-xXg">
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="Pn7-ET-aHd">
+                            <connections>
+                                <action selector="addNewGoal:" destination="F3b-fV-jar" id="fcz-lG-lEu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zv9-hM-ISn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1054" y="-48"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -130,12 +163,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="276" y="360"/>
+            <point key="canvasLocation" x="1794" y="-296"/>
         </scene>
         <!--Second View Controller-->
         <scene sceneID="u9j-qL-Rqj">
             <objects>
-                <viewController storyboardIdentifier="SecondVC" id="Hzj-RH-RMa" customClass="SecondViewController" customModule="TimingProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="secondVC" id="Hzj-RH-RMa" customClass="SecondViewController" customModule="TimingProject" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FVL-1r-Fed"/>
                         <viewControllerLayoutGuide type="bottom" id="yhQ-DR-gx9"/>
@@ -686,7 +719,25 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="982" y="360"/>
+            <point key="canvasLocation" x="1794" y="360"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Wao-hE-03o">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YM7-sb-9ip" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="J7G-Mf-pSp">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="F3b-fV-jar" kind="relationship" relationship="rootViewController" id="37H-A7-Uxg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aM9-k0-BaE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="242" y="-48"/>
         </scene>
     </scenes>
 </document>
