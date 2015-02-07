@@ -28,11 +28,29 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     @IBOutlet weak var sundayBox: UIView!
     @IBOutlet weak var sundayCheckbox: UIView!
     @IBAction func saveButton(sender: AnyObject) {
+        // If a goal name was not entered the goal cannot be saved and an alertView will inform the user
         if self.goalName.text.isEmpty {
-            // If a goal name was not entered the goal cannot be saved and an alertView will inform the user
             var alertMessage = "The goal cannot be saved because no name was given to it. Please go back and give a name to your goal."
             let alert = UIAlertView(title: "Goal name missing!", message: alertMessage, delegate: nil, cancelButtonTitle: "Go Back")
             alert.show() }
+        // If the user didn't put any time on his goal an alertView will inform the user
+        else if (self.hoursChosen * 60 + self.minutesChosen) == 0 {
+            var alertMessage = "The time entered for your goal is 0 minutes. Please go back and set a goal of at least one minute. You can do it!"
+            let alert = UIAlertView(title: "No time set for goal!", message: alertMessage, delegate: nil, cancelButtonTitle: "Go Back")
+            alert.show()
+        }
+        // If the user chose to make a goal using a day time period AND the time entered is more than 24 hours (the UIPicker goes up to 24H 59M) then an alert message will be displayed
+        else if self.goalSetPerWeek == false && (self.hoursChosen * 60 + self.minutesChosen) > 24 * 60 {
+            var alertMessage = "The time entered for your daily goal cannot take more than 24 hours. Please go back and make sure your daily goal does not exceed 24 hours."
+            let alert = UIAlertView(title: "Goal takes too much time!", message: alertMessage, delegate: nil, cancelButtonTitle: "Go Back")
+            alert.show()
+        }
+        // If boxesChecked = 0 then it means no day has been selected to accomplish the goal, which is not possible
+        else if self.boxesChecked == 0 {
+            var alertMessage = "You didn't select any day during which to work on your goal. Please go back and click on at least one day."
+            let alert = UIAlertView(title: "No day selected!", message: alertMessage, delegate: nil, cancelButtonTitle: "Go Back")
+            alert.show()
+        }
         else {
             // Will instantiate an object of the Goal class to store all the info about the goal we're about to make.
             // But first we need to check whether the number of goal hours entered was for an entire week (i.e. goalSetPerWeek = true) or for a day.
