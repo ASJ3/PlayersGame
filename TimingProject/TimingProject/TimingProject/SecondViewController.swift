@@ -34,8 +34,27 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             let alert = UIAlertView(title: "Goal name missing!", message: alertMessage, delegate: nil, cancelButtonTitle: "Go Back")
             alert.show() }
         else {
-            // Instantiate an object of the Goal class to store all the info about the goal we're about to make
-            var currentGoal = Goal(goalName: self.goalName.text, goalDays: self.checkBoxState, goalMinutes:  self.hoursChosen * 60 + self.minutesChosen)
+            // Will instantiate an object of the Goal class to store all the info about the goal we're about to make.
+            // But first we need to check whether the number of goal hours entered was for an entire week (i.e. goalSetPerWeek = true) or for a day.
+            // If it's for a week, then just need to pass the total number of hours + minutes to the new object.
+            // If it's for a day then we need to figure out how many days were checked, then multiply the number of hours + minutes entered in the UIPicker by the number of days selected
+            var totalGoalTime = 0
+            if goalSetPerWeek == false {
+                // If boxesChecked = 8 then it means all the days of the week are selected
+                // so we need to multiply the time set in the UIPicker by 7
+                if boxesChecked == 8 {
+                    totalGoalTime = (self.hoursChosen * 60 + self.minutesChosen) * 7
+                } else {
+                    totalGoalTime = (self.hoursChosen * 60 + self.minutesChosen) * boxesChecked
+                }
+                
+            }
+            else {
+                // If goalSetPerWeek is true then we just need to add hours + time
+                totalGoalTime = self.hoursChosen * 60 + self.minutesChosen
+            }
+            // Instantiate the object with the totalGoalTime we just calculated
+            var currentGoal = Goal(goalName: self.goalName.text, goalDays: self.checkBoxState, goalMinutes:  totalGoalTime)
     
             println(currentGoal.description())
             println(currentGoal.goalDays)
@@ -44,17 +63,23 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     
     @IBOutlet weak var hoursAndMinutesPicker: UIPickerView!
     
-    
     // Create two variables, hourChosen and minutesChosen, which will store the Int values chosen in the picker
     // (the picker actually contains strings showing numbers, but we can convert them to Int)
     var hoursChosen = 0
     var minutesChosen = 0
     
+    // Create a goalSetPerWeek Bool variable that will show whether the "per week/per Day" 
+    // UISegmentedControl is set on the "week" settings (i.e. true) or the "day" settings (false)
+    var goalSetPerWeek = true
     
     // The weekDaySelect function is to ensure that the 'right' number of hours is displayed in the Hours component of the UIPicker
     // When the segmented control is set to 'Week' (default) then there should be a number of hours > 24 because the goal could be 
     // for 30, 35, 40...hours. However when the segmented control is set to 'Day' then there should be no more than 24 hours to select
     @IBAction func weekDaySelect(sender: AnyObject) {
+        // First we need to reset the variables storing the time picked to 0 (since the UIPicker is reset to 0)
+        self.hoursChosen = 0
+        self.minutesChosen = 0
+        
         var segmentedControl = sender as UISegmentedControl
         var selectionInteger = segmentedControl.selectedSegmentIndex
         var componentSelectedinHours = hoursAndMinutesPicker.selectedRowInComponent(0)
@@ -62,6 +87,7 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         // if the selection is 0 ('Week') then the weekGoalHours array (with > 24 hours) is used to populate the hours component of the UIPicker
         if selectionInteger == 0 {
             println("*****\nWeek is selected")
+            self.goalSetPerWeek = true
             self.picker.selectRow(0, inComponent: 0, animated: true)
             self.picker.selectRow(self.goalTimeData[2].count / 2, inComponent: 2, animated: true)
             
@@ -75,7 +101,7 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         // if the selection is not set to 0 then it has to be set to 1 ('Day') and the the dayGoalHours array (with 0 to 24 hours) is used to populate the hours component of the UIPicker
         else {
             println("*****\nDay is selected")
-            
+            goalSetPerWeek = false
             // This first condition is checked to ensure that the hours reset animation works properly (since the number of values in dayGoalHours is < weekGoalHours, there were issues with the hour reset animation when the selected number on the picker was above 24)
             if componentSelectedinHours >= 25 {
                 println("reducing fast")
