@@ -134,6 +134,9 @@
                                         <exclude reference="yPa-g4-UR5"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Ek0-y5-hJ4" appends="YES" id="fDQ-VF-AIX"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9ye-DD-9pb">
                                 <rect key="frame" x="308" y="268" width="276" height="30"/>
@@ -204,6 +207,9 @@
                                         <exclude reference="nT7-FT-rCg"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="gDk-CP-5zM" appends="YES" id="IdL-ed-wW7"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u2s-RJ-v3K">
                                 <rect key="frame" x="308" y="306" width="276" height="30"/>
@@ -349,6 +355,9 @@
                                         <exclude reference="vdj-oQ-c55"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="9wG-qp-XyK" appends="YES" id="Ngo-Wv-k2F"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wTm-i6-OxJ">
                                 <rect key="frame" x="308" y="344" width="276" height="30"/>
@@ -419,6 +428,9 @@
                                         <exclude reference="CIP-rC-PYH"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="GWW-LS-6YI" appends="YES" id="EUG-bj-Fav"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FQ3-TU-HC6">
                                 <rect key="frame" x="16" y="382" width="276" height="30"/>
@@ -492,6 +504,9 @@
                                         <exclude reference="qpZ-bk-oN9"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="OmD-am-ObZ" appends="YES" id="rEt-ue-iug"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G9T-yq-epk">
                                 <rect key="frame" x="308" y="382" width="276" height="30"/>
@@ -562,6 +577,9 @@
                                         <exclude reference="t0n-Us-HpS"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="7FX-wg-3Ei" appends="YES" id="epY-CZ-rNN"/>
+                                </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWE-U2-fwo">
                                 <rect key="frame" x="16" y="546" width="150" height="34"/>
@@ -579,6 +597,9 @@
                                         <integer key="value" value="4"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="saveButton:" destination="3F0-pT-xFc" eventType="touchUpInside" id="8J3-Od-jqQ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hAe-Zg-xYI">
                                 <rect key="frame" x="434" y="547" width="150" height="33"/>
@@ -593,6 +614,9 @@
                                         <integer key="value" value="4"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="cancelButton:" destination="3F0-pT-xFc" eventType="touchUpInside" id="79l-Q8-MBs"/>
+                                </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="8Fv-36-Bs8">
                                 <rect key="frame" x="491" y="65" width="93" height="29"/>
@@ -689,6 +713,9 @@
                                         <exclude reference="GW9-Y5-Cdh"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="HFj-nB-zQp" appends="YES" id="VuE-PI-dmb"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -772,8 +799,66 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="allWeekBox" destination="eUU-vu-lLB" id="4vO-Y2-B2j"/>
+                        <outlet property="allWeekCheckbox" destination="U3h-wy-9TP" id="KIM-oh-ceD"/>
+                        <outlet property="fridayBox" destination="u2s-RJ-v3K" id="PW6-1O-Wmz"/>
+                        <outlet property="fridayCheckbox" destination="sB4-CB-OrW" id="zD2-Ku-PY4"/>
+                        <outlet property="goalName" destination="H1j-Lv-57f" id="fZ4-5h-CcE"/>
+                        <outlet property="hoursAndMinutesPicker" destination="HnP-Rd-hnK" id="vxL-cf-Sjv"/>
+                        <outlet property="mondayBox" destination="2sN-Kb-1GO" id="9Dn-de-t3g"/>
+                        <outlet property="mondayCheckbox" destination="TVq-UE-I8G" id="7EQ-Uf-rst"/>
+                        <outlet property="picker" destination="HnP-Rd-hnK" id="GPG-KG-5tm"/>
+                        <outlet property="saturdayBox" destination="wTm-i6-OxJ" id="8zX-qE-ecn"/>
+                        <outlet property="saturdayCheckbox" destination="c8c-2V-zAA" id="Yvt-5G-EdZ"/>
+                        <outlet property="sundayBox" destination="G9T-yq-epk" id="yDE-Zx-L0v"/>
+                        <outlet property="sundayCheckbox" destination="AQJ-FR-ckn" id="m37-y7-6cN"/>
+                        <outlet property="tuesdayBox" destination="kud-35-DGT" id="QuS-DO-hlx"/>
+                        <outlet property="tuesdayCheckbox" destination="EbS-kg-eJ8" id="g4r-Um-M2Z"/>
+                        <outlet property="weekDaySelect" destination="8Fv-36-Bs8" id="eZr-EA-7ND"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xP2-lc-v9D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Ek0-y5-hJ4">
+                    <connections>
+                        <action selector="allWeekTap:" destination="3F0-pT-xFc" id="Y43-TF-rrA"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="HFj-nB-zQp">
+                    <connections>
+                        <action selector="mondayTap:" destination="3F0-pT-xFc" id="Hrs-FB-KGw"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="9wG-qp-XyK">
+                    <connections>
+                        <action selector="tuesdayTap:" destination="3F0-pT-xFc" id="k0W-5H-VUW"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="OmD-am-ObZ">
+                    <connections>
+                        <action selector="wednesdayTap:" destination="3F0-pT-xFc" id="2Yh-60-10z"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="gDk-CP-5zM">
+                    <connections>
+                        <action selector="thursdayTap:" destination="3F0-pT-xFc" id="EAf-dQ-0OO"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Moc-i6-qUg">
+                    <connections>
+                        <action selector="fridayTap:" destination="3F0-pT-xFc" id="DvV-oB-1Rp"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="GWW-LS-6YI">
+                    <connections>
+                        <action selector="saturdayTap:" destination="3F0-pT-xFc" id="Cwx-UF-auq"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="7FX-wg-3Ei">
+                    <connections>
+                        <action selector="sundayTap:" destination="3F0-pT-xFc" id="a16-L6-XhV"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1021" y="-314"/>
         </scene>
