@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="3F0-pT-xFc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="bJL-yd-UbO">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -26,8 +26,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="siW-yV-hRW">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Fb0-CO-OOY"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Fb0-CO-OOY">
+                            <connections>
+                                <action selector="addNewGoal:" destination="BYZ-38-t0r" id="MuU-q5-zRN"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="Ebi-CD-Z2W" id="7m2-2E-P4J"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -36,7 +43,7 @@
         <!--Second View Controller-->
         <scene sceneID="qz9-Gt-0cZ">
             <objects>
-                <viewController id="3F0-pT-xFc" customClass="SecondViewController" customModule="GoalProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="secondVC" id="3F0-pT-xFc" customClass="SecondViewController" customModule="GoalProject" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pHN-ON-a3j"/>
                         <viewControllerLayoutGuide type="bottom" id="vXJ-Wd-cG6"/>
