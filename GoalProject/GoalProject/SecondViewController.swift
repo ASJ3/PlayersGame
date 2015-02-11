@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 
 class SecondViewController: UIViewController, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
+    var goals = [NSManagedObject]()
     // Creates outlets for the day 'boxes' at the bottom of the screen
     // Also creates outlets for the checkboxes inside each 'day box'
     @IBOutlet weak var allWeekBox: UIView!
@@ -78,13 +79,40 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             // Now we are going to try to save the info in the Goal object into Core Data
             saveCurrentGoal(currentGoal)
             
-            println(currentGoal.description())
-            println(currentGoal.goalDays)
+            self.dismissViewControllerAnimated(true , completion: nil)
+//            println(currentGoal.description())
+//            println(currentGoal.goalDays)
         }
     }
     
-    func saveCurrentGoal(nameOfGoal: Goal) {
-        println("Hello there!")
+    func saveCurrentGoal(goalToSave: Goal) {
+        println("Beginngin of method saving to CoreData")
+        
+        //1
+        let appDelegate =
+        UIApplication.sharedApplication().delegate as AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext!
+        
+        //2
+        let entity =  NSEntityDescription.entityForName("Goals",
+            inManagedObjectContext:
+            managedContext)
+        
+        let person = NSManagedObject(entity: entity!,
+            insertIntoManagedObjectContext:managedContext)
+        
+        //3
+        person.setValue(goalToSave.goalName, forKey: "name")
+        
+        //4
+        var error: NSError?
+        if !managedContext.save(&error) {
+            println("Could not save \(error), \(error?.userInfo)")
+        }  
+        //5
+        goals.append(person)
+        println("Done saving to Core data")
     }
     
     @IBOutlet weak var hoursAndMinutesPicker: UIPickerView!
