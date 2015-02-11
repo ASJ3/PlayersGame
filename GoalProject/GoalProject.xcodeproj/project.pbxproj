@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		78568F591A8AD32D00E609AC /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78568F581A8AD32D00E609AC /* Goal.swift */; };
 		787685BC1A8ABE1E00F20A48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787685BB1A8ABE1E00F20A48 /* AppDelegate.swift */; };
 		787685BF1A8ABE1E00F20A48 /* GoalProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 787685BD1A8ABE1E00F20A48 /* GoalProject.xcdatamodeld */; };
 		787685C11A8ABE1E00F20A48 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787685C01A8ABE1E00F20A48 /* ViewController.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		78568F581A8AD32D00E609AC /* Goal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Goal.swift; path = ../Goal.swift; sourceTree = "<group>"; };
 		787685B61A8ABE1E00F20A48 /* GoalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		787685BA1A8ABE1E00F20A48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		787685BB1A8ABE1E00F20A48 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -82,9 +84,10 @@
 			isa = PBXGroup;
 			children = (
 				787685BB1A8ABE1E00F20A48 /* AppDelegate.swift */,
+				78568F581A8AD32D00E609AC /* Goal.swift */,
 				787685C01A8ABE1E00F20A48 /* ViewController.swift */,
-				787685C21A8ABE1E00F20A48 /* Main.storyboard */,
 				787685DE1A8ABEC300F20A48 /* SecondViewController.swift */,
+				787685C21A8ABE1E00F20A48 /* Main.storyboard */,
 				787685C51A8ABE1E00F20A48 /* Images.xcassets */,
 				787685C71A8ABE1E00F20A48 /* LaunchScreen.xib */,
 				787685BD1A8ABE1E00F20A48 /* GoalProject.xcdatamodeld */,
@@ -221,6 +224,7 @@
 				787685DF1A8ABEC300F20A48 /* SecondViewController.swift in Sources */,
 				787685C11A8ABE1E00F20A48 /* ViewController.swift in Sources */,
 				787685BF1A8ABE1E00F20A48 /* GoalProject.xcdatamodeld in Sources */,
+				78568F591A8AD32D00E609AC /* Goal.swift in Sources */,
 				787685BC1A8ABE1E00F20A48 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -415,6 +419,7 @@
 				787685DA1A8ABE1E00F20A48 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		787685DB1A8ABE1E00F20A48 /* Build configuration list for PBXNativeTarget "GoalProjectTests" */ = {
 			isa = XCConfigurationList;
@@ -423,6 +428,7 @@
 				787685DD1A8ABE1E00F20A48 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

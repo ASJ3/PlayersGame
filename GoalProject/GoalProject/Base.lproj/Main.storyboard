@@ -280,6 +280,9 @@
                                         <exclude reference="Zt3-Oc-q6t"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="q4j-7N-cyo" appends="YES" id="t0e-U0-V8a"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kud-35-DGT">
                                 <rect key="frame" x="16" y="344" width="276" height="30"/>
@@ -628,6 +631,9 @@
                                     <segment title="week"/>
                                     <segment title="day"/>
                                 </segments>
+                                <connections>
+                                    <action selector="weekDaySelect:" destination="3F0-pT-xFc" eventType="valueChanged" id="o1Z-xk-Zq8"/>
+                                </connections>
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2sN-Kb-1GO">
                                 <rect key="frame" x="16" y="306" width="276" height="30"/>
@@ -813,9 +819,12 @@
                         <outlet property="saturdayCheckbox" destination="c8c-2V-zAA" id="Yvt-5G-EdZ"/>
                         <outlet property="sundayBox" destination="G9T-yq-epk" id="yDE-Zx-L0v"/>
                         <outlet property="sundayCheckbox" destination="AQJ-FR-ckn" id="m37-y7-6cN"/>
+                        <outlet property="thursdayBox" destination="9ye-DD-9pb" id="Ga4-3a-mRI"/>
+                        <outlet property="thursdayCheckbox" destination="ddR-Uw-lZf" id="moZ-C1-RXh"/>
                         <outlet property="tuesdayBox" destination="kud-35-DGT" id="QuS-DO-hlx"/>
                         <outlet property="tuesdayCheckbox" destination="EbS-kg-eJ8" id="g4r-Um-M2Z"/>
-                        <outlet property="weekDaySelect" destination="8Fv-36-Bs8" id="eZr-EA-7ND"/>
+                        <outlet property="wednesdayBox" destination="FQ3-TU-HC6" id="bbZ-2Q-nWo"/>
+                        <outlet property="wednesdayCheckbox" destination="0kW-a6-5sU" id="50V-ep-xx1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xP2-lc-v9D" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -844,11 +853,6 @@
                         <action selector="thursdayTap:" destination="3F0-pT-xFc" id="EAf-dQ-0OO"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer id="Moc-i6-qUg">
-                    <connections>
-                        <action selector="fridayTap:" destination="3F0-pT-xFc" id="DvV-oB-1Rp"/>
-                    </connections>
-                </tapGestureRecognizer>
                 <tapGestureRecognizer id="GWW-LS-6YI">
                     <connections>
                         <action selector="saturdayTap:" destination="3F0-pT-xFc" id="Cwx-UF-auq"/>
@@ -857,6 +861,11 @@
                 <tapGestureRecognizer id="7FX-wg-3Ei">
                     <connections>
                         <action selector="sundayTap:" destination="3F0-pT-xFc" id="a16-L6-XhV"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="q4j-7N-cyo">
+                    <connections>
+                        <action selector="fridayTap:" destination="3F0-pT-xFc" id="TDT-NP-xoo"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
