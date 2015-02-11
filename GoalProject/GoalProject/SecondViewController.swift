@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class SecondViewController: UIViewController, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     // Creates outlets for the day 'boxes' at the bottom of the screen
@@ -73,10 +74,17 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             }
             // Instantiate the object with the totalGoalTime we just calculated
             var currentGoal = Goal(goalName: self.goalName.text, goalDays: self.checkBoxState, goalMinutes:  totalGoalTime, goalSetPerWeek: self.goalSetPerWeek)
+            //********************
+            // Now we are going to try to save the info in the Goal object into Core Data
+            saveCurrentGoal(currentGoal)
             
             println(currentGoal.description())
             println(currentGoal.goalDays)
         }
+    }
+    
+    func saveCurrentGoal(nameOfGoal: Goal) {
+        println("Hello there!")
     }
     
     @IBOutlet weak var hoursAndMinutesPicker: UIPickerView!

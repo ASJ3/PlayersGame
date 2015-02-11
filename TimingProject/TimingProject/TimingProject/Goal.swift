@@ -11,7 +11,7 @@ class Goal: NSObject {
     var goalName = ""
     var goalDays = [String: Bool]()
     var goalMinutes = 0
-    var timeLogged  = 0
+    var timeLogged  = 0.0
     var goalSetPerWeek = true
     init(goalName: String, goalDays: [String: Bool], goalMinutes: Int, goalSetPerWeek: Bool){
         self.goalName = goalName

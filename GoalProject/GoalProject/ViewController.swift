@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    var goals = ["Run","Swim", "Learn French", "Learn Programming"]
+    var goals = [NSManagedObject]()
     
     @IBAction func addNewGoal(sender: AnyObject) {
         let vc = storyboard?.instantiateViewControllerWithIdentifier("secondVC") as SecondViewController
@@ -34,8 +35,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
-        cell.textLabel?.text = self.goals[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+        let goal = self.goals[indexPath.row]
+        cell.textLabel?.text = goal.valueForKey("name") as String?
         // Configure the cell...
         
         return cell
@@ -49,7 +51,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
+
+        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         // Add self as the delegate to a bunch of textfields
         // to make sure the keyboard disappear when entering "Return"
         
