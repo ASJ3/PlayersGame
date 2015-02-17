@@ -69,13 +69,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func multiplyButton(sender: AnyObject) {
     }
     @IBAction func clearButton(sender: AnyObject) {
-        // Reset a bunch of variable to their initial state
+        // Reset a bunch of variables to their initial state
         self.numOfDigits = 0
         self.numberField.text = "0"
         self.decimalAdded = false
         self.signString = ""
+//        self.clearButtonText.setTitle("AC", forState: UIControlState.Selected)
+        self.clearButtonText.setTitle("AC", forState: UIControlState.Normal)
         println("reset everything to 0")
     }
+    @IBOutlet weak var clearButtonText: UIButton!
+    
     @IBAction func changeSignButton(sender: AnyObject) {
         if self.signString == "" {
             self.signString = "-"
@@ -105,6 +109,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
             // for the first digit we wipe out the initial 0 on the screen and replace it with the digit entered by the user
             self.numOfDigits += 1
             self.numberField.text = self.signString + digitToEnter
+            // Change the text of the clear button from AC to C just like in Apple's app
+//                self.clearButtonText.setTitle("C", forState: UIControlState.Selected)
+                self.clearButtonText.setTitle("C", forState: UIControlState.Normal)
                 println("successfully entered first digit")}
             else {
                 self.numOfDigits += increaseInDigits
