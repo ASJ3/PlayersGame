@@ -115,6 +115,31 @@ class ViewController: UIViewController, UITextFieldDelegate {
         enterDigits(self.signString, increaseInDigits: 0)
     }
     @IBAction func percentButton(sender: AnyObject) {
+        var currentDisplay = self.numberField.text
+        if self.decimalAdded == false {
+            // if the number doesn't have decimals, then we can cast as an Int, then as a float to divide by 100
+            var percentNumber = Float(currentDisplay.toInt()!)/100
+            var percentText = "\(percentNumber)"
+            println("percentText so far is \(percentText) and currentDisplay is \(currentDisplay)")
+            var endingDigits = currentDisplay.substringWithRange(Range<String.Index>(start: advance(currentDisplay.endIndex, -2), end: currentDisplay.endIndex))
+            println("endingDigits is \(endingDigits)")
+            // if the percentNumber doesn't have any decimals (i.e. '.0') then we are to get rid of them
+            // we are also going to reduce the numOfDigits by 2
+            if endingDigits == "00" {
+                println("00 at the end")
+                var percentNumberInt = Int(percentNumber)
+//                percentText = percentText.substringWithRange(Range<String.Index>(start: percentText.startIndex, end: advance(percentText.endIndex, -2)))
+                self.numberField.text = "\(percentNumberInt)"
+                self.numOfDigits -= 2
+                println("numOfDigits is now:\(self.numOfDigits)")
+            } else {
+              // percentNumber has decimals so we are going to keep them and make sure decimalAdded is set to true
+                self.decimalAdded = true
+                self.numberField.text = percentText
+                println("now have decimals")
+            }
+            
+        }
     }
     @IBAction func divideButton(sender: AnyObject) {
     }
