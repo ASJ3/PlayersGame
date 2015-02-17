@@ -409,6 +409,7 @@
 				78416EE61A92D4C500191DD0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		78416EE71A92D4C500191DD0 /* Build configuration list for PBXNativeTarget "CalculatorMTTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +418,7 @@
 				78416EE91A92D4C500191DD0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
