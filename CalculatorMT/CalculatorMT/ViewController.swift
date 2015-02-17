@@ -29,6 +29,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func decimalButton(sender: AnyObject) {
         // If the user tap the decimal button as the first one
         if numOfDigits == 0 {enterDigits("0.", increaseInDigits: 1)
+            self.decimalAdded = true
         } else if self.decimalAdded == false {
             self.decimalAdded = true
             enterDigits(".", increaseInDigits: 0)
