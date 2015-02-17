@@ -30,7 +30,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // If the user tap the decimal button as the first one
         if numOfDigits == 0 {enterDigits("0.", increaseInDigits: 1)
             self.decimalAdded = true
-        } else if self.decimalAdded == false {
+        } else if self.decimalAdded == false && self.numOfDigits < 9 {
             self.decimalAdded = true
             enterDigits(".", increaseInDigits: 0)
         }
@@ -69,16 +69,42 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func multiplyButton(sender: AnyObject) {
     }
     @IBAction func clearButton(sender: AnyObject) {
+        resetCalculator()
+    }
+    
+    func resetCalculator() {
         // Reset a bunch of variables to their initial state
         self.numOfDigits = 0
         self.numberField.text = "0"
         self.decimalAdded = false
         self.signString = ""
-//        self.clearButtonText.setTitle("AC", forState: UIControlState.Selected)
         self.clearButtonText.setTitle("AC", forState: UIControlState.Normal)
         println("reset everything to 0")
     }
+    
     @IBOutlet weak var clearButtonText: UIButton!
+    // deleteRightDigit() is a function to delete the last digit, one at a time, and can go back to the default "0"
+    @IBAction func deleteRightDigit(sender: AnyObject) {
+        // creating variables to store the leftmost and rightmost digits in numField
+        var currentNumField = self.numberField.text
+        var rightMostDigit = currentNumField.substringWithRange(Range<String.Index>(start: advance(currentNumField.endIndex, -1), end: currentNumField.endIndex))
+        var leftMostDigit = currentNumField.substringWithRange(Range<String.Index>(start: currentNumField.startIndex, end: advance(currentNumField.startIndex,1)))
+        
+        if self.numberField.text == "0." || self.numberField.text == "-0."{
+            resetCalculator()
+        } else if leftMostDigit == "-" && countElements(self.numberField.text) == 2{
+            resetCalculator()
+        } else if countElements(self.numberField.text) == 1 {
+            resetCalculator()
+        } else if rightMostDigit == "." {
+            self.numberField.text = currentNumField.substringWithRange(Range<String.Index>(start: currentNumField.startIndex, end: advance(currentNumField.endIndex, -1)))
+            self.decimalAdded = false
+        } else {
+            self.numberField.text = currentNumField.substringWithRange(Range<String.Index>(start: currentNumField.startIndex, end: advance(currentNumField.endIndex, -1)))
+            self.numOfDigits -= 1
+        }
+        
+    }
     
     @IBAction func changeSignButton(sender: AnyObject) {
         if self.signString == "" {
