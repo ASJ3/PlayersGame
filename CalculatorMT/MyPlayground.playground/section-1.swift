@@ -45,3 +45,7 @@ if let characterIndex = find(digits, characterToFind) {
 }
 
 var newRes = characterPosition + 1
+
+var doubleNew: Double = 0.0
+var floatNew: Float = 10.0
+floatNew = Float(doubleNew) + 15

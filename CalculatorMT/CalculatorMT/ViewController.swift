@@ -142,6 +142,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
     }
     @IBAction func divideButton(sender: AnyObject) {
+        turnTextToNumber(self.numberField.text)
     }
 
     func enterDigits(digitToEnter: String, increaseInDigits: Int) {
@@ -173,6 +174,38 @@ class ViewController: UIViewController, UITextFieldDelegate {
         println("didn't change anything because too many digits")
         }
     }
+    
+    func turnTextToNumber(textToProcess: String)-> Double {
+        // if decimalAdded is false, then it means we can just convert our string to an int using toInt(), then typecast the result as a Double
+        var finalNumber: Double = 0.0
+        if decimalAdded == false {
+            return stringToDouble(textToProcess, dividingPower: 0)
+        } else {
+            // first we need to find where the decimal '.' is located
+            var decimalPosition = 0
+            if let characterIndex = find(textToProcess, ".") {
+                decimalPosition = distance(textToProcess.startIndex, characterIndex)
+            } else {
+                " not found"
+            }
+            var integerPart = textToProcess.substringWithRange(Range<String.Index>(start: textToProcess.startIndex, end: advance(textToProcess.startIndex, decimalPosition)))
+            var fractionalPart = textToProcess.substringWithRange(Range<String.Index>(start: advance(textToProcess.startIndex, decimalPosition + 1), end: textToProcess.endIndex))
+            if self.signString == "-" {
+            finalNumber = stringToDouble(integerPart, dividingPower: 0) - stringToDouble(fractionalPart, dividingPower: Double(self.numOfDigits - decimalPosition + 1))
+            } else {
+                    finalNumber = stringToDouble(integerPart, dividingPower: 0) + stringToDouble(fractionalPart, dividingPower: Double(self.numOfDigits - decimalPosition))
+                }
+            println("the processedNumber has a decimal, whose position is \(decimalPosition) and the integer part is \(integerPart) and the fractional part is \(fractionalPart). The final number is \(finalNumber)")
+            return 0.0
+        }
+    }
+    
+    func stringToDouble(numString: String, dividingPower: Double)->Double {
+        var processedNumber = Double(numString.toInt()!) / pow(10.0, dividingPower)
+        println("stringToDouble: the processedNumber is \(processedNumber)")
+        return processedNumber
+    }
+    
 
     func textFieldShouldBeginEditing(textField: UITextField)-> Bool {
         return false
