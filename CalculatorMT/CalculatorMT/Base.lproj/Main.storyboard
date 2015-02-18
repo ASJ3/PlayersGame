@@ -67,6 +67,9 @@
                                         <include reference="kDs-Xj-lvZ"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="equalButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="iSH-p4-Bu5"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rDF-g1-FDr">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>

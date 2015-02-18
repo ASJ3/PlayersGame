@@ -49,3 +49,23 @@ var newRes = characterPosition + 1
 var doubleNew: Double = 0.0
 var floatNew: Float = 10.0
 floatNew = Float(doubleNew) + 15
+
+var sometext = "123455."
+var otherText = "goodbye" + "hello"
+var lastone = sometext.substringWithRange(Range<String.Index>(start: advance(sometext.endIndex, -1), end: sometext.endIndex))
+
+var endText = Array<Character>(sometext)
+
+endText[endText.count-1]
+
+endText.removeAtIndex(endText.count - 1)
+endText
+
+
+
+//let newstring = "-".join(endText)
+
+var array = ["a","b"]
+
+let stringRepresentation = "".join(array)
+
