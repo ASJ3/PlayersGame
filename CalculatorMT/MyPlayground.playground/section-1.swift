@@ -68,4 +68,7 @@ endText
 var array = ["a","b"]
 
 let stringRepresentation = "".join(array)
+var numasString = "123.78999"
+var numasnum = (numasString as NSString).floatValue
+
 

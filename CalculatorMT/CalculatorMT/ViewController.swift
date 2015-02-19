@@ -37,6 +37,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func equalButton(sender: AnyObject) {
+        println("the string on display is: \(self.numberField.text)")
+        var newString = self.numberField.text as NSString
+        var stringTofloat: Double = newString.doubleValue
+        println("the float number is: (\(stringTofloat))")
         turnTextToNumber(self.numberField.text)
     }
     @IBAction func oneButton(sender: AnyObject) {
@@ -123,31 +127,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         println("current is now \(percentNumber)")
         self.numberField.text = String(format:"%.3f", percentNumber)
         self.decimalAdded = true
-        
-//        if self.decimalAdded == false {
-//            // if the number doesn't have decimals, then we can cast as an Int, then as a float to divide by 100
-//            var percentNumber = Float(currentDisplay.toInt()!)/100
-//            var percentText = "\(percentNumber)"
-//            println("percentText so far is \(percentText) and currentDisplay is \(currentDisplay)")
-//            var endingDigits = currentDisplay.substringWithRange(Range<String.Index>(start: advance(currentDisplay.endIndex, -2), end: currentDisplay.endIndex))
-//            println("endingDigits is \(endingDigits)")
-//            // if the percentNumber doesn't have any decimals (i.e. '.0') then we are to get rid of them
-//            // we are also going to reduce the numOfDigits by 2
-//            if endingDigits == "00" {
-//                println("00 at the end")
-//                var percentNumberInt = Int(percentNumber)
-////                percentText = percentText.substringWithRange(Range<String.Index>(start: percentText.startIndex, end: advance(percentText.endIndex, -2)))
-//                self.numberField.text = "\(percentNumberInt)"
-//                self.numOfDigits -= 2
-//                println("numOfDigits is now:\(self.numOfDigits)")
-//            } else {
-//              // percentNumber has decimals so we are going to keep them and make sure decimalAdded is set to true
-//                self.decimalAdded = true
-//                self.numberField.text = percentText
-//                println("now have decimals")
-//            }
-//            
-//        }
     }
     @IBAction func divideButton(sender: AnyObject) {
     }
@@ -183,39 +162,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func turnTextToNumber(textToProcess: String)-> Double {
-        println("text to process is: \(textToProcess)")
-        var textFromDisplay = textToProcess
-        var finalNumber: Double = 0.0
-        // Checks whether the user added a decimal point, but then no decimal number after that
-        var lastDigit = textToProcess.substringWithRange(Range<String.Index>(start: advance(textToProcess.endIndex, -1) , end: textToProcess.endIndex))
-        println("text from display is \(textFromDisplay)")
-        println("text to process array is \(lastDigit)")
-        if lastDigit == "." {
-            textFromDisplay = textFromDisplay + "0"
-//            self.decimalAdded == false
-            println("new text from display is \(textFromDisplay)")
-        }
-        // if decimalAdded is false, then it means we can just convert our string to an int using toInt(), then typecast the result as a Double
-        if decimalAdded == false {
-            return stringToDouble(textFromDisplay, dividingPower: 0)
-        } else {
-            // first we need to find where the decimal '.' is located
-            var decimalPosition = 0
-            if let characterIndex = find(textFromDisplay, ".") {
-                decimalPosition = distance(textFromDisplay.startIndex, characterIndex)
-            } else {
-                " not found"
-            }
-            var integerPart = textFromDisplay.substringWithRange(Range<String.Index>(start: textFromDisplay.startIndex, end: advance(textFromDisplay.startIndex, decimalPosition)))
-            var fractionalPart = textFromDisplay.substringWithRange(Range<String.Index>(start: advance(textFromDisplay.startIndex, decimalPosition + 1), end: textFromDisplay.endIndex))
-            if self.signString == "-" {
-            finalNumber = stringToDouble(integerPart, dividingPower: 0) - stringToDouble(fractionalPart, dividingPower: Double(self.numOfDigits - decimalPosition + 1))
-            } else {
-                    finalNumber = stringToDouble(integerPart, dividingPower: 0) + stringToDouble(fractionalPart, dividingPower: Double(self.numOfDigits - decimalPosition))
-                }
-            println("the processedNumber has a decimal, whose position is \(decimalPosition) and the integer part is \(integerPart) and the fractional part is \(fractionalPart). The final number is \(finalNumber)")
-            return finalNumber
-        }
+        var processedNumber = (textToProcess as NSString).doubleValue
+        println("the processed Number is now: \(processedNumber)")
+        return processedNumber
     }
     
     func stringToDouble(numString: String, dividingPower: Double)->Double {
