@@ -96,10 +96,13 @@ var variableH = arrayNum[0...arrayNum.count-2]
 var variableZ = "".join(variableH)
 
 
+var newArray = ["-","0"]
+newArray.append("1")
 
 
 //var stringRepresentation2 = "".join(arrayText)
 
+newArray.last!
 
 
 

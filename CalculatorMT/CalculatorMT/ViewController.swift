@@ -12,6 +12,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     // The numOfDigits variable makes sure that no more than 9 digits
     // are entered in (similar to the Apple calculator app)
     var numOfDigits = 0
+    // The numOfIntegers variable indicates the number of integers making our number (this will help us place the "," separator for thousands
+    var numOfIntegers = 1
+    // the numberArray stores all the keystrokes making the number
+    var numberArray = ["0"]
     // The decimalAdded variable is a boolean to check whether 
     // the user already added decimals
     var decimalAdded = false
@@ -88,6 +92,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.numberField.text = "0"
         self.decimalAdded = false
         self.signString = ""
+        self.numberArray = ["0"]
         self.clearButtonText.setTitle("AC", forState: UIControlState.Normal)
         println("reset everything to 0")
     }
@@ -99,6 +104,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
         var currentNumField = self.numberField.text
         var rightMostDigit = currentNumField.substringWithRange(Range<String.Index>(start: advance(currentNumField.endIndex, -1), end: currentNumField.endIndex))
         var leftMostDigit = currentNumField.substringWithRange(Range<String.Index>(start: currentNumField.startIndex, end: advance(currentNumField.startIndex,1)))
+        
+        //*********
+        var lastElement = self.numberArray.last!
+        if lastElement == "." {
+            self.decimalAdded = false
+        } else if self.decimalAdded == false {
+            self.numOfIntegers -= 1
+        }
+        self.numberArray.removeAtIndex(self.numberArray.count - 1)
+        if self.numberArray.isEmpty || self.numberArray == ["-"] {
+            resetCalculator()
+        }
+        println(self.numberArray)
+        //END *************
         
         if self.numberField.text == "0." || self.numberField.text == "-0."{
             resetCalculator()
@@ -171,12 +190,19 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if digitToEnter == "-" {
             var currentNumField = self.numberField.text
             self.numberField.text = "-" + currentNumField
+            //*************
+            self.numberArray.insert("-", atIndex: 0)
+            
             println("minus sign")
+            println(self.numberArray)
         }
         else if digitToEnter == "" {
             var currentNumField = self.numberField.text
             self.numberField.text = currentNumField.substringWithRange(Range<String.Index>(start: advance(currentNumField.startIndex, 1), end: currentNumField.endIndex))
-             println("plus sign")
+            //*************
+            self.numberArray.removeAtIndex(0)
+            println("plus sign")
+            println(self.numberArray)
         }
         else if self.numOfDigits < 9 {
             if self.numOfDigits == 0 {
@@ -185,11 +211,32 @@ class ViewController: UIViewController, UITextFieldDelegate {
             self.numberField.text = self.signString + digitToEnter
             // Change the text of the clear button from AC to C just like in Apple's app
                 self.clearButtonText.setTitle("C", forState: UIControlState.Normal)
-                println("successfully entered first digit")}
+                println("successfully entered first digit")
+                
+                //*************
+                if self.signString == "-" {
+                    self.numberArray[1] = digitToEnter
+                } else {
+                    self.numberArray[0] = digitToEnter
+                }
+                self.numOfIntegers = 1
+                println(self.numberArray)
+                //END *************
+            }
             else {
+                
                 self.numOfDigits += increaseInDigits
                 var previousNumField = self.numberField.text
                 self.numberField.text = previousNumField + digitToEnter
+                
+                //*************
+                self.numberArray.append(digitToEnter)
+                if decimalAdded == false {
+                    self.numOfIntegers += 1
+                }
+                println(self.numberArray)
+                //END *************
+                
                 println("successfully entered following digit")}
         } else {
         println("didn't change anything because too many digits")
