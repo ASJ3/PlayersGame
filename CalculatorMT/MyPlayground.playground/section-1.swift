@@ -71,4 +71,37 @@ let stringRepresentation = "".join(array)
 var numasString = "123.78999"
 var numasnum = (numasString as NSString).floatValue
 
+var newText = "1234567"
+var arrayNum: [String] = []
+
+for i in newText {
+    var storedNumber = 0
+    println(i)
+    
+}
+
+var newChar: Character = "u"
+
+var newChar2: Character = "n"
+
+var newString23 = String(newChar)
+
+for i in newText {
+    var stringVersion = String(i)
+    arrayNum.append(stringVersion)
+    
+}
+var variableH = arrayNum[0...arrayNum.count-2]
+
+var variableZ = "".join(variableH)
+
+
+
+
+//var stringRepresentation2 = "".join(arrayText)
+
+
+
+
+
 

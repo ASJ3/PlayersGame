@@ -83,34 +83,6 @@
                                     <action selector="changeSignButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="oNS-Q4-o8P"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="95e-60-9FH">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.94901960780000005" green="0.54901960780000003" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="95e-60-9FH" secondAttribute="height" multiplier="1:1" id="F5a-jZ-XpT"/>
-                                    <constraint firstAttribute="width" secondItem="95e-60-9FH" secondAttribute="height" multiplier="1:1" id="kK2-Z5-Kxm"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="45"/>
-                                <state key="normal" title="+">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="F5a-jZ-XpT"/>
-                                        <exclude reference="kK2-Z5-Kxm"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="F5a-jZ-XpT"/>
-                                        <exclude reference="kK2-Z5-Kxm"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="plusButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="fQa-lc-Uk7"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="90Y-D6-qG6">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" red="0.84705882349999995" green="0.85098039219999999" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -501,6 +473,34 @@
                                     <action selector="zeroButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="QiX-iO-O3Z"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="95e-60-9FH">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.94901960780000005" green="0.54901960780000003" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="95e-60-9FH" secondAttribute="height" multiplier="1:1" id="F5a-jZ-XpT"/>
+                                    <constraint firstAttribute="width" secondItem="95e-60-9FH" secondAttribute="height" multiplier="1:1" id="kK2-Z5-Kxm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="45"/>
+                                <state key="normal" title="+">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="F5a-jZ-XpT"/>
+                                        <exclude reference="kK2-Z5-Kxm"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="F5a-jZ-XpT"/>
+                                        <exclude reference="kK2-Z5-Kxm"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="plusButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="fQa-lc-Uk7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.13725490196078433" green="0.13725490196078433" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -642,7 +642,6 @@
                                 <exclude reference="znp-QF-8Uc"/>
                                 <exclude reference="Nl9-ml-JcG"/>
                                 <exclude reference="rDF-g1-FDr"/>
-                                <exclude reference="95e-60-9FH"/>
                                 <exclude reference="90Y-D6-qG6"/>
                                 <exclude reference="qNS-w6-HOx"/>
                                 <exclude reference="PW8-xg-7Pm"/>
@@ -660,6 +659,7 @@
                                 <exclude reference="zqa-Qr-PHX"/>
                                 <exclude reference="VdW-53-FEo"/>
                                 <exclude reference="fDm-8t-ngE"/>
+                                <exclude reference="95e-60-9FH"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="19N-5X-KCe"/>
@@ -757,7 +757,6 @@
                                 <include reference="znp-QF-8Uc"/>
                                 <include reference="Nl9-ml-JcG"/>
                                 <include reference="rDF-g1-FDr"/>
-                                <include reference="95e-60-9FH"/>
                                 <include reference="90Y-D6-qG6"/>
                                 <include reference="qNS-w6-HOx"/>
                                 <include reference="PW8-xg-7Pm"/>
@@ -775,6 +774,7 @@
                                 <include reference="zqa-Qr-PHX"/>
                                 <include reference="VdW-53-FEo"/>
                                 <include reference="fDm-8t-ngE"/>
+                                <include reference="95e-60-9FH"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="19N-5X-KCe"/>

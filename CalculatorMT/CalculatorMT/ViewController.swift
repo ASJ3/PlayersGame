@@ -18,6 +18,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
     // The signString variable is a string to include a negative sign
     // if the user wants the number to be negative and no sign (default) if the user wants the number to be positive
     var signString = ""
+    // Two variables to store our values when we are calculating
+    var firstNumber: Double = 0.0
+    var SecondNumber: Double = 0.0
+    
+    var firstNumberEntered = false
+    var secondNumbeEntered = false
     
     @IBOutlet weak var numberField: UITextField!
     @IBAction func zeroButton(sender: AnyObject) {
@@ -37,10 +43,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func equalButton(sender: AnyObject) {
-        println("the string on display is: \(self.numberField.text)")
-        var newString = self.numberField.text as NSString
-        var stringTofloat: Double = newString.doubleValue
-        println("the float number is: (\(stringTofloat))")
         turnTextToNumber(self.numberField.text)
     }
     @IBAction func oneButton(sender: AnyObject) {
@@ -125,9 +127,43 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func percentButton(sender: AnyObject) {
         var percentNumber = turnTextToNumber(self.numberField.text) / 100
         println("current is now \(percentNumber)")
-        self.numberField.text = String(format:"%.3f", percentNumber)
         self.decimalAdded = true
+        var numberAsString = String(format:"%.9f", percentNumber)
+        println("the number to display is \(numberAsString)")
+        var finalResult = trimDecimals(numberAsString)
+        self.numberField.text = finalResult
+        
     }
+    
+    // The purpose of trimDecimals is to cut the numbers of "0" at the end of the number, so as to only show the number of decimals that are needed
+    func trimDecimals(numAsText: String)->String {
+        var rightEdgeOfNumberFound = false
+        var arrayOfDigits = [String]()
+        var resultingSring = "0"
+        
+        for i in numAsText {
+            var digitAsString = String(i)
+            arrayOfDigits.append(digitAsString)
+        }
+        println("array of Digits is now \(arrayOfDigits)")
+
+        // now we will delete all the unneeded 0 in the decimal part
+        for i in 1..<arrayOfDigits.count + 1 {
+            print("i is now \(i). ")
+            if arrayOfDigits[arrayOfDigits.count - i] == "0" && rightEdgeOfNumberFound == false {
+                println("getting rid of 0")
+            } else {
+                println("found the right edge of the number")
+                var copyOfArrayOfDigits = arrayOfDigits[0...arrayOfDigits.count - i]
+                resultingSring = "".join(copyOfArrayOfDigits)
+                println("foo is now \(copyOfArrayOfDigits)")
+                break
+            }
+            
+        }
+        return resultingSring
+    }
+    
     @IBAction func divideButton(sender: AnyObject) {
     }
 
@@ -148,7 +184,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
             self.numOfDigits += 1
             self.numberField.text = self.signString + digitToEnter
             // Change the text of the clear button from AC to C just like in Apple's app
-//                self.clearButtonText.setTitle("C", forState: UIControlState.Selected)
                 self.clearButtonText.setTitle("C", forState: UIControlState.Normal)
                 println("successfully entered first digit")}
             else {
@@ -167,13 +202,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         return processedNumber
     }
     
-    func stringToDouble(numString: String, dividingPower: Double)->Double {
-        var processedNumber = Double(numString.toInt()!) / pow(10.0, dividingPower)
-        println("stringToDouble: the processedNumber is \(processedNumber)")
-        return processedNumber
-    }
-    
-
+    // textFieldShouldBeginEditing function returning false is only because we are using a textField to display our text (free text resizing ability)
+    // but we don't want a keyboard to display when clicking on the textField
     func textFieldShouldBeginEditing(textField: UITextField)-> Bool {
         return false
     }
@@ -182,14 +212,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.numberField.delegate = self
-
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 
 }
 
