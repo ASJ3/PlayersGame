@@ -38,7 +38,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     @IBAction func decimalButton(sender: AnyObject) {
         // If the user tap the decimal button at first
-        if numOfDigits == 0 {enterDigits("0.", increaseInDigits: 1)
+        if numOfDigits == 0 {
+            enterDigits("0", increaseInDigits: 1)
+            enterDigits(".", increaseInDigits: 0)
             self.decimalAdded = true
         } else if self.decimalAdded == false && self.numOfDigits < 9 {
             self.decimalAdded = true
@@ -47,7 +49,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func equalButton(sender: AnyObject) {
-        turnTextToNumber(self.numberField.text)
+//        turnTextToNumber(self.numberField.text)
     }
     @IBAction func oneButton(sender: AnyObject) {
         enterDigits("1", increaseInDigits: 1)
@@ -132,6 +134,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
         enterDigits(self.signString, increaseInDigits: 0)
     }
+    
     @IBAction func percentButton(sender: AnyObject) {
 //        var percentNumber = turnTextToNumber(self.numberField.text) / 100
 //        println("current is now \(percentNumber)")
@@ -191,6 +194,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             self.numberArray.removeAtIndex(0)
             println("plus sign")
             println(self.numberArray)
+            formatDisplay()
         }
         else if self.numOfDigits < 9 {
             if self.numOfDigits == 0 {
@@ -221,18 +225,54 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 println(self.numberArray)
                 //END *************
                 
-                println("successfully entered following digit")}
+                println("Entered digit \(self.numOfDigits)")}
         } else {
-        println("didn't change anything because too many digits")
+        println("Already \(self.numOfDigits) digits")
         }
         self.numberField.text = "".join(self.numberArray)
+        formatDisplay()
+        println("after format display")
     }
     
-    func turnTextToNumber(textToProcess: String)-> Double {
-        var processedNumber = (textToProcess as NSString).doubleValue
-        println("the processed Number is now: \(processedNumber)")
-        return processedNumber
+    // formatDisplay() main goal is to add "," separator for thousands
+    func formatDisplay() {
+        var decimalRemoved  = false
+        var arrayCopy = self.numberArray
+        
+        if self.numOfIntegers > 3 {
+            if self.decimalAdded == true {
+                decimalRemoved = true
+                self.numberArray.removeAtIndex(0)
+            }
+            
+            // figure out the number of "," separators we need to add
+            var separators = (self.numOfIntegers-1) / 3
+
+            println("format display: number of separators \(separators)")
+            
+            if separators == 1 {
+                arrayCopy.insert(",", atIndex: (self.numOfIntegers - 3))
+            } else if separators == 2 {
+                arrayCopy.insert(",", atIndex: (self.numOfIntegers - 3))
+                arrayCopy.insert(",", atIndex: (self.numOfIntegers - 6))
+            }
+            
+            if decimalRemoved == true {
+                self.numberArray.insert("-", atIndex: 0)
+            }
+        }
+        println(arrayCopy)
+        self.numberField.text = "".join(arrayCopy)
     }
+    
+    
+//    func turnTextToNumber(textToProcess: String)-> Double {
+//        var processedNumber = (textToProcess as NSString).doubleValue
+//        println("the processed Number is now: \(processedNumber)")
+//        return processedNumber
+//    }
+    
+    
     
     // textFieldShouldBeginEditing function returning false is only because we are using a textField to display our text (free text resizing ability)
     // but we don't want a keyboard to display when clicking on the textField
@@ -242,7 +282,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         self.numberField.delegate = self
     }
 

@@ -103,6 +103,15 @@ newArray.append("1")
 //var stringRepresentation2 = "".join(arrayText)
 
 newArray.last!
+var array1 = ["a", "b", "c","d"]
+var array2 = array1
+
+array2.removeAtIndex(0)
+
+array1
+array2
+
+
 
 
 
