@@ -186,8 +186,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             println(self.numberArray)
         }
         else if digitToEnter == "" {
-//            var currentNumField = self.numberField.text
-//            self.numberField.text = currentNumField.substringWithRange(Range<String.Index>(start: advance(currentNumField.startIndex, 1), end: currentNumField.endIndex))
+
             //*************
             self.numberArray.removeAtIndex(0)
             println("plus sign")
@@ -195,10 +194,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
         else if self.numOfDigits < 9 {
             if self.numOfDigits == 0 {
-            // for the first digit we wipe out the initial 0 on the screen and replace it with the digit entered by the user
-                
-//            self.numOfDigits += 1
-//            self.numberField.text = self.signString + digitToEnter
                 
             // Change the text of the clear button from AC to C just like in Apple's app
                 self.clearButtonText.setTitle("C", forState: UIControlState.Normal)
@@ -216,10 +211,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 //END *************
             }
             else {
-//                
-//                self.numOfDigits += increaseInDigits
-//                var previousNumField = self.numberField.text
-//                self.numberField.text = previousNumField + digitToEnter
                 
                 //*************
                 self.numberArray.append(digitToEnter)
