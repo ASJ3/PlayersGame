@@ -31,13 +31,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var numberField: UITextField!
     @IBAction func zeroButton(sender: AnyObject) {
-        // if 0 is the first digit the user type, then do nothing
+        // if the user types 0 at first, do nothing, else enter "0"
         if numOfDigits != 0 {
         enterDigits("0", increaseInDigits: 1)
         }
     }
     @IBAction func decimalButton(sender: AnyObject) {
-        // If the user tap the decimal button as the first one
+        // If the user tap the decimal button at first
         if numOfDigits == 0 {enterDigits("0.", increaseInDigits: 1)
             self.decimalAdded = true
         } else if self.decimalAdded == false && self.numOfDigits < 9 {
@@ -90,6 +90,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // Reset a bunch of variables to their initial state
         self.numOfDigits = 0
         self.numberField.text = "0"
+        self.numOfIntegers = 1
         self.decimalAdded = false
         self.signString = ""
         self.numberArray = ["0"]
@@ -97,41 +98,29 @@ class ViewController: UIViewController, UITextFieldDelegate {
         println("reset everything to 0")
     }
     
+    // Made an outlet for the clear button so we could change its text from "AC" to "C" and vice versa
     @IBOutlet weak var clearButtonText: UIButton!
+    
     // deleteRightDigit() is a function to delete the last digit, one at a time, and can go back to the default "0"
     @IBAction func deleteRightDigit(sender: AnyObject) {
-        // creating variables to store the leftmost and rightmost digits in numField
-        var currentNumField = self.numberField.text
-        var rightMostDigit = currentNumField.substringWithRange(Range<String.Index>(start: advance(currentNumField.endIndex, -1), end: currentNumField.endIndex))
-        var leftMostDigit = currentNumField.substringWithRange(Range<String.Index>(start: currentNumField.startIndex, end: advance(currentNumField.startIndex,1)))
-        
+
         //*********
         var lastElement = self.numberArray.last!
         if lastElement == "." {
             self.decimalAdded = false
         } else if self.decimalAdded == false {
             self.numOfIntegers -= 1
+            self.numOfDigits -= 1
+        } else {
+            self.numOfDigits -= 1
         }
         self.numberArray.removeAtIndex(self.numberArray.count - 1)
         if self.numberArray.isEmpty || self.numberArray == ["-"] {
             resetCalculator()
         }
         println(self.numberArray)
+        self.numberField.text = "".join(self.numberArray)
         //END *************
-        
-        if self.numberField.text == "0." || self.numberField.text == "-0."{
-            resetCalculator()
-        } else if leftMostDigit == "-" && countElements(self.numberField.text) == 2{
-            resetCalculator()
-        } else if countElements(self.numberField.text) == 1 {
-            resetCalculator()
-        } else if rightMostDigit == "." {
-            self.numberField.text = currentNumField.substringWithRange(Range<String.Index>(start: currentNumField.startIndex, end: advance(currentNumField.endIndex, -1)))
-            self.decimalAdded = false
-        } else {
-            self.numberField.text = currentNumField.substringWithRange(Range<String.Index>(start: currentNumField.startIndex, end: advance(currentNumField.endIndex, -1)))
-            self.numOfDigits -= 1
-        }
         
     }
     
@@ -144,13 +133,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
         enterDigits(self.signString, increaseInDigits: 0)
     }
     @IBAction func percentButton(sender: AnyObject) {
-        var percentNumber = turnTextToNumber(self.numberField.text) / 100
-        println("current is now \(percentNumber)")
-        self.decimalAdded = true
-        var numberAsString = String(format:"%.9f", percentNumber)
-        println("the number to display is \(numberAsString)")
-        var finalResult = trimDecimals(numberAsString)
-        self.numberField.text = finalResult
+//        var percentNumber = turnTextToNumber(self.numberField.text) / 100
+//        println("current is now \(percentNumber)")
+//        self.decimalAdded = true
+//        var numberAsString = String(format:"%.9f", percentNumber)
+//        println("the number to display is \(numberAsString)")
+//        var finalResult = trimDecimals(numberAsString)
+//        self.numberField.text = finalResult
         
     }
     
@@ -188,17 +177,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     func enterDigits(digitToEnter: String, increaseInDigits: Int) {
         if digitToEnter == "-" {
-            var currentNumField = self.numberField.text
-            self.numberField.text = "-" + currentNumField
+//            var currentNumField = self.numberField.text
+//            self.numberField.text = "-" + currentNumField
+            
             //*************
             self.numberArray.insert("-", atIndex: 0)
-            
             println("minus sign")
             println(self.numberArray)
         }
         else if digitToEnter == "" {
-            var currentNumField = self.numberField.text
-            self.numberField.text = currentNumField.substringWithRange(Range<String.Index>(start: advance(currentNumField.startIndex, 1), end: currentNumField.endIndex))
+//            var currentNumField = self.numberField.text
+//            self.numberField.text = currentNumField.substringWithRange(Range<String.Index>(start: advance(currentNumField.startIndex, 1), end: currentNumField.endIndex))
             //*************
             self.numberArray.removeAtIndex(0)
             println("plus sign")
@@ -207,11 +196,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         else if self.numOfDigits < 9 {
             if self.numOfDigits == 0 {
             // for the first digit we wipe out the initial 0 on the screen and replace it with the digit entered by the user
-            self.numOfDigits += 1
-            self.numberField.text = self.signString + digitToEnter
+                
+//            self.numOfDigits += 1
+//            self.numberField.text = self.signString + digitToEnter
+                
             // Change the text of the clear button from AC to C just like in Apple's app
                 self.clearButtonText.setTitle("C", forState: UIControlState.Normal)
-                println("successfully entered first digit")
                 
                 //*************
                 if self.signString == "-" {
@@ -220,20 +210,23 @@ class ViewController: UIViewController, UITextFieldDelegate {
                     self.numberArray[0] = digitToEnter
                 }
                 self.numOfIntegers = 1
+                self.numOfDigits += 1
                 println(self.numberArray)
+                println("successfully entered first digit")
                 //END *************
             }
             else {
-                
-                self.numOfDigits += increaseInDigits
-                var previousNumField = self.numberField.text
-                self.numberField.text = previousNumField + digitToEnter
+//                
+//                self.numOfDigits += increaseInDigits
+//                var previousNumField = self.numberField.text
+//                self.numberField.text = previousNumField + digitToEnter
                 
                 //*************
                 self.numberArray.append(digitToEnter)
                 if decimalAdded == false {
                     self.numOfIntegers += 1
                 }
+                self.numOfDigits += increaseInDigits
                 println(self.numberArray)
                 //END *************
                 
@@ -241,6 +234,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         } else {
         println("didn't change anything because too many digits")
         }
+        self.numberField.text = "".join(self.numberArray)
     }
     
     func turnTextToNumber(textToProcess: String)-> Double {
