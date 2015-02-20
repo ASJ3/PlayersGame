@@ -120,8 +120,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if self.numberArray.isEmpty || self.numberArray == ["-"] {
             resetCalculator()
         }
-        println(self.numberArray)
-        self.numberField.text = "".join(self.numberArray)
+        println("the number array is: \(self.numberArray)")
+        formatDisplay()
+//        self.numberField.text = "".join(self.numberArray)
         //END *************
         
     }
@@ -236,14 +237,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     // formatDisplay() main goal is to add "," separator for thousands
     func formatDisplay() {
-        var decimalRemoved  = false
+        println("\n*******\nStart of formatDisplay()")
+        var signRemoved  = false
         var arrayCopy = self.numberArray
+        println("arrayCopy is now \(arrayCopy)")
+        
+        if self.signString == "-" {
+            signRemoved = true
+            arrayCopy.removeAtIndex(0)
+             println("arrayCopy had minus sign removed \(arrayCopy)")
+        }
         
         if self.numOfIntegers > 3 {
-            if self.decimalAdded == true {
-                decimalRemoved = true
-                self.numberArray.removeAtIndex(0)
-            }
             
             // figure out the number of "," separators we need to add
             var separators = (self.numOfIntegers-1) / 3
@@ -256,12 +261,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 arrayCopy.insert(",", atIndex: (self.numOfIntegers - 3))
                 arrayCopy.insert(",", atIndex: (self.numOfIntegers - 6))
             }
-            
-            if decimalRemoved == true {
-                self.numberArray.insert("-", atIndex: 0)
-            }
+        }
+        
+        if signRemoved == true {
+            arrayCopy.insert("-", atIndex: 0)
+            println("arrayCopy had minus sign re-added \(arrayCopy)")
         }
         println(arrayCopy)
+        println(self.numberArray)
         self.numberField.text = "".join(arrayCopy)
     }
     
