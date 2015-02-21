@@ -28,6 +28,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     var firstNumberEntered = false
     var secondNumberEntered = false
+    var startingOtherNumber = false
     
     var calcOperation = ""
     
@@ -93,9 +94,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         var numAsString = "".join(self.numberArray)
         self.firstNumber = (numAsString as NSString).doubleValue
         self.firstNumberEntered = true
+        self.startingOtherNumber = true
         println("the number is \(self.firstNumber)")
         self.calcOperation = "+"
-        resetCalculator()
     }
     
     
@@ -218,6 +219,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     func enterDigits(digitToEnter: String, increaseInDigits: Int) {
+        // If a first number has been entered and then a calculation sign pushed
+        // then the startingOtherNumber becomes true.
+        // Then as soon as we start typing the second number, we reset the display to "0" and we put back startingOtherNumber to false
+        if self.startingOtherNumber == true {
+            self.startingOtherNumber = false
+            resetCalculator()
+        }
+        
         if digitToEnter == "-" {
 //            var currentNumField = self.numberField.text
 //            self.numberField.text = "-" + currentNumField
