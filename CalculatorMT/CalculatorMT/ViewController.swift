@@ -59,18 +59,33 @@ class ViewController: UIViewController, UITextFieldDelegate {
         var numAsString = "".join(self.numberArray)
         self.secondNumber = (numAsString as NSString).doubleValue
         self.secondNumberEntered = true
-        println("the number is \(self.firstNumber)")
+        println("==========\nequalButton(): the first number is \(self.firstNumber). The second number is \(self.secondNumber)")
         var resultNumber = self.firstNumber + self.secondNumber
         var resultString = String(format:"%.10f", resultNumber)
+//        println("equalButton(): the resultString is \(resultString), with lots of 0s")
         var trimmedStringNumber = trimDecimals(resultString)
+        println("equalButton(): the trimmedStringNumber is \(trimmedStringNumber)")
         var arrayCopy = Array(trimmedStringNumber)
         self.numberArray = []
         for i in arrayCopy {
             self.numberArray.append(String(i))
         }
-//        self.numberArray = Array(arrayLiteral: trimmedStringNumber)
         formatDisplay()
 //        resetCalculator()
+        self.firstNumberEntered = true
+        self.secondNumberEntered = false
+        self.secondNumber = 0.0
+        self.firstNumber = ("".join(self.numberArray) as NSString).doubleValue
+        self.clearButtonText.setTitle("C", forState: .Normal)
+        self.numOfDigits = 0
+        self.numOfIntegers = 1
+        self.decimalAdded = false
+        self.signString = ""
+        self.numberArray = ["0"]
+        println("equalButton(): first number is \(self.firstNumber)")
+        println("equalButton(): second number is \(self.secondNumber)")
+        println("the number of digits is \(self.numOfDigits)")
+        println("the number of integers is \(self.numOfIntegers)")
         
     }
     
@@ -153,7 +168,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.signString = ""
         self.numberArray = ["0"]
         self.clearButtonText.setTitle("AC", forState: UIControlState.Normal)
-        println("\n----------\nresetCalculator(): reset a lot of variables to their default values")
+        println("----------\nresetCalculator(): reset a lot of variables to their default values")
     }
     
     // Made an outlet for the clear button so we could change its text from "AC" to "C" and vice versa
@@ -217,17 +232,23 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
         // now we will delete all the unneeded 0 in the decimal part
         for i in 1..<arrayOfDigits.count + 1 {
-            print("i is now \(i). ")
+//            print("i is now \(i). ")
             if arrayOfDigits[arrayOfDigits.count - i] == "0" && rightEdgeOfNumberFound == false {
-                println("getting rid of 0")
-            } else {
-                println("found the right edge of the number")
+//                println("getting rid of 0")
+            } else if arrayOfDigits[arrayOfDigits.count - i] == "." {
+                println("trimDecimals(): found the decimal point and the right edge of the number. ")
+                var copyOfArrayOfDigits = arrayOfDigits[0...arrayOfDigits.count - i - 1]
+                resultingSring = "".join(copyOfArrayOfDigits)
+                self.decimalAdded = false
+                println("resultingSring is now \(copyOfArrayOfDigits)")
+                break
+            }else {
+                println("trimDecimals(): found the right edge of the number. ")
                 var copyOfArrayOfDigits = arrayOfDigits[0...arrayOfDigits.count - i]
                 resultingSring = "".join(copyOfArrayOfDigits)
-                println("foo is now \(copyOfArrayOfDigits)")
+                println("resultingSring is now \(copyOfArrayOfDigits)")
                 break
             }
-            
         }
         return resultingSring
     }
@@ -245,19 +266,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
         
         if digitToEnter == "-" {
-//            var currentNumField = self.numberField.text
-//            self.numberField.text = "-" + currentNumField
-            
-            //*************
             self.numberArray.insert("-", atIndex: 0)
-            println("\n**********\nenterDigits(): minus sign chosen. self.numberArray is now: \(self.numberArray)")
+            println("**********\nenterDigits(): minus sign chosen. self.numberArray is now: \(self.numberArray)")
         }
         else if digitToEnter == "" {
-
-            //*************
             self.numberArray.removeAtIndex(0)
-            println("\n**********\nenterDigits(): plus sign chosen. self.numberArray is now: \(self.numberArray)")
-            formatDisplay()
+            println("**********\nenterDigits(): plus sign chosen. self.numberArray is now: \(self.numberArray)")
         }
         else if self.numOfDigits < 9 {
             if self.numOfDigits == 0 {
@@ -265,7 +279,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
             // Change the text of the clear button from AC to C just like in Apple's app
                 self.clearButtonText.setTitle("C", forState: UIControlState.Normal)
                 
-                //*************
                 if self.signString == "-" {
                     self.numberArray[1] = digitToEnter
                 } else {
@@ -273,22 +286,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 }
                 self.numOfIntegers = 1
                 self.numOfDigits += 1
-                println(self.numberArray)
-                println("\n**********\nenterDigits(): successfully entered first digit")
-                //END *************
+                println("**********\nenterDigits(): successfully entered first digit")
             }
             else {
                 
-                //*************
                 self.numberArray.append(digitToEnter)
                 if decimalAdded == false {
                     self.numOfIntegers += 1
                 }
                 self.numOfDigits += increaseInDigits
-                println(self.numberArray)
-                //END *************
-                
-                println("\n**********\nenterDigits(): Entered digit \(self.numOfDigits)")}
+                println("**********\nenterDigits(): Entered digit \(self.numOfDigits)")}
         } else {
         println("Already \(self.numOfDigits) digits")
         }
@@ -301,20 +308,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         var signRemoved  = false
         var arrayCopy = self.numberArray
-        println("formatDisplay(): arrayCopy is now \(arrayCopy)")
+//        println("formatDisplay(): arrayCopy is now \(arrayCopy)")
         
         if self.signString == "-" {
             signRemoved = true
             arrayCopy.removeAtIndex(0)
-             println("formatdisplay(): arrayCopy had minus sign removed \(arrayCopy)")
         }
         
         if self.numOfIntegers > 3 {
             
             // figure out the number of "," separators we need to add
             var separators = (self.numOfIntegers-1) / 3
-
-            println("formatdisplay(): number of separators \(separators)")
             
             if separators == 1 {
                 arrayCopy.insert(",", atIndex: (self.numOfIntegers - 3))
@@ -326,21 +330,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         if signRemoved == true {
             arrayCopy.insert("-", atIndex: 0)
-            println("formatdisplay(): arrayCopy had minus sign re-added \(arrayCopy)")
         }
-        println(arrayCopy)
-        println(self.numberArray)
+        print("formatDisplay(): formatted arrayCopy is now \(arrayCopy)")
+        println(" and self.numberArray is \(self.numberArray)")
         self.numberField.text = "".join(arrayCopy)
     }
-    
-    
-//    func turnTextToNumber(textToProcess: String)-> Double {
-//        var processedNumber = (textToProcess as NSString).doubleValue
-//        println("the processed Number is now: \(processedNumber)")
-//        return processedNumber
-//    }
-    
-    
     
     // textFieldShouldBeginEditing function returning false is only because we are using a textField to display our text (free text resizing ability)
     // but we don't want a keyboard to display when clicking on the textField

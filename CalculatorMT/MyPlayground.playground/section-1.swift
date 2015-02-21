@@ -110,7 +110,18 @@ array2.removeAtIndex(0)
 
 array1
 array2
+println("hello first")
+print("hello second")
+println("hello third")
+var helloArray = ["0","1"]
+helloArray.count
+var byebyeArray = []
+byebyeArray.count
 
+var arraySign = [""]
+var numberArray = ["1","2","3","4"]
+
+var combinedArray = arraySign + numberArray
 
 
 

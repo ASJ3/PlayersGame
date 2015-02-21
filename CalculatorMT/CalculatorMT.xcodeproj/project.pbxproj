@@ -14,6 +14,7 @@
 		78416ED21A92D4C500191DD0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78416ED11A92D4C500191DD0 /* Images.xcassets */; };
 		78416ED51A92D4C500191DD0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78416ED31A92D4C500191DD0 /* LaunchScreen.xib */; };
 		78416EE11A92D4C500191DD0 /* CalculatorMTTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78416EE01A92D4C500191DD0 /* CalculatorMTTests.swift */; };
+		78A449B11A99385A000C8D8C /* CalcNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A449B01A99385A000C8D8C /* CalcNumber.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		78416EDA1A92D4C500191DD0 /* CalculatorMTTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalculatorMTTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		78416EDF1A92D4C500191DD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		78416EE01A92D4C500191DD0 /* CalculatorMTTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorMTTests.swift; sourceTree = "<group>"; };
+		78A449B01A99385A000C8D8C /* CalcNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalcNumber.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				78416EC71A92D4C500191DD0 /* AppDelegate.swift */,
 				78416ECC1A92D4C500191DD0 /* ViewController.swift */,
 				78416ECE1A92D4C500191DD0 /* Main.storyboard */,
+				78A449B01A99385A000C8D8C /* CalcNumber.swift */,
 				78416ED11A92D4C500191DD0 /* Images.xcassets */,
 				78416ED31A92D4C500191DD0 /* LaunchScreen.xib */,
 				78416EC91A92D4C500191DD0 /* CalculatorMT.xcdatamodeld */,
@@ -218,6 +221,7 @@
 				78416ECD1A92D4C500191DD0 /* ViewController.swift in Sources */,
 				78416ECB1A92D4C500191DD0 /* CalculatorMT.xcdatamodeld in Sources */,
 				78416EC81A92D4C500191DD0 /* AppDelegate.swift in Sources */,
+				78A449B11A99385A000C8D8C /* CalcNumber.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
