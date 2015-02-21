@@ -122,9 +122,26 @@ class ViewController: UIViewController, UITextFieldDelegate {
         enterDigits("9", increaseInDigits: 1)
     }
     @IBAction func multiplyButton(sender: AnyObject) {
+        if self.clearButtonText.titleLabel!.text == "AC" {
+            println("button is AC")
+        } else if self.clearButtonText.titleLabel!.text == "C" {
+            println("button is C")
+        } else {
+            println("What is going on??")
+        }
     }
     @IBAction func clearButton(sender: AnyObject) {
+        if  self.firstNumberEntered == true && self.clearButtonText.titleLabel!.text == "AC" {
+            self.firstNumberEntered = false
+            self.firstNumber = 0.0
+        }
+        if self.firstNumberEntered == true {
+            self.clearButtonText.setTitle("AC", forState: .Normal)
+        }
         resetCalculator()
+        println("clearButton: first number is \(self.firstNumber)")
+        println("second number is \(self.secondNumber)")
+        
     }
     
     func resetCalculator() {
@@ -136,7 +153,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.signString = ""
         self.numberArray = ["0"]
         self.clearButtonText.setTitle("AC", forState: UIControlState.Normal)
-        println("reset everything to 0")
+        println("\n----------\nresetCalculator(): reset a lot of variables to their default values")
     }
     
     // Made an outlet for the clear button so we could change its text from "AC" to "C" and vice versa
@@ -233,15 +250,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
             //*************
             self.numberArray.insert("-", atIndex: 0)
-            println("minus sign")
-            println(self.numberArray)
+            println("\n**********\nenterDigits(): minus sign chosen. self.numberArray is now: \(self.numberArray)")
         }
         else if digitToEnter == "" {
 
             //*************
             self.numberArray.removeAtIndex(0)
-            println("plus sign")
-            println(self.numberArray)
+            println("\n**********\nenterDigits(): plus sign chosen. self.numberArray is now: \(self.numberArray)")
             formatDisplay()
         }
         else if self.numOfDigits < 9 {
@@ -259,7 +274,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 self.numOfIntegers = 1
                 self.numOfDigits += 1
                 println(self.numberArray)
-                println("successfully entered first digit")
+                println("\n**********\nenterDigits(): successfully entered first digit")
                 //END *************
             }
             else {
@@ -273,26 +288,25 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 println(self.numberArray)
                 //END *************
                 
-                println("Entered digit \(self.numOfDigits)")}
+                println("\n**********\nenterDigits(): Entered digit \(self.numOfDigits)")}
         } else {
         println("Already \(self.numOfDigits) digits")
         }
         self.numberField.text = "".join(self.numberArray)
         formatDisplay()
-        println("after format display")
     }
     
     // formatDisplay() main goal is to add "," separator for thousands
     func formatDisplay() {
-        println("\n*******\nStart of formatDisplay()")
+        
         var signRemoved  = false
         var arrayCopy = self.numberArray
-        println("arrayCopy is now \(arrayCopy)")
+        println("formatDisplay(): arrayCopy is now \(arrayCopy)")
         
         if self.signString == "-" {
             signRemoved = true
             arrayCopy.removeAtIndex(0)
-             println("arrayCopy had minus sign removed \(arrayCopy)")
+             println("formatdisplay(): arrayCopy had minus sign removed \(arrayCopy)")
         }
         
         if self.numOfIntegers > 3 {
@@ -300,7 +314,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             // figure out the number of "," separators we need to add
             var separators = (self.numOfIntegers-1) / 3
 
-            println("format display: number of separators \(separators)")
+            println("formatdisplay(): number of separators \(separators)")
             
             if separators == 1 {
                 arrayCopy.insert(",", atIndex: (self.numOfIntegers - 3))
@@ -312,7 +326,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         if signRemoved == true {
             arrayCopy.insert("-", atIndex: 0)
-            println("arrayCopy had minus sign re-added \(arrayCopy)")
+            println("formatdisplay(): arrayCopy had minus sign re-added \(arrayCopy)")
         }
         println(arrayCopy)
         println(self.numberArray)
