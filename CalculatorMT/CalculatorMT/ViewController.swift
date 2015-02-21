@@ -24,10 +24,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var signString = ""
     // Two variables to store our values when we are calculating
     var firstNumber: Double = 0.0
-    var SecondNumber: Double = 0.0
+    var secondNumber: Double = 0.0
     
     var firstNumberEntered = false
-    var secondNumbeEntered = false
+    var secondNumberEntered = false
+    
+    var calcOperation = ""
     
     @IBOutlet weak var numberField: UITextField!
     @IBAction func zeroButton(sender: AnyObject) {
@@ -48,9 +50,33 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    
+    
     @IBAction func equalButton(sender: AnyObject) {
 //        turnTextToNumber(self.numberField.text)
+        
+        var numAsString = "".join(self.numberArray)
+        self.secondNumber = (numAsString as NSString).doubleValue
+        self.secondNumberEntered = true
+        println("the number is \(self.firstNumber)")
+        var resultNumber = self.firstNumber + self.secondNumber
+        var resultString = String(format:"%.10f", resultNumber)
+        var trimmedStringNumber = trimDecimals(resultString)
+        var arrayCopy = Array(trimmedStringNumber)
+        self.numberArray = []
+        for i in arrayCopy {
+            self.numberArray.append(String(i))
+        }
+//        self.numberArray = Array(arrayLiteral: trimmedStringNumber)
+        formatDisplay()
+//        resetCalculator()
+        
     }
+    
+    
+    
+    
+    
     @IBAction func oneButton(sender: AnyObject) {
         enterDigits("1", increaseInDigits: 1)
     }
@@ -60,8 +86,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func threeButton(sender: AnyObject) {
         enterDigits("3", increaseInDigits: 1)
     }
+    
+    
+    
     @IBAction func plusButton(sender: AnyObject) {
+        var numAsString = "".join(self.numberArray)
+        self.firstNumber = (numAsString as NSString).doubleValue
+        self.firstNumberEntered = true
+        println("the number is \(self.firstNumber)")
+        self.calcOperation = "+"
+        resetCalculator()
     }
+    
+    
+    
     @IBAction func fourButton(sender: AnyObject) {
         enterDigits("4", increaseInDigits: 1)
     }
