@@ -50,17 +50,18 @@ class CalcNumber {
         
         if numberOfDigitsSoFar < 9 {
             if digitToAdd == "." && self.decimalAdded == false {
-                self.decimalAdded = true
                 if self.arrayNumber == [] {
                   self.arrayNumber.append("0")
                 }
                 self.arrayNumber.append(".")
+                self.decimalAdded = true
+            } else if digitToAdd == "." && self.decimalAdded == true {
+                println("addDigit(): already added a decimal point")
             } else {
                 self.arrayNumber.append(digitToAdd)
             }
-            println("addDigit(): the arrayNumber is \(self.arrayNumber)")
         } else {
-            println("addDigit(): not adding \(digitToAdd) because too many digits")
+            println("addDigit(): not adding \(digitToAdd) because too many digits ")
         }
     }
     
@@ -89,7 +90,7 @@ class CalcNumber {
         if numberOfIntegers > 6 {
             arrayNumberCopy.insert(",", atIndex: numberOfIntegers - 6)
         }
-        println("the number has \(numberOfIntegers) Integers")
+        println("addDigit(): the arrayNumber is \(self.arrayNumber) ( \(numberOfIntegers) Integers)")
         var combinedArray = self.arraySign + arrayNumberCopy
         var finalString = "".join(combinedArray)
         return finalString

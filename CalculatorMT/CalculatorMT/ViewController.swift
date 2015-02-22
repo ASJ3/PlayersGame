@@ -26,9 +26,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var firstNumber: Double = 0.0
     var secondNumber: Double = 0.0
     
+    var numberOfKeystrokes = 0
+    
     var currentCalcNumber = CalcNumber()
     
     var firstCalcNumber = CalcNumber()
+    var secondCalcNumber = CalcNumber()
     
     var firstNumberEntered = false
     var secondNumberEntered = false
@@ -39,17 +42,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var numberField: UITextField!
     @IBAction func zeroButton(sender: AnyObject) {
         self.currentCalcNumber.addDigit("0")
+        clearButtonManager("number")
         self.numberField.text = self.currentCalcNumber.turnIntoFormattedString()
     }
     @IBAction func decimalButton(sender: AnyObject) {
         self.currentCalcNumber.addDigit(".")
+        clearButtonManager("number")
         self.numberField.text = self.currentCalcNumber.turnIntoFormattedString()
     }
     
     
     
     @IBAction func equalButton(sender: AnyObject) {
-        
         var numAsString = "".join(self.numberArray)
         self.secondNumber = (numAsString as NSString).doubleValue
         self.secondNumberEntered = true
@@ -89,14 +93,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func oneButton(sender: AnyObject) {
         self.currentCalcNumber.addDigit("1")
+        clearButtonManager("number")
         self.numberField.text = self.currentCalcNumber.turnIntoFormattedString()
     }
     @IBAction func twoButton(sender: AnyObject) {
         self.currentCalcNumber.addDigit("2")
+        clearButtonManager("number")
         self.numberField.text = self.currentCalcNumber.turnIntoFormattedString()
     }
     @IBAction func threeButton(sender: AnyObject) {
         self.currentCalcNumber.addDigit("3")
+        clearButtonManager("number")
         self.numberField.text = self.currentCalcNumber.turnIntoFormattedString()
     }
     
@@ -115,24 +122,29 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func fourButton(sender: AnyObject) {
         self.currentCalcNumber.addDigit("4")
+        clearButtonManager("number")
         self.numberField.text = self.currentCalcNumber.turnIntoFormattedString()
     }
     @IBAction func fiveButton(sender: AnyObject) {
         self.currentCalcNumber.addDigit("5")
+        clearButtonManager("number")
         self.numberField.text = self.currentCalcNumber.turnIntoFormattedString()
     }
     @IBAction func sixButton(sender: AnyObject) {
         self.currentCalcNumber.addDigit("6")
+        clearButtonManager("number")
         self.numberField.text = self.currentCalcNumber.turnIntoFormattedString()
     }
     @IBAction func minusButton(sender: AnyObject) {
     }
     @IBAction func sevenButton(sender: AnyObject) {
         self.currentCalcNumber.addDigit("7")
+        clearButtonManager("number")
         self.numberField.text = self.currentCalcNumber.turnIntoFormattedString()
     }
     @IBAction func eightButton(sender: AnyObject) {
         self.currentCalcNumber.addDigit("8")
+        clearButtonManager("number")
         self.numberField.text = self.currentCalcNumber.turnIntoFormattedString()
     }
     @IBAction func nineButton(sender: AnyObject) {
@@ -151,15 +163,34 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func clearButton(sender: AnyObject) {
         if  self.firstNumberEntered == true && self.clearButtonText.titleLabel!.text == "AC" {
             self.firstNumberEntered = false
-            self.firstNumber = 0.0
+            self.firstCalcNumber = CalcNumber()
+            println("resetting the firstCalcNumber")
         }
         if self.firstNumberEntered == true {
             self.clearButtonText.setTitle("AC", forState: .Normal)
+            self.currentCalcNumber = CalcNumber()
+            println("resetting the currentCalcNumber")
         }
-        resetCalculator()
-        println("clearButton: first number is \(self.firstNumber)")
-        println("second number is \(self.secondNumber)")
+        println("something happening here?")
+        self.numberField.text = self.currentCalcNumber.turnIntoFormattedString()
+        clearButtonManager("clear")
         
+//        resetCalculator()
+//        println("clearButton: first number is \(self.firstNumber)")
+//        println("second number is \(self.secondNumber)")
+        
+    }
+    
+    func clearButtonManager(Keystroke: String) {
+        if Keystroke == "number" {
+            self.numberOfKeystrokes += 1
+        }
+        if self.numberOfKeystrokes > 0 {
+            self.clearButtonText.setTitle("C", forState: .Normal)
+        } else {
+            self.clearButtonText.setTitle("AC", forState: .Normal)
+        }
+
     }
     
     func resetCalculator() {
@@ -205,13 +236,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func percentButton(sender: AnyObject) {
-//        var percentNumber = turnTextToNumber(self.numberField.text) / 100
-//        println("current is now \(percentNumber)")
-//        self.decimalAdded = true
-//        var numberAsString = String(format:"%.9f", percentNumber)
-//        println("the number to display is \(numberAsString)")
-//        var finalResult = trimDecimals(numberAsString)
-//        self.numberField.text = finalResult
         
     }
     
