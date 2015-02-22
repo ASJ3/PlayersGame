@@ -122,6 +122,13 @@ var arraySign = [""]
 var numberArray = ["1","2","3","4"]
 
 var combinedArray = arraySign + numberArray
+find(combinedArray, "")!
+var arrayNew = ["1","2",".","4","5","6","7"]
+arrayNew.count
+arrayNew.insert(",", atIndex: 4)
+arrayNew.insert(",", atIndex: 1)
+find(arrayNew, ".")!
+
 
 
 

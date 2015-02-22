@@ -35,7 +35,6 @@ class CalcNumber {
             self.decimalAdded = true
         }
         self.arrayNumber.append(digitToAdd)
-        
     }
     
     // turnIntoDouble() is used to turn our array holding digits and the one holding the sign of the number into a real number so we can do calculations on that number
@@ -47,9 +46,25 @@ class CalcNumber {
     }
     
     func turnIntoFormattedString()->String {
+        var arrayNumberCopy = self.arrayNumber
         
+        // The numberOfIntegers helps us figure out if we need "," separators for large numbers
+        var numberOfIntegers = 1
+        if self.decimalAdded == true {
+            numberOfIntegers = find(self.arrayNumber, ".")!-1
+      } else {
+            numberOfIntegers = self.arrayNumber.count
+        }
         
-        return "hello"
+        if numberOfIntegers > 6 {
+            arrayNumberCopy.insert(",", atIndex: arrayNumberCopy.count-6)
+        }
+        if numberOfIntegers > 3 {
+            arrayNumberCopy.insert(",", atIndex: arrayNumberCopy.count-3)
+        }
+        var combinedArray = self.arraySign + arrayNumberCopy
+        var finalString = "".join(combinedArray)
+        return finalString
     }
     
 }
