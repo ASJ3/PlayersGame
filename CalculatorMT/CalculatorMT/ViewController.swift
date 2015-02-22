@@ -26,6 +26,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var firstNumber: Double = 0.0
     var secondNumber: Double = 0.0
     
+    var currentCalcNumber = CalcNumber()
+    
+    var firstCalcNumber = CalcNumber()
+    
     var firstNumberEntered = false
     var secondNumberEntered = false
     var startingOtherNumber = false
@@ -34,27 +38,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var numberField: UITextField!
     @IBAction func zeroButton(sender: AnyObject) {
-        // if the user types 0 at first, do nothing, else enter "0"
-        if numOfDigits != 0 {
-        enterDigits("0", increaseInDigits: 1)
-        }
+        self.currentCalcNumber.addDigit("0")
+        self.numberField.text = self.currentCalcNumber.turnIntoFormattedString()
     }
     @IBAction func decimalButton(sender: AnyObject) {
-        // If the user tap the decimal button at first
-        if numOfDigits == 0 {
-            enterDigits("0", increaseInDigits: 1)
-            enterDigits(".", increaseInDigits: 0)
-            self.decimalAdded = true
-        } else if self.decimalAdded == false && self.numOfDigits < 9 {
-            self.decimalAdded = true
-            enterDigits(".", increaseInDigits: 0)
-        }
+        self.currentCalcNumber.addDigit(".")
+        self.numberField.text = self.currentCalcNumber.turnIntoFormattedString()
     }
     
     
     
     @IBAction func equalButton(sender: AnyObject) {
-//        turnTextToNumber(self.numberField.text)
         
         var numAsString = "".join(self.numberArray)
         self.secondNumber = (numAsString as NSString).doubleValue
@@ -62,7 +56,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         println("==========\nequalButton(): the first number is \(self.firstNumber). The second number is \(self.secondNumber)")
         var resultNumber = self.firstNumber + self.secondNumber
         var resultString = String(format:"%.10f", resultNumber)
-//        println("equalButton(): the resultString is \(resultString), with lots of 0s")
+
         var trimmedStringNumber = trimDecimals(resultString)
         println("equalButton(): the trimmedStringNumber is \(trimmedStringNumber)")
         var arrayCopy = Array(trimmedStringNumber)
@@ -70,7 +64,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         for i in arrayCopy {
             self.numberArray.append(String(i))
         }
-        formatDisplay()
+//        formatDisplay()
 //        resetCalculator()
         self.firstNumberEntered = true
         self.secondNumberEntered = false
@@ -94,13 +88,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func oneButton(sender: AnyObject) {
-        enterDigits("1", increaseInDigits: 1)
+        self.currentCalcNumber.addDigit("1")
+        self.numberField.text = self.currentCalcNumber.turnIntoFormattedString()
     }
     @IBAction func twoButton(sender: AnyObject) {
-        enterDigits("2", increaseInDigits: 1)
+        self.currentCalcNumber.addDigit("2")
+        self.numberField.text = self.currentCalcNumber.turnIntoFormattedString()
     }
     @IBAction func threeButton(sender: AnyObject) {
-        enterDigits("3", increaseInDigits: 1)
+        self.currentCalcNumber.addDigit("3")
+        self.numberField.text = self.currentCalcNumber.turnIntoFormattedString()
     }
     
     
@@ -117,24 +114,30 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func fourButton(sender: AnyObject) {
-        enterDigits("4", increaseInDigits: 1)
+        self.currentCalcNumber.addDigit("4")
+        self.numberField.text = self.currentCalcNumber.turnIntoFormattedString()
     }
     @IBAction func fiveButton(sender: AnyObject) {
-        enterDigits("5", increaseInDigits: 1)
+        self.currentCalcNumber.addDigit("5")
+        self.numberField.text = self.currentCalcNumber.turnIntoFormattedString()
     }
     @IBAction func sixButton(sender: AnyObject) {
-        enterDigits("6", increaseInDigits: 1)
+        self.currentCalcNumber.addDigit("6")
+        self.numberField.text = self.currentCalcNumber.turnIntoFormattedString()
     }
     @IBAction func minusButton(sender: AnyObject) {
     }
     @IBAction func sevenButton(sender: AnyObject) {
-        enterDigits("7", increaseInDigits: 1)
+        self.currentCalcNumber.addDigit("7")
+        self.numberField.text = self.currentCalcNumber.turnIntoFormattedString()
     }
     @IBAction func eightButton(sender: AnyObject) {
-        enterDigits("8", increaseInDigits: 1)
+        self.currentCalcNumber.addDigit("8")
+        self.numberField.text = self.currentCalcNumber.turnIntoFormattedString()
     }
     @IBAction func nineButton(sender: AnyObject) {
-        enterDigits("9", increaseInDigits: 1)
+        self.currentCalcNumber.addDigit("9")
+        self.numberField.text = self.currentCalcNumber.turnIntoFormattedString()
     }
     @IBAction func multiplyButton(sender: AnyObject) {
         if self.clearButtonText.titleLabel!.text == "AC" {
@@ -177,7 +180,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     // deleteRightDigit() is a function to delete the last digit, one at a time, and can go back to the default "0"
     @IBAction func deleteRightDigit(sender: AnyObject) {
 
-        //*********
         var lastElement = self.numberArray.last!
         if lastElement == "." {
             self.decimalAdded = false
@@ -192,19 +194,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
             resetCalculator()
         }
         println("the number array is: \(self.numberArray)")
-        formatDisplay()
-//        self.numberField.text = "".join(self.numberArray)
-        //END *************
+//        formatDisplay()
         
     }
     
     @IBAction func changeSignButton(sender: AnyObject) {
-        if self.signString == "" {
-            self.signString = "-"
-        } else {
-            self.signString = ""
-        }
-        enterDigits(self.signString, increaseInDigits: 0)
+
+        self.currentCalcNumber.changeSign()
+        self.numberField.text = self.currentCalcNumber.turnIntoFormattedString()
     }
     
     @IBAction func percentButton(sender: AnyObject) {
@@ -220,122 +217,44 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     // The purpose of trimDecimals is to cut the numbers of "0" at the end of the number, so as to only show the number of decimals that are needed
     func trimDecimals(numAsText: String)->String {
-        var rightEdgeOfNumberFound = false
-        var arrayOfDigits = [String]()
-        var resultingSring = "0"
-        
-        for i in numAsText {
-            var digitAsString = String(i)
-            arrayOfDigits.append(digitAsString)
-        }
-        println("array of Digits is now \(arrayOfDigits)")
-
-        // now we will delete all the unneeded 0 in the decimal part
-        for i in 1..<arrayOfDigits.count + 1 {
-//            print("i is now \(i). ")
-            if arrayOfDigits[arrayOfDigits.count - i] == "0" && rightEdgeOfNumberFound == false {
-//                println("getting rid of 0")
-            } else if arrayOfDigits[arrayOfDigits.count - i] == "." {
-                println("trimDecimals(): found the decimal point and the right edge of the number. ")
-                var copyOfArrayOfDigits = arrayOfDigits[0...arrayOfDigits.count - i - 1]
-                resultingSring = "".join(copyOfArrayOfDigits)
-                self.decimalAdded = false
-                println("resultingSring is now \(copyOfArrayOfDigits)")
-                break
-            }else {
-                println("trimDecimals(): found the right edge of the number. ")
-                var copyOfArrayOfDigits = arrayOfDigits[0...arrayOfDigits.count - i]
-                resultingSring = "".join(copyOfArrayOfDigits)
-                println("resultingSring is now \(copyOfArrayOfDigits)")
-                break
-            }
-        }
-        return resultingSring
+//        var rightEdgeOfNumberFound = false
+//        var arrayOfDigits = [String]()
+//        var resultingSring = "0"
+//        
+//        for i in numAsText {
+//            var digitAsString = String(i)
+//            arrayOfDigits.append(digitAsString)
+//        }
+//        println("array of Digits is now \(arrayOfDigits)")
+//
+//        // now we will delete all the unneeded 0 in the decimal part
+//        for i in 1..<arrayOfDigits.count + 1 {
+////            print("i is now \(i). ")
+//            if arrayOfDigits[arrayOfDigits.count - i] == "0" && rightEdgeOfNumberFound == false {
+////                println("getting rid of 0")
+//            } else if arrayOfDigits[arrayOfDigits.count - i] == "." {
+//                println("trimDecimals(): found the decimal point and the right edge of the number. ")
+//                var copyOfArrayOfDigits = arrayOfDigits[0...arrayOfDigits.count - i - 1]
+//                resultingSring = "".join(copyOfArrayOfDigits)
+//                self.decimalAdded = false
+//                println("resultingSring is now \(copyOfArrayOfDigits)")
+//                break
+//            }else {
+//                println("trimDecimals(): found the right edge of the number. ")
+//                var copyOfArrayOfDigits = arrayOfDigits[0...arrayOfDigits.count - i]
+//                resultingSring = "".join(copyOfArrayOfDigits)
+//                println("resultingSring is now \(copyOfArrayOfDigits)")
+//                break
+//            }
+//        }
+//        return resultingSring
+        return "hello"
     }
     
     @IBAction func divideButton(sender: AnyObject) {
     }
 
-    func enterDigits(digitToEnter: String, increaseInDigits: Int) {
-        // If a first number has been entered and then a calculation sign pushed
-        // then the startingOtherNumber becomes true.
-        // Then as soon as we start typing the second number, we reset the display to "0" and we put back startingOtherNumber to false
-        if self.startingOtherNumber == true {
-            self.startingOtherNumber = false
-            resetCalculator()
-        }
-        
-        if digitToEnter == "-" {
-            self.numberArray.insert("-", atIndex: 0)
-            println("**********\nenterDigits(): minus sign chosen. self.numberArray is now: \(self.numberArray)")
-        }
-        else if digitToEnter == "" {
-            self.numberArray.removeAtIndex(0)
-            println("**********\nenterDigits(): plus sign chosen. self.numberArray is now: \(self.numberArray)")
-        }
-        else if self.numOfDigits < 9 {
-            if self.numOfDigits == 0 {
-                
-            // Change the text of the clear button from AC to C just like in Apple's app
-                self.clearButtonText.setTitle("C", forState: UIControlState.Normal)
-                
-                if self.signString == "-" {
-                    self.numberArray[1] = digitToEnter
-                } else {
-                    self.numberArray[0] = digitToEnter
-                }
-                self.numOfIntegers = 1
-                self.numOfDigits += 1
-                println("**********\nenterDigits(): successfully entered first digit")
-            }
-            else {
-                
-                self.numberArray.append(digitToEnter)
-                if decimalAdded == false {
-                    self.numOfIntegers += 1
-                }
-                self.numOfDigits += increaseInDigits
-                println("**********\nenterDigits(): Entered digit \(self.numOfDigits)")}
-        } else {
-        println("Already \(self.numOfDigits) digits")
-        }
-        self.numberField.text = "".join(self.numberArray)
-        formatDisplay()
-    }
-    
-    // formatDisplay() main goal is to add "," separator for thousands
-    func formatDisplay() {
-        
-        var signRemoved  = false
-        var arrayCopy = self.numberArray
-//        println("formatDisplay(): arrayCopy is now \(arrayCopy)")
-        
-        if self.signString == "-" {
-            signRemoved = true
-            arrayCopy.removeAtIndex(0)
-        }
-        
-        if self.numOfIntegers > 3 {
-            
-            // figure out the number of "," separators we need to add
-            var separators = (self.numOfIntegers-1) / 3
-            
-            if separators == 1 {
-                arrayCopy.insert(",", atIndex: (self.numOfIntegers - 3))
-            } else if separators == 2 {
-                arrayCopy.insert(",", atIndex: (self.numOfIntegers - 3))
-                arrayCopy.insert(",", atIndex: (self.numOfIntegers - 6))
-            }
-        }
-        
-        if signRemoved == true {
-            arrayCopy.insert("-", atIndex: 0)
-        }
-        print("formatDisplay(): formatted arrayCopy is now \(arrayCopy)")
-        println(" and self.numberArray is \(self.numberArray)")
-        self.numberField.text = "".join(arrayCopy)
-    }
-    
+
     // textFieldShouldBeginEditing function returning false is only because we are using a textField to display our text (free text resizing ability)
     // but we don't want a keyboard to display when clicking on the textField
     func textFieldShouldBeginEditing(textField: UITextField)-> Bool {
@@ -345,11 +264,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.numberField.delegate = self
+        
+        var newString = firstCalcNumber.turnIntoFormattedString()
+        println("newString is now \(newString)")
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
     }
 
 }

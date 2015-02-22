@@ -16,13 +16,17 @@ class CalcNumber {
     var negativeNumber = false
     var decimalAdded = false
     
+    init() {
+        
+    }
+    
     // When the user presses the +/- button
     // the changeSign function manages to change the arraySign accordingly
-    func changeSign(sign: String) {
-        if sign == "-" {
+    func changeSign() {
+        if self.arraySign == [""] {
             self.arraySign = ["-"]
             self.negativeNumber = true
-        } else if sign == "" {
+        } else if self.arraySign == ["-"] {
             self.arraySign = [""]
             self.negativeNumber = false
         }
@@ -31,10 +35,33 @@ class CalcNumber {
     // When the user presses one of the digits on the calculator keyboard 
     // the addDigit function manages to change the arrayNumber accordingly
     func addDigit(digitToAdd: String) {
-        if digitToAdd == "." && self.decimalAdded == false {
-            self.decimalAdded = true
+        // for the first digit pressed, we need to take care of the "0" present by default in self.arrayNumber
+        if self.arrayNumber == ["0"] {
+            self.arrayNumber = []
         }
-        self.arrayNumber.append(digitToAdd)
+        
+        // We don't want the user to enter more than 9 digits (similar to the Apple calculator app)
+        var numberOfDigitsSoFar: Int = 0
+        if self.decimalAdded == true {
+            numberOfDigitsSoFar = self.arrayNumber.count - 1
+        } else {
+            numberOfDigitsSoFar = self.arrayNumber.count
+        }
+        
+        if numberOfDigitsSoFar < 9 {
+            if digitToAdd == "." && self.decimalAdded == false {
+                self.decimalAdded = true
+                if self.arrayNumber == [] {
+                  self.arrayNumber.append("0")
+                }
+                self.arrayNumber.append(".")
+            } else {
+                self.arrayNumber.append(digitToAdd)
+            }
+            println("addDigit(): the arrayNumber is \(self.arrayNumber)")
+        } else {
+            println("addDigit(): not adding \(digitToAdd) because too many digits")
+        }
     }
     
     // turnIntoDouble() is used to turn our array holding digits and the one holding the sign of the number into a real number so we can do calculations on that number
@@ -51,17 +78,18 @@ class CalcNumber {
         // The numberOfIntegers helps us figure out if we need "," separators for large numbers
         var numberOfIntegers = 1
         if self.decimalAdded == true {
-            numberOfIntegers = find(self.arrayNumber, ".")!-1
+            numberOfIntegers = find(self.arrayNumber, ".")!
       } else {
             numberOfIntegers = self.arrayNumber.count
         }
         
-        if numberOfIntegers > 6 {
-            arrayNumberCopy.insert(",", atIndex: arrayNumberCopy.count-6)
-        }
         if numberOfIntegers > 3 {
-            arrayNumberCopy.insert(",", atIndex: arrayNumberCopy.count-3)
+            arrayNumberCopy.insert(",", atIndex: numberOfIntegers - 3)
         }
+        if numberOfIntegers > 6 {
+            arrayNumberCopy.insert(",", atIndex: numberOfIntegers - 6)
+        }
+        println("the number has \(numberOfIntegers) Integers")
         var combinedArray = self.arraySign + arrayNumberCopy
         var finalString = "".join(combinedArray)
         return finalString
