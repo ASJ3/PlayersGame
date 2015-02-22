@@ -19,6 +19,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var firstCalcNumber = CalcNumber()
     var secondCalcNumber = CalcNumber()
     
+    var operationNumbers = [CalcNumber]()
+    
     var firstNumberEntered = false
     var secondNumberEntered = false
     var startingOtherNumber = false
@@ -87,6 +89,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func plusButton(sender: AnyObject) {
+        self.calcOperation = "+"
+        calcDisplayManager("operation")
     }
 
     @IBAction func minusButton(sender: AnyObject) {
@@ -107,10 +111,28 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func calcDisplayManager(Keystroke: String) {
         if Keystroke == "number" {
             self.numberOfKeystrokes += 1
-        } else if Keystroke == "clear" {
+        }
+        else if Keystroke == "operation" {
+            self.operationNumbers.append(self.currentCalcNumber)
+            println("calcDisplayManager(): the operationsNumber array is \(self.operationNumbers[0].arrayNumber)")
+            self.currentCalcNumber = CalcNumber()
+            self.numberOfKeystrokes = 0
+            self.firstNumberEntered = true
+        }
+        else if Keystroke == "clear" {
+            if self.operationNumbers.count == 1 && self.firstNumberEntered == true {
+                self.firstNumberEntered = false
+                self.currentCalcNumber = CalcNumber()
+                println("calcDisplayManager(): resetting the second number to 0. The first number is still stored and \(self.operationNumbers[0].arrayNumber)")
+                
+            } else if self.operationNumbers.count == 1 && self.firstNumberEntered == false {
+                self.operationNumbers = []
+                println("calcDisplayManager(): resetting the first number to 0. The operationsNumber array has a count of \(self.operationNumbers.count)")
+            }
             self.currentCalcNumber = CalcNumber()
             self.numberOfKeystrokes = 0
         }
+        
         if self.numberOfKeystrokes > 0 {
             self.clearButtonText.setTitle("C", forState: .Normal)
         } else {
