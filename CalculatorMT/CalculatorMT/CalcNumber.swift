@@ -20,6 +20,46 @@ class CalcNumber {
         
     }
     
+    func initWithDouble(Number: Double) {
+        println("**** starting initWithDouble")
+        var processedNumber = Number
+        var processedString = ""
+        self.arrayNumber = []
+        var arrayCopy = [String]()
+        if Number < 0 {
+            changeSign()
+            processedNumber *= -1
+        }
+        processedString = String(format:"%.9f", processedNumber)
+        println("the processedString is \(processedString)")
+        for i in processedString {
+            if i == "." {
+               self.decimalAdded = true
+            }
+            arrayNumber.append(String(i))
+        }
+        
+        arrayCopy = arrayNumber
+        println("arrayCopy is \(arrayCopy)")
+        if self.decimalAdded == true {
+        for i in 0...self.arrayNumber.count-1 {
+            if self.arrayNumber[self.arrayNumber.count - 1 - i] == "0" {
+                arrayCopy.removeAtIndex(arrayCopy.endIndex - 1)
+            }
+            else if self.arrayNumber[self.arrayNumber.count - 1 - i] == "."{
+                arrayCopy.removeAtIndex(arrayCopy.endIndex - 1)
+                self.decimalAdded = false
+                break
+            } else {
+                break
+            }
+        }
+        self.arrayNumber = arrayCopy
+        }
+        
+        
+    }
+    
     // When the user presses the +/- button
     // the changeSign function manages to change the arraySign accordingly
     func changeSign() {
@@ -48,7 +88,7 @@ class CalcNumber {
             numberOfDigitsSoFar = self.arrayNumber.count
         }
         
-        if numberOfDigitsSoFar < 9 {
+        if numberOfDigitsSoFar < 9{
             if digitToAdd == "." && self.decimalAdded == false {
                 if self.arrayNumber == [] {
                   self.arrayNumber.append("0")
@@ -85,10 +125,12 @@ class CalcNumber {
         }
         
         if numberOfIntegers > 3 {
-            arrayNumberCopy.insert(",", atIndex: numberOfIntegers - 3)
-        }
-        if numberOfIntegers > 6 {
-            arrayNumberCopy.insert(",", atIndex: numberOfIntegers - 6)
+            for i in 1...numberOfIntegers - 1 {
+                if i % 3 == 0 {
+                    arrayNumberCopy.insert(",", atIndex: numberOfIntegers - i)
+                    println("inserted one , at \(i)")
+                }
+            }
         }
         println("addDigit(): the arrayNumber is \(self.arrayNumber) (\(numberOfIntegers) Integers)")
         var combinedArray = self.arraySign + arrayNumberCopy

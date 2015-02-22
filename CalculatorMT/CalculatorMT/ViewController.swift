@@ -86,6 +86,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func equalButton(sender: AnyObject) {
+        var result = 0.0
+        if self.firstNumberEntered == true {
+            self.operationNumbers.append(self.currentCalcNumber)
+        }
+        if self.calcOperation == "+" {
+            result = self.operationNumbers[0].turnIntoDouble() + self.operationNumbers[1].turnIntoDouble()
+            var resultCalcNumber = CalcNumber()
+            resultCalcNumber.initWithDouble(result)
+            self.operationNumbers = []
+            self.operationNumbers.append(resultCalcNumber)
+        }
+        
+        self.currentCalcNumber = self.operationNumbers[0]
+        self.numberField.text = self.currentCalcNumber.turnIntoFormattedString()
     }
     
     @IBAction func plusButton(sender: AnyObject) {

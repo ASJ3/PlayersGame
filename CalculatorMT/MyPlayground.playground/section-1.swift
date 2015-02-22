@@ -129,6 +129,35 @@ arrayNew.insert(",", atIndex: 4)
 arrayNew.insert(",", atIndex: 1)
 find(arrayNew, ".")!
 
+var finalString = "123456.001"
+var arrOfStrings = [String]()
+for i in finalString {
+    arrOfStrings.append(String(i))
+}
+
+println("\(arrOfStrings)")
+var openingDouble:Double = 1.00000001
+var newNewString = String(format:"%.9f", openingDouble)
+
+var whyArray = ["1", "2", "3", "4","5","0","0","0", ".", "0","1","0","0","0"]
+var hello = whyArray
+hello
+
+for i in 0...whyArray.count-1 {
+    if whyArray[whyArray.count - 1 - i] == "0" {
+        hello.removeAtIndex(hello.endIndex - 1 )
+    } else {
+        break
+    }
+}
+
+hello
+
+//for i in 0..< whyArray.count _ = {
+//    whyArray[i]
+//}
+
+
 
 
 
