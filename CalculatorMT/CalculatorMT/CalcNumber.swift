@@ -90,7 +90,7 @@ class CalcNumber {
         if numberOfIntegers > 6 {
             arrayNumberCopy.insert(",", atIndex: numberOfIntegers - 6)
         }
-        println("addDigit(): the arrayNumber is \(self.arrayNumber) ( \(numberOfIntegers) Integers)")
+        println("addDigit(): the arrayNumber is \(self.arrayNumber) (\(numberOfIntegers) Integers)")
         var combinedArray = self.arraySign + arrayNumberCopy
         var finalString = "".join(combinedArray)
         return finalString
