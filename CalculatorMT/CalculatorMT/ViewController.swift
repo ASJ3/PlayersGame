@@ -162,8 +162,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 self.currentCalcNumber = CalcNumber()
                 println("calcDisplayManager(): resetting the second number to 0. The first number is still stored and \(self.operationNumbers[0].arrayNumber)")
                 
-//                self.numberField.text = self.currentCalcNumber.turnIntoFormattedString()
-                
             } else if self.operationNumbers.count == 1 && self.firstNumberEntered == false {
                 self.operationNumbers = []
                 println("calcDisplayManager(): resetting the first number to 0. The operationsNumber array has a count of \(self.operationNumbers.count)")
