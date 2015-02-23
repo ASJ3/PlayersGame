@@ -87,18 +87,19 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func equalButton(sender: AnyObject) {
         var result = 0.0
-        if self.firstNumberEntered == true {
+        var resultCalcNumber = CalcNumber()
+        
             self.operationNumbers.append(self.currentCalcNumber)
-        }
+
         if self.calcOperation == "+" {
             result = self.operationNumbers[0].turnIntoDouble() + self.operationNumbers[1].turnIntoDouble()
-            var resultCalcNumber = CalcNumber()
             resultCalcNumber.initWithDouble(result)
             self.operationNumbers = []
-            self.operationNumbers.append(resultCalcNumber)
+            println("operationsNumbers count: \(self.operationNumbers.count)")
+
         }
         
-        self.currentCalcNumber = self.operationNumbers[0]
+        self.currentCalcNumber = resultCalcNumber
         self.numberField.text = self.currentCalcNumber.turnIntoFormattedString()
     }
     
@@ -125,6 +126,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func calcDisplayManager(Keystroke: String) {
         if Keystroke == "number" {
             self.numberOfKeystrokes += 1
+            self.numberField.text = self.currentCalcNumber.turnIntoFormattedString()
         }
         else if Keystroke == "operation" {
             self.operationNumbers.append(self.currentCalcNumber)
@@ -139,12 +141,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 self.currentCalcNumber = CalcNumber()
                 println("calcDisplayManager(): resetting the second number to 0. The first number is still stored and \(self.operationNumbers[0].arrayNumber)")
                 
+//                self.numberField.text = self.currentCalcNumber.turnIntoFormattedString()
+                
             } else if self.operationNumbers.count == 1 && self.firstNumberEntered == false {
                 self.operationNumbers = []
                 println("calcDisplayManager(): resetting the first number to 0. The operationsNumber array has a count of \(self.operationNumbers.count)")
             }
             self.currentCalcNumber = CalcNumber()
             self.numberOfKeystrokes = 0
+            self.numberField.text = self.currentCalcNumber.turnIntoFormattedString()
         }
         
         if self.numberOfKeystrokes > 0 {
@@ -153,7 +158,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
             self.clearButtonText.setTitle("AC", forState: .Normal)
         }
 
-        self.numberField.text = self.currentCalcNumber.turnIntoFormattedString()
     }
     
     // Made an outlet for the clear button so we could change its text from "AC" to "C" and vice versa
