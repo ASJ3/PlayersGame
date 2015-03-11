@@ -37,10 +37,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell!
-        if cell == nil  {
-            cell = UITableViewCell(style: .Default, reuseIdentifier: "cell")
-        }
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
         
             cell.textLabel?.text = tempData[indexPath.row]
         
