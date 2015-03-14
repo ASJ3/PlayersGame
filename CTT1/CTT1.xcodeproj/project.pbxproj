@@ -16,6 +16,7 @@
 		7863D0241AB0E23200C823BE /* CTT1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7863D0231AB0E23200C823BE /* CTT1Tests.swift */; };
 		7863D02E1AB0E48D00C823BE /* Nasa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7863D02D1AB0E48D00C823BE /* Nasa.jpg */; };
 		7863D0301AB0E9B300C823BE /* quoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7863D02F1AB0E9B300C823BE /* quoteViewController.swift */; };
+		78DB5C611AB12C3B0036600A /* AuthorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DB5C601AB12C3B0036600A /* AuthorViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		7863D0231AB0E23200C823BE /* CTT1Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTT1Tests.swift; sourceTree = "<group>"; };
 		7863D02D1AB0E48D00C823BE /* Nasa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Nasa.jpg; sourceTree = "<group>"; };
 		7863D02F1AB0E9B300C823BE /* quoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = quoteViewController.swift; sourceTree = "<group>"; };
+		78DB5C601AB12C3B0036600A /* AuthorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,8 +87,9 @@
 			children = (
 				7863D00A1AB0E23100C823BE /* AppDelegate.swift */,
 				7863D00F1AB0E23100C823BE /* ViewController.swift */,
-				7863D0111AB0E23100C823BE /* Main.storyboard */,
 				7863D02F1AB0E9B300C823BE /* quoteViewController.swift */,
+				78DB5C601AB12C3B0036600A /* AuthorViewController.swift */,
+				7863D0111AB0E23100C823BE /* Main.storyboard */,
 				7863D0141AB0E23100C823BE /* Images.xcassets */,
 				7863D02D1AB0E48D00C823BE /* Nasa.jpg */,
 				7863D0161AB0E23100C823BE /* LaunchScreen.xib */,
@@ -223,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7863D0101AB0E23100C823BE /* ViewController.swift in Sources */,
+				78DB5C611AB12C3B0036600A /* AuthorViewController.swift in Sources */,
 				7863D0301AB0E9B300C823BE /* quoteViewController.swift in Sources */,
 				7863D00B1AB0E23100C823BE /* AppDelegate.swift in Sources */,
 				7863D00E1AB0E23100C823BE /* CTT1.xcdatamodeld in Sources */,
@@ -417,6 +421,7 @@
 				7863D0291AB0E23200C823BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7863D02A1AB0E23200C823BE /* Build configuration list for PBXNativeTarget "CTT1Tests" */ = {
 			isa = XCConfigurationList;
@@ -425,6 +430,7 @@
 				7863D02C1AB0E23200C823BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

@@ -1,5 +1,5 @@
 //
-//  quoteViewController.swift
+//  AuthorViewController.swift
 //  CTT1
 //
 //  Created by Alexis Saint-Jean on 3/11/15.
@@ -8,18 +8,15 @@
 
 import UIKit
 
-class quoteViewController: ViewController {
-    @IBOutlet weak var quoteTextField: UITextView!
+class AuthorViewController: ViewController {
 
-
-    var textOfQuote: String?
-    
+    @IBAction func returnToQuoteVC(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.quoteTextField.text = textOfQuote
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,13 +24,6 @@ class quoteViewController: ViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func showAuthorVC(sender: AnyObject) {
-        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-        let next = storyboard.instantiateViewControllerWithIdentifier("authorVC") as AuthorViewController
-        self.presentViewController(next, animated: true, completion: nil)
-        
-    }
-
 
     /*
     // MARK: - Navigation

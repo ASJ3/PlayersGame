@@ -48,16 +48,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // To do that we need to pass to quoteViewController the info related to the quote clicked
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
             var permalink = tempData[indexPath.row]
-            performSegueWithIdentifier("showQuote", sender: permalink)
+            self.performSegueWithIdentifier("showQuote", sender: permalink)
+//            println("the quote is:\n\(permalink)")
         }
         
     
     // prepareForSegue is directly related to the tableView(...) function
     // here the 'sender' argument in the function is going to be the text info of the quote
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-            var destinationViewController = segue.destinationViewController as quoteViewController
+//            var destinationViewController = segue.destinationViewController as UIViewController
+        println("running the prepareForSegue function")
+        if let forsure = segue.destinationViewController as? quoteViewController {
             var text = sender as? NSString
-            destinationViewController.textOfQuote = text
+            forsure.textOfQuote = text
+        }
+//            var text = sender as? NSString
+//            destinationViewController.textOfQuote = text
     }
 
 
