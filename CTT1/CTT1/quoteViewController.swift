@@ -38,5 +38,11 @@ class quoteViewController: ViewController {
         self.presentViewController(next, animated: true, completion: nil)
         
     }
+    @IBAction func showVideoVC(sender: AnyObject) {
+        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+        let next = storyboard.instantiateViewControllerWithIdentifier("videoVC") as videoViewController
+        self.presentViewController(next, animated: true, completion: nil)
+        
+    }
 
 }

@@ -1,0 +1,52 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1344\cocoasubrtf720
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green116\blue0;\red170\green13\blue145;\red63\green110\blue116;
+\red92\green38\blue153;\red196\green26\blue22;\red46\green13\blue110;\red38\green71\blue75;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab529
+\pard\tx529\pardeftab529\pardirnatural
+
+\f0\fs22 \cf2 \CocoaLigature0 //\
+//  videoViewController.swift\
+//  Closer To Truth\
+//\
+//  Created by Alexis Saint-Jean on 3/14/15.\
+//  Copyright (c) 2015 Alexis Saint-Jean. All rights reserved.\
+//\
+\cf0 \
+\cf3 import\cf0  UIKit\
+\
+\cf3 class\cf0  videoViewController: \cf4 ViewController\cf0  \{\
+\
+    \cf3 var\cf0  request = \cf5 NSURLRequest\cf0 (URL: \cf5 NSURL\cf0 (string: \cf6 "https://www.youtube.com/embed/HsMUbZDNlik"\cf0 )!)\
+\
+    \cf3 @IBOutlet\cf0  \cf3 weak\cf0  \cf3 var\cf0  webView: \cf5 UIWebView\cf0 !\
+    \cf3 @IBAction\cf0  \cf3 func\cf0  returnToQuoteVC(sender: \cf5 AnyObject\cf0 ) \{\
+        \cf3 self\cf0 .\cf7 dismissViewControllerAnimated\cf0 (\cf3 true\cf0 , completion: \cf3 nil\cf0 )\
+    \}\
+    \cf3 override\cf0  \cf3 func\cf0  viewDidLoad() \{\
+        \cf3 super\cf0 .\cf8 viewDidLoad\cf0 ()\
+\cf2 //        if let request = self.request \{\
+\cf0             \cf3 self\cf0 .\cf4 webView\cf0 .\cf7 loadRequest\cf0 (\cf3 self\cf0 .\cf4 request\cf0 )\
+\cf2 //        \}\
+\cf0 \
+        \cf2 // Do any additional setup after loading the view.\
+\cf0     \}\
+\
+    \cf3 override\cf0  \cf3 func\cf0  didReceiveMemoryWarning() \{\
+        \cf3 super\cf0 .\cf8 didReceiveMemoryWarning\cf0 ()\
+        \cf2 // Dispose of any resources that can be recreated.\
+\cf0     \}\
+    \
+\
+    \cf2 /*\
+    // MARK: - Navigation\
+\
+    // In a storyboard-based application, you will often want to do a little preparation before navigation\
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) \{\
+        // Get the new view controller using segue.destinationViewController.\
+        // Pass the selected object to the new view controller.\
+    \}\
+    */\cf0 \
+\
+\}}
