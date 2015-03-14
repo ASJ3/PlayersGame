@@ -10,15 +10,20 @@ import UIKit
 
 class quoteViewController: ViewController {
     @IBOutlet weak var quoteTextField: UITextView!
-
+    @IBOutlet weak var authorLabel: UILabel!
+    @IBOutlet weak var professionLabel: UILabel!
 
     var textOfQuote: String?
+    var authorOfQuote: String?
+    var professionOfAuthor: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         self.quoteTextField.text = textOfQuote
+        self.authorLabel.text = authorOfQuote
+        self.professionLabel.text = professionOfAuthor
         
     }
 

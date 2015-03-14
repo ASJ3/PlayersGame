@@ -9,12 +9,24 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
     
-    var tempData = ["I see God’s hand in everything around us including the whole universe. If it suited His purposes not just to have one planet that could sustain life that would give rise to intelligence, fine. I don’t see any reason to be shaken or object to that at all.",
+    var midtempData = [["Quote": "I see God’s hand in everything around us including the whole universe. If it suited His purposes not just to have one planet that could sustain life that would give rise to intelligence, fine. I don't see any reason to be shaken or object to that at all", "Author": "Francis Collins", "Profession": "Geneticist"],
+        ["Quote": "The big bang is not a point in space. It’s a moment in time. It’s a moment when the density of the universe was infinite.", "Author": "Sean Carroll", "Profession": "Physicist"],
+        ["Quote": "One of the most important things which our minds undertake is to understand other human beings. We’ve become - we’ve evolved to be - what I call ‘natural psychologists’, who are brilliant at mind reading.", "Author": "Nicholas Humphrey", "Profession": "Psychologist"],
+        ["Quote": "Is it possible that this idea of God is something more than merely a functional idea. Could it be that under this world as we find it, there is some sort of deeper reality.", "Author": "Philip Clayton", "Profession": "Philosopher"],
+        ["Quote": "It is remarkable that the complexity of our world can be explained in terms of simple physical laws and that these laws, which we can study in a lab, apply in the remotest galaxies.", "Author": "Martin Rees", "Profession": "Astronomer"],
+        ["Quote": "I see God’s hand in everything around us including the whole universe. If it suited His purposes not just to have one planet that could sustain life that would give rise to intelligence, fine. I don't see any reason to be shaken or object to that at all", "Author": "Francis Collins", "Profession": "Geneticist"]]
+//        ["Quote": "The big bang is not a point in space. It’s a moment in time. It’s a moment when the density of the universe was infinite.", "Author": "Sean Carroll", "Profession": "Physicist"],
+//        ["Quote": "One of the most important things which our minds undertake is to understand other human beings. We’ve become - we’ve evolved to be - what I call ‘natural psychologists’, who are brilliant at mind reading.", "Author": "Nicholas Humphrey", "Profession": "Psychologist"],
+//        ["Quote": "Is it possible that this idea of God is something more than merely a functional idea. Could it be that under this world as we find it, there is some sort of deeper reality.", "Author": "Philip Clayton", "Profession": "Philosopher"],
+//        ["Quote": "It is remarkable that the complexity of our world can be explained in terms of simple physical laws and that these laws, which we can study in a lab, apply in the remotest galaxies.", "Author": "Martin Rees", "Profession": "Astronomer"]]
+    
+    var oldtempData = ["I see God’s hand in everything around us including the whole universe. If it suited His purposes not just to have one planet that could sustain life that would give rise to intelligence, fine. I don’t see any reason to be shaken or object to that at all.",
         "The big bang is not a point in space. It’s a moment in time. It’s a moment when the density of the universe was infinite.",
         "One of the most important things which our minds undertake is to understand other human beings. We’ve become - we’ve evolved to be - what I call ‘natural psychologists’, who are brilliant at mind reading.",
-        "Quote 4",
-        "Quote 5",
+        "Is it possible that this idea of God is something more than merely a functional idea. Could it be that under this world as we find it, there is some sort of deeper reality.",
+        "It is remarkable that the complexity of our world can be explained in terms of simple physical laws and that these laws, which we can study in a lab, apply in the remotest galaxies.",
         "Quote 6",
         "Quote 7",
         "Quote 8",
@@ -24,7 +36,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         "Quote 12",
         "Quote 13",
         "Quote 14",
-        "Quote 15", "Quote 16", "Quote 17", "Quote 18","Quote 19", "Quote 20" ]
+        "Quote 15", "Quote 16", "Quote 17", "Quote 18","Quote 19", "Quote 20"]
     
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -33,13 +45,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //For now uses the tempData array to create the number of cells needed
-        return tempData.count
+        return midtempData.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
         
-            cell.textLabel?.text = tempData[indexPath.row]
+            cell.textLabel?.text = midtempData[indexPath.row]["Quote"]
         
         return cell
     }
@@ -47,9 +59,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // When the user clicks on a cell, we want to switch to the quoteViewController and show the quote
     // To do that we need to pass to quoteViewController the info related to the quote clicked
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-            var permalink = tempData[indexPath.row]
+            var permalink = midtempData[indexPath.row]
             self.performSegueWithIdentifier("showQuote", sender: permalink)
-//            println("the quote is:\n\(permalink)")
+            println("the quote is:\n\(permalink)")
         }
         
     
@@ -59,8 +71,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 //            var destinationViewController = segue.destinationViewController as UIViewController
         println("running the prepareForSegue function")
         if let forsure = segue.destinationViewController as? quoteViewController {
-            var text = sender as? NSString
+            
+            // **********
+            // I'm having issues with setting the text variable to the "Quote" of the sender (is it because it is an AnyObject?) 
+            // So first I am setting a local variable, localdictionary, then I am assigning the sender to it
+            var localdictionary = ["Quote": "", "Author": "", "Profession": ""]
+            localdictionary = sender as Dictionary
+//            var text = sender["Quote"] as? NSString
+            var text = localdictionary["Quote"]
             forsure.textOfQuote = text
+            var authorName = localdictionary["Author"]
+            forsure.authorOfQuote = authorName
+            var profession = localdictionary["Profession"]
+            forsure.professionOfAuthor = profession
         }
 //            var text = sender as? NSString
 //            destinationViewController.textOfQuote = text

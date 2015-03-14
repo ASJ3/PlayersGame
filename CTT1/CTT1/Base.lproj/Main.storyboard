@@ -99,6 +99,9 @@
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HWz-bR-zb5">
                                 <rect key="frame" x="16" y="542" width="82" height="30"/>
                                 <color key="backgroundColor" red="0.19737664427324866" green="0.45948524769756394" blue="0.45777126519771216" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="82" id="k5D-tb-nRn"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                 <state key="normal" title="Author">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -149,6 +152,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="15Q-em-7GZ"/>
                     <connections>
+                        <outlet property="authorLabel" destination="sUL-YW-yvJ" id="N1i-NI-rY1"/>
+                        <outlet property="professionLabel" destination="vy6-ng-Tdf" id="YCb-3a-NQL"/>
                         <outlet property="quoteTextField" destination="YEY-ZW-fmZ" id="DiQ-Y0-nA5"/>
                     </connections>
                 </viewController>
