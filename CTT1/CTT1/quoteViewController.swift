@@ -13,6 +13,10 @@ class quoteViewController: ViewController {
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var professionLabel: UILabel!
 
+    @IBOutlet weak var backgroundImage: UIImageView!
+    var imageSet = ["NasaC.jpg","GalaxyC.jpg","HubbleEyeC.jpg","PillarsC.jpg"]
+    
+    
     var textOfQuote: String?
     var authorOfQuote: String?
     var professionOfAuthor: String?
@@ -24,6 +28,11 @@ class quoteViewController: ViewController {
         self.quoteTextField.text = textOfQuote
         self.authorLabel.text = authorOfQuote
         self.professionLabel.text = professionOfAuthor
+        let randomNumber = Int(arc4random_uniform(4))
+        println("random Number is \(randomNumber)")
+        
+        self.backgroundImage.image = UIImage(named: self.imageSet[randomNumber])
+
         
     }
 

@@ -17,6 +17,15 @@
 		7863D02E1AB0E48D00C823BE /* Nasa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7863D02D1AB0E48D00C823BE /* Nasa.jpg */; };
 		7863D0301AB0E9B300C823BE /* quoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7863D02F1AB0E9B300C823BE /* quoteViewController.swift */; };
 		788E70DD1AB4D89400BB4F48 /* videoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788E70DC1AB4D89400BB4F48 /* videoViewController.swift */; };
+		788E70DF1AB4E11500BB4F48 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788E70DE1AB4E11500BB4F48 /* NavigationViewController.swift */; };
+		788E70E11AB4E43900BB4F48 /* CTTLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 788E70E01AB4E43900BB4F48 /* CTTLogo.png */; };
+		788E70E61AB4EE3E00BB4F48 /* Galaxy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 788E70E31AB4EE3E00BB4F48 /* Galaxy.jpg */; };
+		788E70E71AB4EE3E00BB4F48 /* HubbleEye.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 788E70E41AB4EE3E00BB4F48 /* HubbleEye.jpg */; };
+		788E70E91AB4EE5D00BB4F48 /* Pillars.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 788E70E81AB4EE5D00BB4F48 /* Pillars.jpg */; };
+		788E70EE1AB51BBC00BB4F48 /* GalaxyC.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 788E70EA1AB51BBC00BB4F48 /* GalaxyC.jpg */; };
+		788E70EF1AB51BBC00BB4F48 /* HubbleEyeC.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 788E70EB1AB51BBC00BB4F48 /* HubbleEyeC.jpg */; };
+		788E70F01AB51BBC00BB4F48 /* NasaC.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 788E70EC1AB51BBC00BB4F48 /* NasaC.jpg */; };
+		788E70F11AB51BBC00BB4F48 /* PillarsC.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 788E70ED1AB51BBC00BB4F48 /* PillarsC.jpg */; };
 		78DB5C611AB12C3B0036600A /* AuthorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DB5C601AB12C3B0036600A /* AuthorViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +54,15 @@
 		7863D02D1AB0E48D00C823BE /* Nasa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Nasa.jpg; sourceTree = "<group>"; };
 		7863D02F1AB0E9B300C823BE /* quoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = quoteViewController.swift; sourceTree = "<group>"; };
 		788E70DC1AB4D89400BB4F48 /* videoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = videoViewController.swift; sourceTree = "<group>"; };
+		788E70DE1AB4E11500BB4F48 /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
+		788E70E01AB4E43900BB4F48 /* CTTLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CTTLogo.png; sourceTree = "<group>"; };
+		788E70E31AB4EE3E00BB4F48 /* Galaxy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Galaxy.jpg; sourceTree = "<group>"; };
+		788E70E41AB4EE3E00BB4F48 /* HubbleEye.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = HubbleEye.jpg; sourceTree = "<group>"; };
+		788E70E81AB4EE5D00BB4F48 /* Pillars.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Pillars.jpg; sourceTree = "<group>"; };
+		788E70EA1AB51BBC00BB4F48 /* GalaxyC.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = GalaxyC.jpg; sourceTree = "<group>"; };
+		788E70EB1AB51BBC00BB4F48 /* HubbleEyeC.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = HubbleEyeC.jpg; sourceTree = "<group>"; };
+		788E70EC1AB51BBC00BB4F48 /* NasaC.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = NasaC.jpg; sourceTree = "<group>"; };
+		788E70ED1AB51BBC00BB4F48 /* PillarsC.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = PillarsC.jpg; sourceTree = "<group>"; };
 		78DB5C601AB12C3B0036600A /* AuthorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,8 +111,17 @@
 				7863D02F1AB0E9B300C823BE /* quoteViewController.swift */,
 				78DB5C601AB12C3B0036600A /* AuthorViewController.swift */,
 				7863D0111AB0E23100C823BE /* Main.storyboard */,
+				788E70DE1AB4E11500BB4F48 /* NavigationViewController.swift */,
 				7863D0141AB0E23100C823BE /* Images.xcassets */,
 				7863D02D1AB0E48D00C823BE /* Nasa.jpg */,
+				788E70E31AB4EE3E00BB4F48 /* Galaxy.jpg */,
+				788E70E81AB4EE5D00BB4F48 /* Pillars.jpg */,
+				788E70E41AB4EE3E00BB4F48 /* HubbleEye.jpg */,
+				788E70E01AB4E43900BB4F48 /* CTTLogo.png */,
+				788E70EA1AB51BBC00BB4F48 /* GalaxyC.jpg */,
+				788E70EB1AB51BBC00BB4F48 /* HubbleEyeC.jpg */,
+				788E70EC1AB51BBC00BB4F48 /* NasaC.jpg */,
+				788E70ED1AB51BBC00BB4F48 /* PillarsC.jpg */,
 				7863D0161AB0E23100C823BE /* LaunchScreen.xib */,
 				7863D00C1AB0E23100C823BE /* CTT1.xcdatamodeld */,
 				7863D0081AB0E23100C823BE /* Supporting Files */,
@@ -208,7 +235,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				7863D0131AB0E23100C823BE /* Main.storyboard in Resources */,
+				788E70E91AB4EE5D00BB4F48 /* Pillars.jpg in Resources */,
+				788E70E71AB4EE3E00BB4F48 /* HubbleEye.jpg in Resources */,
+				788E70EE1AB51BBC00BB4F48 /* GalaxyC.jpg in Resources */,
+				788E70F01AB51BBC00BB4F48 /* NasaC.jpg in Resources */,
+				788E70E61AB4EE3E00BB4F48 /* Galaxy.jpg in Resources */,
 				7863D0181AB0E23100C823BE /* LaunchScreen.xib in Resources */,
+				788E70E11AB4E43900BB4F48 /* CTTLogo.png in Resources */,
+				788E70EF1AB51BBC00BB4F48 /* HubbleEyeC.jpg in Resources */,
+				788E70F11AB51BBC00BB4F48 /* PillarsC.jpg in Resources */,
 				7863D02E1AB0E48D00C823BE /* Nasa.jpg in Resources */,
 				7863D0151AB0E23100C823BE /* Images.xcassets in Resources */,
 			);
@@ -233,6 +268,7 @@
 				7863D0301AB0E9B300C823BE /* quoteViewController.swift in Sources */,
 				7863D00B1AB0E23100C823BE /* AppDelegate.swift in Sources */,
 				788E70DD1AB4D89400BB4F48 /* videoViewController.swift in Sources */,
+				788E70DF1AB4E11500BB4F48 /* NavigationViewController.swift in Sources */,
 				7863D00E1AB0E23100C823BE /* CTT1.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
