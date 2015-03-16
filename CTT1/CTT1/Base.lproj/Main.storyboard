@@ -55,6 +55,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="1HV-xE-Jqt"/>
                     <connections>
+                        <outlet property="tableView" destination="PUy-Rf-fWP" id="3ud-tZ-nvD"/>
                         <segue destination="gjj-Nd-Vct" kind="show" identifier="showQuote" id="Dko-h5-J4j"/>
                     </connections>
                 </viewController>
