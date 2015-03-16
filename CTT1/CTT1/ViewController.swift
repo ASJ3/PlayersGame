@@ -30,13 +30,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //For now uses the tempData array to create the number of cells needed
-//        return midtempData.count
-        if let jsonData = self.json {
-            println("Number of articles in the json file is: \(self.json!.count)")
-            return self.json!.count
-        }
-        println("jsonData hasn't loaded yet")
-        return 0
+        return midtempData.count
+//        if let jsonData = self.json {
+//            println(self.json!.count)
+////            return self.json!.count
+//            return 3
+//
+//        }
+//        println("jsonData hasn't loaded yet")
+//        return 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
