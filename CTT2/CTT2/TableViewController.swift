@@ -14,12 +14,12 @@ class TableViewController: UITableViewController {
     var json: NSArray?
     
     
-    var midtempData = [["quote": "I see God’s hand in everything around us including the whole universe. If it suited His purposes not just to have one planet that could sustain life that would give rise to intelligence, fine. I don't see any reason to be shaken or object to that at all", "contributor_name": "Francis Collins", "Profession": "Geneticist"],
-        ["quote": "The big bang is not a point in space. It’s a moment in time. It’s a moment when the density of the universe was infinite.", "contributor_name": "Sean Carroll", "Profession": "Physicist"],
-        ["quote": "One of the most important things which our minds undertake is to understand other human beings. We’ve become - we’ve evolved to be - what I call ‘natural psychologists’, who are brilliant at mind reading.", "contributor_name": "Nicholas Humphrey", "Profession": "Psychologist"],
-        ["quote": "Is it possible that this idea of God is something more than merely a functional idea. Could it be that under this world as we find it, there is some sort of deeper reality.", "contributor_name": "Philip Clayton", "Profession": "Philosopher"],
-        ["quote": "It is remarkable that the complexity of our world can be explained in terms of simple physical laws and that these laws, which we can study in a lab, apply in the remotest galaxies.", "contributor_name": "Martin Rees", "Profession": "Astronomer"],
-        ["quote": "I see God’s hand in everything around us including the whole universe. If it suited His purposes not just to have one planet that could sustain life that would give rise to intelligence, fine. I don't see any reason to be shaken or object to that at all", "contributor_name": "Francis Collins", "Profession": "Geneticist"]]
+    var midtempData = [["quote_text": "I see God’s hand in everything around us including the whole universe. If it suited His purposes not just to have one planet that could sustain life that would give rise to intelligence, fine. I don't see any reason to be shaken or object to that at all", "contributor_name": "Francis Collins", "term_names": "Geneticist"],
+        ["quote_text": "The big bang is not a point in space. It’s a moment in time. It’s a moment when the density of the universe was infinite.", "contributor_name": "Sean Carroll", "term_names": "Physicist"],
+        ["quote_text": "One of the most important things which our minds undertake is to understand other human beings. We’ve become - we’ve evolved to be - what I call ‘natural psychologists’, who are brilliant at mind reading.", "contributor_name": "Nicholas Humphrey", "term_names": "Psychologist"],
+        ["quote_text": "Is it possible that this idea of God is something more than merely a functional idea. Could it be that under this world as we find it, there is some sort of deeper reality.", "contributor_name": "Philip Clayton", "term_names": "Philosopher"],
+        ["quote_text": "It is remarkable that the complexity of our world can be explained in terms of simple physical laws and that these laws, which we can study in a lab, apply in the remotest galaxies.", "contributor_name": "Martin Rees", "term_names": "Astronomer"],
+        ["quote_text": "I see God’s hand in everything around us including the whole universe. If it suited His purposes not just to have one planet that could sustain life that would give rise to intelligence, fine. I don't see any reason to be shaken or object to that at all", "contributor_name": "Francis Collins", "term_names": "Geneticist"]]
         
         override func viewDidLoad() {
             super.viewDidLoad()
@@ -97,15 +97,15 @@ class TableViewController: UITableViewController {
         // In a storyboard-based application, you will often want to do a little preparation before navigation
         override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
             if let forsure = segue.destinationViewController as? quoteViewController {
-                var localdictionary = ["quote_text": "", "contributor_name": "", "Profession": ""]
+                var localdictionary = ["quote_text": "", "contributor_name": "", "term_names": ""]
                 
                 localdictionary = sender as Dictionary
-                var text = localdictionary["quote"]
+                var text = localdictionary["quote_text"]
                 forsure.textOfQuote = text
                 var authorName = localdictionary["contributor_name"]
                 forsure.authorOfQuote = authorName
-                var profession = localdictionary["Profession"]
-                forsure.professionOfAuthor = profession
+                var terms = localdictionary["term_names"]
+                forsure.terms = terms
             }
             
         }

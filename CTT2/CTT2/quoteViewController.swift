@@ -11,13 +11,20 @@ import UIKit
 class quoteViewController: UIViewController {
     var textOfQuote: String?
     var authorOfQuote: String?
-    var professionOfAuthor: String?
+    var terms: String?
 
+    @IBOutlet weak var authorField: UILabel!
+    @IBOutlet weak var termsField: UILabel!
+    @IBOutlet weak var quoteField: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        println("Here is the Text: \(self.textOfQuote)\n\(self.authorOfQuote)\n\(self.professionOfAuthor)")
+        self.authorField.text = self.authorOfQuote
+        self.termsField.text = self.terms
+        self.quoteField.text = self.textOfQuote
+//        
+//        println("Here is the Text: \(self.textOfQuote)\n\(self.authorOfQuote)\n\(self.terms)")
     }
 
     override func didReceiveMemoryWarning() {

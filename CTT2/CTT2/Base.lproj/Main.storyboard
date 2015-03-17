@@ -79,6 +79,11 @@
                             <constraint firstItem="WAq-Po-ozn" firstAttribute="top" secondItem="TCv-KA-gan" secondAttribute="bottom" constant="29" id="tpN-Iz-ITY"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="authorField" destination="XVh-w1-t1x" id="Ljb-pm-km2"/>
+                        <outlet property="quoteField" destination="WAq-Po-ozn" id="yKh-Jb-n5t"/>
+                        <outlet property="termsField" destination="TCv-KA-gan" id="5RT-iP-F7X"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OjJ-rp-Bb5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
