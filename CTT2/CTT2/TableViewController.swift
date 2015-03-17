@@ -13,6 +13,8 @@ class TableViewController: UITableViewController {
     var firstTimeLoading = true
     var json: NSArray?
     
+    var failedToLoadData = [["quote_text": "Problems Fetching Quotes. Please try later", "contributor_name": "Author Name", "term_names": ""]]
+    
     
     var midtempData = [["quote_text": "I see God’s hand in everything around us including the whole universe. If it suited His purposes not just to have one planet that could sustain life that would give rise to intelligence, fine. I don't see any reason to be shaken or object to that at all", "contributor_name": "Francis Collins", "term_names": "Geneticist"],
         ["quote_text": "The big bang is not a point in space. It’s a moment in time. It’s a moment when the density of the universe was infinite.", "contributor_name": "Sean Carroll", "term_names": "Physicist"],
@@ -58,9 +60,7 @@ class TableViewController: UITableViewController {
             // Return the number of rows in the section.
 //            return midtempData.count
             if let jsonData = self.json {
-//                println(self.json!.count)
                 return self.json!.count
-//                return 3
 
             }
 //            println("jsonData hasn't loaded yet")
@@ -89,9 +89,17 @@ class TableViewController: UITableViewController {
     // When the user clicks on a cell, we want to switch to the quoteViewController and show the quote
     // To do that we need to pass to quoteViewController the info related to the quote clicked
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var permalink = midtempData[indexPath.row]
-        self.performSegueWithIdentifier("showQuote", sender: permalink)
-//        println("the quote is:\n\(permalink)")
+//        var permalink = midtempData[indexPath.row]
+        if let jsonData = self.json {
+            if let quote = jsonData[indexPath.row] as? NSDictionary {
+                var permalink = quote
+                println("the quote is:\n\(permalink)")
+                self.performSegueWithIdentifier("showQuote", sender: permalink)
+            }
+        }
+//        var permalink = midtempData[indexPath.row]
+        
+
     }
     
         // In a storyboard-based application, you will often want to do a little preparation before navigation
