@@ -18,19 +18,27 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EzU-Ux-4Du">
-                                <rect key="frame" x="0.0" y="75" width="600" height="449"/>
+                                <rect key="frame" x="0.0" y="75" width="600" height="129"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z3E-z2-95h">
+                                <rect key="frame" x="16" y="224" width="568" height="356"/>
+                                <color key="backgroundColor" red="0.54037314967105265" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="EzU-Ux-4Du" secondAttribute="trailing" constant="-16" id="EcQ-DP-IHA"/>
+                            <constraint firstItem="Z3E-z2-95h" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="Ev7-eF-fqU"/>
                             <constraint firstAttribute="centerX" secondItem="EzU-Ux-4Du" secondAttribute="centerX" id="Sqf-1b-Xhy"/>
+                            <constraint firstItem="Z3E-z2-95h" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="WeP-eO-2Hl"/>
                             <constraint firstItem="EzU-Ux-4Du" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="55" id="YS8-7T-fZT"/>
-                            <constraint firstAttribute="centerY" secondItem="EzU-Ux-4Du" secondAttribute="centerY" constant="0.5" id="dnZ-Bz-pGw"/>
+                            <constraint firstItem="Z3E-z2-95h" firstAttribute="top" secondItem="EzU-Ux-4Du" secondAttribute="bottom" constant="20" id="dLO-Fe-ggZ"/>
+                            <constraint firstAttribute="centerY" secondItem="EzU-Ux-4Du" secondAttribute="centerY" constant="160.5" id="dnZ-Bz-pGw"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Z3E-z2-95h" secondAttribute="bottom" constant="20" id="hWx-Lq-B4I"/>
                             <constraint firstItem="EzU-Ux-4Du" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="na8-0e-iyA"/>
                         </constraints>
                     </view>
