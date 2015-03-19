@@ -21,6 +21,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let controller = storyboard!.instantiateViewControllerWithIdentifier("ListVC") as ListViewController
+        self.addChildViewController(controller)
+        controller.view.frame = CGRectMake(0, 20, 180, 600)
+        self.view.addSubview(controller.view)
+        controller.didMoveToParentViewController(self)
+        
         // Do any additional setup after loading the view.
         
         
