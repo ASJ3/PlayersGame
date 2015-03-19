@@ -8,16 +8,28 @@
 
 import UIKit
 
+protocol PassingQuote {
+    func returnQuote(ArrayLocation: Int, listOrigin: String)
+}
+
 class ViewController: UIViewController {
+    @IBOutlet weak var menuView: UIView!
     
-    var listController: QuoteListViewController?
+//    var listController: ListViewController?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        self.listController = QuoteListViewController()
+        
+        
+//        self.listController = ListViewController()
+//        self.menuView.addSubview(self.listController!.view)
+        
+        
+
+        println("Hello there")
     }
 
     override func didReceiveMemoryWarning() {

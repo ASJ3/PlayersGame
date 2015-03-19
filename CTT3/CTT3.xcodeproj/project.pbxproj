@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		782B6CE11ABA84940031DB58 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782B6CE01ABA84940031DB58 /* ListViewController.swift */; };
 		78F46F6F1ABA5BE7008EB182 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F46F6E1ABA5BE7008EB182 /* AppDelegate.swift */; };
 		78F46F721ABA5BE7008EB182 /* CTT3.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 78F46F701ABA5BE7008EB182 /* CTT3.xcdatamodeld */; };
 		78F46F741ABA5BE7008EB182 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F46F731ABA5BE7008EB182 /* ViewController.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		782B6CE01ABA84940031DB58 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		78F46F691ABA5BE7008EB182 /* CTT3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CTT3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78F46F6D1ABA5BE7008EB182 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		78F46F6E1ABA5BE7008EB182 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				78F46F6E1ABA5BE7008EB182 /* AppDelegate.swift */,
 				78F46F731ABA5BE7008EB182 /* ViewController.swift */,
 				78F46F751ABA5BE7008EB182 /* Main.storyboard */,
+				782B6CE01ABA84940031DB58 /* ListViewController.swift */,
 				78F46F911ABA5C3E008EB182 /* QuoteListViewController.swift */,
 				78F46F781ABA5BE7008EB182 /* Images.xcassets */,
 				78F46F7A1ABA5BE7008EB182 /* LaunchScreen.xib */,
@@ -221,6 +224,7 @@
 				78F46F741ABA5BE7008EB182 /* ViewController.swift in Sources */,
 				78F46F921ABA5C3E008EB182 /* QuoteListViewController.swift in Sources */,
 				78F46F6F1ABA5BE7008EB182 /* AppDelegate.swift in Sources */,
+				782B6CE11ABA84940031DB58 /* ListViewController.swift in Sources */,
 				78F46F721ABA5BE7008EB182 /* CTT3.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -413,6 +417,7 @@
 				78F46F8D1ABA5BE7008EB182 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		78F46F8E1ABA5BE7008EB182 /* Build configuration list for PBXNativeTarget "CTT3Tests" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +426,7 @@
 				78F46F901ABA5BE7008EB182 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
