@@ -10,30 +10,33 @@
 
 import UIKit
 
-protocol PassingQuote {
-    func returnQuote(ArrayLocation: Int, listOrigin: String)
-}
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, PassingQuote {
     @IBOutlet weak var menuView: UIView!
+    @IBOutlet weak var quoteTextField: UITextView!
     
 
 //    var listController: ListViewController?
     
     var midtempData = ["I see God’s hand in everything around us including the whole universe. If it suited His purposes not just to have one planet that could sustain life that would give rise to intelligence, fine. I don't see any reason to be shaken or object to that at all", "The big bang is not a point in space. It’s a moment in time. It’s a moment when the density of the universe was infinite.", "One of the most important things which our minds undertake is to understand other human beings. We’ve become - we’ve evolved to be - what I call ‘natural psychologists’, who are brilliant at mind reading.", "Is it possible that this idea of God is something more than merely a functional idea. Could it be that under this world as we find it, there is some sort of deeper reality.", "It is remarkable that the complexity of our world can be explained in terms of simple physical laws and that these laws, which we can study in a lab, apply in the remotest galaxies.", "I see God’s hand in everything around us including the whole universe. If it suited His purposes not just to have one planet that could sustain life that would give rise to intelligence, fine. I don't see any reason to be shaken or object to that at all"]
     
+    // This is the function called by ListViewController to display the new quote
+    // based on the quote selected in the ListViewController table
+    func showSelectedQuote(ArrayLocation: Int, listOrigin: String) {
+        println("the row selected is \(ArrayLocation) and the list containing that quote is \(listOrigin)")
+        self.quoteTextField.text = midtempData[ArrayLocation]
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let controller = storyboard!.instantiateViewControllerWithIdentifier("ListVC") as ListViewController
         self.addChildViewController(controller)
-        controller.view.frame = CGRectMake(0, 20, 180, 300)
-        
         // Transferring data to populate the table in 'controller'
         controller.midtempData = self.midtempData
+        controller.delegate = self
         
-        
+        controller.view.frame = CGRectMake(0, 20, 180, 300)
         self.view.addSubview(controller.view)
         controller.didMoveToParentViewController(self)
         self.menuView.backgroundColor = UIColor.redColor()

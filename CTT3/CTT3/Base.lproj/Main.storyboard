@@ -49,6 +49,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="menuView" destination="Z3E-z2-95h" id="cW9-PD-CDg"/>
+                        <outlet property="quoteTextField" destination="EzU-Ux-4Du" id="1C4-JB-pLM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

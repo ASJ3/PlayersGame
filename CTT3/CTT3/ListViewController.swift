@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol PassingQuote {
+    func showSelectedQuote(ArrayLocation: Int, listOrigin: String)
+}
+
 class ListViewController: UIViewController,UITableViewDataSource, UITableViewDelegate  {
     @IBOutlet weak var tableView: UITableView!
     
@@ -15,6 +19,7 @@ class ListViewController: UIViewController,UITableViewDataSource, UITableViewDel
 //    var json: NSArray?
     
     var failedToLoadData = ["quote_text"]
+    var delegate: PassingQuote?
     
     
     var midtempData = ["Couldn't Load Data"]
@@ -93,7 +98,9 @@ class ListViewController: UIViewController,UITableViewDataSource, UITableViewDel
 //        }
         //        var permalink = midtempData[indexPath.row]
         
-        println("Do nothing for now")
+        println("the row selected is \(indexPath.row)")
+        self.delegate?.showSelectedQuote(indexPath.row, listOrigin: "All")
+        
     }
     
     
