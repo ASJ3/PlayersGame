@@ -22,9 +22,22 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="znK-XR-UUm" userLabel="TopBarView">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="65"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygC-0T-KP7">
+                                                <rect key="frame" x="546" y="27" width="49" height="30"/>
+                                                <state key="normal" title="Reload">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="refetchData:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Orm-wt-8cJ"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                         <constraints>
+                                            <constraint firstItem="ygC-0T-KP7" firstAttribute="top" secondItem="znK-XR-UUm" secondAttribute="top" constant="27" id="9ke-5m-dnU"/>
                                             <constraint firstAttribute="height" constant="65" id="DH6-AQ-lep"/>
+                                            <constraint firstAttribute="trailing" secondItem="ygC-0T-KP7" secondAttribute="trailing" constant="5" id="RTD-4L-tkN"/>
                                         </constraints>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Consciousness Cropped.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="RiT-mu-Mjw" userLabel="BackgroundImageView">

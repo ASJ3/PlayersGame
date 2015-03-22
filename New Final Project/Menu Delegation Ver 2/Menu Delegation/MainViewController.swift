@@ -11,6 +11,9 @@ import Snap
 import pop
 
 class MainViewController: UIViewController, PassingQuote {
+    @IBAction func refetchData(sender: AnyObject) {
+        self.fetchData()
+    }
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
     let menuButton = UIButton()
@@ -34,6 +37,7 @@ class MainViewController: UIViewController, PassingQuote {
     @IBOutlet weak var backgroundViewLeadingConstraint: NSLayoutConstraint!
     
     var json: NSArray?
+    var jsonError: NSError?
     
     var jsonNew: NSDictionary?
     
@@ -60,14 +64,27 @@ class MainViewController: UIViewController, PassingQuote {
         createLogo()
         self.quoteTextFieldWidth = Int(quoteTextField.frame.size.width)
         self.favQuotesArray = ["my fav quote 1", "my fav quote 2", "my fav quote 3"]
-        
-        
+        self.fetchData()
+
+        initMenu()
+        println("MainViewVC: reaching the end of viewDidload()")
+
+    }
+    
+    func fetchData() {
+        println("MainViewVC: fetchData()")
         // working on loading JSON
         if let url = NSURL(string: "https://raw.githubusercontent.com/ASJ3/PlayersGame/master/API_JSON/all-quotes.json") {
             println("MainViewVC: the json url does exist")
             let task = NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: { (data, response, error) -> Void in
-                if let jsonDict: AnyObject = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) {
+                println("MainViewVC: fetchData(): trying the NSURLSession")
+                if let jsonDict: AnyObject = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &self.jsonError) {
+                    
+                    if let unwrappedError = self.jsonError {
+                        println("json error: \(unwrappedError)")
+                    } else {
                     self.json = jsonDict as? NSArray
+                    }
                     
                     println("MainViewVC: json in viewDidLoad(). json count is now \(self.json!.count)")
                     
@@ -94,12 +111,6 @@ class MainViewController: UIViewController, PassingQuote {
             })
             task.resume()
         }
-        
-
-
-        initMenu()
-        println("MainViewVC: reaching the end of viewDidload()")
-
     }
 
     override func didReceiveMemoryWarning() {
