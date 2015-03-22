@@ -35,6 +35,8 @@ class MainViewController: UIViewController, PassingQuote {
     
     var json: NSArray?
     
+    var jsonNew: NSDictionary?
+    
     var midtempData:[String] = []
     
     var favQuotesArray = ["Before","ViewDidLoad Changes","Changes to the Array"]
@@ -59,8 +61,10 @@ class MainViewController: UIViewController, PassingQuote {
         self.quoteTextFieldWidth = Int(quoteTextField.frame.size.width)
         self.favQuotesArray = ["my fav quote 1", "my fav quote 2", "my fav quote 3"]
         
+        
         // working on loading JSON
         if let url = NSURL(string: "https://raw.githubusercontent.com/ASJ3/PlayersGame/master/API_JSON/all-quotes.json") {
+            println("MainViewVC: the json url does exist")
             let task = NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: { (data, response, error) -> Void in
                 if let jsonDict: AnyObject = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) {
                     self.json = jsonDict as? NSArray
@@ -89,7 +93,9 @@ class MainViewController: UIViewController, PassingQuote {
                 })
             })
             task.resume()
-                }
+        }
+        
+
 
         initMenu()
         println("MainViewVC: reaching the end of viewDidload()")
