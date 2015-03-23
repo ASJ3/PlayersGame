@@ -1,0 +1,412 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1344\cocoasubrtf720
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green116\blue0;\red170\green13\blue145;\red92\green38\blue153;
+\red63\green110\blue116;\red196\green26\blue22;\red46\green13\blue110;\red38\green71\blue75;\red28\green0\blue207;
+}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab529
+\pard\tx529\pardeftab529\pardirnatural
+
+\f0\fs22 \cf2 \CocoaLigature0 //\
+//  ViewController.swift\
+//  Menu Delegation\
+//\
+//  Created by Dave Scherler on 3/18/15.\
+//  Copyright (c) 2015 DaveScherler. All rights reserved.\
+//\
+\cf0 \
+\cf3 import\cf0  UIKit\
+\cf3 import\cf0  Snap\
+\cf3 import\cf0  pop\
+\
+\cf3 class\cf0  MainViewController: \cf4 UIViewController\cf0 , \cf5 PassingQuote\cf0  \{\
+\
+    \cf3 let\cf0  menuButton = \cf4 UIButton\cf0 ()\
+    \cf3 let\cf0  mainImage = \cf4 UIImage\cf0 (named: \cf6 "orange main"\cf0 ) \cf3 as\cf0  \cf4 UIImage\cf0 ?\
+    \cf3 let\cf0  menuImage = \cf4 UIImage\cf0 (named: \cf6 "white menu"\cf0 ) \cf3 as\cf0  \cf4 UIImage\cf0 ?\
+    \cf3 let\cf0  logoImage = \cf4 UIImage\cf0 (named: \cf6 "logo.png"\cf0 ) \cf3 as\cf0  \cf4 UIImage\cf0 ?\
+    \cf3 let\cf0  logoImageView = \cf4 UIImageView\cf0 ()\
+    \cf3 let\cf0  overlay = \cf4 UIView\cf0 ()\
+    \
+    \cf3 var\cf0  quoteTextFieldWidth: \cf4 Int\cf0 ?\
+    \cf3 var\cf0  isMenuOpen: \cf4 Bool\cf0  = \cf3 false\cf0 \
+    \cf3 var\cf0  menu:\cf5 MenuViewController\cf0 ?\
+    \cf3 var\cf0  menuLeftConstraint:\cf4 NSLayoutConstraint\cf0 ?\
+    \cf3 var\cf0  logoTopConstraint = \cf4 NSLayoutConstraint\cf0 ()\
+    \cf2 //var logoCenterXConstraint: NSLayoutConstraint?\
+\cf0     \
+    \cf3 @IBOutlet\cf0  \cf3 weak\cf0  \cf3 var\cf0  topBarContainerView: \cf4 UIView\cf0 !\
+    \cf3 @IBOutlet\cf0  \cf3 weak\cf0  \cf3 var\cf0  mainContainerView: \cf4 UIView\cf0 !\
+    \cf3 @IBOutlet\cf0  \cf3 weak\cf0  \cf3 var\cf0  mainVCLeftConstraint: \cf4 NSLayoutConstraint\cf0 !\
+    \cf3 @IBOutlet\cf0  \cf3 weak\cf0  \cf3 var\cf0  backgroundView: \cf4 UIImageView\cf0 !\
+    \cf3 @IBOutlet\cf0  \cf3 weak\cf0  \cf3 var\cf0  quoteTextField: \cf4 UITextView\cf0 !\
+    \cf3 @IBOutlet\cf0  \cf3 weak\cf0  \cf3 var\cf0  authorLabel: \cf4 UILabel\cf0 !\
+    \cf3 @IBAction\cf0  \cf3 func\cf0  showVideo(sender: \cf4 UIButton\cf0 ) \{\
+    \}\
+    \cf3 @IBAction\cf0  \cf3 func\cf0  showAuthorInfo(sender: \cf4 UIButton\cf0 ) \{\
+        \cf2 // Right now, only prints the id of the author\
+\cf0         \cf2 // in the future we will have to create a new view controller to display the author info\
+\cf0         \cf3 if\cf0  \cf3 self\cf0 .\cf5 authorID\cf0  == \cf6 "none"\cf0  \{\
+            \cf7 println\cf0 (\cf6 "not enough information to find author bio"\cf0 )\
+        \}\
+        \cf3 else\cf0  \{\
+            \cf7 println\cf0 (\cf6 "The ID for the author of this quote is: \cf0 \\(\cf3 self\cf0 .\cf5 authorID\cf0 )\cf6 "\cf0 )\
+        \}\
+        \
+    \}\
+    \cf3 @IBOutlet\cf0  \cf3 weak\cf0  \cf3 var\cf0  infoLabel: \cf4 UILabel\cf0 !\
+    \cf3 @IBOutlet\cf0  \cf3 weak\cf0  \cf3 var\cf0  quoteTextFieldTrailingConstraint: \cf4 NSLayoutConstraint\cf0 !\
+    \cf3 @IBOutlet\cf0  \cf3 weak\cf0  \cf3 var\cf0  backgroundViewLeadingConstraint: \cf4 NSLayoutConstraint\cf0 !\
+    \
+    \cf3 var\cf0  json: \cf4 NSArray\cf0 ?\
+    \cf3 var\cf0  jsonTodaysQuote: \cf4 NSArray\cf0 ?\
+    \
+    \cf2 // the authorID variable stores an ID used to find the right author information from the contributor.json file, in case the user\
+\cf0     \cf2 // wants to learn more about the author. By default it is "none" (i.e. no ID found)\
+\cf0     \cf3 var\cf0  authorID = \cf6 "none"\cf0 \
+    \cf2 // the interviewLink variable stores the URL of the video associated with the quote on screen.\
+\cf0     \cf2 // By default it is "none" (i.e. no URL video for the quote)\
+\cf0     \cf3 var\cf0  interviewLink = \cf6 "none"\cf0 \
+    \
+    \cf3 var\cf0  midtempData:[\cf4 String\cf0 ] = []\
+    \
+    \cf3 var\cf0  favQuotesArray = [\cf6 "Before"\cf0 ,\cf6 "ViewDidLoad Changes"\cf0 ,\cf6 "Changes to the Array"\cf0 ]\
+    \
+    \cf3 func\cf0  showSelectedQuote(ArrayLocation: \cf4 Int\cf0 , listOrigin: \cf4 String\cf0 ) \{\
+        \cf7 println\cf0 (\cf6 "MainViewVC: The selected row was \cf0 \\(ArrayLocation)\cf6  and the list containing that quote is \cf0 \\(listOrigin)\cf6 "\cf0 )\
+        \cf3 if\cf0  listOrigin == \cf6 "All"\cf0  \{\
+\cf2 //            self.quoteTextField.text = midtempData[ArrayLocation]\
+\cf0             \cf8 refreshJSONQuoteOnScreen\cf0 (ArrayLocation, origin: \cf6 "All"\cf0 )\
+            \cf8 updateQuoteTextAppearance\cf0 ()\
+        \} \cf3 else\cf0  \{\
+            \cf3 self\cf0 .\cf5 quoteTextField\cf0 .\cf4 text\cf0  = \cf5 favQuotesArray\cf0 [ArrayLocation]\
+            \cf8 updateQuoteTextAppearance\cf0 ()\
+        \}\
+        \cf2 // toggle the menu back to the right\
+\cf0         \cf8 hideMenu\cf0 ()\
+        \cf8 changeBackgroundImage\cf0 ()\
+    \}\
+    \
+    \cf2 // refreshJSONQuoteOnScreen() takes an integer (the row of the table clicked)\
+\cf0     \cf2 // and gets the appropriate dictionary with all the quote info (text, author...)\
+\cf0     \cf2 // to display that info on the MainVC view\
+\cf0     \cf3 func\cf0  refreshJSONQuoteOnScreen(index:\cf4 Int\cf0 , origin:\cf4 String\cf0 ) \{\
+        \cf3 var\cf0  jsonToUse: \cf4 NSArray\cf0 ?\
+        \cf2 // since we have two json files ("all quotes" and "today's quotes")\
+\cf0         \cf2 // we need to figure out which one to use to refresh the info on screen\
+\cf0         \cf3 if\cf0  origin == \cf6 "All"\cf0  \{\
+            jsonToUse = \cf3 self\cf0 .\cf5 json\cf0 \
+        \} \cf3 else\cf0  \{\
+            jsonToUse = \cf3 self\cf0 .\cf5 jsonTodaysQuote\cf0 \
+        \}\
+        \
+        \cf3 if\cf0  \cf3 let\cf0  jsonData = jsonToUse \{\
+            \cf3 if\cf0  \cf3 let\cf0  jsonQuoteSelected = jsonData[index] \cf3 as\cf0 ? \cf4 NSDictionary\cf0  \{\
+                \cf3 if\cf0  \cf3 let\cf0  jsonQuoteText = jsonQuoteSelected[\cf6 "quote_text"\cf0 ] \cf3 as\cf0 ? \cf4 NSString\cf0  \{\
+                    \cf3 self\cf0 .\cf5 quoteTextField\cf0 .\cf4 text\cf0  = jsonQuoteText\
+                \}\
+                \cf3 if\cf0  \cf3 let\cf0  authorOfQuote = jsonQuoteSelected[\cf6 "contributor_name"\cf0 ] \cf3 as\cf0 ? \cf4 NSString\cf0  \{\
+                    \cf3 self\cf0 .\cf5 authorLabel\cf0 .\cf4 text\cf0  = authorOfQuote\
+                \}\
+                \cf3 if\cf0  \cf3 let\cf0  infoForQuote = jsonQuoteSelected[\cf6 "term_names"\cf0 ] \cf3 as\cf0 ? \cf4 NSString\cf0  \{\
+                    \cf3 self\cf0 .\cf5 infoLabel\cf0 .\cf4 text\cf0  = infoForQuote\
+                \}\
+                \cf3 if\cf0  \cf3 let\cf0  authorInfo = jsonQuoteSelected[\cf6 "contributor_id"\cf0 ] \cf3 as\cf0 ? \cf4 NSString\cf0  \{\
+                    \cf3 self\cf0 .\cf5 authorID\cf0  = authorInfo\
+                \}\
+                \cf3 if\cf0  \cf3 let\cf0  interviewInfo = jsonQuoteSelected[\cf6 "contributor_id"\cf0 ] \cf3 as\cf0 ? \cf4 NSString\cf0  \{\
+                    \cf3 self\cf0 .\cf5 interviewLink\cf0  = interviewInfo\
+                \}\
+            \}\
+        \}\
+    \}\
+\
+    \cf3 override\cf0  \cf3 func\cf0  viewDidLoad() \{\
+        \cf3 super\cf0 .\cf7 viewDidLoad\cf0 ()\
+        \cf8 createMenuButton\cf0 ()\
+\
+        \cf8 createLogo\cf0 ()\
+        \cf3 self\cf0 .\cf5 quoteTextFieldWidth\cf0  = \cf4 Int\cf0 (\cf5 quoteTextField\cf0 .\cf4 frame\cf0 .\cf4 size\cf0 .\cf4 width\cf0 )\
+        \cf3 self\cf0 .\cf5 favQuotesArray\cf0  = [\cf6 "my fav quote 1"\cf0 , \cf6 "my fav quote 2"\cf0 , \cf6 "my fav quote 3"\cf0 ]\
+        \
+        \cf2 // working on loading JSON for today's quote\
+\cf0         \cf3 if\cf0  \cf3 let\cf0  url = \cf4 NSURL\cf0 (string: \cf6 "https://raw.githubusercontent.com/ASJ3/PlayersGame/master/API_JSON/todays-quote.json"\cf0 ) \{\
+            \cf7 println\cf0 (\cf6 "MainViewVC: The json for today's quote url does exist"\cf0 )\
+            \cf3 let\cf0  task = \cf4 NSURLSession\cf0 .\cf7 sharedSession\cf0 ().\cf7 dataTaskWithURL\cf0 (url, completionHandler: \{ (data, response, error) -> \cf4 Void\cf0  \cf3 in\cf0 \
+                \cf3 if\cf0  \cf3 let\cf0  jsonDict: \cf4 AnyObject\cf0  = \cf4 NSJSONSerialization\cf0 .\cf7 JSONObjectWithData\cf0 (data, options: \cf3 nil\cf0 , error: \cf3 nil\cf0 ) \{\
+                    \cf3 self\cf0 .\cf5 jsonTodaysQuote\cf0  = jsonDict \cf3 as\cf0 ? \cf4 NSArray\cf0 \
+                    \cf7 println\cf0 (\cf6 "MainViewVC: json in viewDidLoad(). jsonTodaysQuote count is now \cf0 \\(\cf3 self\cf0 .\cf5 jsonTodaysQuote\cf0 !.\cf4 count\cf0 )\cf6 "\cf0 )\
+\
+                \}\
+                \
+                \cf7 dispatch_async\cf0 (\cf7 dispatch_get_main_queue\cf0 (), \{ () -> \cf4 Void\cf0  \cf3 in\cf0 \
+                    \cf2 // IMPORTANT we need to reload the data we got into our table view\
+\cf0                     \cf3 self\cf0 .\cf8 refreshJSONQuoteOnScreen\cf0 (\cf9 0\cf0 , origin: \cf6 "Today"\cf0 )\
+                    \cf3 self\cf0 .\cf8 updateQuoteTextAppearance\cf0 ()\
+                \})\
+            \})\
+            task.\cf7 resume\cf0 ()\
+        \}\
+        \
+        \
+        \
+        \
+        \
+        \cf2 // working on loading JSON for all quotes\
+\cf0         \cf3 if\cf0  \cf3 let\cf0  url = \cf4 NSURL\cf0 (string: \cf6 "https://raw.githubusercontent.com/ASJ3/PlayersGame/master/API_JSON/all-quotes-changed.json"\cf0 ) \{\
+            \cf7 println\cf0 (\cf6 "MainViewVC: The json url does exist"\cf0 )\
+            \cf3 let\cf0  task = \cf4 NSURLSession\cf0 .\cf7 sharedSession\cf0 ().\cf7 dataTaskWithURL\cf0 (url, completionHandler: \{ (data, response, error) -> \cf4 Void\cf0  \cf3 in\cf0 \
+                \cf3 if\cf0  \cf3 let\cf0  jsonDict: \cf4 AnyObject\cf0  = \cf4 NSJSONSerialization\cf0 .\cf7 JSONObjectWithData\cf0 (data, options: \cf3 nil\cf0 , error: \cf3 nil\cf0 ) \{\
+                    \cf3 self\cf0 .\cf5 json\cf0  = jsonDict \cf3 as\cf0 ? \cf4 NSArray\cf0 \
+                    \cf7 println\cf0 (\cf6 "MainViewVC: json in viewDidLoad(). json count is now \cf0 \\(\cf3 self\cf0 .\cf5 json\cf0 !.\cf4 count\cf0 )\cf6 "\cf0 )\
+                    \
+                    \cf2 // Append all the text of quotes to the midtempData array, so that we can show these quotes \
+\cf0                     \cf2 // in the MenuViewController's table\
+\cf0                     \cf3 if\cf0  \cf3 let\cf0  jsonData = \cf3 self\cf0 .\cf5 json\cf0  \{\
+                        \cf7 println\cf0 (\cf6 "MainViewVC: json in viewDidLoad(). jsonData exists"\cf0 )\
+                        \cf3 for\cf0  i \cf3 in\cf0  jsonData \{\
+                            \cf3 if\cf0  \cf3 let\cf0  quote = i[\cf6 "quote_text"\cf0 ] \cf3 as\cf0 ? \cf4 NSString\cf0  \{\
+                                \cf3 self\cf0 .\cf5 midtempData\cf0 .\cf7 append\cf0 (quote)\
+                            \}\
+                        \}\
+                        \cf7 println\cf0 (\cf6 "MainViewVC: json in viewDidLoad(). midtempData count is now \cf0 \\(\cf3 self\cf0 .\cf5 midtempData\cf0 .\cf4 count\cf0 )\cf6 "\cf0 )\
+                        \cf3 self\cf0 .\cf5 menu\cf0 !.\cf5 allQuotesData\cf0  = \cf3 self\cf0 .\cf5 midtempData\cf0 \
+                        \cf3 var\cf0  menuVCArray = \cf3 self\cf0 .\cf5 menu\cf0 !.\cf5 allQuotesData\cf0 \
+                        \cf7 println\cf0 (\cf6 "MainViewVC: json in viewDidLoad(). The number of quotes in MenuViewVC's allQuotes is \cf0 \\(menuVCArray.\cf4 count\cf0 )\cf6 "\cf0 )\
+                        \cf3 self\cf0 .\cf5 menu\cf0 !.\cf8 re_filter\cf0 ()\
+                    \}\
+                \}\
+                \
+                \cf7 dispatch_async\cf0 (\cf7 dispatch_get_main_queue\cf0 (), \{ () -> \cf4 Void\cf0  \cf3 in\cf0 \
+                    \cf2 // IMPORTANT we need to reload the data we got into our table view\
+\cf0                     \cf3 self\cf0 .\cf5 menu\cf0 !.\cf5 table\cf0 .\cf7 reloadData\cf0 ()\
+                \})\
+            \})\
+            task.\cf7 resume\cf0 ()\
+                \}\
+\
+        \cf8 initMenu\cf0 ()\
+        \cf7 println\cf0 (\cf6 "MainViewVC: reaching the end of viewDidload()"\cf0 )\
+\
+\cf2 //=======\
+\cf0         \cf8 createLaunchOverlay\cf0 ()\
+        \cf8 performLaunchOverlayAnimation\cf0 ()\
+        \cf2 //miniaturizeLaunchOverlay()\
+\cf0         \cf2 //self.view.removeFromSuperview(self.overlay)\
+\cf0         \cf2 //self.quoteTextFieldWidth = Int(quoteTextField.frame.size.width)\
+\cf0         \cf2 //println("the container width is: \\(self.mainContainerView.frame.width)")\
+//>>>>>>> 24d9ea0b2bf156253b288bdcead4dcddb834a547\
+\cf0     \}\
+\
+    \cf3 override\cf0  \cf3 func\cf0  didReceiveMemoryWarning() \{\
+        \cf3 super\cf0 .\cf7 didReceiveMemoryWarning\cf0 ()\
+    \}\
+    \
+    \cf3 @IBAction\cf0  \cf3 func\cf0  swipeToShowMenu(sender: \cf4 UISwipeGestureRecognizer\cf0 ) \{\
+        \cf8 showMenu\cf0 () \}\
+    \
+    \cf3 @IBAction\cf0  \cf3 func\cf0  swipeToHideMenu(sender: \cf4 UISwipeGestureRecognizer\cf0 ) \{\
+        \cf8 hideMenu\cf0 () \}\
+\
+    \cf3 func\cf0  initMenu() \{\
+        \cf3 self\cf0 .\cf5 menu\cf0  = \cf3 self\cf0 .\cf4 storyboard\cf0 ?.\cf7 instantiateViewControllerWithIdentifier\cf0 (\cf6 "MenuVC"\cf0 ) \cf3 as\cf0 ? \cf5 MenuViewController\cf0 \
+        \cf3 self\cf0 .\cf5 menu\cf0 ?.\cf4 view\cf0 .\cf7 setTranslatesAutoresizingMaskIntoConstraints\cf0 (\cf3 false\cf0 )\
+        \cf3 self\cf0 .\cf4 view\cf0 .\cf7 addSubview\cf0 (\cf3 self\cf0 .\cf5 menu\cf0 !.\cf4 view\cf0 )\
+        \
+        \cf3 self\cf0 .\cf5 menu\cf0 !.\cf4 view\cf0 .\cf8 snp_makeConstraints\cf0  \{ (make) -> () \cf3 in\cf0 \
+            make.\cf5 width\cf0 .\cf8 equalTo\cf0 (\cf9 325\cf0 ) \cf2 //(self.view.frame.width - 50)\
+\cf0             make.\cf5 height\cf0 .\cf8 equalTo\cf0 (\cf3 self\cf0 .\cf4 view\cf0 .\cf5 snp_height\cf0 )\
+            make.\cf5 top\cf0 .\cf8 equalTo\cf0 (\cf9 0\cf0 )\
+        \}\
+        \cf3 self\cf0 .\cf5 menuLeftConstraint\cf0  = \cf4 NSLayoutConstraint\cf0 (item: \cf3 self\cf0 .\cf5 menu\cf0 !.\cf4 view\cf0 , attribute: .\cf7 Left\cf0 , relatedBy: .\cf7 Equal\cf0 , toItem: \cf3 nil\cf0 , attribute: .\cf7 Left\cf0 , multiplier: \cf9 1.0\cf0 , constant: \cf7 -\cf3 self\cf0 .\cf5 menu\cf0 !.\cf4 view\cf0 .\cf4 frame\cf0 .\cf4 width\cf0 )\
+        \cf3 self\cf0 .\cf5 menu\cf0 !.\cf4 view\cf0 .\cf7 addConstraint\cf0 (\cf3 self\cf0 .\cf5 menuLeftConstraint\cf0 !)\
+        \
+        \cf2 //Loading the quotes into the menuViewController\
+\cf0         \cf3 self\cf0 .\cf5 menu\cf0 ?.\cf5 allQuotesData\cf0  = \cf3 self\cf0 .\cf5 midtempData\cf0 \
+        \cf3 self\cf0 .\cf5 menu\cf0 ?.\cf5 favQuotesData\cf0  = \cf3 self\cf0 .\cf5 favQuotesArray\cf0 \
+        \cf3 self\cf0 .\cf5 menu\cf0 ?.\cf5 delegate\cf0  = \cf3 self\cf0 \
+        \cf3 self\cf0 .\cf5 menu\cf0 ?.\cf8 re_filter\cf0 ()\
+    \}\
+    \
+    \cf3 func\cf0  createMenuButton() \{\
+        \cf3 self\cf0 .\cf5 topBarContainerView\cf0 .\cf7 addSubview\cf0 (\cf5 menuButton\cf0 )\
+        \cf3 self\cf0 .\cf5 menuButton\cf0 .\cf7 setImage\cf0 (\cf5 mainImage\cf0 , forState: .Normal)\
+        \cf3 self\cf0 .\cf5 menuButton\cf0 .\cf7 addTarget\cf0 (\cf3 self\cf0 , action: \cf6 "toggle:"\cf0 , forControlEvents: \cf4 UIControlEvents\cf0 .TouchUpInside)\
+        \cf3 self\cf0 .\cf5 menuButton\cf0 .\cf8 snp_makeConstraints\cf0  \{ (make) -> () \cf3 in\cf0 \
+            make.\cf5 centerY\cf0 .\cf8 equalTo\cf0 (\cf3 self\cf0 .\cf5 topBarContainerView\cf0 .\cf5 snp_centerY\cf0 ).\cf8 offset\cf0 (\cf9 10\cf0 )\
+            make.\cf5 leading\cf0 .\cf8 equalTo\cf0 (\cf9 12\cf0 )\
+            make.\cf5 width\cf0 .\cf8 equalTo\cf0 (\cf9 26\cf0 )\
+            make.\cf5 height\cf0 .\cf8 equalTo\cf0 (\cf9 30\cf0 )\
+        \}\
+    \}\
+    \
+    \cf3 func\cf0  createLogo() \{\
+        \cf3 let\cf0  logo = \cf4 UIImageView\cf0 (image: \cf5 logoImage\cf0 )\
+        \cf3 self\cf0 .\cf5 topBarContainerView\cf0 .\cf7 addSubview\cf0 (logo)\
+        logo.\cf8 snp_makeConstraints\cf0  \{ (make) -> () \cf3 in\cf0 \
+            make.\cf5 centerY\cf0 .\cf8 equalTo\cf0 (\cf3 self\cf0 .\cf5 topBarContainerView\cf0 .\cf5 snp_centerY\cf0 ).\cf8 offset\cf0 (\cf9 10.5\cf0 )\
+            \cf2 //make.centerX.equalTo(self.topBarContainerView.snp_centerX)\
+\cf0             make.\cf5 leading\cf0 .\cf8 equalTo\cf0 (\cf9 142.5\cf0 )\
+            make.\cf5 width\cf0 .\cf8 equalTo\cf0 (\cf9 90\cf0 )\
+            make.\cf5 height\cf0 .\cf8 equalTo\cf0 (\cf9 36\cf0 )\
+        \}\
+    \}\
+\
+    \cf3 func\cf0  toggle(sender: \cf4 UIButton\cf0 !) \{\
+        \cf3 if\cf0  \cf5 isMenuOpen\cf0  == \cf3 false\cf0  \{\
+            \cf8 showMenu\cf0 ()\
+        \} \cf3 else\cf0  \{\
+            \cf8 hideMenu\cf0 ()\
+            \cf8 changeBackgroundImage\cf0 ()\
+        \} \}\
+    \
+    \cf3 func\cf0  showMenu()\{\
+        \cf3 let\cf0  toggleMenuIn = \cf5 POPSpringAnimation\cf0 (propertyNamed: \cf5 kPOPLayoutConstraintConstant\cf0 )\
+        toggleMenuIn.\cf5 toValue\cf0  = -\cf9 5\cf0 \
+        toggleMenuIn.\cf5 springBounciness\cf0  = \cf9 10\cf0 \
+        toggleMenuIn.\cf5 springSpeed\cf0  = \cf9 10\cf0 \
+        \cf3 self\cf0 .\cf5 menuLeftConstraint\cf0 ?.\cf8 pop_addAnimation\cf0 (toggleMenuIn, forKey: \cf6 "toggleMenuIn.move"\cf0 )\
+                \
+        \cf3 let\cf0  toggleMainVCOut = \cf5 POPSpringAnimation\cf0 (propertyNamed: \cf5 kPOPLayoutConstraintConstant\cf0 )\
+        toggleMainVCOut.\cf5 toValue\cf0  = \cf9 320\cf2 //self.menu!.view.frame.width - 5\
+\cf0         toggleMainVCOut.\cf5 springBounciness\cf0  = \cf9 10\cf0 \
+        toggleMainVCOut.\cf5 springSpeed\cf0  = \cf9 10\cf0 \
+        \cf3 self\cf0 .\cf5 mainVCLeftConstraint\cf0 ?.\cf8 pop_addAnimation\cf0 (toggleMainVCOut, forKey: \cf6 "toggleMainVCOut.move"\cf0 )\
+        \
+        \cf3 let\cf0  slideBackgroundOut = \cf5 POPSpringAnimation\cf0 (propertyNamed: \cf5 kPOPLayoutConstraintConstant\cf0 )\
+        slideBackgroundOut.\cf5 toValue\cf0  = \cf9 320\cf2 //self.mainVCLeftConstraint.constant\
+\cf0         slideBackgroundOut.\cf5 springBounciness\cf0  = \cf9 10\cf0 \
+        slideBackgroundOut.\cf5 springSpeed\cf0  = \cf9 10\cf0 \
+        \cf3 self\cf0 .\cf5 backgroundViewLeadingConstraint\cf0 .\cf8 pop_addAnimation\cf0 (slideBackgroundOut, forKey: \cf6 "slideBackgroundOut.move"\cf0 )\
+\
+        \cf3 self\cf0 .\cf5 quoteTextField\cf0 .\cf4 alpha\cf0  = \cf9 0\cf0 \
+        \cf3 self\cf0 .\cf5 authorLabel\cf0 .\cf4 alpha\cf0  = \cf9 0\cf0 \
+        \cf3 self\cf0 .\cf5 infoLabel\cf0 .\cf4 alpha\cf0  = \cf9 0\cf0 \
+        \cf3 self\cf0 .\cf4 view\cf0 .\cf4 backgroundColor\cf0  = \cf3 self\cf0 .\cf5 menu\cf0 !.\cf4 view\cf0 .\cf4 backgroundColor\cf0 \
+                \
+        \cf3 let\cf0  transitionOptions = \cf4 UIViewAnimationOptions\cf0 .TransitionFlipFromLeft\
+        \cf4 UIView\cf0 .\cf7 transitionWithView\cf0 (\cf3 self\cf0 .\cf5 menuButton\cf0 , duration: \cf9 0.75\cf0 , options: transitionOptions, animations: \{\
+            \cf3 self\cf0 .\cf5 menuButton\cf0 .\cf7 setImage\cf0 (\cf3 self\cf0 .\cf5 menuImage\cf0 , forState: .Normal)\
+            \}, completion: \cf3 nil\cf0 )\
+        \cf3 self\cf0 .\cf5 isMenuOpen\cf0  = \cf3 true\cf0 \
+\
+        \}\
+\
+    \cf3 func\cf0  hideMenu() \{\
+        \cf3 let\cf0  toggleMenuOut = \cf5 POPSpringAnimation\cf0 (propertyNamed: \cf5 kPOPLayoutConstraintConstant\cf0 )\
+        toggleMenuOut.\cf5 toValue\cf0  = \cf7 -\cf3 self\cf0 .\cf5 menu\cf0 !.\cf4 view\cf0 .\cf4 frame\cf0 .\cf4 width\cf0 \
+        toggleMenuOut.\cf5 springBounciness\cf0  = \cf9 0\cf0 \
+        toggleMenuOut.\cf5 springSpeed\cf0  = \cf9 15\cf0 \
+        \cf3 self\cf0 .\cf5 menuLeftConstraint\cf0 ?.\cf8 pop_addAnimation\cf0 (toggleMenuOut, forKey: \cf6 "toggleMenuOut.move"\cf0 )\
+            \
+        \cf3 let\cf0  toggleMainVCIn = \cf5 POPSpringAnimation\cf0 (propertyNamed: \cf5 kPOPLayoutConstraintConstant\cf0 )\
+        toggleMainVCIn.\cf5 toValue\cf0  = \cf9 0\cf0 \
+        toggleMainVCIn.\cf5 springBounciness\cf0  = \cf9 0\cf0 \
+        toggleMainVCIn.\cf5 springSpeed\cf0  = \cf9 15\cf0 \
+        \cf3 self\cf0 .\cf5 mainVCLeftConstraint\cf0 ?.\cf8 pop_addAnimation\cf0 (toggleMainVCIn, forKey: \cf6 "toggleMainVCIn.move"\cf0 )\
+        \
+        \cf3 let\cf0  slideBackgroundIn = \cf5 POPSpringAnimation\cf0 (propertyNamed: \cf5 kPOPLayoutConstraintConstant\cf0 )\
+        slideBackgroundIn.\cf5 toValue\cf0  = \cf9 0\cf0 \
+        slideBackgroundIn.\cf5 springBounciness\cf0  = \cf9 0\cf0 \
+        slideBackgroundIn.\cf5 springSpeed\cf0  = \cf9 15\cf0 \
+        \cf3 self\cf0 .\cf5 backgroundViewLeadingConstraint\cf0 .\cf8 pop_addAnimation\cf0 (slideBackgroundIn, forKey: \cf6 "slideBackgroundIn.move"\cf0 )\
+        \
+        \cf3 self\cf0 .\cf5 isMenuOpen\cf0  = \cf3 false\cf0 \
+            \
+        \cf3 let\cf0  transitionOptions = \cf4 UIViewAnimationOptions\cf0 .TransitionFlipFromRight\
+        \cf4 UIView\cf0 .\cf7 transitionWithView\cf0 (\cf3 self\cf0 .\cf5 menuButton\cf0 , duration: \cf9 0.75\cf0 , options: transitionOptions, animations: \{\
+            \cf3 self\cf0 .\cf5 menuButton\cf0 .\cf7 setImage\cf0 (\cf3 self\cf0 .\cf5 mainImage\cf0 , forState: .Normal)\
+            \}, completion: \cf3 nil\cf0 )\
+        \cf3 self\cf0 .\cf5 isMenuOpen\cf0  = \cf3 false\cf0 \
+        \
+        \cf4 UIView\cf0 .\cf7 animateWithDuration\cf0 (\cf9 1\cf0 , animations: \{\
+            \cf3 self\cf0 .\cf5 quoteTextField\cf0 .\cf4 alpha\cf0  = \cf9 1\cf0 \
+            \cf3 self\cf0 .\cf5 authorLabel\cf0 .\cf4 alpha\cf0  = \cf9 1\cf0 \
+            \cf3 self\cf0 .\cf5 infoLabel\cf0 .\cf4 alpha\cf0  = \cf9 1\cf0 \
+        \})\
+        \
+        \}\
+    \
+    \cf3 func\cf0  changeBackgroundImage() \{\
+        \cf3 var\cf0  imageToChangeTo: \cf4 String\cf0 ?\
+        \cf3 var\cf0  imagePath = \cf4 NSBundle\cf0 .\cf7 mainBundle\cf0 ().\cf7 pathForResource\cf0 (\cf6 "BackgroundImage"\cf0 , ofType: \cf6 "plist"\cf0 )\
+        \cf3 var\cf0  imageNames = \cf4 NSArray\cf0 (contentsOfFile: imagePath!)\
+         \cf7 println\cf0 (\cf6 "the image names are: \cf0 \\(imageNames)\cf6 "\cf0 )\
+        \
+        \cf3 var\cf0  numberOfImages = imageNames?.\cf4 count\cf0 \
+        \cf3 var\cf0  randomNumber = \cf4 Int\cf0 (\cf7 arc4random_uniform\cf0 (\cf4 UInt32\cf0 (numberOfImages!)))\
+        \cf7 println\cf0 (\cf6 "there are :\cf0 \\(numberOfImages)\cf6  images"\cf0 )\
+        \cf7 println\cf0 (\cf6 "the random number is: \cf0 \\(randomNumber)\cf6 "\cf0 )\
+        \
+        \cf3 let\cf0  imageArray: [\cf4 String\cf0 ] = imageNames \cf3 as\cf0  \cf4 Array\cf0 \
+        \
+        \cf3 var\cf0  randomImageName = imageArray[randomNumber]\
+        \cf7 println\cf0 (\cf6 "the random image is: \cf0 \\(randomImageName)\cf6 "\cf0 )\
+        \cf3 self\cf0 .\cf5 backgroundView\cf0 .\cf4 image\cf0  = \cf4 UIImage\cf0 (named:randomImageName)\
+        \cf3 self\cf0 .\cf5 backgroundView\cf0 .\cf4 frame\cf0  = \cf3 self\cf0 .\cf4 view\cf0 .\cf4 frame\cf0 \
+    \}\
+    \
+    \cf3 func\cf0  updateQuoteTextAppearance() \{\
+        \cf3 self\cf0 .\cf5 quoteTextField\cf0 .\cf4 textColor\cf0  = \cf4 UIColor\cf0 .\cf7 whiteColor\cf0 ()\
+        \cf3 self\cf0 .\cf5 quoteTextField\cf0 .\cf4 font\cf0  = \cf4 UIFont\cf0 (name: \cf6 "Avenir"\cf0 , size: \cf9 20\cf0 )\
+        \cf3 self\cf0 .\cf5 quoteTextField\cf0 .\cf4 textAlignment\cf0  = .\cf7 Center\cf0 \
+    \}\
+    \
+    \cf3 func\cf0  createLaunchOverlay() \{\
+        \cf3 self\cf0 .\cf5 logoImageView\cf0 .\cf7 setTranslatesAutoresizingMaskIntoConstraints\cf0 (\cf3 false\cf0 )\
+        \cf3 self\cf0 .\cf5 logoTopConstraint\cf0  = \cf4 NSLayoutConstraint\cf0 (item: \cf3 self\cf0 .\cf5 logoImageView\cf0 , attribute: .\cf7 Top\cf0 , relatedBy: .\cf7 Equal\cf0 , toItem: \cf3 self\cf0 .\cf5 overlay\cf0 , attribute: .\cf7 Top\cf0 , multiplier: \cf9 1\cf0 , constant: \cf9 250\cf0 )\
+        \cf7 println\cf0 (\cf6 "top constraint is: \cf0 \\(\cf5 logoTopConstraint\cf0 .\cf4 constant\cf0 )\cf6 "\cf0 )\
+        \
+        \cf3 self\cf0 .\cf4 view\cf0 .\cf7 addSubview\cf0 (\cf3 self\cf0 .\cf5 overlay\cf0 )\
+        \cf3 self\cf0 .\cf4 view\cf0 .\cf7 addSubview\cf0 (\cf5 logoImageView\cf0 )\
+        \cf3 self\cf0 .\cf4 view\cf0 .\cf7 addConstraint\cf0 (\cf5 logoTopConstraint\cf0 )\
+        \cf3 self\cf0 .\cf5 overlay\cf0 .\cf4 frame\cf0  = \cf7 CGRectMake\cf0 (\cf9 0\cf0 , \cf9 0\cf0 , \cf3 self\cf0 .\cf4 view\cf0 .\cf4 frame\cf0 .\cf4 size\cf0 .\cf4 width\cf0 , \cf3 self\cf0 .\cf4 view\cf0 .\cf4 frame\cf0 .\cf4 size\cf0 .\cf4 height\cf0 )\
+        \cf3 self\cf0 .\cf5 overlay\cf0 .\cf4 backgroundColor\cf0  = \cf4 UIColor\cf0 .\cf7 darkGrayColor\cf0 ()\
+        \
+        \cf3 self\cf0 .\cf5 logoImageView\cf0 .\cf4 image\cf0  = \cf5 logoImage\cf0 \
+        \cf3 self\cf0 .\cf5 logoImageView\cf0 .\cf8 snp_makeConstraints\cf0  \{ (make) -> () \cf3 in\cf0 \
+            make.\cf5 width\cf0 .\cf8 equalTo\cf0 (\cf9 300\cf0 )\
+            make.\cf5 height\cf0 .\cf8 equalTo\cf0 (\cf9 128\cf0 )\
+            make.\cf5 centerX\cf0 .\cf8 equalTo\cf0 (\cf3 self\cf0 .\cf5 overlay\cf0 .\cf5 snp_centerX\cf0 )\
+            \cf2 //make.centerY.equalTo(self.overlay.snp_centerY)\
+\cf0         \}\
+        \
+\
+    \}\
+    \
+    \cf3 func\cf0  performLaunchOverlayAnimation() \{\
+        \cf4 UIView\cf0 .\cf7 animateWithDuration\cf0 (\cf9 1\cf0 , animations: \{\
+            \cf3 let\cf0  scale = \cf7 CGAffineTransformMakeScale\cf0 (\cf9 0.3\cf0 , \cf9 0.285\cf0 )\
+            \cf3 self\cf0 .\cf5 logoImageView\cf0 .\cf4 transform\cf0  = scale\
+            \}, completion: \{ (Bool) -> \cf4 Void\cf0  \cf3 in\cf0 \
+                \cf3 let\cf0  slideUp = \cf5 POPSpringAnimation\cf0 (propertyNamed: \cf5 kPOPLayoutConstraintConstant\cf0 )\
+                slideUp.\cf5 toValue\cf0  = -\cf9 21\cf0 \
+                slideUp.\cf5 springBounciness\cf0  = \cf9 2\cf0 \
+                slideUp.\cf5 springSpeed\cf0  = \cf9 1\cf0 \
+                \cf3 self\cf0 .\cf5 logoTopConstraint\cf0 .\cf8 pop_addAnimation\cf0 (slideUp, forKey: \cf6 "slideUp.move"\cf0 )\
+                \
+                \cf3 self\cf0 .\cf8 destroyLaunchOverlay\cf0 ()\
+                \cf2 //self.createLogo()\
+\cf0             \})\
+            \cf2 //destroyLaunchOverlay()\
+//                UIView.animateWithDuration(2.0, animations: \{\
+//                    self.overlay.alpha = 0\
+//                    \
+//                    \}, completion: \{ (Bool) -> Void In\
+//                         self.logoImageView.removeFromSuperview()\
+//                \})\
+\cf0        \
+    \}\
+    \
+    \cf3 func\cf0  destroyLaunchOverlay() \{\
+        \cf4 UIView\cf0 .\cf7 animateWithDuration\cf0 (\cf9 2.0\cf0 , animations: \{ () -> \cf4 Void\cf0  \cf3 in\cf0 \
+        \cf3 self\cf0 .\cf5 overlay\cf0 .\cf4 alpha\cf0  = \cf9 0\cf0 \
+        \}) \{ (Bool) -> \cf4 Void\cf0  \cf3 in\cf0 \
+            \cf3 self\cf0 .\cf8 createLogo\cf0 ()\
+            \cf3 self\cf0 .\cf5 logoImageView\cf0 .\cf7 removeFromSuperview\cf0 ()\
+        \}\
+    \}\
+    \
+\}\
+\
+}
