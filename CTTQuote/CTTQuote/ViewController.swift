@@ -1,0 +1,25 @@
+//
+//  ViewController.swift
+//  CTTQuote
+//
+//  Created by Alexis Saint-Jean on 4/9/15.
+//  Copyright (c) 2015 Alexis Saint-Jean. All rights reserved.
+//  Didn't mess up that one yet
+
+import UIKit
+
+class ViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+
+}
+

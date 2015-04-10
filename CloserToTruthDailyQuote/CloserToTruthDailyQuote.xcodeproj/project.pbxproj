@@ -7,6 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		780A12691AD77C2A005BEBF0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 780A12681AD77C2A005BEBF0 /* SystemConfiguration.framework */; };
+		780A126B1AD77C40005BEBF0 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 780A126A1AD77C40005BEBF0 /* MediaPlayer.framework */; };
+		780A126D1AD77C4E005BEBF0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 780A126C1AD77C4E005BEBF0 /* QuartzCore.framework */; };
+		780A126F1AD77C6D005BEBF0 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 780A126E1AD77C6D005BEBF0 /* CoreFoundation.framework */; };
+		780A12711AD77C7A005BEBF0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 780A12701AD77C7A005BEBF0 /* AVFoundation.framework */; };
+		780A12731AD77C88005BEBF0 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 780A12721AD77C88005BEBF0 /* AudioToolbox.framework */; };
+		780A12751AD77C92005BEBF0 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 780A12741AD77C92005BEBF0 /* CFNetwork.framework */; };
+		780A12771AD77C9E005BEBF0 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 780A12761AD77C9E005BEBF0 /* AdSupport.framework */; };
+		780A12791AD77CAB005BEBF0 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 780A12781AD77CAB005BEBF0 /* WebKit.framework */; };
+		780A127B1AD77CB8005BEBF0 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 780A127A1AD77CB8005BEBF0 /* MessageUI.framework */; };
+		780A127D1AD77CC1005BEBF0 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 780A127C1AD77CC1005BEBF0 /* Social.framework */; };
+		780A127F1AD77CCD005BEBF0 /* MediaAccessibility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 780A127E1AD77CCD005BEBF0 /* MediaAccessibility.framework */; };
+		780A12811AD77CE6005BEBF0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 780A12801AD77CE6005BEBF0 /* Foundation.framework */; };
+		780A12831AD77CF2005BEBF0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 780A12821AD77CF2005BEBF0 /* CoreGraphics.framework */; };
 		78CB4BC91AD7400100411F25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CB4BC81AD7400100411F25 /* AppDelegate.swift */; };
 		78CB4BCC1AD7400100411F25 /* CloserToTruthDailyQuote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 78CB4BCA1AD7400100411F25 /* CloserToTruthDailyQuote.xcdatamodeld */; };
 		78CB4BCE1AD7400100411F25 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CB4BCD1AD7400100411F25 /* ViewController.swift */; };
@@ -31,6 +45,20 @@
 		165B0B97B1704510DF29FFFA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		1E2461694E93DBD5AC1D15EF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		780360831AD7645E00A326C3 /* CloserToTruthDailyQuote-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CloserToTruthDailyQuote-Bridging-Header.h"; sourceTree = "<group>"; };
+		780A12681AD77C2A005BEBF0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		780A126A1AD77C40005BEBF0 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		780A126C1AD77C4E005BEBF0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		780A126E1AD77C6D005BEBF0 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		780A12701AD77C7A005BEBF0 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		780A12721AD77C88005BEBF0 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		780A12741AD77C92005BEBF0 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		780A12761AD77C9E005BEBF0 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		780A12781AD77CAB005BEBF0 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		780A127A1AD77CB8005BEBF0 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		780A127C1AD77CC1005BEBF0 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		780A127E1AD77CCD005BEBF0 /* MediaAccessibility.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaAccessibility.framework; path = System/Library/Frameworks/MediaAccessibility.framework; sourceTree = SDKROOT; };
+		780A12801AD77CE6005BEBF0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		780A12821AD77CF2005BEBF0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		78CB4BC31AD7400100411F25 /* CloserToTruthDailyQuote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloserToTruthDailyQuote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78CB4BC71AD7400100411F25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		78CB4BC81AD7400100411F25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -50,6 +78,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				780A12831AD77CF2005BEBF0 /* CoreGraphics.framework in Frameworks */,
+				780A12811AD77CE6005BEBF0 /* Foundation.framework in Frameworks */,
+				780A127F1AD77CCD005BEBF0 /* MediaAccessibility.framework in Frameworks */,
+				780A127D1AD77CC1005BEBF0 /* Social.framework in Frameworks */,
+				780A127B1AD77CB8005BEBF0 /* MessageUI.framework in Frameworks */,
+				780A12791AD77CAB005BEBF0 /* WebKit.framework in Frameworks */,
+				780A12771AD77C9E005BEBF0 /* AdSupport.framework in Frameworks */,
+				780A12751AD77C92005BEBF0 /* CFNetwork.framework in Frameworks */,
+				780A12731AD77C88005BEBF0 /* AudioToolbox.framework in Frameworks */,
+				780A12711AD77C7A005BEBF0 /* AVFoundation.framework in Frameworks */,
+				780A126F1AD77C6D005BEBF0 /* CoreFoundation.framework in Frameworks */,
+				780A126D1AD77C4E005BEBF0 /* QuartzCore.framework in Frameworks */,
+				780A126B1AD77C40005BEBF0 /* MediaPlayer.framework in Frameworks */,
+				780A12691AD77C2A005BEBF0 /* SystemConfiguration.framework in Frameworks */,
 				8C52691C7B28D3C3B304D4B8 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -127,6 +169,20 @@
 		8D2AC1E5AC00EEB615096FEB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				780A12821AD77CF2005BEBF0 /* CoreGraphics.framework */,
+				780A12801AD77CE6005BEBF0 /* Foundation.framework */,
+				780A127E1AD77CCD005BEBF0 /* MediaAccessibility.framework */,
+				780A127C1AD77CC1005BEBF0 /* Social.framework */,
+				780A127A1AD77CB8005BEBF0 /* MessageUI.framework */,
+				780A12781AD77CAB005BEBF0 /* WebKit.framework */,
+				780A12761AD77C9E005BEBF0 /* AdSupport.framework */,
+				780A12741AD77C92005BEBF0 /* CFNetwork.framework */,
+				780A12721AD77C88005BEBF0 /* AudioToolbox.framework */,
+				780A12701AD77C7A005BEBF0 /* AVFoundation.framework */,
+				780A126E1AD77C6D005BEBF0 /* CoreFoundation.framework */,
+				780A126C1AD77C4E005BEBF0 /* QuartzCore.framework */,
+				780A126A1AD77C40005BEBF0 /* MediaPlayer.framework */,
+				780A12681AD77C2A005BEBF0 /* SystemConfiguration.framework */,
 				852A18AEF3BA49C5F3015025 /* Pods.framework */,
 			);
 			name = Frameworks;

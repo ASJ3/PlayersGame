@@ -3,4 +3,4 @@
 //
 
 #import <pop/POP.h>
-#import <KALTURAPlayerSDK/KPViewController.h>
+#import "KPViewController.h"

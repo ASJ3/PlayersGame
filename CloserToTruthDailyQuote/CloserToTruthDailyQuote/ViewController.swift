@@ -9,9 +9,13 @@
 import UIKit
 import pop
 import snap
+//import google_cast_sdk
+//import player_sdk_native_ios
+//import GoogleAds_IMA_iOS_SDK
+//import KPViewController
 
 class ViewController: UIViewController {
-    
+//    var playerViewController = KPViewController()
     func showMenu() {
         let toggleMenuIn = POPSpringAnimation(propertyNamed: kPOPLayoutConstraintConstant)
     }
@@ -19,6 +23,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+//        if !playerViewController {
+//            println("The playerViewController does not exist")
+//        } else {
+//           println("The playerViewController does exist")
+//        }
     }
 
     override func didReceiveMemoryWarning() {
