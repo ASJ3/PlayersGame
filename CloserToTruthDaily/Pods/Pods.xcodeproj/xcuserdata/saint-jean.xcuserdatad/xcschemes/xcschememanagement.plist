@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Pods-GoogleAds-IMA-iOS-SDK.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-google-cast-sdk.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-player-sdk-native-ios.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-pop.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>00E2696401E13FD21425E0A9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0B5164DC2379CEC96ACDC690</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2CE6022A7CC9D29374A6F8C9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CA3B93886F581842188C2C20</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DE9700C442BE70B49C61AB7F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

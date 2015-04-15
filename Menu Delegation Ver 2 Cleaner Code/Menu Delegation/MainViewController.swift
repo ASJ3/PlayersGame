@@ -83,7 +83,7 @@ class MainViewController: UIViewController, PassingQuote {
 
     @IBAction func showVideo(sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-        let next = storyboard.instantiateViewControllerWithIdentifier("VideoVC") as VideoViewController
+        let next = storyboard.instantiateViewControllerWithIdentifier("VideoVC") as! VideoViewController
         next.urlstring = self.interviewLink
         self.presentViewController(next, animated: true, completion: nil)
     }
@@ -92,7 +92,7 @@ class MainViewController: UIViewController, PassingQuote {
     @IBAction func showAuthorInfo(sender: UIButton) {
         println("The ID for the author of this quote is: \(self.authorID)")
         let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-        let next = storyboard.instantiateViewControllerWithIdentifier("AuthorInfoVC") as AuthorInfoViewController
+        let next = storyboard.instantiateViewControllerWithIdentifier("AuthorInfoVC")as! AuthorInfoViewController
         // Now we're passing to the 'next' AuthorViewController the author ID so that it knows what info to display
         next.contributorID = self.authorID
         if let passingName = self.authorLabel.text {
@@ -166,19 +166,19 @@ class MainViewController: UIViewController, PassingQuote {
                         self.quoteTextField.text = cleanText.stringByReplacingOccurrencesOfString("&#039;", withString: "'", options: NSStringCompareOptions.LiteralSearch, range: nil)
                     }
                     if let authorOfQuote = quoteDict["contributor_name"] as? NSString {
-                        self.authorLabel.text = authorOfQuote
+                        self.authorLabel.text = authorOfQuote as String
                     }
                     if let infoForQuote = quoteDict["term_name"] as? NSString {
-                        self.infoLabel.text = infoForQuote
+                        self.infoLabel.text = infoForQuote as String
                     }
                     if let authorInfo = quoteDict["contributor_id"] as? NSString {
-                        self.authorID = authorInfo
+                        self.authorID = authorInfo as String
                     }
                     if let interviewInfo = quoteDict["drupal_interview_url"] as? NSString {
-                        self.interviewLink = interviewInfo
+                        self.interviewLink = interviewInfo as String
                     }
                     if let quoteIdentifier = quoteDict["quote_id"] as? NSString {
-                        self.quoteID = quoteIdentifier
+                        self.quoteID = quoteIdentifier as String
                     }
                 }
             }
@@ -216,8 +216,8 @@ class MainViewController: UIViewController, PassingQuote {
             self.favQuotesArray = []
             // Loop to load from the plist all the favorite quotes into favQuotesArray and all the quote_id from these quotes into favQuotesIdArray
             for i in bookmarks! {
-                self.favQuotesArray.append(i["quote_text"] as NSString)
-                self.favQuotesIdArray.append(i["quote_id"] as NSString)
+                self.favQuotesArray.append(i["quote_text"] as! NSString as String)
+                self.favQuotesIdArray.append(i["quote_id"] as! NSString as String)
             }
         }
         
@@ -445,7 +445,7 @@ class MainViewController: UIViewController, PassingQuote {
         var randomNumber = Int(arc4random_uniform(UInt32(numberOfImages!)))
 //        println("MainViewVC: There are:\(numberOfImages) images and the random number is:\(randomNumber)")
         
-        let imageArray: [String] = imageNames as Array
+        let imageArray: [String] = imageNames as! Array
         
         var randomImageName = imageArray[randomNumber]
 //        println("the random image is: \(randomImageName)")

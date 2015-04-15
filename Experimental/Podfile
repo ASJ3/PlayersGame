@@ -1,0 +1,8 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+platform :ios, '8.0'
+
+pod 'pop', :git => 'https://github.com/facebook/pop.git'
+pod 'player-sdk-native-ios', '~> 1.1'
+use_frameworks!
+pod 'Snap', '~> 0.0.6'

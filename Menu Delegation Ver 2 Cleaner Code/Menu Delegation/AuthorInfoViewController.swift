@@ -78,7 +78,7 @@ class AuthorInfoViewController: UIViewController {
                     println("AuthorInfoVC: json in viewDidLoad(). json count is now \(self.json!.count)")
                     if let jsonInfo = self.json![0] as? NSDictionary {
                         if let authorPictureLink = jsonInfo["contributor_image"] as? NSString {
-                            let urlForImage = NSURL(string: authorPictureLink)
+                            let urlForImage = NSURL(string: authorPictureLink as String)
                             self.dataForPic = NSData(contentsOfURL: urlForImage!)
                         }
                     }

@@ -94,7 +94,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 //        var cell = tableView.dequeueReusableCellWithIdentifier("quoteCell", forIndexPath: indexPath) as UITableViewCell
-        var cell = tableView.dequeueReusableCellWithIdentifier("quoteCell") as UITableViewCell!
+        var cell = tableView.dequeueReusableCellWithIdentifier("quoteCell") as! UITableViewCell!
         if cell == nil  {
             cell = UITableViewCell(style: .Default, reuseIdentifier: "quoteCell")
         }

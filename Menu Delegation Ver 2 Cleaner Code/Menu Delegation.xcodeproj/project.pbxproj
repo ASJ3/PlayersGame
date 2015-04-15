@@ -30,6 +30,8 @@
 		55EC87781AC1C0FB0016E594 /* menu rounded white.png in Resources */ = {isa = PBXBuildFile; fileRef = 55EC87771AC1C0FB0016E594 /* menu rounded white.png */; };
 		55EC877A1AC1C7430016E594 /* bookmark empty white bordered.png in Resources */ = {isa = PBXBuildFile; fileRef = 55EC87791AC1C7430016E594 /* bookmark empty white bordered.png */; };
 		55EC877C1AC1C81A0016E594 /* Favorites.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55EC877B1AC1C81A0016E594 /* Favorites.plist */; };
+		78280BD51ADCC512001EBCC3 /* white hamburger.png in Resources */ = {isa = PBXBuildFile; fileRef = 78280BD31ADCC512001EBCC3 /* white hamburger.png */; };
+		78280BD61ADCC512001EBCC3 /* white bookmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 78280BD41ADCC512001EBCC3 /* white bookmark.png */; };
 		AEF64CEECE1334C1111CAB1C /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA43FF3E4CD0820E9546F5C /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -74,6 +76,8 @@
 		55EC87791AC1C7430016E594 /* bookmark empty white bordered.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bookmark empty white bordered.png"; sourceTree = "<group>"; };
 		55EC877B1AC1C81A0016E594 /* Favorites.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Favorites.plist; sourceTree = "<group>"; };
 		6EA43FF3E4CD0820E9546F5C /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		78280BD31ADCC512001EBCC3 /* white hamburger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white hamburger.png"; sourceTree = "<group>"; };
+		78280BD41ADCC512001EBCC3 /* white bookmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white bookmark.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +182,8 @@
 				55D7DDAD1ABFABFD00D06384 /* close white.png */,
 				55D7DDB11ABFABFD00D06384 /* profile white.png */,
 				55D7DDB31ABFABFD00D06384 /* video white.png */,
+				78280BD31ADCC512001EBCC3 /* white hamburger.png */,
+				78280BD41ADCC512001EBCC3 /* white bookmark.png */,
 				552FB89D1ABBB51800E1E19A /* logo.png */,
 			);
 			name = Icons;
@@ -286,6 +292,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78280BD61ADCC512001EBCC3 /* white bookmark.png in Resources */,
 				557AC4821ABA34B400935BB7 /* Main.storyboard in Resources */,
 				55E67DA51ABDEC1600AF0BEE /* Cosmos Cropped.jpg in Resources */,
 				55EC877C1AC1C81A0016E594 /* Favorites.plist in Resources */,
@@ -299,6 +306,7 @@
 				55DE248D1ABCE23700CC148C /* Launch Screen.xib in Resources */,
 				55E67DA71ABDEC2100AF0BEE /* Meaning Cropped.jpg in Resources */,
 				55E67DA31ABDEC0A00AF0BEE /* Consciousness Cropped.jpg in Resources */,
+				78280BD51ADCC512001EBCC3 /* white hamburger.png in Resources */,
 				552FB8A11ABBB51800E1E19A /* logo.png in Resources */,
 				55D7DDBF1ABFABFD00D06384 /* profile white.png in Resources */,
 				557AC4841ABA34B400935BB7 /* Images.xcassets in Resources */,
