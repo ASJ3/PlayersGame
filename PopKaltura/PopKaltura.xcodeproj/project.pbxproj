@@ -1,0 +1,519 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		78AC89FF1ADF24ED00C4D480 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AC89FE1ADF24ED00C4D480 /* AppDelegate.swift */; };
+		78AC8A021ADF24ED00C4D480 /* PopKaltura.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 78AC8A001ADF24ED00C4D480 /* PopKaltura.xcdatamodeld */; };
+		78AC8A041ADF24ED00C4D480 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AC8A031ADF24ED00C4D480 /* ViewController.swift */; };
+		78AC8A071ADF24ED00C4D480 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78AC8A051ADF24ED00C4D480 /* Main.storyboard */; };
+		78AC8A091ADF24ED00C4D480 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78AC8A081ADF24ED00C4D480 /* Images.xcassets */; };
+		78AC8A0C1ADF24ED00C4D480 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78AC8A0A1ADF24ED00C4D480 /* LaunchScreen.xib */; };
+		78AC8A181ADF24ED00C4D480 /* PopKalturaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AC8A171ADF24ED00C4D480 /* PopKalturaTests.swift */; };
+		78AC8A281ADF4C5E00C4D480 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AC8A271ADF4C5E00C4D480 /* SecondViewController.swift */; };
+		78AC8A2A1ADFDA8300C4D480 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AC8A291ADFDA8300C4D480 /* ThirdViewController.swift */; };
+		8C0CFF73FB2AD54F0DD6DF21 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 44523DA838F37295ACC23BB9 /* libPods.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		78AC8A121ADF24ED00C4D480 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 78AC89F11ADF24ED00C4D480 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 78AC89F81ADF24ED00C4D480;
+			remoteInfo = PopKaltura;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		44523DA838F37295ACC23BB9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		78AC89F91ADF24ED00C4D480 /* PopKaltura.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopKaltura.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		78AC89FD1ADF24ED00C4D480 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		78AC89FE1ADF24ED00C4D480 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		78AC8A011ADF24ED00C4D480 /* PopKaltura.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PopKaltura.xcdatamodel; sourceTree = "<group>"; };
+		78AC8A031ADF24ED00C4D480 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		78AC8A061ADF24ED00C4D480 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		78AC8A081ADF24ED00C4D480 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		78AC8A0B1ADF24ED00C4D480 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		78AC8A111ADF24ED00C4D480 /* PopKalturaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PopKalturaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		78AC8A161ADF24ED00C4D480 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		78AC8A171ADF24ED00C4D480 /* PopKalturaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopKalturaTests.swift; sourceTree = "<group>"; };
+		78AC8A211ADF263E00C4D480 /* PopKaltura-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PopKaltura-Bridging-Header.h"; sourceTree = "<group>"; };
+		78AC8A271ADF4C5E00C4D480 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		78AC8A291ADFDA8300C4D480 /* ThirdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		86CCEC312ADEFCA3DA60D71B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		EF37F7BA782E8DCC9E3313C7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		78AC89F61ADF24ED00C4D480 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C0CFF73FB2AD54F0DD6DF21 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		78AC8A0E1ADF24ED00C4D480 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1CB11F97AD52A0C2857F46BA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				86CCEC312ADEFCA3DA60D71B /* Pods.debug.xcconfig */,
+				EF37F7BA782E8DCC9E3313C7 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		459901A9BFF3AF5B22E0D7B4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				44523DA838F37295ACC23BB9 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		78AC89F01ADF24ED00C4D480 = {
+			isa = PBXGroup;
+			children = (
+				78AC89FB1ADF24ED00C4D480 /* PopKaltura */,
+				78AC8A141ADF24ED00C4D480 /* PopKalturaTests */,
+				78AC89FA1ADF24ED00C4D480 /* Products */,
+				1CB11F97AD52A0C2857F46BA /* Pods */,
+				459901A9BFF3AF5B22E0D7B4 /* Frameworks */,
+				78AC8A211ADF263E00C4D480 /* PopKaltura-Bridging-Header.h */,
+			);
+			sourceTree = "<group>";
+		};
+		78AC89FA1ADF24ED00C4D480 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				78AC89F91ADF24ED00C4D480 /* PopKaltura.app */,
+				78AC8A111ADF24ED00C4D480 /* PopKalturaTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		78AC89FB1ADF24ED00C4D480 /* PopKaltura */ = {
+			isa = PBXGroup;
+			children = (
+				78AC89FE1ADF24ED00C4D480 /* AppDelegate.swift */,
+				78AC8A031ADF24ED00C4D480 /* ViewController.swift */,
+				78AC8A051ADF24ED00C4D480 /* Main.storyboard */,
+				78AC8A291ADFDA8300C4D480 /* ThirdViewController.swift */,
+				78AC8A271ADF4C5E00C4D480 /* SecondViewController.swift */,
+				78AC8A081ADF24ED00C4D480 /* Images.xcassets */,
+				78AC8A0A1ADF24ED00C4D480 /* LaunchScreen.xib */,
+				78AC8A001ADF24ED00C4D480 /* PopKaltura.xcdatamodeld */,
+				78AC89FC1ADF24ED00C4D480 /* Supporting Files */,
+			);
+			path = PopKaltura;
+			sourceTree = "<group>";
+		};
+		78AC89FC1ADF24ED00C4D480 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				78AC89FD1ADF24ED00C4D480 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		78AC8A141ADF24ED00C4D480 /* PopKalturaTests */ = {
+			isa = PBXGroup;
+			children = (
+				78AC8A171ADF24ED00C4D480 /* PopKalturaTests.swift */,
+				78AC8A151ADF24ED00C4D480 /* Supporting Files */,
+			);
+			path = PopKalturaTests;
+			sourceTree = "<group>";
+		};
+		78AC8A151ADF24ED00C4D480 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				78AC8A161ADF24ED00C4D480 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		78AC89F81ADF24ED00C4D480 /* PopKaltura */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 78AC8A1B1ADF24ED00C4D480 /* Build configuration list for PBXNativeTarget "PopKaltura" */;
+			buildPhases = (
+				BC5675DCDC33EE53DA34BA22 /* Check Pods Manifest.lock */,
+				78AC89F51ADF24ED00C4D480 /* Sources */,
+				78AC89F61ADF24ED00C4D480 /* Frameworks */,
+				78AC89F71ADF24ED00C4D480 /* Resources */,
+				2B49454E13EB034C4E8AE08A /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PopKaltura;
+			productName = PopKaltura;
+			productReference = 78AC89F91ADF24ED00C4D480 /* PopKaltura.app */;
+			productType = "com.apple.product-type.application";
+		};
+		78AC8A101ADF24ED00C4D480 /* PopKalturaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 78AC8A1E1ADF24ED00C4D480 /* Build configuration list for PBXNativeTarget "PopKalturaTests" */;
+			buildPhases = (
+				78AC8A0D1ADF24ED00C4D480 /* Sources */,
+				78AC8A0E1ADF24ED00C4D480 /* Frameworks */,
+				78AC8A0F1ADF24ED00C4D480 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				78AC8A131ADF24ED00C4D480 /* PBXTargetDependency */,
+			);
+			name = PopKalturaTests;
+			productName = PopKalturaTests;
+			productReference = 78AC8A111ADF24ED00C4D480 /* PopKalturaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		78AC89F11ADF24ED00C4D480 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = "Alexis Saint-Jean";
+				TargetAttributes = {
+					78AC89F81ADF24ED00C4D480 = {
+						CreatedOnToolsVersion = 6.3;
+					};
+					78AC8A101ADF24ED00C4D480 = {
+						CreatedOnToolsVersion = 6.3;
+						TestTargetID = 78AC89F81ADF24ED00C4D480;
+					};
+				};
+			};
+			buildConfigurationList = 78AC89F41ADF24ED00C4D480 /* Build configuration list for PBXProject "PopKaltura" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 78AC89F01ADF24ED00C4D480;
+			productRefGroup = 78AC89FA1ADF24ED00C4D480 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				78AC89F81ADF24ED00C4D480 /* PopKaltura */,
+				78AC8A101ADF24ED00C4D480 /* PopKalturaTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		78AC89F71ADF24ED00C4D480 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				78AC8A071ADF24ED00C4D480 /* Main.storyboard in Resources */,
+				78AC8A0C1ADF24ED00C4D480 /* LaunchScreen.xib in Resources */,
+				78AC8A091ADF24ED00C4D480 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		78AC8A0F1ADF24ED00C4D480 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2B49454E13EB034C4E8AE08A /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BC5675DCDC33EE53DA34BA22 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		78AC89F51ADF24ED00C4D480 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				78AC8A041ADF24ED00C4D480 /* ViewController.swift in Sources */,
+				78AC8A021ADF24ED00C4D480 /* PopKaltura.xcdatamodeld in Sources */,
+				78AC8A2A1ADFDA8300C4D480 /* ThirdViewController.swift in Sources */,
+				78AC8A281ADF4C5E00C4D480 /* SecondViewController.swift in Sources */,
+				78AC89FF1ADF24ED00C4D480 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		78AC8A0D1ADF24ED00C4D480 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				78AC8A181ADF24ED00C4D480 /* PopKalturaTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		78AC8A131ADF24ED00C4D480 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 78AC89F81ADF24ED00C4D480 /* PopKaltura */;
+			targetProxy = 78AC8A121ADF24ED00C4D480 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		78AC8A051ADF24ED00C4D480 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				78AC8A061ADF24ED00C4D480 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		78AC8A0A1ADF24ED00C4D480 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				78AC8A0B1ADF24ED00C4D480 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		78AC8A191ADF24ED00C4D480 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		78AC8A1A1ADF24ED00C4D480 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		78AC8A1C1ADF24ED00C4D480 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86CCEC312ADEFCA3DA60D71B /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = PopKaltura/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PopKaltura-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		78AC8A1D1ADF24ED00C4D480 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EF37F7BA782E8DCC9E3313C7 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = PopKaltura/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PopKaltura-Bridging-Header.h";
+			};
+			name = Release;
+		};
+		78AC8A1F1ADF24ED00C4D480 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PopKalturaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PopKaltura.app/PopKaltura";
+			};
+			name = Debug;
+		};
+		78AC8A201ADF24ED00C4D480 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PopKalturaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PopKaltura.app/PopKaltura";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		78AC89F41ADF24ED00C4D480 /* Build configuration list for PBXProject "PopKaltura" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				78AC8A191ADF24ED00C4D480 /* Debug */,
+				78AC8A1A1ADF24ED00C4D480 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		78AC8A1B1ADF24ED00C4D480 /* Build configuration list for PBXNativeTarget "PopKaltura" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				78AC8A1C1ADF24ED00C4D480 /* Debug */,
+				78AC8A1D1ADF24ED00C4D480 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		78AC8A1E1ADF24ED00C4D480 /* Build configuration list for PBXNativeTarget "PopKalturaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				78AC8A1F1ADF24ED00C4D480 /* Debug */,
+				78AC8A201ADF24ED00C4D480 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		78AC8A001ADF24ED00C4D480 /* PopKaltura.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				78AC8A011ADF24ED00C4D480 /* PopKaltura.xcdatamodel */,
+			);
+			currentVersion = 78AC8A011ADF24ED00C4D480 /* PopKaltura.xcdatamodel */;
+			path = PopKaltura.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 78AC89F11ADF24ED00C4D480 /* Project object */;
+}
