@@ -5,6 +5,8 @@
 //  Created by Alexis Saint-Jean on 5/19/15.
 //  Copyright (c) 2015 Alexis Saint-Jean. All rights reserved.
 //
+//  Used code from http://www.veasoftware.com/tutorials/2015/5/12/current-location-in-swift-xcode-63-ios-83-tutorial
+
 
 import UIKit
 import CoreLocation
