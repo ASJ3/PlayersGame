@@ -16,7 +16,11 @@ class LocMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     @IBOutlet weak var map: MKMapView!
     @IBOutlet weak var locationUpdateInfoLabel: UILabel!
     let locationManager = CLLocationManager()
+    // Array that will hold the info of nearby water sources
+    var waterSources = [WaterSource]()
+    
     var loopChanges = 0
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +36,18 @@ class LocMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         //Set up our Map View
         self.map.delegate = self
         self.map.showsUserLocation = true
+        
+        
+        let waterLocation0 = WaterSource(coordinate: CLLocationCoordinate2D(latitude: 39.078850, longitude: -77.150728))
+        let waterLocation1 = WaterSource(coordinate: CLLocationCoordinate2D(latitude: 39.077679, longitude: -77.151452))
+        let waterLocation2 = WaterSource(coordinate: CLLocationCoordinate2D(latitude: 39.075793, longitude: -77.153485))
+        
+        self.waterSources.append(waterLocation0)
+        self.waterSources.append(waterLocation1)
+        self.waterSources.append(waterLocation2)
+
+        
+        self.map.addAnnotations(self.waterSources)
         
         println("End of viewDidLoad")
     }

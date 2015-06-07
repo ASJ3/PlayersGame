@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		78325AF51B0B39CA00EA4EE7 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78325AF41B0B39CA00EA4EE7 /* LocationViewController.swift */; };
+		7850129A1B244076007742B9 /* WaterSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785012991B244076007742B9 /* WaterSource.swift */; };
 		787349481B1BA72C00F39D4F /* LocMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787349471B1BA72C00F39D4F /* LocMapViewController.swift */; };
 		789593BD1AF0F99000BE3B67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789593BC1AF0F99000BE3B67 /* AppDelegate.swift */; };
 		789593BF1AF0F99000BE3B67 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789593BE1AF0F99000BE3B67 /* ViewController.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		78325AF41B0B39CA00EA4EE7 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		785012991B244076007742B9 /* WaterSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterSource.swift; sourceTree = "<group>"; };
 		787349471B1BA72C00F39D4F /* LocMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocMapViewController.swift; sourceTree = "<group>"; };
 		789593B71AF0F99000BE3B67 /* MapSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		789593BB1AF0F99000BE3B67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				789593BC1AF0F99000BE3B67 /* AppDelegate.swift */,
 				789593BE1AF0F99000BE3B67 /* ViewController.swift */,
 				789593C01AF0F99000BE3B67 /* Main.storyboard */,
+				785012991B244076007742B9 /* WaterSource.swift */,
 				787349471B1BA72C00F39D4F /* LocMapViewController.swift */,
 				78325AF41B0B39CA00EA4EE7 /* LocationViewController.swift */,
 				789593C31AF0F99000BE3B67 /* Images.xcassets */,
@@ -227,6 +230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7850129A1B244076007742B9 /* WaterSource.swift in Sources */,
 				787349481B1BA72C00F39D4F /* LocMapViewController.swift in Sources */,
 				78325AF51B0B39CA00EA4EE7 /* LocationViewController.swift in Sources */,
 				789593BF1AF0F99000BE3B67 /* ViewController.swift in Sources */,
