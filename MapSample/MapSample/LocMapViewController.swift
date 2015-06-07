@@ -37,16 +37,28 @@ class LocMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         self.map.delegate = self
         self.map.showsUserLocation = true
         
+        //Building pins from locations saved in the Locations plist
+        var waterLocationsPath = NSBundle.mainBundle().pathForResource("Locations", ofType: "plist")
+        var waterLocationsInfo = NSMutableArray(contentsOfFile: waterLocationsPath!)
         
-        let waterLocation0 = WaterSource(coordinate: CLLocationCoordinate2D(latitude: 39.078850, longitude: -77.150728))
-        let waterLocation1 = WaterSource(coordinate: CLLocationCoordinate2D(latitude: 39.077679, longitude: -77.151452))
-        let waterLocation2 = WaterSource(coordinate: CLLocationCoordinate2D(latitude: 39.075793, longitude: -77.153485))
+        for i in 0..<waterLocationsInfo!.count {
+            var waterLatitude = waterLocationsInfo![i]["latitude"]! as! Double
+            var waterLongitude = waterLocationsInfo![i]["longitude"]! as! Double
+            var waterLocation = WaterSource(coordinate: CLLocationCoordinate2D(latitude: waterLatitude, longitude: waterLongitude))
+            self.waterSources.append(waterLocation)
+        }
         
-        self.waterSources.append(waterLocation0)
-        self.waterSources.append(waterLocation1)
-        self.waterSources.append(waterLocation2)
-
-        
+//        let waterLocation0 = WaterSource(coordinate: CLLocationCoordinate2D(latitude: 39.078850, longitude: -77.150728))
+//        let waterLocation1 = WaterSource(coordinate: CLLocationCoordinate2D(latitude: 39.077679, longitude: -77.151452))
+//        let waterLocation2 = WaterSource(coordinate: CLLocationCoordinate2D(latitude: 39.075793, longitude: -77.153485))
+//        let waterLocation3 = WaterSource(coordinate: CLLocationCoordinate2D(latitude: 39.076193, longitude: -77.149515))
+//        
+//        self.waterSources.append(waterLocation0)
+//        self.waterSources.append(waterLocation1)
+//        self.waterSources.append(waterLocation2)
+//        self.waterSources.append(waterLocation3)
+//
+//        
         self.map.addAnnotations(self.waterSources)
         
         println("End of viewDidLoad")
