@@ -42,31 +42,20 @@ class LocMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         var waterLocationsInfo = NSMutableArray(contentsOfFile: waterLocationsPath!)
         
         for i in 0..<waterLocationsInfo!.count {
+            var title = waterLocationsInfo![i]["name"]! as! String
+            var info = waterLocationsInfo![i]["info"]! as! String
             var waterLatitude = waterLocationsInfo![i]["latitude"]! as! Double
             var waterLongitude = waterLocationsInfo![i]["longitude"]! as! Double
-            var waterLocation = WaterSource(coordinate: CLLocationCoordinate2D(latitude: waterLatitude, longitude: waterLongitude))
+            var waterLocation = WaterSource(title: title, info: info, coordinate: CLLocationCoordinate2D(latitude: waterLatitude, longitude: waterLongitude))
             self.waterSources.append(waterLocation)
         }
         
 //        let waterLocation0 = WaterSource(coordinate: CLLocationCoordinate2D(latitude: 39.078850, longitude: -77.150728))
-//        let waterLocation1 = WaterSource(coordinate: CLLocationCoordinate2D(latitude: 39.077679, longitude: -77.151452))
-//        let waterLocation2 = WaterSource(coordinate: CLLocationCoordinate2D(latitude: 39.075793, longitude: -77.153485))
-//        let waterLocation3 = WaterSource(coordinate: CLLocationCoordinate2D(latitude: 39.076193, longitude: -77.149515))
-//        
 //        self.waterSources.append(waterLocation0)
-//        self.waterSources.append(waterLocation1)
-//        self.waterSources.append(waterLocation2)
-//        self.waterSources.append(waterLocation3)
-//
-//        
+       
         self.map.addAnnotations(self.waterSources)
         
         println("End of viewDidLoad")
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 
@@ -81,6 +70,29 @@ class LocMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         
         self.map.setRegion(region, animated: true)
+    }
+    
+
+    //Function to show some info about each water source on the map
+    //Code from function inspired by http://www.raywenderlich.com/90971/introduction-mapkit-swift-tutorial
+    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+        if let annotation = annotation as? WaterSource {
+            let identifier = "pin"
+            var view: MKPinAnnotationView
+            if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
+                as? MKPinAnnotationView {
+                    dequeuedView.annotation = annotation
+                    view = dequeuedView
+            }
+            else {
+                view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                view.canShowCallout = true
+                view.calloutOffset = CGPoint(x: -5, y: 5)
+                view.rightCalloutAccessoryView = UIButton.buttonWithType(.DetailDisclosure) as! UIView
+            }
+            return view
+        }
+        return nil
     }
 
 }

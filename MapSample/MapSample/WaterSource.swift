@@ -11,14 +11,21 @@ import MapKit
 
 class WaterSource: NSObject, MKAnnotation {
     
-    
+    let title: String
+    let info: String
     let coordinate: CLLocationCoordinate2D
     
-    init(coordinate: CLLocationCoordinate2D) {
+    init(title:String, info:String, coordinate: CLLocationCoordinate2D) {
         
+        self.title = title
+        self.info = info
         self.coordinate = coordinate
         
         super.init()
+    }
+    
+    var subtitle: String {
+        return self.info
     }
     
     //    class func returnLocationInfo(individualLocation: Dictionary) -> WaterSource? {

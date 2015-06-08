@@ -3,30 +3,50 @@
 <plist version="1.0">
 <array>
 	<dict>
+		<key>name</key>
+		<string>Well 1</string>
+		<key>info</key>
+		<string>drinking</string>
 		<key>latitude</key>
 		<real>39.077356</real>
 		<key>longitude</key>
 		<real>-77.154129</real>
 	</dict>
 	<dict>
+		<key>name</key>
+		<string>Pond 3</string>
+		<key>info</key>
+		<string>animals</string>
 		<key>latitude</key>
 		<real>39.076193</real>
 		<key>longitude</key>
 		<real>-77.14951499999999</real>
 	</dict>
 	<dict>
+		<key>name</key>
+		<string>Well 14</string>
+		<key>info</key>
+		<string>drinking</string>
 		<key>latitude</key>
 		<real>39.075793</real>
 		<key>longitude</key>
 		<real>-77.153485</real>
 	</dict>
 	<dict>
+		<key>name</key>
+		<string>River 2</string>
+		<key>info</key>
+		<string>washing</string>
 		<key>latitude</key>
 		<real>39.07885</real>
 		<key>longitude</key>
 		<real>-77.150728</real>
 	</dict>
 	<dict>
+		<key>name</key>
+		<string>Pond 5</string>
+		<key>info</key>
+		<string>washing</string>
 		<key>latitude</key>
 		<real>39.077679</real>
 		<key>longitude</key>
