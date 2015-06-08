@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="S8J-L6-YHp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="S8J-L6-YHp">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -132,26 +132,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rWT-uW-F5h">
-                                <rect key="frame" x="16" y="58" width="568" height="484"/>
-                            </mapView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O8g-gN-tmt">
-                                <rect key="frame" x="16" y="559" width="568" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O8g-gN-tmt">
+                                <rect key="frame" x="16" y="568" width="568" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rWT-uW-F5h">
+                                <rect key="frame" x="0.0" y="58" width="600" height="542"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerX" secondItem="rWT-uW-F5h" secondAttribute="centerX" id="CKT-XF-sSa"/>
                             <constraint firstItem="O8g-gN-tmt" firstAttribute="leading" secondItem="OYl-ki-4Ht" secondAttribute="leadingMargin" id="DFe-Aw-DyR"/>
-                            <constraint firstItem="rWT-uW-F5h" firstAttribute="trailing" secondItem="OYl-ki-4Ht" secondAttribute="trailingMargin" id="FTw-HT-usA"/>
                             <constraint firstItem="ghP-2G-bth" firstAttribute="top" secondItem="O8g-gN-tmt" secondAttribute="bottom" constant="20" id="SaT-l2-9WF"/>
                             <constraint firstItem="rWT-uW-F5h" firstAttribute="top" secondItem="x7c-IZ-XUy" secondAttribute="bottom" constant="38" id="aRJ-ut-uT2"/>
-                            <constraint firstItem="rWT-uW-F5h" firstAttribute="leading" secondItem="OYl-ki-4Ht" secondAttribute="leadingMargin" id="gNe-Vv-rfb"/>
                             <constraint firstItem="O8g-gN-tmt" firstAttribute="top" secondItem="rWT-uW-F5h" secondAttribute="bottom" constant="17" id="lWK-K8-YPM"/>
+                            <constraint firstItem="rWT-uW-F5h" firstAttribute="width" secondItem="OYl-ki-4Ht" secondAttribute="width" id="n7T-cY-nRe"/>
+                            <constraint firstItem="ghP-2G-bth" firstAttribute="top" secondItem="rWT-uW-F5h" secondAttribute="bottom" id="qbf-VZ-ekw"/>
                             <constraint firstItem="O8g-gN-tmt" firstAttribute="trailing" secondItem="OYl-ki-4Ht" secondAttribute="trailingMargin" id="zHa-HH-nJF"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="lWK-K8-YPM"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="locationUpdateInfoLabel" destination="O8g-gN-tmt" id="7a0-zO-Jey"/>
