@@ -8,28 +8,40 @@
 
 import UIKit
 
-class LogInViewController: UIViewController {
+class LogInViewController: UIViewController, UITextFieldDelegate {
+    @IBOutlet weak var userName: UITextField!
+    @IBOutlet weak var userPassword: UITextField!
+    @IBAction func loggingIn(sender: AnyObject) {
+        if self.userName.text == "Alexis" {
+            println("Correct user name")
+            self.performSegueWithIdentifier("showFirstUseScreen", sender: nil)
+        } else {
+            println("Incorrect user name")
+        }
+    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        self.userName.delegate = self
+        self.userPassword.delegate = self
+  
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if segue.identifier == "showFirstUseScreen"
+//        {
+//            if let destinationVC = segue.destinationViewController as? ViewController {
+//                //  do something here in the destination viewController
+//            }
+//        }
+//    }
 
 }

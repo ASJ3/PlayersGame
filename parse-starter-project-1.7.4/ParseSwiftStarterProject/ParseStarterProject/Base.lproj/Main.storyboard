@@ -28,26 +28,44 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gNf-ga-9GN">
+                                <rect key="frame" x="16" y="136" width="568" height="30"/>
+                                <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <state key="normal" title="Log In">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="loggingIn:" destination="1Dy-f0-Rhn" eventType="touchUpInside" id="GQp-9x-Y2o"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="QFL-02-0Ib" firstAttribute="top" secondItem="DHZ-aJ-YGS" secondAttribute="bottom" constant="24" id="15s-LG-4IW"/>
                             <constraint firstItem="DHZ-aJ-YGS" firstAttribute="top" secondItem="0ND-oa-j0T" secondAttribute="bottom" constant="8" id="5V0-0z-Kr2"/>
                             <constraint firstItem="QFL-02-0Ib" firstAttribute="leading" secondItem="e4k-EJ-vLo" secondAttribute="leadingMargin" id="8j9-Y5-YI7"/>
+                            <constraint firstItem="gNf-ga-9GN" firstAttribute="trailing" secondItem="e4k-EJ-vLo" secondAttribute="trailingMargin" id="AAK-hj-UMl"/>
+                            <constraint firstItem="gNf-ga-9GN" firstAttribute="leading" secondItem="e4k-EJ-vLo" secondAttribute="leadingMargin" id="Nij-1U-cSP"/>
+                            <constraint firstItem="gNf-ga-9GN" firstAttribute="top" secondItem="QFL-02-0Ib" secondAttribute="bottom" constant="24" id="PJz-hR-00P"/>
                             <constraint firstItem="DHZ-aJ-YGS" firstAttribute="trailing" secondItem="e4k-EJ-vLo" secondAttribute="trailingMargin" id="led-B4-TPS"/>
                             <constraint firstItem="DHZ-aJ-YGS" firstAttribute="leading" secondItem="e4k-EJ-vLo" secondAttribute="leadingMargin" id="obH-U7-rPl"/>
                             <constraint firstItem="QFL-02-0Ib" firstAttribute="trailing" secondItem="e4k-EJ-vLo" secondAttribute="trailingMargin" id="zwj-AR-Eij"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="userName" destination="DHZ-aJ-YGS" id="vYP-cs-FV9"/>
+                        <outlet property="userPassword" destination="QFL-02-0Ib" id="ZkO-97-xCY"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="showFirstUseScreen" id="6XP-Ep-rnd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RFq-Wm-o5g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-628" y="284"/>
+            <point key="canvasLocation" x="-729" y="289"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ParseStarterProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainView" id="BYZ-38-t0r" customClass="ViewController" customModule="ParseStarterProject" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -123,6 +141,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="50" y="289"/>
         </scene>
     </scenes>
 </document>
