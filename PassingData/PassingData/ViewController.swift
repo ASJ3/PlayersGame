@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var DestViewController : ViewTwo = segue.destinationViewController as ViewTwo
+        var DestViewController : ViewTwo = segue.destinationViewController as! ViewTwo
         
         DestViewController.LabelText = self.TextField.text
         

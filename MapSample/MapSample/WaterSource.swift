@@ -14,12 +14,18 @@ class WaterSource: NSObject, MKAnnotation {
     let title: String
     let info: String
     let coordinate: CLLocationCoordinate2D
+    let beneficiaries: String
+    let donor: String
+    let completed: String
     
-    init(title:String, info:String, coordinate: CLLocationCoordinate2D) {
+    init(title:String, info:String, beneficiaries:String, donor:String, completed:String, coordinate: CLLocationCoordinate2D) {
         
         self.title = title
         self.info = info
         self.coordinate = coordinate
+        self.beneficiaries = beneficiaries
+        self.donor = donor
+        self.completed = completed
         
         super.init()
     }

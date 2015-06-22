@@ -168,6 +168,81 @@
             </objects>
             <point key="canvasLocation" x="717" y="-984"/>
         </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="Yfm-aV-a4L">
+            <objects>
+                <viewController storyboardIdentifier="DetailVC" id="vMJ-Pt-rKI" customClass="DetailViewController" customModule="MapSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KBO-ng-LuD"/>
+                        <viewControllerLayoutGuide type="bottom" id="lYs-Eh-9Nz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YfT-Fd-0hr">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4s-wC-DMJ">
+                                <rect key="frame" x="16" y="28" width="568" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beneficiaries" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3wf-Nf-Dea">
+                                <rect key="frame" x="16" y="78" width="568" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Donor" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m8g-OC-j3L">
+                                <rect key="frame" x="16" y="125" width="568" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Completion Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="soT-0j-iJi">
+                                <rect key="frame" x="16" y="167" width="568" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LNP-6r-OBb">
+                                <rect key="frame" x="277" y="228" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dimissVC:" destination="vMJ-Pt-rKI" eventType="touchUpInside" id="7rx-kA-kKi"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="m8g-OC-j3L" firstAttribute="leading" secondItem="YfT-Fd-0hr" secondAttribute="leadingMargin" id="BM0-ig-rmT"/>
+                            <constraint firstItem="h4s-wC-DMJ" firstAttribute="top" secondItem="KBO-ng-LuD" secondAttribute="bottom" constant="8" id="Fh2-X2-lbI"/>
+                            <constraint firstItem="3wf-Nf-Dea" firstAttribute="trailing" secondItem="YfT-Fd-0hr" secondAttribute="trailingMargin" id="HcM-XV-5xE"/>
+                            <constraint firstAttribute="centerX" secondItem="LNP-6r-OBb" secondAttribute="centerX" id="IFF-xn-yxl"/>
+                            <constraint firstItem="soT-0j-iJi" firstAttribute="trailing" secondItem="YfT-Fd-0hr" secondAttribute="trailingMargin" id="OJR-MQ-6wr"/>
+                            <constraint firstItem="h4s-wC-DMJ" firstAttribute="leading" secondItem="YfT-Fd-0hr" secondAttribute="leadingMargin" id="Odz-c0-SmD"/>
+                            <constraint firstItem="3wf-Nf-Dea" firstAttribute="top" secondItem="h4s-wC-DMJ" secondAttribute="bottom" constant="29" id="Qe3-6D-V5i"/>
+                            <constraint firstItem="h4s-wC-DMJ" firstAttribute="trailing" secondItem="YfT-Fd-0hr" secondAttribute="trailingMargin" id="Vev-FA-F6H"/>
+                            <constraint firstItem="soT-0j-iJi" firstAttribute="top" secondItem="m8g-OC-j3L" secondAttribute="bottom" constant="21" id="bbg-CV-uXJ"/>
+                            <constraint firstItem="LNP-6r-OBb" firstAttribute="top" secondItem="soT-0j-iJi" secondAttribute="bottom" constant="40" id="c7s-Fc-iBj"/>
+                            <constraint firstItem="m8g-OC-j3L" firstAttribute="top" secondItem="3wf-Nf-Dea" secondAttribute="bottom" constant="26" id="eqM-pp-cUH"/>
+                            <constraint firstItem="3wf-Nf-Dea" firstAttribute="leading" secondItem="YfT-Fd-0hr" secondAttribute="leadingMargin" id="jxC-nT-1QC"/>
+                            <constraint firstItem="m8g-OC-j3L" firstAttribute="trailing" secondItem="YfT-Fd-0hr" secondAttribute="trailingMargin" id="k93-2O-3jn"/>
+                            <constraint firstItem="soT-0j-iJi" firstAttribute="leading" secondItem="YfT-Fd-0hr" secondAttribute="leadingMargin" id="lH9-WW-LTz"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="beneficiariesLabel" destination="3wf-Nf-Dea" id="rIp-b2-lc4"/>
+                        <outlet property="completionDateLabel" destination="soT-0j-iJi" id="Iqy-fj-oJU"/>
+                        <outlet property="donorLabel" destination="m8g-OC-j3L" id="RRN-p3-qMD"/>
+                        <outlet property="nameLabel" destination="h4s-wC-DMJ" id="7c5-eD-rVT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xZL-aY-U8C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1420" y="-984"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="rLS-vq-Bt0">
             <objects>

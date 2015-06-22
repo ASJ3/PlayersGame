@@ -11,6 +11,12 @@
 		<real>39.077356</real>
 		<key>longitude</key>
 		<real>-77.154129</real>
+		<key>beneficiaries</key>
+		<string>1800</string>
+		<key>donor</key>
+		<string>GW #001</string>
+		<key>completed</key>
+		<string>3/21/2014</string>
 	</dict>
 	<dict>
 		<key>name</key>
@@ -21,6 +27,12 @@
 		<real>39.076193</real>
 		<key>longitude</key>
 		<real>-77.14951499999999</real>
+		<key>beneficiaries</key>
+		<string>1900</string>
+		<key>donor</key>
+		<string>GW #002</string>
+		<key>completed</key>
+		<string>4/22/2014</string>
 	</dict>
 	<dict>
 		<key>name</key>
@@ -31,6 +43,12 @@
 		<real>39.075793</real>
 		<key>longitude</key>
 		<real>-77.153485</real>
+		<key>beneficiaries</key>
+		<string>2000</string>
+		<key>donor</key>
+		<string>GW #003</string>
+		<key>completed</key>
+		<string>5/21/2014</string>
 	</dict>
 	<dict>
 		<key>name</key>
@@ -41,6 +59,12 @@
 		<real>39.07885</real>
 		<key>longitude</key>
 		<real>-77.150728</real>
+		<key>beneficiaries</key>
+		<string>2100</string>
+		<key>donor</key>
+		<string>GW #004</string>
+		<key>completed</key>
+		<string>6/21/2014</string>
 	</dict>
 	<dict>
 		<key>name</key>
@@ -51,6 +75,12 @@
 		<real>39.077679</real>
 		<key>longitude</key>
 		<real>-77.15145200000001</real>
+		<key>beneficiaries</key>
+		<string>2200</string>
+		<key>donor</key>
+		<string>GW #005</string>
+		<key>completed</key>
+		<string>7/21/2014</string>
 	</dict>
 </array>
 </plist>

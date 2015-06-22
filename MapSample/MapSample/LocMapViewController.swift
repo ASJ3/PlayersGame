@@ -46,7 +46,10 @@ class LocMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
             var info = waterLocationsInfo![i]["info"]! as! String
             var waterLatitude = waterLocationsInfo![i]["latitude"]! as! Double
             var waterLongitude = waterLocationsInfo![i]["longitude"]! as! Double
-            var waterLocation = WaterSource(title: title, info: info, coordinate: CLLocationCoordinate2D(latitude: waterLatitude, longitude: waterLongitude))
+            var beneficiaries = waterLocationsInfo![i]["beneficiaries"] as! String
+            var donor = waterLocationsInfo![i]["donor"] as! String
+            var completed = waterLocationsInfo![i]["completed"] as! String
+            var waterLocation = WaterSource(title: title, info: info, beneficiaries:beneficiaries, donor:donor, completed:completed, coordinate: CLLocationCoordinate2D(latitude: waterLatitude, longitude: waterLongitude))
             self.waterSources.append(waterLocation)
         }
         
@@ -99,7 +102,18 @@ class LocMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         
                     if control == view.rightCalloutAccessoryView {
                         let location = view.annotation as! WaterSource
-        println("LocMapVC: Disclosure Pressed!\(location.title)")
+                        println("LocMapVC: donor: \(location.donor). Beneficiaries: \(location.beneficiaries) ")
+                        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+                        let wellDetails = storyboard.instantiateViewControllerWithIdentifier("DetailVC") as! DetailViewController
+                        wellDetails.nameText = location.title
+                        wellDetails.beneficiariesText = location.beneficiaries
+                        wellDetails.donorText = location.donor
+                        wellDetails.completionText = location.completed
+                        
+                        self.presentViewController(wellDetails, animated: true, completion: nil)
+                        
+                        
+                        
                     }
     }
 
