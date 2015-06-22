@@ -11,6 +11,39 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate 
     @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var gender: UITextField!
     @IBOutlet weak var personalStory: UITextView!
+    @IBAction func getInfo(sender: AnyObject) {
+        println("Trying to get the info")
+        var infoQuery = PFQuery(className: "Whisper")
+        infoQuery.whereKey("user", equalTo: self.firstName.text)
+        
+        infoQuery.findObjectsInBackgroundWithBlock {
+            (object, error) -> Void in
+            
+            for info in object! {
+                if let gender: AnyObject? = info["category"] {
+                    self.gender.text = gender as! String
+                }
+                
+                if let story: AnyObject? = info["whisper"] {
+                    self.personalStory.text = story as! String
+                }
+            }
+        }
+    }
+    
+//    @IBAction func readWhispers(sender: AnyObject) {
+//        var whisperQuery = PFQuery(className: "Whisper")
+//        whisperQuery.whereKey("category", equalTo: self.whisperCat.text)
+//        whisperQuery.findObjectsInBackgroundWithBlock { (whisperObjects: [AnyObject]!, error: NSError!) -> Void in
+//            for whisper in whisperObjects {
+//                //                println(whisper["whisper"])
+//                if let whisperTitle: AnyObject? = whisper["whisper"] {
+//                    println(whisperTitle)
+//                }
+//            }
+//        }
+    
+    
     @IBAction func submitInfo(sender: AnyObject) {
         
         var whisperP = PFObject(className: "Whisper")

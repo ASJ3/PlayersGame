@@ -13,7 +13,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var goals = [NSManagedObject]()
     
     @IBAction func addNewGoal(sender: AnyObject) {
-        let vc = storyboard?.instantiateViewControllerWithIdentifier("secondVC") as SecondViewController
+        let vc = storyboard?.instantiateViewControllerWithIdentifier("secondVC") as! SecondViewController
         self.presentViewController(vc, animated: true, completion: nil)
     }
     @IBOutlet weak var tableView: UITableView!
@@ -35,9 +35,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
         let goal = self.goals[indexPath.row]
-        cell.textLabel?.text = goal.valueForKey("name") as String?
+        cell.textLabel?.text = goal.valueForKey("name") as! String?
         // Configure the cell...
         
         return cell
@@ -64,7 +64,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         //1
         let appDelegate =
-        UIApplication.sharedApplication().delegate as AppDelegate
+        UIApplication.sharedApplication().delegate as! AppDelegate
         
         let managedContext = appDelegate.managedObjectContext!
         
@@ -76,7 +76,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let fetchedResults =
         managedContext.executeFetchRequest(fetchRequest,
-            error: &error) as [NSManagedObject]?
+            error: &error) as! [NSManagedObject]?
         
         if let results = fetchedResults {
             goals = results

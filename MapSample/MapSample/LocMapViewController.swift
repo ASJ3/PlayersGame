@@ -94,5 +94,13 @@ class LocMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         }
         return nil
     }
+    
+    func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
+        
+                    if control == view.rightCalloutAccessoryView {
+                        let location = view.annotation as! WaterSource
+        println("LocMapVC: Disclosure Pressed!\(location.title)")
+                    }
+    }
 
 }

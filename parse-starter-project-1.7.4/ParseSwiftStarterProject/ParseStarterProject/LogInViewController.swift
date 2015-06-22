@@ -12,6 +12,8 @@ import Parse
 class LogInViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var userPassword: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var registerButton: UIButton!
     @IBAction func loggingIn(sender: AnyObject) {
         
         PFUser.logInWithUsernameInBackground(self.userName.text, password: self.userPassword.text) { (user, error) -> Void in
@@ -55,6 +57,9 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         
         self.userName.delegate = self
         self.userPassword.delegate = self
+        
+        self.loginButton.layer.cornerRadius = 3
+//        self.registerButton.layer.cornerRadius = 3
         
         var currentUser = PFUser.currentUser()
         if currentUser != nil {

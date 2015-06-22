@@ -33,7 +33,7 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
     // override this function so that our segue to the next view controller will also pass the name that was just entered in the text field
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        var secondViewController: ViewController = segue.destinationViewController as ViewController
+        var secondViewController: ViewController = segue.destinationViewController as! ViewController
         
         secondViewController.receivedName = nameField.text
         secondViewController.readyToPlay = 1

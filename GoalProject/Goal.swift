@@ -20,7 +20,7 @@ class Goal: NSObject {
         self.goalSetPerWeek = goalSetPerWeek
     }
     
-    func description()->String {
-        return "Name of the goal: \(self.goalName)\nMinutes per week:\(self.goalMinutes)\nTime logged so far: \(self.timeLogged)\nGoal is set on a weekly basis: \(self.goalSetPerWeek)"
-    }
+//    func description()->String {
+//        return "Name of the goal: \(self.goalName)\nMinutes per week:\(self.goalMinutes)\nTime logged so far: \(self.timeLogged)\nGoal is set on a weekly basis: \(self.goalSetPerWeek)"
+//    }
 }

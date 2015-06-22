@@ -90,7 +90,7 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         
         //1
         let appDelegate =
-        UIApplication.sharedApplication().delegate as AppDelegate
+        UIApplication.sharedApplication().delegate as! AppDelegate
         
         let managedContext = appDelegate.managedObjectContext!
         
@@ -134,7 +134,7 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         self.hoursChosen = 0
         self.minutesChosen = 0
         
-        var segmentedControl = sender as UISegmentedControl
+        var segmentedControl = sender as! UISegmentedControl
         var selectionInteger = segmentedControl.selectedSegmentIndex
         var componentSelectedinHours = hoursAndMinutesPicker.selectedRowInComponent(0)
         

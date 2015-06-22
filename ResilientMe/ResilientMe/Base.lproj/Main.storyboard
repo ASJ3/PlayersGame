@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="ResilientMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="I0n-7a-Gim">
+                                <rect key="frame" x="16" y="37" width="568" height="204"/>
+                                <date key="date" timeIntervalSinceReferenceDate="455990748.27172798">
+                                    <!--2015-06-14 16:05:48 +0000-->
+                                </date>
+                            </datePicker>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eqq-go-pL0">
+                                <rect key="frame" x="16" y="257" width="568" height="162"/>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eqq-go-pL0" firstAttribute="top" secondItem="I0n-7a-Gim" secondAttribute="bottom" constant="16" id="I1b-Ex-ECG"/>
+                            <constraint firstItem="I0n-7a-Gim" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="Kxj-uH-gI5"/>
+                            <constraint firstItem="I0n-7a-Gim" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="U1h-J6-9dK"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="eqq-go-pL0" secondAttribute="bottom" constant="181" id="bj0-ei-8aB"/>
+                            <constraint firstItem="eqq-go-pL0" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="pIh-o4-fZz"/>
+                            <constraint firstItem="I0n-7a-Gim" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="raz-Zc-t5J"/>
+                            <constraint firstItem="eqq-go-pL0" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="rh8-bD-Ihu"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>

@@ -31,7 +31,7 @@ class IntroViewController: UIViewController {
     
     func goToRules() {
         println("you tapped")
-        var progRulesVC = self.storyboard?.instantiateViewControllerWithIdentifier("rulesVC") as RulesViewController
+        var progRulesVC = self.storyboard?.instantiateViewControllerWithIdentifier("rulesVC") as! RulesViewController
         self.presentViewController(progRulesVC, animated: true , completion: nil)
     }
 
