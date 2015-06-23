@@ -65,7 +65,6 @@ class LocMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         loopChanges += 1
         println("Identified a change in current location \(loopChanges)")
-        self.locationUpdateInfoLabel.text = "Identified a change in current location \(loopChanges)"
         
         let location = locations.last as! CLLocation
         
@@ -102,7 +101,7 @@ class LocMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         
                     if control == view.rightCalloutAccessoryView {
                         let location = view.annotation as! WaterSource
-                        println("LocMapVC: donor: \(location.donor). Beneficiaries: \(location.beneficiaries) ")
+                        
                         let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
                         let wellDetails = storyboard.instantiateViewControllerWithIdentifier("DetailVC") as! DetailViewController
                         wellDetails.nameText = location.title
