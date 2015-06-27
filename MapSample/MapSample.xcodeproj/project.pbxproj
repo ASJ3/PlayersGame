@@ -8,12 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		780D82EC1B24E07D0004BA38 /* Locations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 780D82EB1B24E07D0004BA38 /* Locations.plist */; };
-		78325AF51B0B39CA00EA4EE7 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78325AF41B0B39CA00EA4EE7 /* LocationViewController.swift */; };
 		783D33181B37AC85001183DC /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783D33171B37AC85001183DC /* DetailViewController.swift */; };
 		7850129A1B244076007742B9 /* WaterSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785012991B244076007742B9 /* WaterSource.swift */; };
 		787349481B1BA72C00F39D4F /* LocMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787349471B1BA72C00F39D4F /* LocMapViewController.swift */; };
 		789593BD1AF0F99000BE3B67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789593BC1AF0F99000BE3B67 /* AppDelegate.swift */; };
-		789593BF1AF0F99000BE3B67 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789593BE1AF0F99000BE3B67 /* ViewController.swift */; };
 		789593C21AF0F99000BE3B67 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 789593C01AF0F99000BE3B67 /* Main.storyboard */; };
 		789593C41AF0F99000BE3B67 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 789593C31AF0F99000BE3B67 /* Images.xcassets */; };
 		789593C71AF0F99000BE3B67 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 789593C51AF0F99000BE3B67 /* LaunchScreen.xib */; };
@@ -33,14 +31,12 @@
 
 /* Begin PBXFileReference section */
 		780D82EB1B24E07D0004BA38 /* Locations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Locations.plist; sourceTree = "<group>"; };
-		78325AF41B0B39CA00EA4EE7 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		783D33171B37AC85001183DC /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		785012991B244076007742B9 /* WaterSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterSource.swift; sourceTree = "<group>"; };
 		787349471B1BA72C00F39D4F /* LocMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocMapViewController.swift; sourceTree = "<group>"; };
 		789593B71AF0F99000BE3B67 /* MapSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		789593BB1AF0F99000BE3B67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		789593BC1AF0F99000BE3B67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		789593BE1AF0F99000BE3B67 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		789593C11AF0F99000BE3B67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		789593C31AF0F99000BE3B67 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		789593C61AF0F99000BE3B67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -92,12 +88,10 @@
 			isa = PBXGroup;
 			children = (
 				789593BC1AF0F99000BE3B67 /* AppDelegate.swift */,
-				789593BE1AF0F99000BE3B67 /* ViewController.swift */,
 				789593C01AF0F99000BE3B67 /* Main.storyboard */,
 				783D33171B37AC85001183DC /* DetailViewController.swift */,
 				785012991B244076007742B9 /* WaterSource.swift */,
 				787349471B1BA72C00F39D4F /* LocMapViewController.swift */,
-				78325AF41B0B39CA00EA4EE7 /* LocationViewController.swift */,
 				789593C31AF0F99000BE3B67 /* Images.xcassets */,
 				789593C51AF0F99000BE3B67 /* LaunchScreen.xib */,
 				789593BA1AF0F99000BE3B67 /* Supporting Files */,
@@ -239,9 +233,7 @@
 			files = (
 				7850129A1B244076007742B9 /* WaterSource.swift in Sources */,
 				787349481B1BA72C00F39D4F /* LocMapViewController.swift in Sources */,
-				78325AF51B0B39CA00EA4EE7 /* LocationViewController.swift in Sources */,
 				783D33181B37AC85001183DC /* DetailViewController.swift in Sources */,
-				789593BF1AF0F99000BE3B67 /* ViewController.swift in Sources */,
 				789593BD1AF0F99000BE3B67 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
