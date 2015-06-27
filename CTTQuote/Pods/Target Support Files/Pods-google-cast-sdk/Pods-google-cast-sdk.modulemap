@@ -1,6 +1,0 @@
-framework module google_cast_sdk {
-  umbrella header "Pods-google-cast-sdk-umbrella.h"
-
-  export *
-  module * { export * }
-}
