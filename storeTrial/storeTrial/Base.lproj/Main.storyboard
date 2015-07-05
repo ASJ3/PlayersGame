@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="y8h-pl-Uuy">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="storeTrial" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qzp-Yo-9Vg">
+                                <rect key="frame" x="114" y="269" width="92" height="30"/>
+                                <color key="backgroundColor" red="0.58097984641877509" green="0.84828904786252979" blue="0.95667613636363635" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Buy Level 2">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="buyProduct:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Ywx-rm-6wg"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aTW-Xm-ybi">
+                                <rect key="frame" x="16" y="151" width="288" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kek-TG-g1j">
+                                <rect key="frame" x="114" y="225" width="92" height="30"/>
+                                <color key="backgroundColor" red="0.61969479530000005" green="0.85791642879999996" blue="0.95367090929999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Go to Level 2">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Hf8-9u-OZn" kind="push" id="KKP-gZ-tkf"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Qzp-Yo-9Vg" firstAttribute="top" secondItem="kek-TG-g1j" secondAttribute="bottom" constant="14" id="0Mm-Zs-B41"/>
+                            <constraint firstItem="aTW-Xm-ybi" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="BST-mk-qoS"/>
+                            <constraint firstItem="kek-TG-g1j" firstAttribute="top" secondItem="aTW-Xm-ybi" secondAttribute="bottom" constant="53" id="Lxg-Lp-Z7k"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Qzp-Yo-9Vg" secondAttribute="trailing" constant="98" id="Nfx-hk-AM8"/>
+                            <constraint firstItem="aTW-Xm-ybi" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="bAi-Oh-oDd"/>
+                            <constraint firstItem="Qzp-Yo-9Vg" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="98" id="hbn-As-BE2"/>
+                            <constraint firstItem="aTW-Xm-ybi" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="87" id="pe0-mD-7Zw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kek-TG-g1j" secondAttribute="trailing" constant="98" id="rhr-el-rct"/>
+                            <constraint firstItem="kek-TG-g1j" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="98" id="zL4-Vv-rWv"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="iMi-yc-2HB"/>
+                    <connections>
+                        <outlet property="buyNow" destination="Qzp-Yo-9Vg" id="uyX-Na-xHp"/>
+                        <outlet property="level2Button" destination="kek-TG-g1j" id="jtg-ox-iLd"/>
+                        <outlet property="productTitle" destination="aTW-Xm-ybi" id="3xc-k1-8rZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="668" y="337"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="gjY-Ba-c67">
+            <objects>
+                <viewController id="Hf8-9u-OZn" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Lf0-ue-ZZd"/>
+                        <viewControllerLayoutGuide type="bottom" id="s2B-Zj-YuD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bMV-tL-KQi">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="More Words to Learn!!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Qi-QD-mge">
+                                <rect key="frame" x="16" y="265" width="288" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="h7E-Wl-3Iw"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mXt-8g-oY3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1131" y="337"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="WCC-2b-7Rs">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="y8h-pl-Uuy" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VZw-aV-GWd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="fYR-Iy-PC2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SqJ-8y-gZt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="234" y="337"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="inAppPurchase" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xO6-zo-R9G">
+                                <rect key="frame" x="16" y="20" width="108" height="30"/>
+                                <state key="normal" title="Add Vocabulary">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnRemoveAds:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ugP-fQ-FUn"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ge0-8Z-Xqo">
+                                <rect key="frame" x="16" y="58" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mj5-La-as2">
+                                <rect key="frame" x="16" y="87" width="129" height="30"/>
+                                <state key="normal" title="Restore Purchases">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="RestorePurchases:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="qSW-hF-Nt7"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y2d-zB-Dk6">
+                                <rect key="frame" x="16" y="119" width="319" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="lblAd" destination="ge0-8Z-Xqo" id="SpK-zj-1el"/>
+                        <outlet property="outRemoveAds" destination="xO6-zo-R9G" id="jW7-oX-v5J"/>
+                        <outlet property="resultLabel" destination="y2d-zB-Dk6" id="TpH-7x-eec"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
