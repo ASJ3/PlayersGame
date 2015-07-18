@@ -88,7 +88,6 @@
 				7851F89A1B5AF12F0042557C /* AppDelegate.swift */,
 				7851F89F1B5AF12F0042557C /* ViewController.swift */,
 				7851F8A11B5AF12F0042557C /* Main.storyboard */,
-				7851F8BF1B5AF2680042557C /* defaultWordList.plist */,
 				7851F8A41B5AF12F0042557C /* Images.xcassets */,
 				7851F8A61B5AF12F0042557C /* LaunchScreen.xib */,
 				7851F89C1B5AF12F0042557C /* FlashQuizFR.xcdatamodeld */,
@@ -100,6 +99,7 @@
 		7851F8981B5AF12F0042557C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7851F8BF1B5AF2680042557C /* defaultWordList.plist */,
 				7851F8991B5AF12F0042557C /* Info.plist */,
 			);
 			name = "Supporting Files";
