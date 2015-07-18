@@ -16,6 +16,7 @@
 		7851F8B41B5AF12F0042557C /* FlashQuizFRTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7851F8B31B5AF12F0042557C /* FlashQuizFRTests.swift */; };
 		7851F8BE1B5AF1440042557C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7851F8BD1B5AF1440042557C /* StoreKit.framework */; };
 		7851F8C01B5AF2680042557C /* defaultWordList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7851F8BF1B5AF2680042557C /* defaultWordList.plist */; };
+		7851F8C21B5AFB5A0042557C /* DictionaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7851F8C11B5AFB5A0042557C /* DictionaryVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		7851F8B31B5AF12F0042557C /* FlashQuizFRTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashQuizFRTests.swift; sourceTree = "<group>"; };
 		7851F8BD1B5AF1440042557C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		7851F8BF1B5AF2680042557C /* defaultWordList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaultWordList.plist; sourceTree = "<group>"; };
+		7851F8C11B5AFB5A0042557C /* DictionaryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				7851F89A1B5AF12F0042557C /* AppDelegate.swift */,
 				7851F89F1B5AF12F0042557C /* ViewController.swift */,
 				7851F8A11B5AF12F0042557C /* Main.storyboard */,
+				7851F8C11B5AFB5A0042557C /* DictionaryVC.swift */,
 				7851F8A41B5AF12F0042557C /* Images.xcassets */,
 				7851F8A61B5AF12F0042557C /* LaunchScreen.xib */,
 				7851F89C1B5AF12F0042557C /* FlashQuizFR.xcdatamodeld */,
@@ -229,6 +232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7851F8C21B5AFB5A0042557C /* DictionaryVC.swift in Sources */,
 				7851F8A01B5AF12F0042557C /* ViewController.swift in Sources */,
 				7851F89B1B5AF12F0042557C /* AppDelegate.swift in Sources */,
 				7851F89E1B5AF12F0042557C /* FlashQuizFR.xcdatamodeld in Sources */,

@@ -62,10 +62,10 @@
             </objects>
             <point key="canvasLocation" x="1252" y="356"/>
         </scene>
-        <!--View Controller-->
+        <!--DictionaryVC-->
         <scene sceneID="OeS-mM-2mk">
             <objects>
-                <viewController id="2TH-Pd-bWf" sceneMemberID="viewController">
+                <viewController id="2TH-Pd-bWf" customClass="DictionaryVC" customModule="FlashQuizFR" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ird-hn-qOt"/>
                         <viewControllerLayoutGuide type="bottom" id="f8D-rn-h3S"/>
@@ -77,10 +77,26 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Hb6-2S-JXc">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="wordCell" id="5Wc-GL-N6Y">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5Wc-GL-N6Y" id="OBy-8A-96d">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="2TH-Pd-bWf" id="aeO-ea-kA8"/>
+                                    <outlet property="delegate" destination="2TH-Pd-bWf" id="lTC-A1-P2D"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="table" destination="Hb6-2S-JXc" id="sqm-gW-H8j"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="77q-Sp-Q7L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
