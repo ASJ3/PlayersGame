@@ -17,14 +17,11 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 
-//        println("DictionaryVC: The array of words is: \(self.wordArray)")
-        
-        
         //TRIAL: Loading all words and their translation from the defaultWordList plist
-        var wordListPath = NSBundle.mainBundle().pathForResource("defaultWordList", ofType: "plist")
+        var wordListPath = NSBundle.mainBundle().pathForResource("dictionaryList", ofType: "plist")
         wordListArray = NSMutableArray(contentsOfFile: wordListPath!)!
+
         
         self.table.reloadData()
     }
@@ -47,7 +44,11 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         }
         cell.textLabel?.textColor = UIColor.blackColor()
         cell.backgroundColor = UIColor.clearColor()
-        cell.textLabel?.text = wordListArray[indexPath.row] as? String
+        
+        //Note: we are using the objectForKey because the plist is an array of dictionaries, and we want
+        //to retrieve certain parts of these dictionaries. However, since we dictionaryVC does not know
+        //about the structure of the dictionaries in the plist, we cannot use dot notation.
+        cell.textLabel?.text = wordListArray[indexPath.row].objectForKey("word") as? String
         return cell
     }
     

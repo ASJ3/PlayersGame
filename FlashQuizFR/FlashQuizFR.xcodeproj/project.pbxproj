@@ -91,8 +91,8 @@
 			children = (
 				7851F89A1B5AF12F0042557C /* AppDelegate.swift */,
 				7851F89F1B5AF12F0042557C /* ViewController.swift */,
-				7851F8A11B5AF12F0042557C /* Main.storyboard */,
 				7851F8C11B5AFB5A0042557C /* DictionaryVC.swift */,
+				7851F8A11B5AF12F0042557C /* Main.storyboard */,
 				7851F8A41B5AF12F0042557C /* Images.xcassets */,
 				7851F8A61B5AF12F0042557C /* LaunchScreen.xib */,
 				7851F89C1B5AF12F0042557C /* FlashQuizFR.xcdatamodeld */,
