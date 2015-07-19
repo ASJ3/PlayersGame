@@ -19,7 +19,7 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         super.viewDidLoad()
 
         //TRIAL: Loading all words and their translation from the defaultWordList plist
-        var wordListPath = NSBundle.mainBundle().pathForResource("dictionaryList", ofType: "plist")
+        var wordListPath = NSBundle.mainBundle().pathForResource("wordDictionary", ofType: "plist")
         wordListArray = NSMutableArray(contentsOfFile: wordListPath!)!
 
         

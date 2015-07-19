@@ -2,8 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <array>
-	<string>couteau</string>
-	<string>knife</string>
+	<string>Welcome!</string>
+	<string>Bienvenue!</string>
 	<string>banque</string>
 	<string>bank</string>
 	<string>urgence</string>

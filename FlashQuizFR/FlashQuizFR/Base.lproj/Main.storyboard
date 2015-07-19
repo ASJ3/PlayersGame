@@ -17,14 +17,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vtg-mi-JXm">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcS-aJ-AgF">
+                                <rect key="frame" x="16" y="121" width="568" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vtg-mi-JXm">
                                 <rect key="frame" x="16" y="150" width="568" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="saW-u4-jXC">
-                                <rect key="frame" x="266" y="179" width="69" height="30"/>
+                                <rect key="frame" x="266" y="221" width="69" height="30"/>
                                 <state key="normal" title="Dictionary">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -32,12 +38,6 @@
                                     <segue destination="2TH-Pd-bWf" kind="show" id="oY0-JM-QN5"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcS-aJ-AgF">
-                                <rect key="frame" x="16" y="121" width="568" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -49,7 +49,7 @@
                             <constraint firstItem="Vtg-mi-JXm" firstAttribute="top" secondItem="vcS-aJ-AgF" secondAttribute="bottom" constant="8" id="g2D-OV-G8Z"/>
                             <constraint firstAttribute="centerX" secondItem="saW-u4-jXC" secondAttribute="centerX" constant="-0.5" id="n1o-CF-Atd"/>
                             <constraint firstItem="vcS-aJ-AgF" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="57" id="rOM-AZ-mFa"/>
-                            <constraint firstItem="saW-u4-jXC" firstAttribute="top" secondItem="Vtg-mi-JXm" secondAttribute="bottom" constant="8" id="sbL-3O-FZY"/>
+                            <constraint firstItem="saW-u4-jXC" firstAttribute="top" secondItem="Vtg-mi-JXm" secondAttribute="bottom" constant="50" id="sbL-3O-FZY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="GVh-w3-T45"/>
