@@ -49,7 +49,8 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         //to retrieve certain parts of these dictionaries. However, since we dictionaryVC does not know
         //about the structure of the dictionaries in the plist, we cannot use dot notation.
         cell.textLabel?.text = wordListArray[indexPath.row].objectForKey("word") as? String
-        cell.detailTextLabel?.text = wordListArray[indexPath.row].objectForKey("translation") as? String
+        var wordGender = wordListArray[indexPath.row].objectForKey("gender") as! String
+        cell.detailTextLabel?.text = wordListArray[indexPath.row].objectForKey("translation") as! String + " (" + wordGender + ")"
         return cell
     }
     
