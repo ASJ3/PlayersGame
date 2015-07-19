@@ -40,7 +40,7 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         
         var cell = tableView.dequeueReusableCellWithIdentifier("wordCell") as! UITableViewCell!
         if cell == nil  {
-            cell = UITableViewCell(style: .Default, reuseIdentifier: "wordCell")
+            cell = UITableViewCell(style: .Subtitle, reuseIdentifier: "wordCell")
         }
         cell.textLabel?.textColor = UIColor.blackColor()
         cell.backgroundColor = UIColor.clearColor()
@@ -49,11 +49,12 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         //to retrieve certain parts of these dictionaries. However, since we dictionaryVC does not know
         //about the structure of the dictionaries in the plist, we cannot use dot notation.
         cell.textLabel?.text = wordListArray[indexPath.row].objectForKey("word") as? String
+        cell.detailTextLabel?.text = wordListArray[indexPath.row].objectForKey("translation") as? String
         return cell
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 40
+        return 45
     }
     
     
