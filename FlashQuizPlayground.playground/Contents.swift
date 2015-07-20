@@ -15,3 +15,5 @@ secLetterArray
 secLetterArray["b"] = 3
 secLetterArray
 
+secLetterArray["w"] = 3
+secLetterArray

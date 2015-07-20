@@ -14,6 +14,7 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     //TRIAL: creating an array of words for the table content
     var wordArray = ["avion","bateau","camion","train","ferry","helicoptere"]
     var wordListArray = NSMutableArray()
+    var wordFromList = ["word":String(),  "wordFirst":String(), "translation":String(), "translationFirst":String(), "gender":String()]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,17 +23,25 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         var wordListPath = NSBundle.mainBundle().pathForResource("wordDictionary", ofType: "plist")
         wordListArray = NSMutableArray(contentsOfFile: wordListPath!)!
         
-        //TRIAL: try to get the number of sections in English based on the number of unique first letters we have in wordDictionary
-        var firstLetterArray: [String:Int] = ["a": 0, "b": 0, "c": 0, "d": 0, "e": 0, "f": 0, "g": 0, "h":0, "i": 0, "j": 0, "k": 0, "l": 0, "m": 0, "n": 0, "o": 0, "p": 0, "q": 0, "r": 0, "s": 0, "t": 0, "u": 0, "v": 0, "w": 0, "x": 0, "y": 0, "z": 0]
+        //TRIAL: try to get the number of sections in the native language based on the number of unique first letters we have in wordDictionary
+        //firstNativeLetterArray is an Array that indicates how many times each first letter of the alphabet appears in the wordDictionary plist
+        var firstNativeLetterArray = [String:Int]()
+        var nativeWordList = [String:AnyObject]()
 
         //Increase the count of the values in firsLetterArray based on the number of times each letter appears as the first letter in each word of wordDictionary
         for word in wordListArray {
             var firstChar = word["wordFirst"] as! String
-            firstLetterArray[firstChar]! += 1
+            //Increase letter count in firsLetterArray, based on the first letter of the word
+            if firstNativeLetterArray[firstChar] == nil {
+                firstNativeLetterArray[firstChar] = 1
+            } else {
+               firstNativeLetterArray[firstChar]! += 1
+            }
             
             }
         
-        println("DictionaryVC: \(firstLetterArray)")
+        println("DictionaryVC: \(firstNativeLetterArray)")
+        println("DictionaryVC: \(firstNativeLetterArray.count)")
 
         
         self.table.reloadData()

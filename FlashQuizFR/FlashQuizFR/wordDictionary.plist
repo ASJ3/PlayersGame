@@ -74,5 +74,29 @@
 		<key>gender</key>
 		<string>f</string>
 	</dict>
+    <dict>
+        <key>word</key>
+        <string>train</string>
+        <key>wordFirst</key>
+        <string>t</string>
+        <key>translation</key>
+        <string>train</string>
+        <key>translationFirst</key>
+        <string>t</string>
+        <key>gender</key>
+        <string>m</string>
+    </dict>
+    <dict>
+        <key>word</key>
+        <string>airplane</string>
+        <key>wordFirst</key>
+        <string>a</string>
+        <key>translation</key>
+        <string>avion</string>
+        <key>translationFirst</key>
+        <string>a</string>
+        <key>gender</key>
+        <string>m</string>
+    </dict>
 </array>
 </plist>
