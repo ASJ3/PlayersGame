@@ -17,3 +17,9 @@ secLetterArray
 
 secLetterArray["w"] = 3
 secLetterArray
+
+var newArray = ["a": ["allegro", "advance", "armor"], "b": ["benefit", "bingo", "bonus"]]
+newArray["a"]
+newArray["a"]!.append("ammunition")
+
+newArray["a"]

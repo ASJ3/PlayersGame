@@ -26,11 +26,18 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         //TRIAL: try to get the number of sections in the native language based on the number of unique first letters we have in wordDictionary
         //firstNativeLetterArray is an Array that indicates how many times each first letter of the alphabet appears in the wordDictionary plist
         var firstNativeLetterArray = [String:Int]()
-        var nativeWordList = [String:AnyObject]()
+        var nativeWordList = [String:[AnyObject]]()
 
         //Increase the count of the values in firsLetterArray based on the number of times each letter appears as the first letter in each word of wordDictionary
         for word in wordListArray {
+            wordFromList["word"] = word["word"] as? String
+            wordFromList["wordFirst"] = word["wordFirst"] as? String
+            wordFromList["translation"] = word["translation"] as? String
+            wordFromList["translationFirst"] = word["translationFirst"] as? String
+            wordFromList["gender"] = word["gender"] as? String
+            
             var firstChar = word["wordFirst"] as! String
+            
             //Increase letter count in firsLetterArray, based on the first letter of the word
             if firstNativeLetterArray[firstChar] == nil {
                 firstNativeLetterArray[firstChar] = 1
@@ -38,10 +45,20 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                firstNativeLetterArray[firstChar]! += 1
             }
             
+            //Add each word to the right dictionary "group" in the nativeWordList, based on its first letter
+            if nativeWordList[firstChar] == nil {
+                nativeWordList[firstChar] = []
+                nativeWordList[firstChar]!.append(wordFromList)
+                
+            } else {
+                nativeWordList[firstChar]!.append(wordFromList)
+            }
+            
             }
         
         println("DictionaryVC: \(firstNativeLetterArray)")
         println("DictionaryVC: \(firstNativeLetterArray.count)")
+        println("DictionaryVC: \(nativeWordList)")
 
         
         self.table.reloadData()
