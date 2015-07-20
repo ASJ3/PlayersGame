@@ -26,6 +26,7 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         //TRIAL: try to get the number of sections in the native language based on the number of unique first letters we have in wordDictionary
         //firstNativeLetterArray is an Array that indicates how many times each first letter of the alphabet appears in the wordDictionary plist
         var firstNativeLetterArray = [String:Int]()
+        var sortedFirstNativeLetterArray = [String]()
         var nativeWordList = [String:[AnyObject]]()
 
         //Increase the count of the values in firsLetterArray based on the number of times each letter appears as the first letter in each word of wordDictionary
@@ -55,10 +56,16 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             }
             
             }
+        for (key, value) in firstNativeLetterArray {
+            var keyString = key as String
+            sortedFirstNativeLetterArray.append(keyString)
+        }
+        //Use sort() function to order alphabetically sortedFirstNativeLetterArray
+        sortedFirstNativeLetterArray.sort(){$0 <  $1}
         
-        println("DictionaryVC: \(firstNativeLetterArray)")
-        println("DictionaryVC: \(firstNativeLetterArray.count)")
-        println("DictionaryVC: \(nativeWordList)")
+        println("DictionaryVC: firstNativeLetterArray\(firstNativeLetterArray)")
+        println("DictionaryVC: sortedFirstNativeLetterArray \(sortedFirstNativeLetterArray)")
+//        println("DictionaryVC: \(nativeWordList)")
 
         
         self.table.reloadData()
