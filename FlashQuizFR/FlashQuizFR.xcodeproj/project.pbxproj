@@ -17,7 +17,6 @@
 		7851F8BE1B5AF1440042557C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7851F8BD1B5AF1440042557C /* StoreKit.framework */; };
 		7851F8C01B5AF2680042557C /* defaultWordList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7851F8BF1B5AF2680042557C /* defaultWordList.plist */; };
 		7851F8C21B5AFB5A0042557C /* DictionaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7851F8C11B5AFB5A0042557C /* DictionaryVC.swift */; };
-		7851F8C41B5B0D9A0042557C /* dictionaryList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7851F8C31B5B0D9A0042557C /* dictionaryList.plist */; };
 		7851F8C61B5B45310042557C /* wordDictionary.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7851F8C51B5B45310042557C /* wordDictionary.plist */; };
 /* End PBXBuildFile section */
 
@@ -46,7 +45,6 @@
 		7851F8BD1B5AF1440042557C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		7851F8BF1B5AF2680042557C /* defaultWordList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaultWordList.plist; sourceTree = "<group>"; };
 		7851F8C11B5AFB5A0042557C /* DictionaryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryVC.swift; sourceTree = "<group>"; };
-		7851F8C31B5B0D9A0042557C /* dictionaryList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = dictionaryList.plist; sourceTree = "<group>"; };
 		7851F8C51B5B45310042557C /* wordDictionary.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = wordDictionary.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,7 +106,6 @@
 			children = (
 				7851F8BF1B5AF2680042557C /* defaultWordList.plist */,
 				7851F8C51B5B45310042557C /* wordDictionary.plist */,
-				7851F8C31B5B0D9A0042557C /* dictionaryList.plist */,
 				7851F8991B5AF12F0042557C /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -220,7 +217,6 @@
 				7851F8C61B5B45310042557C /* wordDictionary.plist in Resources */,
 				7851F8C01B5AF2680042557C /* defaultWordList.plist in Resources */,
 				7851F8A31B5AF12F0042557C /* Main.storyboard in Resources */,
-				7851F8C41B5B0D9A0042557C /* dictionaryList.plist in Resources */,
 				7851F8A81B5AF12F0042557C /* LaunchScreen.xib in Resources */,
 				7851F8A51B5AF12F0042557C /* Images.xcassets in Resources */,
 			);
@@ -445,6 +441,7 @@
 				7851F8B91B5AF12F0042557C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7851F8BA1B5AF12F0042557C /* Build configuration list for PBXNativeTarget "FlashQuizFRTests" */ = {
 			isa = XCConfigurationList;
@@ -453,6 +450,7 @@
 				7851F8BC1B5AF12F0042557C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

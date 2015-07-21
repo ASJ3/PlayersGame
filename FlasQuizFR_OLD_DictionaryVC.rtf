@@ -1,0 +1,112 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red170\green13\blue145;\red92\green38\blue153;\red0\green116\blue0;
+\red196\green26\blue22;\red46\green13\blue110;\red63\green110\blue116;\red28\green0\blue207;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab529
+\pard\tx529\pardeftab529\pardirnatural
+
+\f0\fs22 \cf2 \CocoaLigature0 import\cf0  UIKit\
+\
+\cf2 class\cf0  DictionaryVC: \cf3 UIViewController\cf0 , \cf3 UITableViewDelegate\cf0 , \cf3 UITableViewDataSource\cf0  \{\
+\
+    \cf2 @IBOutlet\cf0  \cf2 weak\cf0  \cf2 var\cf0  table: \cf3 UITableView\cf0 !\
+    \cf4 //TRIAL: creating an array of words for the table content\
+\cf0     \cf2 var\cf0  wordArray = [\cf5 "avion"\cf0 ,\cf5 "bateau"\cf0 ,\cf5 "camion"\cf0 ,\cf5 "train"\cf0 ,\cf5 "ferry"\cf0 ,\cf5 "helicoptere"\cf0 ]\
+    \cf2 var\cf0  wordListArray = \cf3 NSMutableArray\cf0 ()\
+    \cf2 var\cf0  wordFromList = [\cf5 "word"\cf0 :\cf3 String\cf0 (),  \cf5 "wordFirst"\cf0 :\cf3 String\cf0 (), \cf5 "translation"\cf0 :\cf3 String\cf0 (), \cf5 "translationFirst"\cf0 :\cf3 String\cf0 (), \cf5 "gender"\cf0 :\cf3 String\cf0 ()]\
+    \
+    \cf2 override\cf0  \cf2 func\cf0  viewDidLoad() \{\
+        \cf2 super\cf0 .\cf6 viewDidLoad\cf0 ()\
+\
+        \cf4 //TRIAL: Loading all words and their translation from the wordDictionary plist\
+\cf0         \cf2 var\cf0  wordListPath = \cf3 NSBundle\cf0 .\cf6 mainBundle\cf0 ().\cf6 pathForResource\cf0 (\cf5 "wordDictionary"\cf0 , ofType: \cf5 "plist"\cf0 )\
+        \cf7 wordListArray\cf0  = \cf3 NSMutableArray\cf0 (contentsOfFile: wordListPath!)!\
+        \
+        \cf4 //TRIAL: try to get the number of sections in the native language based on the number of unique first letters we have in wordDictionary\
+\cf0         \cf4 //firstNativeLetterArray is an Array that indicates how many times each first letter of the alphabet appears in the wordDictionary plist\
+\cf0         \cf2 var\cf0  firstNativeLetterArray = [\cf3 String\cf0 :\cf3 Int\cf0 ]()\
+        \cf2 var\cf0  sortedFirstNativeLetterArray = [\cf3 String\cf0 ]()\
+        \cf2 var\cf0  nativeWordList = [\cf3 String\cf0 :[\cf3 AnyObject\cf0 ]]()\
+\
+        \cf4 //Increase the count of the values in firsLetterArray based on the number of times each letter appears as the first letter in each word of wordDictionary\
+\cf0         \cf2 for\cf0  word \cf2 in\cf0  \cf7 wordListArray\cf0  \{\
+            \cf7 wordFromList\cf0 [\cf5 "word"\cf0 ] = word[\cf5 "word"\cf0 ] \cf2 as\cf0 ? \cf3 String\cf0 \
+            \cf7 wordFromList\cf0 [\cf5 "wordFirst"\cf0 ] = word[\cf5 "wordFirst"\cf0 ] \cf2 as\cf0 ? \cf3 String\cf0 \
+            \cf7 wordFromList\cf0 [\cf5 "translation"\cf0 ] = word[\cf5 "translation"\cf0 ] \cf2 as\cf0 ? \cf3 String\cf0 \
+            \cf7 wordFromList\cf0 [\cf5 "translationFirst"\cf0 ] = word[\cf5 "translationFirst"\cf0 ] \cf2 as\cf0 ? \cf3 String\cf0 \
+            \cf7 wordFromList\cf0 [\cf5 "gender"\cf0 ] = word[\cf5 "gender"\cf0 ] \cf2 as\cf0 ? \cf3 String\cf0 \
+            \
+            \cf2 var\cf0  firstChar = word[\cf5 "wordFirst"\cf0 ] \cf2 as\cf0 ! \cf3 String\cf0 \
+            \
+            \cf4 //Increase letter count in firsLetterArray, based on the first letter of the word\
+\cf0             \cf2 if\cf0  firstNativeLetterArray[firstChar] == \cf2 nil\cf0  \{\
+                firstNativeLetterArray[firstChar] = \cf8 1\cf0 \
+            \} \cf2 else\cf0  \{\
+               firstNativeLetterArray[firstChar]! += \cf8 1\cf0 \
+            \}\
+            \
+            \cf4 //Add each word to the right dictionary "group" in the nativeWordList, based on its first letter\
+\cf0             \cf2 if\cf0  nativeWordList[firstChar] == \cf2 nil\cf0  \{\
+                nativeWordList[firstChar] = []\
+                nativeWordList[firstChar]!.\cf6 append\cf0 (\cf7 wordFromList\cf0 )\
+                \
+            \} \cf2 else\cf0  \{\
+                nativeWordList[firstChar]!.\cf6 append\cf0 (\cf7 wordFromList\cf0 )\
+            \}\
+            \
+            \}\
+        \cf2 for\cf0  (key, value) \cf2 in\cf0  firstNativeLetterArray \{\
+            \cf2 var\cf0  keyString = key \cf2 as\cf0  \cf3 String\cf0 \
+            sortedFirstNativeLetterArray.\cf6 append\cf0 (keyString)\
+        \}\
+        \cf4 //Use sort() function to order alphabetically sortedFirstNativeLetterArray\
+\cf0         sortedFirstNativeLetterArray.\cf6 sort\cf0 ()\{$0 <  $1\}\
+        \
+        \cf6 println\cf0 (\cf5 "DictionaryVC: firstNativeLetterArray\cf0 \\\cf5 (\cf0 firstNativeLetterArray\cf5 )"\cf0 )\
+        \cf6 println\cf0 (\cf5 "DictionaryVC: sortedFirstNativeLetterArray \cf0 \\\cf5 (\cf0 sortedFirstNativeLetterArray\cf5 )"\cf0 )\
+\cf4 //        println("DictionaryVC: \\(nativeWordList)")\
+\cf0 \
+        \
+        \cf2 self\cf0 .\cf7 table\cf0 .\cf6 reloadData\cf0 ()\
+    \}\
+    \
+    \
+    \cf2 func\cf0  numberOfSectionsInTableView(tableView: \cf3 UITableView\cf0 ) -> \cf3 Int\cf0  \{\
+        \cf2 return\cf0  \cf8 1\cf0 \
+    \}\
+    \
+    \cf2 func\cf0  tableView(tableView: \cf3 UITableView\cf0 , numberOfRowsInSection section: \cf3 Int\cf0 ) -> \cf3 Int\cf0  \{\
+        \cf2 return\cf0  \cf2 self\cf0 .\cf7 wordListArray\cf0 .\cf3 count\cf0 \
+    \}\
+    \
+    \
+    \cf2 func\cf0  tableView(tableView: \cf3 UITableView\cf0 , cellForRowAtIndexPath indexPath: \cf3 NSIndexPath\cf0 ) -> \cf3 UITableViewCell\cf0  \{\
+        \
+        \cf2 var\cf0  cell = tableView.\cf6 dequeueReusableCellWithIdentifier\cf0 (\cf5 "wordCell"\cf0 ) \cf2 as\cf0 ! \cf3 UITableViewCell\cf0 !\
+        \cf2 if\cf0  cell == \cf2 nil\cf0   \{\
+            cell = \cf3 UITableViewCell\cf0 (style: .\cf6 Subtitle\cf0 , reuseIdentifier: \cf5 "wordCell"\cf0 )\
+        \}\
+        cell.\cf3 textLabel\cf0 ?.\cf3 textColor\cf0  = \cf3 UIColor\cf0 .\cf6 blackColor\cf0 ()\
+        cell.\cf3 backgroundColor\cf0  = \cf3 UIColor\cf0 .\cf6 clearColor\cf0 ()\
+        \
+        \cf4 //Note: we are using the objectForKey because the plist is an array of dictionaries, and we want\
+\cf0         \cf4 //to retrieve certain parts of these dictionaries, and objectForKey is the way to to this for dictionaries in plists.\
+\cf0         cell.\cf3 textLabel\cf0 ?.\cf3 text\cf0  = \cf7 wordListArray\cf0 [indexPath.\cf3 row\cf0 ].objectForKey(\cf5 "word"\cf0 ) \cf2 as\cf0 ? \cf3 String\cf0 \
+        \cf2 var\cf0  wordGender = \cf7 wordListArray\cf0 [indexPath.\cf3 row\cf0 ].objectForKey(\cf5 "gender"\cf0 ) \cf2 as\cf0 ! \cf3 String\cf0 \
+        cell.\cf3 detailTextLabel\cf0 ?.\cf3 text\cf0  = \cf7 wordListArray\cf0 [indexPath.\cf3 row\cf0 ].objectForKey(\cf5 "translation"\cf0 ) \cf2 as\cf0 ! \cf3 String\cf0  + \cf5 " ("\cf0  + wordGender + \cf5 ")"\cf0 \
+        \cf2 return\cf0  cell\
+    \}\
+    \
+    \cf2 func\cf0  tableView(tableView: \cf3 UITableView\cf0 , heightForRowAtIndexPath indexPath: \cf3 NSIndexPath\cf0 ) -> \cf3 CGFloat\cf0  \{\
+        \cf2 return\cf0  \cf8 45\cf0 \
+    \}\
+    \
+    \
+\
+    \cf2 override\cf0  \cf2 func\cf0  didReceiveMemoryWarning() \{\
+        \cf2 super\cf0 .\cf6 didReceiveMemoryWarning\cf0 ()\
+        \cf4 // Dispose of any resources that can be recreated.\
+\cf0     \}\
+\
+\}}
