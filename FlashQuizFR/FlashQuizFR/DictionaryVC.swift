@@ -14,7 +14,10 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     //TRIAL: creating an array of words for the table content
     var wordArray = ["avion","bateau","camion","train","ferry","helicoptere"]
     var wordListArray = NSMutableArray()
+    var sectionArray = NSMutableArray()
     var wordFromList = ["word":String(),  "wordFirst":String(), "translation":String(), "translationFirst":String(), "gender":String()]
+    var nativeWordList = [String:[AnyObject]]()
+    var sortedNativeWordList = [AnyObject]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +26,14 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         var wordListPath = NSBundle.mainBundle().pathForResource("wordDictionary", ofType: "plist")
         wordListArray = NSMutableArray(contentsOfFile: wordListPath!)!
         
+        var sectionListPath = NSBundle.mainBundle().pathForResource("dictionaryCount", ofType: "plist")
+        sectionArray = NSMutableArray(contentsOfFile: sectionListPath!)!
+        
         //TRIAL: try to get the number of sections in the native language based on the number of unique first letters we have in wordDictionary
         //firstNativeLetterArray is an Array that indicates how many times each first letter of the alphabet appears in the wordDictionary plist
         var firstNativeLetterArray = [String:Int]()
         var sortedFirstNativeLetterArray = [String]()
-        var nativeWordList = [String:[AnyObject]]()
+
 
         //Increase the count of the values in firsLetterArray based on the number of times each letter appears as the first letter in each word of wordDictionary
         for word in wordListArray {
@@ -66,7 +72,18 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         println("DictionaryVC: firstNativeLetterArray\(firstNativeLetterArray)")
         println("DictionaryVC: sortedFirstNativeLetterArray \(sortedFirstNativeLetterArray)")
         println("DictionaryVC: \(nativeWordList)")
-
+        
+        //Create the final list to use, sortedNativeWordList
+        for i in sortedFirstNativeLetterArray {
+            for (key, value) in nativeWordList {
+                if key == i {
+                    self.sortedNativeWordList.append(value)
+                    break
+                }
+            }
+        }
+        
+        println(sortedNativeWordList)
         
         self.table.reloadData()
     }
