@@ -90,11 +90,11 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return self.sortedNativeWordList.count
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.wordListArray.count
+        return self.sortedNativeWordList[section].count
     }
     
     
@@ -109,10 +109,15 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         
         //Note: we are using the objectForKey because the plist is an array of dictionaries, and we want
         //to retrieve certain parts of these dictionaries, and objectForKey is the way to to this for dictionaries in plists.
-        cell.textLabel?.text = wordListArray[indexPath.row].objectForKey("word") as? String
-        var wordGender = wordListArray[indexPath.row].objectForKey("gender") as! String
-        cell.detailTextLabel?.text = wordListArray[indexPath.row].objectForKey("translation") as! String + " (" + wordGender + ")"
+        cell.textLabel?.text = self.sortedNativeWordList[indexPath.section][indexPath.row].objectForKey("word") as? String
+        var wordGender = self.sortedNativeWordList[indexPath.section][indexPath.row].objectForKey("gender") as! String
+        cell.detailTextLabel?.text = self.sortedNativeWordList[indexPath.section][indexPath.row].objectForKey("translation") as! String + " (" + wordGender + ")"
         return cell
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        var sectionLetterHeader = self.sortedNativeWordList[section][0].objectForKey("wordFirst") as? String
+        return sectionLetterHeader?.uppercaseString
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

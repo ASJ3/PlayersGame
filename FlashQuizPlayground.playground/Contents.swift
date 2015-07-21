@@ -23,3 +23,9 @@ newArray["a"]
 newArray["a"]!.append("ammunition")
 
 newArray["a"]
+newArray["a"]!.insert("avanti", atIndex:0)
+println("hello")
+newArray
+
+var newWord = "hello"
+newWord.uppercaseString
