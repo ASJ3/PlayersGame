@@ -18,6 +18,7 @@
 		7851F8C01B5AF2680042557C /* defaultWordList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7851F8BF1B5AF2680042557C /* defaultWordList.plist */; };
 		7851F8C21B5AFB5A0042557C /* DictionaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7851F8C11B5AFB5A0042557C /* DictionaryVC.swift */; };
 		7851F8C61B5B45310042557C /* wordDictionary.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7851F8C51B5B45310042557C /* wordDictionary.plist */; };
+		78D4CA281B5DD8BE0087841D /* dictionaryCount.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78D4CA271B5DD8BE0087841D /* dictionaryCount.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		7851F8BF1B5AF2680042557C /* defaultWordList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaultWordList.plist; sourceTree = "<group>"; };
 		7851F8C11B5AFB5A0042557C /* DictionaryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryVC.swift; sourceTree = "<group>"; };
 		7851F8C51B5B45310042557C /* wordDictionary.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = wordDictionary.plist; sourceTree = "<group>"; };
+		78D4CA271B5DD8BE0087841D /* dictionaryCount.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = dictionaryCount.plist; path = ../dictionaryCount.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				7851F8BF1B5AF2680042557C /* defaultWordList.plist */,
+				78D4CA271B5DD8BE0087841D /* dictionaryCount.plist */,
 				7851F8C51B5B45310042557C /* wordDictionary.plist */,
 				7851F8991B5AF12F0042557C /* Info.plist */,
 			);
@@ -214,6 +217,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78D4CA281B5DD8BE0087841D /* dictionaryCount.plist in Resources */,
 				7851F8C61B5B45310042557C /* wordDictionary.plist in Resources */,
 				7851F8C01B5AF2680042557C /* defaultWordList.plist in Resources */,
 				7851F8A31B5AF12F0042557C /* Main.storyboard in Resources */,

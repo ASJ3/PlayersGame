@@ -65,7 +65,7 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         
         println("DictionaryVC: firstNativeLetterArray\(firstNativeLetterArray)")
         println("DictionaryVC: sortedFirstNativeLetterArray \(sortedFirstNativeLetterArray)")
-//        println("DictionaryVC: \(nativeWordList)")
+        println("DictionaryVC: \(nativeWordList)")
 
         
         self.table.reloadData()
