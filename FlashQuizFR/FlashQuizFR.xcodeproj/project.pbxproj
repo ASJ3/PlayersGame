@@ -18,6 +18,7 @@
 		7851F8C01B5AF2680042557C /* defaultWordList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7851F8BF1B5AF2680042557C /* defaultWordList.plist */; };
 		7851F8C21B5AFB5A0042557C /* DictionaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7851F8C11B5AFB5A0042557C /* DictionaryVC.swift */; };
 		7851F8C61B5B45310042557C /* wordDictionary.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7851F8C51B5B45310042557C /* wordDictionary.plist */; };
+		78A8E35B1B5FC72500E48ABB /* TestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A8E35A1B5FC72500E48ABB /* TestVC.swift */; };
 		78D4CA281B5DD8BE0087841D /* dictionaryCount.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78D4CA271B5DD8BE0087841D /* dictionaryCount.plist */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		7851F8BF1B5AF2680042557C /* defaultWordList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaultWordList.plist; sourceTree = "<group>"; };
 		7851F8C11B5AFB5A0042557C /* DictionaryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryVC.swift; sourceTree = "<group>"; };
 		7851F8C51B5B45310042557C /* wordDictionary.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = wordDictionary.plist; sourceTree = "<group>"; };
+		78A8E35A1B5FC72500E48ABB /* TestVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestVC.swift; sourceTree = "<group>"; };
 		78D4CA271B5DD8BE0087841D /* dictionaryCount.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = dictionaryCount.plist; path = ../dictionaryCount.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,6 +96,7 @@
 				7851F89A1B5AF12F0042557C /* AppDelegate.swift */,
 				7851F89F1B5AF12F0042557C /* ViewController.swift */,
 				7851F8C11B5AFB5A0042557C /* DictionaryVC.swift */,
+				78A8E35A1B5FC72500E48ABB /* TestVC.swift */,
 				7851F8A11B5AF12F0042557C /* Main.storyboard */,
 				7851F8A41B5AF12F0042557C /* Images.xcassets */,
 				7851F8A61B5AF12F0042557C /* LaunchScreen.xib */,
@@ -240,6 +243,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78A8E35B1B5FC72500E48ABB /* TestVC.swift in Sources */,
 				7851F8C21B5AFB5A0042557C /* DictionaryVC.swift in Sources */,
 				7851F8A01B5AF12F0042557C /* ViewController.swift in Sources */,
 				7851F89B1B5AF12F0042557C /* AppDelegate.swift in Sources */,
