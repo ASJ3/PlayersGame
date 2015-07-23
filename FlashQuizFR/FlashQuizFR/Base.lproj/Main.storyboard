@@ -17,18 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcS-aJ-AgF">
-                                <rect key="frame" x="16" y="121" width="568" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vtg-mi-JXm">
-                                <rect key="frame" x="16" y="150" width="568" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="saW-u4-jXC">
                                 <rect key="frame" x="266" y="221" width="69" height="30"/>
                                 <state key="normal" title="Dictionary">
@@ -56,26 +44,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="vcS-aJ-AgF" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="3Sw-W9-j5h"/>
-                            <constraint firstItem="vcS-aJ-AgF" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="4eW-Xr-dbd"/>
                             <constraint firstItem="NWb-IK-T8T" firstAttribute="top" secondItem="saW-u4-jXC" secondAttribute="bottom" constant="19" id="83u-am-1GV"/>
                             <constraint firstItem="ce3-vL-INO" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="Cbm-jn-UyQ"/>
+                            <constraint firstItem="saW-u4-jXC" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="157" id="JiJ-gN-ger"/>
                             <constraint firstItem="ce3-vL-INO" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="Jm8-uQ-2ac"/>
-                            <constraint firstItem="Vtg-mi-JXm" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="Vum-so-UTJ"/>
-                            <constraint firstItem="vcS-aJ-AgF" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="VyL-if-yKj"/>
-                            <constraint firstItem="Vtg-mi-JXm" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="XsK-GC-WbL"/>
                             <constraint firstAttribute="centerX" secondItem="NWb-IK-T8T" secondAttribute="centerX" id="aKt-US-weQ"/>
                             <constraint firstItem="ce3-vL-INO" firstAttribute="top" secondItem="NWb-IK-T8T" secondAttribute="bottom" constant="31" id="dNn-Uk-OoX"/>
-                            <constraint firstItem="Vtg-mi-JXm" firstAttribute="top" secondItem="vcS-aJ-AgF" secondAttribute="bottom" constant="8" id="g2D-OV-G8Z"/>
                             <constraint firstAttribute="centerX" secondItem="saW-u4-jXC" secondAttribute="centerX" constant="-0.5" id="n1o-CF-Atd"/>
-                            <constraint firstItem="vcS-aJ-AgF" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="57" id="rOM-AZ-mFa"/>
-                            <constraint firstItem="saW-u4-jXC" firstAttribute="top" secondItem="Vtg-mi-JXm" secondAttribute="bottom" constant="50" id="sbL-3O-FZY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="GVh-w3-T45"/>
                     <connections>
-                        <outlet property="label1" destination="vcS-aJ-AgF" id="nMd-Qm-ERZ"/>
-                        <outlet property="label2" destination="Vtg-mi-JXm" id="7YC-6Q-uI3"/>
                         <outlet property="status" destination="ce3-vL-INO" id="lkI-FI-Hjf"/>
                     </connections>
                 </viewController>

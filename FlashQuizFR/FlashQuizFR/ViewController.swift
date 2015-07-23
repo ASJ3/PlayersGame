@@ -9,21 +9,11 @@
 import UIKit
 
 class ViewController: UIViewController {
-    //TRIAL: labels to ensure data loads properly
-    @IBOutlet weak var label1: UILabel!
-    @IBOutlet weak var label2: UILabel!
     
     @IBOutlet weak var status: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //TRIAL: Loading all words and their translation from the defaultWordList plist
-        var wordListPath = NSBundle.mainBundle().pathForResource("defaultWordList", ofType: "plist")
-        var wordListArray = NSMutableArray(contentsOfFile: wordListPath!)
-        
-        //TRIAL: changing the text of the labels
-        self.label1.text = wordListArray![0] as? String
-        self.label2.text = wordListArray![1] as? String
         
         //TRIAL: figuring out which lists of words have been purchased/loaded to CoreData from wordListStatus plist
         var ListStatusPath = NSBundle.mainBundle().pathForResource("wordListStatus", ofType: "plist")
