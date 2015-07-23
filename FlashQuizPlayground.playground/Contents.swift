@@ -29,3 +29,7 @@ newArray
 
 var newWord = "hello"
 newWord.uppercaseString
+var newDict = ["name": "hello", "loaded": true, "purchased": 1]
+newDict["loaded"]
+
+

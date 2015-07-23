@@ -12,7 +12,7 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
 
     @IBOutlet weak var table: UITableView!
     //TRIAL: creating an array of words for the table content
-    var wordArray = ["avion","bateau","camion","train","ferry","helicoptere"]
+
     var wordListArray = NSMutableArray()
     var sectionArray = NSMutableArray()
     var wordFromList = ["word":String(),  "wordFirst":String(), "translation":String(), "translationFirst":String(), "gender":String()]

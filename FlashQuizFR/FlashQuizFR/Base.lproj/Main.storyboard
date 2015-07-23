@@ -47,16 +47,25 @@
                                     <segue destination="PgL-Wy-ELu" kind="show" id="1dB-fm-skP"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ce3-vL-INO">
+                                <rect key="frame" x="16" y="331" width="568" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="vcS-aJ-AgF" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="3Sw-W9-j5h"/>
                             <constraint firstItem="vcS-aJ-AgF" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="4eW-Xr-dbd"/>
                             <constraint firstItem="NWb-IK-T8T" firstAttribute="top" secondItem="saW-u4-jXC" secondAttribute="bottom" constant="19" id="83u-am-1GV"/>
+                            <constraint firstItem="ce3-vL-INO" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="Cbm-jn-UyQ"/>
+                            <constraint firstItem="ce3-vL-INO" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="Jm8-uQ-2ac"/>
                             <constraint firstItem="Vtg-mi-JXm" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="Vum-so-UTJ"/>
                             <constraint firstItem="vcS-aJ-AgF" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="VyL-if-yKj"/>
                             <constraint firstItem="Vtg-mi-JXm" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="XsK-GC-WbL"/>
                             <constraint firstAttribute="centerX" secondItem="NWb-IK-T8T" secondAttribute="centerX" id="aKt-US-weQ"/>
+                            <constraint firstItem="ce3-vL-INO" firstAttribute="top" secondItem="NWb-IK-T8T" secondAttribute="bottom" constant="31" id="dNn-Uk-OoX"/>
                             <constraint firstItem="Vtg-mi-JXm" firstAttribute="top" secondItem="vcS-aJ-AgF" secondAttribute="bottom" constant="8" id="g2D-OV-G8Z"/>
                             <constraint firstAttribute="centerX" secondItem="saW-u4-jXC" secondAttribute="centerX" constant="-0.5" id="n1o-CF-Atd"/>
                             <constraint firstItem="vcS-aJ-AgF" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="57" id="rOM-AZ-mFa"/>
@@ -67,6 +76,7 @@
                     <connections>
                         <outlet property="label1" destination="vcS-aJ-AgF" id="nMd-Qm-ERZ"/>
                         <outlet property="label2" destination="Vtg-mi-JXm" id="7YC-6Q-uI3"/>
+                        <outlet property="status" destination="ce3-vL-INO" id="lkI-FI-Hjf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

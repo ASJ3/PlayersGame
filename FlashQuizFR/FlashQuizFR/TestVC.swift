@@ -5,6 +5,7 @@
 //  Created by Alexis Saint-Jean on 7/22/15.
 //  Copyright (c) 2015 Alexis Saint-Jean. All rights reserved.
 //
+//CoreData code based on tutorial from http://www.raywenderlich.com/85578/first-core-data-app-using-swift
 
 import UIKit
 import CoreData
@@ -53,12 +54,15 @@ class TestVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             inManagedObjectContext:
             managedContext)
         
-        let person = NSManagedObject(entity: entity!,
+        let wordUnit = NSManagedObject(entity: entity!,
             insertIntoManagedObjectContext:managedContext)
         
         //3
-        person.setValue(name, forKey: "word")
-        person.setValue("French", forKey: "translation")
+        wordUnit.setValue(name, forKey: "word")
+        wordUnit.setValue("French", forKey: "translation")
+        wordUnit.setValue("a", forKey: "wordFirst")
+        wordUnit.setValue("a", forKey: "translationFirst")
+        wordUnit.setValue("f", forKey: "gender")
         
         //4
         var error: NSError?
@@ -66,12 +70,11 @@ class TestVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             println("Could not save \(error), \(error?.userInfo)")
         }
         //5
-        people.append(person)
+        words.append(wordUnit)
     }
     
 
-    var people = [NSManagedObject]()
-    var names = [String]()
+    var words = [NSManagedObject]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,14 +92,14 @@ class TestVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     // MARK: - Navigation
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return people.count
+            return words.count
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! UITableViewCell
-        let person = people[indexPath.row]
+        let person = words[indexPath.row]
         cell.textLabel!.text = person.valueForKey("word") as? String
-         cell.detailTextLabel?.text = person.valueForKey("translation") as? String
+         cell.detailTextLabel?.text = person.valueForKey("gender") as? String
         
         return cell
         }
@@ -122,7 +125,7 @@ class TestVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             error: &error) as? [NSManagedObject]
         
         if let results = fetchedResults {
-            people = results
+            words = results
         } else {
             println("Could not fetch \(error), \(error!.userInfo)")
         }
