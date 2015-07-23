@@ -13,72 +13,11 @@ import CoreData
 class TestVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBAction func addName(sender: AnyObject) {
-        var alert = UIAlertController(title: "New name",
-            message: "Add a new name",
-            preferredStyle: .Alert)
-        
-        let saveAction = UIAlertAction(title: "Save",
-            style: .Default) { (action: UIAlertAction!) -> Void in
-                
-                let textField = alert.textFields![0] as! UITextField
-                self.saveName(textField.text)
-                self.tableView.reloadData()
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel",
-            style: .Default) { (action: UIAlertAction!) -> Void in
-        }
-        
-        alert.addTextFieldWithConfigurationHandler {
-            (textField: UITextField!) -> Void in
-        }
-        
-        alert.addAction(saveAction)
-        alert.addAction(cancelAction)
-        
-        presentViewController(alert,
-            animated: true,
-            completion: nil)
-    }
-    
-    func saveName(name: String) {
-        //1
-        let appDelegate =
-        UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        let managedContext = appDelegate.managedObjectContext!
-        
-        //2
-        let entity =  NSEntityDescription.entityForName("WordEntry",
-            inManagedObjectContext:
-            managedContext)
-        
-        let wordUnit = NSManagedObject(entity: entity!,
-            insertIntoManagedObjectContext:managedContext)
-        
-        //3
-        wordUnit.setValue(name, forKey: "word")
-        wordUnit.setValue("French", forKey: "translation")
-        wordUnit.setValue("a", forKey: "wordFirst")
-        wordUnit.setValue("a", forKey: "translationFirst")
-        wordUnit.setValue("f", forKey: "gender")
-        
-        //4
-        var error: NSError?
-        if !managedContext.save(&error) {
-            println("Could not save \(error), \(error?.userInfo)")
-        }
-        //5
-        words.append(wordUnit)
-    }
-    
-
     var words = [NSManagedObject]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "\"The List\""
+//        title = "\"The List\""
 
         // Do any additional setup after loading the view.
     }
@@ -99,10 +38,15 @@ class TestVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! UITableViewCell
         let person = words[indexPath.row]
         cell.textLabel!.text = person.valueForKey("word") as? String
-         cell.detailTextLabel?.text = person.valueForKey("gender") as? String
+        var wordGender = person.valueForKey("gender") as! String
+         cell.detailTextLabel?.text = person.valueForKey("translation") as! String + " (" + wordGender + ")"
         
         return cell
         }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 45
+    }
     
     
     override func viewWillAppear(animated: Bool) {

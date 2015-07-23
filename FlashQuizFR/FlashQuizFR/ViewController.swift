@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var status: UILabel!
     var wordListArray = NSMutableArray()
+    var wordFromList = ["word":String(),  "wordFirst":String(), "translation":String(), "translationFirst":String(), "gender":String()]
+    
     var words = [NSManagedObject]()
     
     override func viewDidLoad() {
@@ -36,6 +38,17 @@ class ViewController: UIViewController {
             
             println("ViewVC: count of words in wordListArray is \(wordListArray.count)")
             
+            for word in wordListArray {
+                
+                wordFromList["word"] = word["word"] as? String
+                wordFromList["wordFirst"] = word["wordFirst"] as? String
+                wordFromList["translation"] = word["translation"] as? String
+                wordFromList["translationFirst"] = word["translationFirst"] as? String
+                wordFromList["gender"] = word["gender"] as? String
+                
+                self.saveName(wordFromList["word"]!, wordFirst: wordFromList["wordFirst"]!, translation: wordFromList["translation"]!, translationFirst: wordFromList["translationFirst"]!, gender: wordFromList["gender"]!)
+            }
+            
             //Change the "loaded" status to true for the word list in wordListStatus plist
             ListStatusArray[0].setValue(true, forKey: "loaded")
             ListStatusArray.writeToFile(ListStatusPath!, atomically: true)
@@ -45,6 +58,37 @@ class ViewController: UIViewController {
         }
         
         
+    }
+    
+    func saveName(word: String, wordFirst: String, translation: String, translationFirst: String, gender: String) {
+        //1
+        let appDelegate =
+        UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext!
+        
+        //2
+        let entity =  NSEntityDescription.entityForName("WordEntry",
+            inManagedObjectContext:
+            managedContext)
+        
+        let wordUnit = NSManagedObject(entity: entity!,
+            insertIntoManagedObjectContext:managedContext)
+        
+        //3
+        wordUnit.setValue(word, forKey: "word")
+        wordUnit.setValue(translation, forKey: "translation")
+        wordUnit.setValue(wordFirst, forKey: "wordFirst")
+        wordUnit.setValue(translationFirst, forKey: "translationFirst")
+        wordUnit.setValue(gender, forKey: "gender")
+        
+        //4
+        var error: NSError?
+        if !managedContext.save(&error) {
+            println("Could not save \(error), \(error?.userInfo)")
+        }
+        //5
+        words.append(wordUnit)
     }
 
     override func didReceiveMemoryWarning() {

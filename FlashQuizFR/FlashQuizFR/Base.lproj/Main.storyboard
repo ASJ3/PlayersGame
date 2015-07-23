@@ -134,8 +134,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Coa-VB-nY9">
-                                <rect key="frame" x="0.0" y="111" width="600" height="481"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Coa-VB-nY9">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="592"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="4jH-OS-8oG" detailTextLabel="rpS-w2-Scn" style="IBUITableViewCellStyleSubtitle" id="tEt-VC-h8i">
@@ -152,8 +152,8 @@
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rpS-w2-Scn">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -165,23 +165,12 @@
                                     <outlet property="delegate" destination="PgL-Wy-ELu" id="KAy-UH-xgW"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ao-dm-CHR">
-                                <rect key="frame" x="554" y="73" width="30" height="30"/>
-                                <state key="normal" title="Add">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="addName:" destination="PgL-Wy-ELu" eventType="touchUpInside" id="iff-9L-jaS"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Coa-VB-nY9" firstAttribute="leading" secondItem="EIe-db-xed" secondAttribute="leadingMargin" constant="-16" id="45u-Yp-MbD"/>
-                            <constraint firstItem="5Ao-dm-CHR" firstAttribute="top" secondItem="kSM-pm-5J8" secondAttribute="bottom" constant="9" id="7F9-AA-Dwe"/>
-                            <constraint firstItem="5Ao-dm-CHR" firstAttribute="trailing" secondItem="EIe-db-xed" secondAttribute="trailingMargin" id="Ef7-eN-t6i"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Coa-VB-nY9" secondAttribute="trailing" constant="-16" id="QXY-Vj-BSn"/>
-                            <constraint firstItem="Coa-VB-nY9" firstAttribute="top" secondItem="5Ao-dm-CHR" secondAttribute="bottom" constant="8" id="bQx-6g-dfm"/>
+                            <constraint firstItem="Coa-VB-nY9" firstAttribute="top" secondItem="kSM-pm-5J8" secondAttribute="bottom" constant="-64" id="amt-YX-2LB"/>
                             <constraint firstItem="nY8-T3-oDg" firstAttribute="top" secondItem="Coa-VB-nY9" secondAttribute="bottom" constant="8" id="gBV-vU-SS0"/>
                         </constraints>
                     </view>
