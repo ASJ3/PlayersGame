@@ -74,8 +74,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Hb6-2S-JXc">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Hb6-2S-JXc">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="592"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="wordCell" textLabel="NP7-0l-1g8" detailTextLabel="xcj-DR-CEn" style="IBUITableViewCellStyleSubtitle" id="5Wc-GL-N6Y">
@@ -107,6 +107,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="f8D-rn-h3S" firstAttribute="top" secondItem="Hb6-2S-JXc" secondAttribute="bottom" constant="8" id="CoB-Mk-KaZ"/>
+                            <constraint firstItem="Hb6-2S-JXc" firstAttribute="leading" secondItem="X8Q-cA-nI3" secondAttribute="leadingMargin" constant="-16" id="Gud-GL-1T4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Hb6-2S-JXc" secondAttribute="trailing" constant="-16" id="YJT-qZ-SPy"/>
+                            <constraint firstItem="Hb6-2S-JXc" firstAttribute="top" secondItem="ird-hn-qOt" secondAttribute="bottom" constant="-64" id="kIt-IY-eQC"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="table" destination="Hb6-2S-JXc" id="sqm-gW-H8j"/>

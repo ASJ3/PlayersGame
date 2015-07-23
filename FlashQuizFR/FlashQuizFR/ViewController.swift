@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController {
     
     @IBOutlet weak var status: UILabel!
+    var wordListArray = NSMutableArray()
+    var words = [NSManagedObject]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,10 +23,20 @@ class ViewController: UIViewController {
         var ListStatusArray = NSMutableArray(contentsOfFile: ListStatusPath!)!
         
         
+        //If the "loaded" field of a list is true, then it means the words
+        //in this list have been uploaded to CoreData.
+        //If the field value is false, then we need to use wordDictionary plist
+        //and upload the words from that list to CoreData
         if ListStatusArray[0].valueForKey("loaded") as? Bool == false {
-            println("ViewController: list not yet loaded into CoreData")
             self.status.text = "list not yet loaded onto CoreData"
-
+            
+            //Loading all words and their translation from the wordDictionary plist
+            var wordListPath = NSBundle.mainBundle().pathForResource("wordDictionary", ofType: "plist")
+            wordListArray = NSMutableArray(contentsOfFile: wordListPath!)!
+            
+            println("ViewVC: count of words in wordListArray is \(wordListArray.count)")
+            
+            //Change the "loaded" status to true for the word list in wordListStatus plist
             ListStatusArray[0].setValue(true, forKey: "loaded")
             ListStatusArray.writeToFile(ListStatusPath!, atomically: true)
             
