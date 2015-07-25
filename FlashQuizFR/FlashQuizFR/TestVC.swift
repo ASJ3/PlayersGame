@@ -15,7 +15,6 @@ class TestVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     var words = [NSManagedObject]()
     var nativeFirstArray = [String]()
-//    var sortedNativeFirstArray = [AnyObject]()
     var uniqueNativeFirstArray = [String]()
     var nativeWordList = [String: [AnyObject]]()
     var sortedNativeWordList = [AnyObject]()
@@ -34,14 +33,17 @@ class TestVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         // Dispose of any resources that can be recreated.
     }
     
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return self.sortedNativeWordList.count
+    }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return words.count
+            return self.sortedNativeWordList[section].count
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! UITableViewCell
-        let person = words[indexPath.row]
+        let person: AnyObject! = self.sortedNativeWordList[indexPath.section][indexPath.row]
         cell.textLabel!.text = person.valueForKey("word") as? String
         var wordGender = person.valueForKey("gender") as! String
          cell.detailTextLabel?.text = person.valueForKey("translation") as! String + " (" + wordGender + ")"
@@ -51,6 +53,11 @@ class TestVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 45
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        var sectionLetterHeader = self.sortedNativeWordList[section][0].objectForKey("wordFirst") as? String
+        return sectionLetterHeader?.uppercaseString
     }
     
     
