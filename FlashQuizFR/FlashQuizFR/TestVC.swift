@@ -14,6 +14,10 @@ class TestVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     var words = [NSManagedObject]()
+    var nativeFirstArray = [String]()
+    var nativeFirstCharCount = [String:[Int]]()
+    var sortedNativeFirstArray = [AnyObject]()
+//    var secondNat = [[String:[Int]]]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +32,6 @@ class TestVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
 
-
-    // MARK: - Navigation
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return words.count
     }
@@ -70,6 +72,46 @@ class TestVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         if let results = fetchedResults {
             words = results
+            
+            //Finding the number of times each letter appears as first letter in the native language.
+            //This is to help us create the lettered sections in the table
+            for word in words {
+                var nativeFirst = word.valueForKey("wordFirst") as? String
+                self.nativeFirstArray.append(nativeFirst!)
+            }
+            
+            //Sort the letters in nativeFirstArray in alphabetical order
+            self.nativeFirstArray.sort(){$0 <  $1}
+            //Create a sorted array listing each unique letter
+            var uniqueNativeFirstArray = Array(Set(self.nativeFirstArray))
+            uniqueNativeFirstArray.sort(){$0 <  $1}
+            //Create an array listing the occurences of each letter in uniqueNativeFirstArray
+            var uniqueNativeFirstCountArray = [Int]()
+            
+            for i in uniqueNativeFirstArray {
+                var countOfLetterOccurences = 0
+                for j in self.nativeFirstArray {
+                    if j == i {
+                    countOfLetterOccurences += 1
+                    }
+                }
+                uniqueNativeFirstCountArray.append(countOfLetterOccurences)
+            }
+            
+            println("TestVC: nativeFirstArray is : \(self.nativeFirstArray)")
+            println("TestVC: uniqueNativeFirstArray is : \(uniqueNativeFirstArray)")
+            println("TestVC: uniqueNativeFirstCountArray is : \(uniqueNativeFirstCountArray)")
+            
+            //Change sorterNativeFirstArray to accept nativeFirstCharCount dictionaries
+            self.sortedNativeFirstArray = [nativeFirstCharCount]
+            
+//            for i in self.nativeFirstArray {
+//                for (key, value) in self.sortedNativeFirstArray {
+//                    
+//                }
+//            }
+            
+            
         } else {
             println("Could not fetch \(error), \(error!.userInfo)")
         }

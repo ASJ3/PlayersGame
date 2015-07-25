@@ -33,3 +33,9 @@ var newDict = ["name": "hello", "loaded": true, "purchased": 1]
 newDict["loaded"]
 
 
+var nouvArray = ["a","b","d"]
+for i in nouvArray {
+    println("the letter is now \(i)")
+}
+
+newArray

@@ -36,7 +36,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ce3-vL-INO">
-                                <rect key="frame" x="16" y="331" width="568" height="21"/>
+                                <rect key="frame" x="16" y="521" width="568" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N0a-Kh-ajx">
+                                <rect key="frame" x="16" y="472" width="568" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -44,23 +50,35 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="N0a-Kh-ajx" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="2nk-Eh-ZjV"/>
                             <constraint firstItem="NWb-IK-T8T" firstAttribute="top" secondItem="saW-u4-jXC" secondAttribute="bottom" constant="19" id="83u-am-1GV"/>
                             <constraint firstItem="ce3-vL-INO" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="Cbm-jn-UyQ"/>
+                            <constraint firstItem="N0a-Kh-ajx" firstAttribute="top" secondItem="NWb-IK-T8T" secondAttribute="bottom" constant="172" id="HuL-Uu-omR"/>
+                            <constraint firstItem="N0a-Kh-ajx" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="23" id="JQQ-FS-V2L"/>
+                            <constraint firstItem="ce3-vL-INO" firstAttribute="top" secondItem="N0a-Kh-ajx" secondAttribute="bottom" constant="28" id="Jhh-aT-ADz"/>
                             <constraint firstItem="saW-u4-jXC" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="157" id="JiJ-gN-ger"/>
                             <constraint firstItem="ce3-vL-INO" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="Jm8-uQ-2ac"/>
+                            <constraint firstItem="N0a-Kh-ajx" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="Q3Q-d0-Rx2"/>
                             <constraint firstAttribute="centerX" secondItem="NWb-IK-T8T" secondAttribute="centerX" id="aKt-US-weQ"/>
                             <constraint firstItem="ce3-vL-INO" firstAttribute="top" secondItem="NWb-IK-T8T" secondAttribute="bottom" constant="31" id="dNn-Uk-OoX"/>
                             <constraint firstAttribute="centerX" secondItem="saW-u4-jXC" secondAttribute="centerX" constant="-0.5" id="n1o-CF-Atd"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="JQQ-FS-V2L"/>
+                                <exclude reference="dNn-Uk-OoX"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="GVh-w3-T45"/>
                     <connections>
+                        <outlet property="beforeLabel" destination="N0a-Kh-ajx" id="KMQ-6C-vuh"/>
                         <outlet property="status" destination="ce3-vL-INO" id="lkI-FI-Hjf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1252" y="356"/>
+            <point key="canvasLocation" x="1189" y="361"/>
         </scene>
         <!--DictionaryVC-->
         <scene sceneID="OeS-mM-2mk">
