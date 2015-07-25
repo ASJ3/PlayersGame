@@ -15,9 +15,10 @@ class TestVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     var words = [NSManagedObject]()
     var nativeFirstArray = [String]()
-    var nativeFirstCharCount = [String:[Int]]()
     var sortedNativeFirstArray = [AnyObject]()
-//    var secondNat = [[String:[Int]]]()
+    var NativeWordList = [String: [AnyObject]]()
+    var wordFromList = ["word":String(),  "wordFirst":String(), "translation":String(), "translationFirst":String(), "gender":String()]
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,20 +99,35 @@ class TestVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 uniqueNativeFirstCountArray.append(countOfLetterOccurences)
             }
             
-            println("TestVC: nativeFirstArray is : \(self.nativeFirstArray)")
             println("TestVC: uniqueNativeFirstArray is : \(uniqueNativeFirstArray)")
             println("TestVC: uniqueNativeFirstCountArray is : \(uniqueNativeFirstCountArray)")
             
-            //Change sorterNativeFirstArray to accept nativeFirstCharCount dictionaries
-            self.sortedNativeFirstArray = [nativeFirstCharCount]
-            
-//            for i in self.nativeFirstArray {
-//                for (key, value) in self.sortedNativeFirstArray {
-//                    
-//                }
-//            }
-            
-            
+            //Add dictionaries to sorterNativeFirstArray that indicates each letter and how many words start by that letter 
+            for i in 0...uniqueNativeFirstArray.count-1 {
+                var dictKey = uniqueNativeFirstArray[i]
+//                var dictLetterWordArray = []
+//                var nativeFirstDict = [dictKey: dictCount]
+//                self.sortedNativeFirstArray.append(nativeFirstDict)
+                for word in words {
+                    var nativeFirst = word.valueForKey("wordFirst") as? String
+                    if nativeFirst! == dictKey {
+                        wordFromList["word"] = word.valueForKey("word") as? String
+                        wordFromList["wordFirst"] = word.valueForKey("wordFirst") as? String
+                        wordFromList["translation"] = word.valueForKey("translation") as? String
+                        wordFromList["translationFirst"] = word.valueForKey("translationFirst") as? String
+                        wordFromList["gender"] = word.valueForKey("gender") as? String
+                        
+                        if self.NativeWordList[dictKey] == nil {
+                            self.NativeWordList[dictKey] = [wordFromList]
+                        } else {
+                            self.NativeWordList[dictKey]!.append(wordFromList)
+                        }
+                        
+                    }
+                }
+            }
+            println("TestVC: NativeWordlist is: \(self.NativeWordList)")
+
         } else {
             println("Could not fetch \(error), \(error!.userInfo)")
         }

@@ -39,3 +39,8 @@ for i in nouvArray {
 }
 
 newArray
+var dicoArray = ["a": ["Alexis","Aurelien"], "s": ["Sylvain"]]
+dicoArray["s"]!.append("Stephanie")
+dicoArray["e"] = ["Emilie", "Elijah"]
+dicoArray
+
