@@ -20,17 +20,12 @@ class TestVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var sortedNativeWordList = [AnyObject]()
     var wordFromList = ["word":String(),  "wordFirst":String(), "translation":String(), "translationFirst":String(), "gender":String()]
 
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 //        title = "\"The List\""
 
         // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -44,11 +39,22 @@ class TestVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! UITableViewCell
         let person: AnyObject! = self.sortedNativeWordList[indexPath.section][indexPath.row]
-        cell.textLabel!.text = person.valueForKey("word") as? String
+
         var wordGender = person.valueForKey("gender") as! String
-         cell.detailTextLabel?.text = person.valueForKey("translation") as! String + " (" + wordGender + ")"
+        var colorOfCell = UIColor()
+        if wordGender == "f" {
+            colorOfCell = UIColor(red: 250.0/255.0, green: 230.0/255.0, blue: 235.0/255.0, alpha: 1.0)
+        } else if wordGender == "m" {
+            colorOfCell = UIColor(red: 229.0/255.0, green: 240.0/255.0, blue: 248.0/255.0, alpha: 1.0)
+        } else {
+            colorOfCell = UIColor.clearColor()
+        }
+        cell.backgroundColor = colorOfCell
+        cell.textLabel!.text = person.valueForKey("word") as? String
+        cell.detailTextLabel?.text = person.valueForKey("translation") as! String + " (" + wordGender + ")"
         
         return cell
+        
         }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -133,6 +139,12 @@ class TestVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         } else {
             println("Could not fetch \(error), \(error!.userInfo)")
         }
+    }
+    
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 
     }
