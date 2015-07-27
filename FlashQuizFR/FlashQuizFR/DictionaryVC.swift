@@ -111,18 +111,27 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             //Finding the number of times each letter appears as first letter in the native language.
             //This is to help us create the lettered sections in the table
             for word in words {
-                var nativeFirst = word.valueForKey("wordFirst") as? String
-                self.nativeFirstArray.append(nativeFirst!)
+                var nativeFirstLetter = word.valueForKey("wordFirst") as? String
+                self.nativeFirstArray.append(nativeFirstLetter!)
             }
             
             
             //Create a sorted array listing each unique letter
             uniqueNativeFirstArray = Array(Set(self.nativeFirstArray))
             uniqueNativeFirstArray.sort(){$0 <  $1}
-            println("TestVC: uniqueNativeFirstArray is : \(uniqueNativeFirstArray)")
+            println("DictionaryVC: uniqueNativeFirstArray is : \(uniqueNativeFirstArray)")
+            
+            //----------
+            for firstLetter in uniqueNativeFirstArray {
+                self.nativeWordList[firstLetter] = []
+            }
             
             
-            //Add dictionaries to sorterNativeFirstArray that indicates each letter and how many words start by that letter
+            
+            //----------
+            
+            
+            //Add dictionaries to nativeWordList that indicates each letter and how many words start by that letter
             for firstLetter in uniqueNativeFirstArray {
                 
                 for word in words {
@@ -133,11 +142,9 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                         wordFromList["translationFirst"] = word.valueForKey("translationFirst") as? String
                         wordFromList["gender"] = word.valueForKey("gender") as? String
                         
-                        if self.nativeWordList[firstLetter] == nil {
-                            self.nativeWordList[firstLetter] = [wordFromList]
-                        } else {
+                        //Append "word" to the array in the correspongind letter dictionary
+                        //in nativeWordList
                             self.nativeWordList[firstLetter]!.append(wordFromList)
-                        }
                         
                     }
                 }
@@ -159,7 +166,6 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             println("Could not fetch \(error), \(error!.userInfo)")
         }
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
