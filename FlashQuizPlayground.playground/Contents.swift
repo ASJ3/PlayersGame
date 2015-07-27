@@ -44,3 +44,6 @@ dicoArray["s"]!.append("Stephanie")
 dicoArray["e"] = ["Emilie", "Elijah"]
 dicoArray
 
+var greetings = "hello"
+greetings
+var firstChar = Array(greetings)[0]
