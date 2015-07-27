@@ -16,6 +16,7 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     @IBOutlet weak var tableView: UITableView!
     var words = [NSManagedObject]()
     var nativeFirstArray = [String]()
+    var nativeWordStringArray = [String]()
     var uniqueNativeFirstArray = [String]()
     var nativeWordList = [String: [AnyObject]]()
     var sortedNativeWordList = [AnyObject]()
@@ -108,11 +109,13 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         if let results = fetchedResults {
             words = results
             
-            //Finding the number of times each letter appears as first letter in the native language.
-            //This is to help us create the lettered sections in the table
+            //Finding the number of times each letter appears as first letter in the native language. This is to help us create the lettered sections in the table
+            //Also add the native word to an array that we will rearrange alphabetically
             for word in words {
                 var nativeFirstLetter = word.valueForKey("wordFirst") as? String
                 self.nativeFirstArray.append(nativeFirstLetter!)
+                var nativeWordString = word.valueForKey("word") as? String
+                self.nativeWordStringArray.append(nativeWordString!)
             }
             
             
@@ -121,18 +124,12 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             uniqueNativeFirstArray.sort(){$0 <  $1}
             println("DictionaryVC: uniqueNativeFirstArray is : \(uniqueNativeFirstArray)")
             
-            //----------
-            for firstLetter in uniqueNativeFirstArray {
-                self.nativeWordList[firstLetter] = []
-            }
-            
-            
-            
-            //----------
-            
+            //Arrange alphabetically the words in nativeWordStringArray
+            self.nativeWordStringArray.sort(){$0 < $1}
             
             //Add dictionaries to nativeWordList that indicates each letter and how many words start by that letter
             for firstLetter in uniqueNativeFirstArray {
+                self.nativeWordList[firstLetter] = []
                 
                 for word in words {
                     if firstLetter == word.valueForKey("wordFirst") as! String {
@@ -145,16 +142,33 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                         //Append "word" to the array in the correspongind letter dictionary
                         //in nativeWordList
                             self.nativeWordList[firstLetter]!.append(wordFromList)
-                        
                     }
                 }
             }
             
+            
             //Create the final list to use, sortedNativeWordList
             for i in uniqueNativeFirstArray {
+                var sortedWordArray = [String]()
+                var sortedWordDictArray = [AnyObject]()
+                
                 for (key, value) in self.nativeWordList {
                     if key == i {
-                        self.sortedNativeWordList.append(value)
+                        for j in value {
+                            sortedWordArray.append(j["word"] as! String)
+                        }
+                        sortedWordArray.sort(){$0 < $1}
+                        
+                        for sortedWord in sortedWordArray {
+                            for k in value {
+                                if sortedWord == k["word"] as! String {
+                                    sortedWordDictArray.append(k)
+                                }
+                            }
+                        }
+                        
+                        
+                        self.sortedNativeWordList.append(sortedWordDictArray)
                         break
                     }
                 }
