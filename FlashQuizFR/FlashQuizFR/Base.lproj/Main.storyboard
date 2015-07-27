@@ -133,7 +133,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="table" destination="Hb6-2S-JXc" id="sqm-gW-H8j"/>
+                        <outlet property="tableView" destination="Hb6-2S-JXc" id="uGg-kf-hGj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="77q-Sp-Q7L" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -156,7 +156,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="592"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="4jH-OS-8oG" detailTextLabel="rpS-w2-Scn" style="IBUITableViewCellStyleSubtitle" id="tEt-VC-h8i">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="wordCell" textLabel="4jH-OS-8oG" detailTextLabel="rpS-w2-Scn" style="IBUITableViewCellStyleSubtitle" id="tEt-VC-h8i">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tEt-VC-h8i" id="WnZ-RV-rF6">

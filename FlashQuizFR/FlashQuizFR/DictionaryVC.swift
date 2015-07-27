@@ -5,89 +5,29 @@
 //  Created by Alexis Saint-Jean on 7/18/15.
 //  Copyright (c) 2015 Alexis Saint-Jean. All rights reserved.
 //
+//CoreData code based on tutorial from http://www.raywenderlich.com/85578/first-core-data-app-using-swift
+
 
 import UIKit
+import CoreData
 
 class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet weak var table: UITableView!
-    //TRIAL: creating an array of words for the table content
-
-    var wordListArray = NSMutableArray()
-    var sectionArray = NSMutableArray()
-    var wordFromList = ["word":String(),  "wordFirst":String(), "translation":String(), "translationFirst":String(), "gender":String()]
-    var nativeWordList = [String:[AnyObject]]()
+    @IBOutlet weak var tableView: UITableView!
+    var words = [NSManagedObject]()
+    var nativeFirstArray = [String]()
+    var uniqueNativeFirstArray = [String]()
+    var nativeWordList = [String: [AnyObject]]()
     var sortedNativeWordList = [AnyObject]()
+    var wordFromList = ["word":String(),  "wordFirst":String(), "translation":String(), "translationFirst":String(), "gender":String()]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //TRIAL: Loading all words and their translation from the wordDictionary plist
-        var wordListPath = NSBundle.mainBundle().pathForResource("wordDictionary", ofType: "plist")
-        wordListArray = NSMutableArray(contentsOfFile: wordListPath!)!
+        //        title = "\"The List\""
         
-        var sectionListPath = NSBundle.mainBundle().pathForResource("dictionaryCount", ofType: "plist")
-        sectionArray = NSMutableArray(contentsOfFile: sectionListPath!)!
-        
-        //TRIAL: try to get the number of sections in the native language based on the number of unique first letters we have in wordDictionary
-        //firstNativeLetterArray is an Array that indicates how many times each first letter of the alphabet appears in the wordDictionary plist
-        var firstNativeLetterArray = [String:Int]()
-        var sortedFirstNativeLetterArray = [String]()
-
-
-        //Increase the count of the values in firsLetterArray based on the number of times each letter appears as the first letter in each word of wordDictionary
-        for word in wordListArray {
-            wordFromList["word"] = word["word"] as? String
-            wordFromList["wordFirst"] = word["wordFirst"] as? String
-            wordFromList["translation"] = word["translation"] as? String
-            wordFromList["translationFirst"] = word["translationFirst"] as? String
-            wordFromList["gender"] = word["gender"] as? String
-            
-            var firstChar = word["wordFirst"] as! String
-            
-            //Increase letter count in firsLetterArray, based on the first letter of the word
-            if firstNativeLetterArray[firstChar] == nil {
-                firstNativeLetterArray[firstChar] = 1
-            } else {
-               firstNativeLetterArray[firstChar]! += 1
-            }
-            
-            //Add each word to the right dictionary "group" in the nativeWordList, based on its first letter
-            if nativeWordList[firstChar] == nil {
-                nativeWordList[firstChar] = []
-                nativeWordList[firstChar]!.append(wordFromList)
-                
-            } else {
-                nativeWordList[firstChar]!.append(wordFromList)
-            }
-            
-            }
-        for (key, value) in firstNativeLetterArray {
-            var keyString = key as String
-            sortedFirstNativeLetterArray.append(keyString)
-        }
-        //Use sort() function to order alphabetically sortedFirstNativeLetterArray
-        sortedFirstNativeLetterArray.sort(){$0 <  $1}
-        
-        println("DictionaryVC: firstNativeLetterArray\(firstNativeLetterArray)")
-        println("DictionaryVC: sortedFirstNativeLetterArray \(sortedFirstNativeLetterArray)")
-        println("DictionaryVC: \(nativeWordList)")
-        
-        //Create the final list to use, sortedNativeWordList
-        for i in sortedFirstNativeLetterArray {
-            for (key, value) in nativeWordList {
-                if key == i {
-                    self.sortedNativeWordList.append(value)
-                    break
-                }
-            }
-        }
-        
-        println(sortedNativeWordList)
-        
-        self.table.reloadData()
+        // Do any additional setup after loading the view.
     }
-    
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return self.sortedNativeWordList.count
@@ -97,22 +37,29 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         return self.sortedNativeWordList[section].count
     }
     
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("wordCell") as! UITableViewCell
+        let person: AnyObject! = self.sortedNativeWordList[indexPath.section][indexPath.row]
         
-        var cell = tableView.dequeueReusableCellWithIdentifier("wordCell") as! UITableViewCell!
-        if cell == nil  {
-            cell = UITableViewCell(style: .Subtitle, reuseIdentifier: "wordCell")
+        var wordGender = person.valueForKey("gender") as! String
+        var colorOfCell = UIColor()
+        if wordGender == "f" {
+            colorOfCell = UIColor(red: 250.0/255.0, green: 230.0/255.0, blue: 235.0/255.0, alpha: 1.0)
+        } else if wordGender == "m" {
+            colorOfCell = UIColor(red: 229.0/255.0, green: 240.0/255.0, blue: 248.0/255.0, alpha: 1.0)
+        } else {
+            colorOfCell = UIColor.clearColor()
         }
-        cell.textLabel?.textColor = UIColor.blackColor()
-        cell.backgroundColor = UIColor.clearColor()
+        cell.backgroundColor = colorOfCell
+        cell.textLabel!.text = person.valueForKey("word") as? String
+        cell.detailTextLabel?.text = person.valueForKey("translation") as! String + " (" + wordGender + ")"
         
-        //Note: we are using the objectForKey because the plist is an array of dictionaries, and we want
-        //to retrieve certain parts of these dictionaries, and objectForKey is the way to to this for dictionaries in plists.
-        cell.textLabel?.text = self.sortedNativeWordList[indexPath.section][indexPath.row].objectForKey("word") as? String
-        var wordGender = self.sortedNativeWordList[indexPath.section][indexPath.row].objectForKey("gender") as! String
-        cell.detailTextLabel?.text = self.sortedNativeWordList[indexPath.section][indexPath.row].objectForKey("translation") as! String + " (" + wordGender + ")"
         return cell
+        
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 45
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -120,15 +67,85 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         return sectionLetterHeader?.uppercaseString
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 45
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //1
+        let appDelegate =
+        UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext!
+        
+        //2
+        let fetchRequest = NSFetchRequest(entityName:"WordEntry")
+        
+        //3
+        var error: NSError?
+        
+        let fetchedResults =
+        managedContext.executeFetchRequest(fetchRequest,
+            error: &error) as? [NSManagedObject]
+        
+        if let results = fetchedResults {
+            words = results
+            
+            //Finding the number of times each letter appears as first letter in the native language.
+            //This is to help us create the lettered sections in the table
+            for word in words {
+                var nativeFirst = word.valueForKey("wordFirst") as? String
+                self.nativeFirstArray.append(nativeFirst!)
+            }
+            
+            
+            //Create a sorted array listing each unique letter
+            uniqueNativeFirstArray = Array(Set(self.nativeFirstArray))
+            uniqueNativeFirstArray.sort(){$0 <  $1}
+            println("TestVC: uniqueNativeFirstArray is : \(uniqueNativeFirstArray)")
+            
+            
+            //Add dictionaries to sorterNativeFirstArray that indicates each letter and how many words start by that letter
+            for firstLetter in uniqueNativeFirstArray {
+                
+                for word in words {
+                    if firstLetter == word.valueForKey("wordFirst") as! String {
+                        wordFromList["word"] = word.valueForKey("word") as? String
+                        wordFromList["wordFirst"] = word.valueForKey("wordFirst") as? String
+                        wordFromList["translation"] = word.valueForKey("translation") as? String
+                        wordFromList["translationFirst"] = word.valueForKey("translationFirst") as? String
+                        wordFromList["gender"] = word.valueForKey("gender") as? String
+                        
+                        if self.nativeWordList[firstLetter] == nil {
+                            self.nativeWordList[firstLetter] = [wordFromList]
+                        } else {
+                            self.nativeWordList[firstLetter]!.append(wordFromList)
+                        }
+                        
+                    }
+                }
+            }
+            
+            //Create the final list to use, sortedNativeWordList
+            for i in uniqueNativeFirstArray {
+                for (key, value) in self.nativeWordList {
+                    if key == i {
+                        self.sortedNativeWordList.append(value)
+                        break
+                    }
+                }
+            }
+            
+//            println("TestVC: sortedNativeWordlist is: \(self.sortedNativeWordList)")
+            
+        } else {
+            println("Could not fetch \(error), \(error!.userInfo)")
+        }
     }
     
     
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
 }

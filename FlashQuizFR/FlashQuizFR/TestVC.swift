@@ -37,19 +37,22 @@ class TestVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("wordCell") as! UITableViewCell
         let person: AnyObject! = self.sortedNativeWordList[indexPath.section][indexPath.row]
 
         var wordGender = person.valueForKey("gender") as! String
-        var colorOfCell = UIColor()
-        if wordGender == "f" {
-            colorOfCell = UIColor(red: 250.0/255.0, green: 230.0/255.0, blue: 235.0/255.0, alpha: 1.0)
-        } else if wordGender == "m" {
-            colorOfCell = UIColor(red: 229.0/255.0, green: 240.0/255.0, blue: 248.0/255.0, alpha: 1.0)
-        } else {
-            colorOfCell = UIColor.clearColor()
-        }
-        cell.backgroundColor = colorOfCell
+        
+//        var colorOfCell = UIColor()
+//        if wordGender == "f" {
+//            colorOfCell = UIColor(red: 250.0/255.0, green: 230.0/255.0, blue: 235.0/255.0, alpha: 1.0)
+//        } else if wordGender == "m" {
+//            colorOfCell = UIColor(red: 229.0/255.0, green: 240.0/255.0, blue: 248.0/255.0, alpha: 1.0)
+//        } else {
+//            colorOfCell = UIColor.clearColor()
+//        }
+//        cell.backgroundColor = colorOfCell
+        
+        
         cell.textLabel!.text = person.valueForKey("word") as? String
         cell.detailTextLabel?.text = person.valueForKey("translation") as! String + " (" + wordGender + ")"
         
@@ -134,7 +137,7 @@ class TestVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 }
             }
             
-            println("TestVC: sortedNativeWordlist is: \(self.sortedNativeWordList)")
+//            println("TestVC: sortedNativeWordlist is: \(self.sortedNativeWordList)")
 
         } else {
             println("Could not fetch \(error), \(error!.userInfo)")
