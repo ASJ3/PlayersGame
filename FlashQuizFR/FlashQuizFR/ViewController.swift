@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var beforeLabel: UILabel!
     @IBOutlet weak var status: UILabel!
     var wordListArray = NSMutableArray()
-    var wordFromList = ["word":String(),  "wordFirst":String(), "translation":String(), "translationFirst":String(), "gender":String()]
+    var wordFromList = ["word":String(),  "wordFirst":String(), "translation":String(), "translationFirst":String(), "gender":String(), "category":String()]
     
     var words = [NSManagedObject]()
     
@@ -46,8 +46,9 @@ class ViewController: UIViewController {
                 wordFromList["translation"] = word["translation"] as? String
                 wordFromList["translationFirst"] = word["translationFirst"] as? String
                 wordFromList["gender"] = word["gender"] as? String
+                wordFromList["category"] = word["category"] as? String
                 
-                self.saveName(wordFromList["word"]!, wordFirst: wordFromList["wordFirst"]!, translation: wordFromList["translation"]!, translationFirst: wordFromList["translationFirst"]!, gender: wordFromList["gender"]!)
+                self.saveName(wordFromList["word"]!, wordFirst: wordFromList["wordFirst"]!, translation: wordFromList["translation"]!, translationFirst: wordFromList["translationFirst"]!, gender: wordFromList["gender"]!, category: wordFromList["category"]!)
             }
             
             //Change the "loaded" status to true for the word list in wordListStatus plist
@@ -62,7 +63,7 @@ class ViewController: UIViewController {
         
     }
     
-    func saveName(word: String, wordFirst: String, translation: String, translationFirst: String, gender: String) {
+    func saveName(word: String, wordFirst: String, translation: String, translationFirst: String, gender: String, category: String) {
         //1
         let appDelegate =
         UIApplication.sharedApplication().delegate as! AppDelegate
@@ -83,6 +84,7 @@ class ViewController: UIViewController {
         wordUnit.setValue(wordFirst, forKey: "wordFirst")
         wordUnit.setValue(translationFirst, forKey: "translationFirst")
         wordUnit.setValue(gender, forKey: "gender")
+        wordUnit.setValue(category, forKey: "category")
         
         //4
         var error: NSError?

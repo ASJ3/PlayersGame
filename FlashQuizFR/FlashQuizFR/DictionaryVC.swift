@@ -102,6 +102,11 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         let sortDescriptor = NSSortDescriptor(key: "word", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         
+        //Create a filter to only return the words of the selected category, defined in "filter"
+        let filter = "corps"
+        let predicate = NSPredicate(format: "category == %@", filter)
+        fetchRequest.predicate = predicate
+        
         //3
         var error: NSError?
         
@@ -123,7 +128,7 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                 wordFromList["translationFirst"] = word.valueForKey("translationFirst") as? String
                 wordFromList["gender"] = word.valueForKey("gender") as? String
                 wordFromList["category"] = word.valueForKey("category") as? String
-                
+
                 //Append "word" to the array in the corresponding dictionary in nativeWordlist
                 if self.nativeWordList[nativeFirstLetter] == nil {
                     self.nativeWordList[nativeFirstLetter] = [wordFromList]

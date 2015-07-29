@@ -18,7 +18,7 @@ class TestVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var uniqueNativeFirstArray = [String]()
     var nativeWordList = [String: [AnyObject]]()
     var sortedNativeWordList = [AnyObject]()
-    var wordFromList = ["word":String(),  "wordFirst":String(), "translation":String(), "translationFirst":String(), "gender":String()]
+    var wordFromList = ["word":String(),  "wordFirst":String(), "translation":String(), "translationFirst":String(), "gender":String(), "category":String()]
 
     
     override func viewDidLoad() {
@@ -80,13 +80,14 @@ class TestVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let managedContext = appDelegate.managedObjectContext!
         
         //2
+        
         let fetchRequest = NSFetchRequest(entityName:"WordEntry")
         
-        let sortDescriptor = NSSortDescriptor(key: "word", ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptor]
-//        let filter = "geographie"
-//        let predicate = NSPredicate(format: "category == %@", "geographie")
-//        fetchRequest.predicate = predicate
+//        let sortDescriptor = NSSortDescriptor(key: "word", ascending: true)
+//        fetchRequest.sortDescriptors = [sortDescriptor]
+        let filter = "m"
+        let predicate = NSPredicate(format: "gender == %@", filter)
+        fetchRequest.predicate = predicate
         
         //3
         var error: NSError?
@@ -105,7 +106,7 @@ class TestVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 var nativeFirst = word.valueForKey("wordFirst") as? String
                 self.nativeFirstArray.append(nativeFirst!)
                 if count < 5 {
-                    println("TestVC: \(word)")
+//                    println("TestVC: \(word)")
                     count++
                 }
             }
@@ -127,6 +128,7 @@ class TestVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                         wordFromList["translation"] = word.valueForKey("translation") as? String
                         wordFromList["translationFirst"] = word.valueForKey("translationFirst") as? String
                         wordFromList["gender"] = word.valueForKey("gender") as? String
+                        wordFromList["category"] = word.valueForKey("category") as? String
                         
                         if self.nativeWordList[firstLetter] == nil {
                             self.nativeWordList[firstLetter] = [wordFromList]
