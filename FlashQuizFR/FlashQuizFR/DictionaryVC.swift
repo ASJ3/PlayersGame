@@ -110,26 +110,14 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         if let results = fetchedResults {
             words = results
             
-            //Finding the number of times each letter appears as first letter in the native language. This is to help us create the lettered sections in the table
-            //Also add the native word to an array that we will rearrange alphabetically
             for word in words {
+                //Finding the number of times each letter appears as first letter in the native language. This is to help us create the lettered sections in the table
                 var nativeFirstLetter = word.valueForKey("wordFirst") as? String
                 self.nativeFirstArray.append(nativeFirstLetter!)
-                var nativeWordString = word.valueForKey("word") as? String
-                self.nativeWordStringArray.append(nativeWordString!)
-            }
-            
-            
-            //Create a sorted array listing each unique letter
-            uniqueNativeFirstArray = Array(Set(self.nativeFirstArray))
-            uniqueNativeFirstArray.sort(){$0 <  $1}
-            println("DictionaryVC: uniqueNativeFirstArray is : \(uniqueNativeFirstArray)")
-            
-            //Arrange alphabetically the words in nativeWordStringArray
-            self.nativeWordStringArray.sort(){$0 < $1}
-            
-            for word in words {
+                //Add the native word to an array that we will rearrange alphabetically
                 var nativeWordValue = word.valueForKey("word") as! String
+                self.nativeWordStringArray.append(nativeWordValue)
+                
                 wordFromList["word"] = word.valueForKey("word") as? String
                 wordFromList["wordFirst"] = word.valueForKey("wordFirst") as? String
                 wordFromList["translation"] = word.valueForKey("translation") as? String
@@ -140,6 +128,14 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                 //in nativeWordList
                 self.nativeWordDictionary[nativeWordValue] = wordFromList
             }
+            
+            //Create a sorted array listing each unique letter
+            uniqueNativeFirstArray = Array(Set(self.nativeFirstArray))
+            uniqueNativeFirstArray.sort(){$0 <  $1}
+            println("DictionaryVC: uniqueNativeFirstArray is : \(uniqueNativeFirstArray)")
+            
+            //Arrange alphabetically the words in nativeWordStringArray
+            self.nativeWordStringArray.sort(){$0 < $1}
             
             
             //Add dictionaries to nativeWordList that indicates each letter
