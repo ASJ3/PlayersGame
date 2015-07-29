@@ -13,6 +13,8 @@
         <string>m</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>geographie</string>
     </dict>
     <dict>
         <key>word</key>
@@ -25,6 +27,8 @@
         <string>v</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>geographie</string>
     </dict>
     <dict>
         <key>word</key>
@@ -37,6 +41,8 @@
         <string>f</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>geographie</string>
     </dict>
     <dict>
         <key>word</key>
@@ -49,6 +55,8 @@
         <string>v</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>geographie</string>
     </dict>
     <dict>
         <key>word</key>
@@ -61,6 +69,8 @@
         <string>c</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>geographie</string>
     </dict>
     <dict>
         <key>word</key>
@@ -73,6 +83,8 @@
         <string>c</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>geographie</string>
     </dict>
     <dict>
         <key>word</key>
@@ -85,6 +97,8 @@
         <string>p</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>geographie</string>
     </dict>
     <dict>
         <key>word</key>
@@ -97,6 +111,8 @@
         <string>f</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>geographie</string>
     </dict>
     <dict>
         <key>word</key>
@@ -109,6 +125,8 @@
         <string>p</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>geographie</string>
     </dict>
     <dict>
         <key>word</key>
@@ -121,6 +139,8 @@
         <string>c</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>geographie</string>
     </dict>
     <dict>
         <key>word</key>
@@ -133,6 +153,8 @@
         <string>r</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>geographie</string>
     </dict>
     <dict>
         <key>word</key>
@@ -145,6 +167,8 @@
         <string>v</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>geographie</string>
     </dict>
     <dict>
         <key>word</key>
@@ -157,6 +181,8 @@
         <string>f</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>geographie</string>
     </dict>
     <dict>
         <key>word</key>
@@ -169,6 +195,8 @@
         <string>l</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>geographie</string>
     </dict>
     <dict>
         <key>word</key>
@@ -181,6 +209,8 @@
         <string>m</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>geographie</string>
     </dict>
     <dict>
         <key>word</key>
@@ -193,6 +223,8 @@
         <string>o</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>geographie</string>
     </dict>
     <dict>
         <key>word</key>
@@ -205,6 +237,8 @@
         <string>d</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>geographie</string>
     </dict>
     <dict>
         <key>word</key>
@@ -217,6 +251,8 @@
         <string>t</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>geographie</string>
     </dict>
     <dict>
         <key>word</key>
@@ -229,6 +265,8 @@
         <string>c</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>corps</string>
     </dict>
     <dict>
         <key>word</key>
@@ -241,6 +279,8 @@
         <string>o</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>corps</string>
     </dict>
     <dict>
         <key>word</key>
@@ -253,6 +293,8 @@
         <string>o</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>corps</string>
     </dict>
     <dict>
         <key>word</key>
@@ -265,6 +307,8 @@
         <string>n</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>corps</string>
     </dict>
     <dict>
         <key>word</key>
@@ -277,6 +321,8 @@
         <string>b</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>corps</string>
     </dict>
     <dict>
         <key>word</key>
@@ -289,6 +335,8 @@
         <string>l</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>corps</string>
     </dict>
     <dict>
         <key>word</key>
@@ -301,6 +349,8 @@
         <string>d</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>corps</string>
     </dict>
     <dict>
         <key>word</key>
@@ -313,6 +363,8 @@
         <string>b</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>corps</string>
     </dict>
     <dict>
         <key>word</key>
@@ -325,6 +377,8 @@
         <string>m</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>corps</string>
     </dict>
     <dict>
         <key>word</key>
@@ -337,6 +391,8 @@
         <string>d</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>corps</string>
     </dict>
     <dict>
         <key>word</key>
@@ -349,6 +405,8 @@
         <string>o</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>corps</string>
     </dict>
     <dict>
         <key>word</key>
@@ -361,6 +419,8 @@
         <string>j</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>corps</string>
     </dict>
     <dict>
         <key>word</key>
@@ -373,6 +433,8 @@
         <string>e</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>corps</string>
     </dict>
     <dict>
         <key>word</key>
@@ -385,6 +447,8 @@
         <string>é</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>corps</string>
     </dict>
     <dict>
         <key>word</key>
@@ -397,6 +461,8 @@
         <string>d</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>corps</string>
     </dict>
     <dict>
         <key>word</key>
@@ -409,6 +475,8 @@
         <string>p</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>corps</string>
     </dict>
     <dict>
         <key>word</key>
@@ -421,6 +489,8 @@
         <string>p</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>corps</string>
     </dict>
     <dict>
         <key>word</key>
@@ -433,6 +503,8 @@
         <string>c</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>corps</string>
     </dict>
     <dict>
         <key>word</key>
@@ -445,6 +517,8 @@
         <string>t</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>corps</string>
     </dict>
     <dict>
         <key>word</key>
@@ -457,6 +531,8 @@
         <string>c</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>corps</string>
     </dict>
     <dict>
         <key>word</key>
@@ -469,6 +545,8 @@
         <string>g</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>corps</string>
     </dict>
     <dict>
         <key>word</key>
@@ -481,6 +559,8 @@
         <string>s</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>corps</string>
     </dict>
     <dict>
         <key>word</key>
@@ -493,6 +573,8 @@
         <string>f</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>corps</string>
     </dict>
     <dict>
         <key>word</key>
@@ -505,6 +587,8 @@
         <string>f</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>corps</string>
     </dict>
     <dict>
         <key>word</key>
@@ -517,6 +601,8 @@
         <string>h</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>corps</string>
     </dict>
     <dict>
         <key>word</key>
@@ -529,6 +615,8 @@
         <string>b</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>corps</string>
     </dict>
     <dict>
         <key>word</key>
@@ -541,6 +629,8 @@
         <string>c</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>corps</string>
     </dict>
     <dict>
         <key>word</key>
@@ -553,6 +643,8 @@
         <string>p</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>corps</string>
     </dict>
     <dict>
         <key>word</key>
@@ -565,6 +657,8 @@
         <string>m</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>corps</string>
     </dict>
     <dict>
         <key>word</key>
@@ -577,6 +671,8 @@
         <string>p</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>corps</string>
     </dict>
     <dict>
         <key>word</key>
@@ -589,6 +685,8 @@
         <string>f</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>corps</string>
     </dict>
     <dict>
         <key>word</key>
@@ -601,6 +699,8 @@
         <string>o</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>corps</string>
     </dict>
     <dict>
         <key>word</key>
@@ -613,6 +713,8 @@
         <string>v</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>corps</string>
     </dict>
     <dict>
         <key>word</key>
@@ -625,6 +727,8 @@
         <string>p</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>corps</string>
     </dict>
     <dict>
         <key>word</key>
@@ -637,6 +741,8 @@
         <string>h</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>batiments</string>
     </dict>
     <dict>
         <key>word</key>
@@ -649,6 +755,8 @@
         <string>m</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>batiments</string>
     </dict>
     <dict>
         <key>word</key>
@@ -661,6 +769,8 @@
         <string>a</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>batiments</string>
     </dict>
     <dict>
         <key>word</key>
@@ -673,6 +783,8 @@
         <string>p</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>batiments</string>
     </dict>
     <dict>
         <key>word</key>
@@ -685,6 +797,8 @@
         <string>g</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>batiments</string>
     </dict>
     <dict>
         <key>word</key>
@@ -697,6 +811,8 @@
         <string>a</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>batiments</string>
     </dict>
     <dict>
         <key>word</key>
@@ -709,6 +825,8 @@
         <string>r</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>batiments</string>
     </dict>
     <dict>
         <key>word</key>
@@ -721,6 +839,8 @@
         <string>r</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>batiments</string>
     </dict>
     <dict>
         <key>word</key>
@@ -733,6 +853,8 @@
         <string>b</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>batiments</string>
     </dict>
     <dict>
         <key>word</key>
@@ -745,6 +867,8 @@
         <string>i</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>batiments</string>
     </dict>
     <dict>
         <key>word</key>
@@ -757,6 +881,8 @@
         <string>b</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>batiments</string>
     </dict>
     <dict>
         <key>word</key>
@@ -769,6 +895,8 @@
         <string>s</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>batiments</string>
     </dict>
     <dict>
         <key>word</key>
@@ -781,6 +909,8 @@
         <string>m</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>batiments</string>
     </dict>
     <dict>
         <key>word</key>
@@ -793,6 +923,8 @@
         <string>p</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>batiments</string>
     </dict>
     <dict>
         <key>word</key>
@@ -805,6 +937,8 @@
         <string>é</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>batiments</string>
     </dict>
     <dict>
         <key>word</key>
@@ -817,6 +951,8 @@
         <string>m</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>batiments</string>
     </dict>
     <dict>
         <key>word</key>
@@ -829,6 +965,8 @@
         <string>u</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>batiments</string>
     </dict>
     <dict>
         <key>word</key>
@@ -841,6 +979,8 @@
         <string>b</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>batiments</string>
     </dict>
     <dict>
         <key>word</key>
@@ -853,6 +993,8 @@
         <string>c</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>batiments</string>
     </dict>
     <dict>
         <key>word</key>
@@ -865,6 +1007,8 @@
         <string>s</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>batiments</string>
     </dict>
     <dict>
         <key>word</key>
@@ -877,6 +1021,8 @@
         <string>p</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>batiments</string>
     </dict>
     <dict>
         <key>word</key>
@@ -889,6 +1035,8 @@
         <string>p</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>batiments</string>
     </dict>
     <dict>
         <key>word</key>
@@ -901,6 +1049,8 @@
         <string>t</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>batiments</string>
     </dict>
     <dict>
         <key>word</key>
@@ -913,6 +1063,8 @@
         <string>c</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>batiments</string>
     </dict>
     <dict>
         <key>word</key>
@@ -925,6 +1077,8 @@
         <string>é</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>batiments</string>
     </dict>
     <dict>
         <key>word</key>
@@ -937,6 +1091,8 @@
         <string>p</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>batiments</string>
     </dict>
     <dict>
         <key>word</key>
@@ -949,6 +1105,8 @@
         <string>p</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>batiments</string>
     </dict>
     <dict>
         <key>word</key>
@@ -961,6 +1119,8 @@
         <string>c</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>batiments</string>
     </dict>
     <dict>
         <key>word</key>
@@ -973,6 +1133,8 @@
         <string>m</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>batiments</string>
     </dict>
     <dict>
         <key>word</key>
@@ -985,6 +1147,8 @@
         <string>b</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>batiments</string>
     </dict>
     <dict>
         <key>word</key>
@@ -997,6 +1161,8 @@
         <string>r</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>batiments</string>
     </dict>
     <dict>
         <key>word</key>
@@ -1009,6 +1175,8 @@
         <string>c</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>batiments</string>
     </dict>
     <dict>
         <key>word</key>
@@ -1021,6 +1189,8 @@
         <string>c</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>batiments</string>
     </dict>
     <dict>
         <key>word</key>
@@ -1033,6 +1203,8 @@
         <string>s</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>batiments</string>
     </dict>
     <dict>
         <key>word</key>
@@ -1045,6 +1217,8 @@
         <string>p</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>batiments</string>
     </dict>
     <dict>
         <key>word</key>
@@ -1057,6 +1231,8 @@
         <string>c</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>habits</string>
     </dict>
     <dict>
         <key>word</key>
@@ -1069,6 +1245,8 @@
         <string>c</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>habits</string>
     </dict>
     <dict>
         <key>word</key>
@@ -1081,6 +1259,8 @@
         <string>c</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>habits</string>
     </dict>
     <dict>
         <key>word</key>
@@ -1093,6 +1273,8 @@
         <string>r</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>habits</string>
     </dict>
     <dict>
         <key>word</key>
@@ -1105,6 +1287,8 @@
         <string>j</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>habits</string>
     </dict>
     <dict>
         <key>word</key>
@@ -1117,6 +1301,8 @@
         <string>é</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>habits</string>
     </dict>
     <dict>
         <key>word</key>
@@ -1129,6 +1315,8 @@
         <string>m</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>habits</string>
     </dict>
     <dict>
         <key>word</key>
@@ -1141,6 +1329,8 @@
         <string>p</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>habits</string>
     </dict>
     <dict>
         <key>word</key>
@@ -1153,6 +1343,8 @@
         <string>c</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>habits</string>
     </dict>
     <dict>
         <key>word</key>
@@ -1165,6 +1357,8 @@
         <string>g</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>habits</string>
     </dict>
     <dict>
         <key>word</key>
@@ -1177,6 +1371,8 @@
         <string>m</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>habits</string>
     </dict>
     <dict>
         <key>word</key>
@@ -1189,6 +1385,8 @@
         <string>s</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>habits</string>
     </dict>
     <dict>
         <key>word</key>
@@ -1201,6 +1399,8 @@
         <string>p</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>habits</string>
     </dict>
     <dict>
         <key>word</key>
@@ -1213,6 +1413,8 @@
         <string>c</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>habits</string>
     </dict>
     <dict>
         <key>word</key>
@@ -1225,6 +1427,8 @@
         <string>i</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>habitation</string>
     </dict>
     <dict>
         <key>word</key>
@@ -1237,6 +1441,8 @@
         <string>m</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>habitation</string>
     </dict>
     <dict>
         <key>word</key>
@@ -1249,6 +1455,8 @@
         <string>a</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>habitation</string>
     </dict>
     <dict>
         <key>word</key>
@@ -1261,6 +1469,8 @@
         <string>p</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>habitation</string>
     </dict>
     <dict>
         <key>word</key>
@@ -1273,6 +1483,8 @@
         <string>m</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>habitation</string>
     </dict>
     <dict>
         <key>word</key>
@@ -1285,6 +1497,8 @@
         <string>f</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>habitation</string>
     </dict>
     <dict>
         <key>word</key>
@@ -1297,6 +1511,8 @@
         <string>l</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>habitation</string>
     </dict>
     <dict>
         <key>word</key>
@@ -1309,6 +1525,8 @@
         <string>c</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>habitation</string>
     </dict>
     <dict>
         <key>word</key>
@@ -1321,6 +1539,8 @@
         <string>d</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>habitation</string>
     </dict>
     <dict>
         <key>word</key>
@@ -1333,6 +1553,8 @@
         <string>b</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>habitation</string>
     </dict>
     <dict>
         <key>word</key>
@@ -1345,6 +1567,8 @@
         <string>s</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>habitation</string>
     </dict>
     <dict>
         <key>word</key>
@@ -1357,6 +1581,8 @@
         <string>c</string>
         <key>gender</key>
         <string>f</string>
+        <key>category</key>
+        <string>habitation</string>
     </dict>
     <dict>
         <key>word</key>
@@ -1369,6 +1595,8 @@
         <string>j</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>habitation</string>
     </dict>
     <dict>
         <key>word</key>
@@ -1381,6 +1609,8 @@
         <string>b</string>
         <key>gender</key>
         <string>m</string>
+        <key>category</key>
+        <string>habitation</string>
     </dict>
 </array>
 </plist>

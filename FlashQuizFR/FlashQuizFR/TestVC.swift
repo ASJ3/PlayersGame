@@ -82,6 +82,12 @@ class TestVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         //2
         let fetchRequest = NSFetchRequest(entityName:"WordEntry")
         
+        let sortDescriptor = NSSortDescriptor(key: "word", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+//        let filter = "geographie"
+//        let predicate = NSPredicate(format: "category == %@", "geographie")
+//        fetchRequest.predicate = predicate
+        
         //3
         var error: NSError?
         
@@ -92,11 +98,16 @@ class TestVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         if let results = fetchedResults {
             words = results
             
+            var count = 0
             //Finding the number of times each letter appears as first letter in the native language.
             //This is to help us create the lettered sections in the table
             for word in words {
                 var nativeFirst = word.valueForKey("wordFirst") as? String
                 self.nativeFirstArray.append(nativeFirst!)
+                if count < 5 {
+                    println("TestVC: \(word)")
+                    count++
+                }
             }
             
             

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14E46" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="WordEntry" syncable="YES">
+        <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="translation" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="translationFirst" optional="YES" attributeType="String" syncable="YES"/>
@@ -8,6 +9,6 @@
         <attribute name="wordFirst" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="WordEntry" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="WordEntry" positionX="-63" positionY="-18" width="128" height="135"/>
     </elements>
 </model>

@@ -16,12 +16,10 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     @IBOutlet weak var tableView: UITableView!
     var words = [NSManagedObject]()
     var nativeFirstArray = [String]()
-    var nativeWordStringArray = [String]()
     var uniqueNativeFirstArray = [String]()
     var nativeWordList = [String: [AnyObject]]()
-    var nativeWordDictionary = [String: AnyObject]()
     var sortedNativeWordList = [AnyObject]()
-    var wordFromList = ["word":String(),  "wordFirst":String(), "translation":String(), "translationFirst":String(), "gender":String()]
+    var wordFromList = ["word":String(),  "wordFirst":String(), "translation":String(), "translationFirst":String(), "gender":String(), "category":String()]
     
     
     override func viewDidLoad() {
@@ -100,6 +98,10 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         //2
         let fetchRequest = NSFetchRequest(entityName:"WordEntry")
         
+        //Create a sortDescriptor to order the words in the list alphabetically
+        let sortDescriptor = NSSortDescriptor(key: "word", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
         //3
         var error: NSError?
         
@@ -112,44 +114,29 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             
             for word in words {
                 //Finding the number of times each letter appears as first letter in the native language. This is to help us create the lettered sections in the table
-                var nativeFirstLetter = word.valueForKey("wordFirst") as? String
-                self.nativeFirstArray.append(nativeFirstLetter!)
-                //Add the native word to an array that we will rearrange alphabetically
-                var nativeWordValue = word.valueForKey("word") as! String
-                self.nativeWordStringArray.append(nativeWordValue)
+                var nativeFirstLetter = word.valueForKey("wordFirst") as! String
+                self.nativeFirstArray.append(nativeFirstLetter)
                 
                 wordFromList["word"] = word.valueForKey("word") as? String
                 wordFromList["wordFirst"] = word.valueForKey("wordFirst") as? String
                 wordFromList["translation"] = word.valueForKey("translation") as? String
                 wordFromList["translationFirst"] = word.valueForKey("translationFirst") as? String
                 wordFromList["gender"] = word.valueForKey("gender") as? String
+                wordFromList["category"] = word.valueForKey("category") as? String
                 
-                //Append "word" to the array in the corresponging letter dictionary
-                //in nativeWordList
-                self.nativeWordDictionary[nativeWordValue] = wordFromList
+                //Append "word" to the array in the corresponding dictionary in nativeWordlist
+                if self.nativeWordList[nativeFirstLetter] == nil {
+                    self.nativeWordList[nativeFirstLetter] = [wordFromList]
+                } else {
+                    self.nativeWordList[nativeFirstLetter]!.append(wordFromList)
+                }
+                
             }
             
             //Create a sorted array listing each unique letter
             uniqueNativeFirstArray = Array(Set(self.nativeFirstArray))
             uniqueNativeFirstArray.sort(){$0 <  $1}
             println("DictionaryVC: uniqueNativeFirstArray is : \(uniqueNativeFirstArray)")
-            
-            //Arrange alphabetically the words in nativeWordStringArray
-            self.nativeWordStringArray.sort(){$0 < $1}
-            
-            
-            //Add dictionaries to nativeWordList that indicates each letter
-            for firstLetter in uniqueNativeFirstArray {
-                self.nativeWordList[firstLetter] = []
-            }
-
-            
-            for sortedWord in self.nativeWordStringArray {
-                var wordToAdd: AnyObject? = self.nativeWordDictionary[sortedWord]
-                var firstChar = String(Array(sortedWord)[0])
-                self.nativeWordList[firstChar]!.append(wordToAdd!)
-            }
-            
             
             for i in uniqueNativeFirstArray {
                 var wordArrayForLetter = self.nativeWordList[i]
