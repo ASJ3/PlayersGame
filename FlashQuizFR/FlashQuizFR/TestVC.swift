@@ -16,6 +16,7 @@ class TestVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var words = [NSManagedObject]()
     var nativeFirstArray = [String]()
     var uniqueNativeFirstArray = [String]()
+    var stringResultsArray = [String]()
     var nativeWordList = [String: [AnyObject]]()
     var sortedNativeWordList = [AnyObject]()
     var wordFromList = ["word":String(),  "wordFirst":String(), "translation":String(), "translationFirst":String(), "gender":String(), "category":String()]
@@ -29,32 +30,25 @@ class TestVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return self.sortedNativeWordList.count
+        return 1
+//        return self.sortedNativeWordList.count
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return self.sortedNativeWordList[section].count
+        return self.stringResultsArray.count
+//            return self.sortedNativeWordList[section].count
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("wordCell") as! UITableViewCell
-        let person: AnyObject! = self.sortedNativeWordList[indexPath.section][indexPath.row]
-
-        var wordGender = person.valueForKey("gender") as! String
-        
-//        var colorOfCell = UIColor()
-//        if wordGender == "f" {
-//            colorOfCell = UIColor(red: 250.0/255.0, green: 230.0/255.0, blue: 235.0/255.0, alpha: 1.0)
-//        } else if wordGender == "m" {
-//            colorOfCell = UIColor(red: 229.0/255.0, green: 240.0/255.0, blue: 248.0/255.0, alpha: 1.0)
-//        } else {
-//            colorOfCell = UIColor.clearColor()
-//        }
-//        cell.backgroundColor = colorOfCell
+//        let person: AnyObject! = self.sortedNativeWordList[indexPath.section][indexPath.row]
+//
+//        var wordGender = person.valueForKey("gender") as! String
         
         
-        cell.textLabel!.text = person.valueForKey("word") as? String
-        cell.detailTextLabel?.text = person.valueForKey("translation") as! String + " (" + wordGender + ")"
+        cell.textLabel!.text = self.stringResultsArray[indexPath.row]
+//        cell.textLabel!.text = person.valueForKey("word") as? String
+//        cell.detailTextLabel?.text = person.valueForKey("translation") as! String + " (" + wordGender + ")"
         
         return cell
         
@@ -64,10 +58,11 @@ class TestVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return 45
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        var sectionLetterHeader = self.sortedNativeWordList[section][0].objectForKey("wordFirst") as? String
-        return sectionLetterHeader?.uppercaseString
-    }
+//    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+////        var sectionLetterHeader = self.sortedNativeWordList[section][0].objectForKey("wordFirst") as? String
+////        return sectionLetterHeader?.uppercaseString
+//        return "Test"
+//    }
     
     
     override func viewWillAppear(animated: Bool) {
@@ -83,77 +78,96 @@ class TestVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         let fetchRequest = NSFetchRequest(entityName:"WordEntry")
         
-//        let sortDescriptor = NSSortDescriptor(key: "word", ascending: true)
-//        fetchRequest.sortDescriptors = [sortDescriptor]
-        let filter = "m"
-        let predicate = NSPredicate(format: "gender == %@", filter)
-        fetchRequest.predicate = predicate
+        let sortDescriptor = NSSortDescriptor(key: "category", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+//        let filter = "geographie"
+//        let predicate = NSPredicate(format: "category == %@", filter)
+//        fetchRequest.predicate = predicate
+//        fetchRequest.propertiesToGroupBy = ["category"]
+        fetchRequest.propertiesToFetch = ["category"]
+        fetchRequest.resultType = .DictionaryResultType
+        fetchRequest.returnsDistinctResults = true
         
         //3
         var error: NSError?
         
-        let fetchedResults =
-        managedContext.executeFetchRequest(fetchRequest,
-            error: &error) as? [NSManagedObject]
+//        let fetchedResults =
+//        managedContext.executeFetchRequest(fetchRequest,
+//            error: &error)
         
-        if let results = fetchedResults {
-            words = results
+//        let fetchedResults =
+//        managedContext.executeFetchRequest(fetchRequest,
+//            error: &error) as? [NSManagedObject]
+//        if let results = fetchedResults {        
+        if let results = managedContext.executeFetchRequest(fetchRequest,
+            error: &error) {
+//            words = results
+            println("TestVC: inside results")
+            println("TestVC: count is \(results.count)")
+
+                for i in 0...results.count-1 {
+                    if let resultsDictionary = (results[i] as? [String : String]){
+                        if let categoryName = resultsDictionary["category"] {
+                            self.stringResultsArray.append(categoryName)
+                        }
+                    }
+                }
+             println("TestVC: final array is \(self.stringResultsArray)")
+                
             
-            var count = 0
             //Finding the number of times each letter appears as first letter in the native language.
             //This is to help us create the lettered sections in the table
-            for word in words {
-                var nativeFirst = word.valueForKey("wordFirst") as? String
-                self.nativeFirstArray.append(nativeFirst!)
-                if count < 5 {
-//                    println("TestVC: \(word)")
-                    count++
-                }
-            }
+//            for word in words {
+//                var nativeFirst = word.valueForKey("wordFirst") as? String
+//                self.nativeFirstArray.append(nativeFirst!)
+//                println("TestVC: one category")
+//
+//            }
             
             
             //Create a sorted array listing each unique letter
-            uniqueNativeFirstArray = Array(Set(self.nativeFirstArray))
-            uniqueNativeFirstArray.sort(){$0 <  $1}
-            println("TestVC: uniqueNativeFirstArray is : \(uniqueNativeFirstArray)")
+//            uniqueNativeFirstArray = Array(Set(self.nativeFirstArray))
+//            uniqueNativeFirstArray.sort(){$0 <  $1}
+//            println("TestVC: uniqueNativeFirstArray is : \(uniqueNativeFirstArray)")
 
             
             //Add dictionaries to sorterNativeFirstArray that indicates each letter and how many words start by that letter 
-            for firstLetter in uniqueNativeFirstArray {
-                
-                for word in words {
-                    if firstLetter == word.valueForKey("wordFirst") as! String {
-                        wordFromList["word"] = word.valueForKey("word") as? String
-                        wordFromList["wordFirst"] = word.valueForKey("wordFirst") as? String
-                        wordFromList["translation"] = word.valueForKey("translation") as? String
-                        wordFromList["translationFirst"] = word.valueForKey("translationFirst") as? String
-                        wordFromList["gender"] = word.valueForKey("gender") as? String
-                        wordFromList["category"] = word.valueForKey("category") as? String
-                        
-                        if self.nativeWordList[firstLetter] == nil {
-                            self.nativeWordList[firstLetter] = [wordFromList]
-                        } else {
-                            self.nativeWordList[firstLetter]!.append(wordFromList)
-                        }
-                        
-                    }
-                }
-            }
+//            for firstLetter in uniqueNativeFirstArray {
+//                
+//                for word in words {
+//                    if firstLetter == word.valueForKey("wordFirst") as! String {
+//                        wordFromList["word"] = word.valueForKey("word") as? String
+//                        wordFromList["wordFirst"] = word.valueForKey("wordFirst") as? String
+//                        wordFromList["translation"] = word.valueForKey("translation") as? String
+//                        wordFromList["translationFirst"] = word.valueForKey("translationFirst") as? String
+//                        wordFromList["gender"] = word.valueForKey("gender") as? String
+//                        wordFromList["category"] = word.valueForKey("category") as? String
+//                        
+//                        if self.nativeWordList[firstLetter] == nil {
+//                            self.nativeWordList[firstLetter] = [wordFromList]
+//                        } else {
+//                            self.nativeWordList[firstLetter]!.append(wordFromList)
+//                        }
+//                        
+//                    }
+//                }
+//            }
             
             //Create the final list to use, sortedNativeWordList
-            for i in uniqueNativeFirstArray {
-                for (key, value) in self.nativeWordList {
-                    if key == i {
-                        self.sortedNativeWordList.append(value)
-                        break
-                    }
-                }
-            }
+//            for i in uniqueNativeFirstArray {
+//                for (key, value) in self.nativeWordList {
+//                    if key == i {
+//                        self.sortedNativeWordList.append(value)
+//                        break
+//                    }
+//                }
+//            }
             
 //            println("TestVC: sortedNativeWordlist is: \(self.sortedNativeWordList)")
 
         } else {
-            println("Could not fetch \(error), \(error!.userInfo)")
+//            println("Could not fetch \(error), \(error!.userInfo)")
+            println("TestVC: there was an error")
         }
     }
     
