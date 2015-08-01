@@ -1,0 +1,192 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green116\blue0;\red14\green14\blue255;\red170\green13\blue145;
+\red92\green38\blue153;\red196\green26\blue22;\red46\green13\blue110;\red28\green0\blue207;\red63\green110\blue116;
+}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab529
+\pard\tx529\pardeftab529\pardirnatural
+
+\f0\fs22 \cf2 \CocoaLigature0 //\
+//  TestVC.swift\
+//  FlashQuizFR\
+//\
+//  Created by Alexis Saint-Jean on 7/22/15.\
+//  Copyright (c) 2015 Alexis Saint-Jean. All rights reserved.\
+//\
+//CoreData code based on tutorial from {\field{\*\fldinst{HYPERLINK "http://www.raywenderlich.com/85578/first-core-data-app-using-swift"}}{\fldrslt \cf3 http://www.raywenderlich.com/85578/first-core-data-app-using-swift}}\
+\cf0 \
+\cf4 import\cf0  UIKit\
+\cf4 import\cf0  CoreData\
+\
+\cf4 class\cf0  TestVC: \cf5 UIViewController\cf0 , \cf5 UITableViewDelegate\cf0 , \cf5 UITableViewDataSource\cf0  \{\
+    \
+    \cf4 @IBOutlet\cf0  \cf4 weak\cf0  \cf4 var\cf0  tableView: \cf5 UITableView\cf0 !\
+    \cf4 var\cf0  words = [\cf5 NSManagedObject\cf0 ]()\
+    \cf4 var\cf0  nativeFirstArray = [\cf5 String\cf0 ]()\
+    \cf4 var\cf0  uniqueNativeFirstArray = [\cf5 String\cf0 ]()\
+    \cf4 var\cf0  stringResultsArray = [\cf5 String\cf0 ]()\
+    \cf4 var\cf0  nativeWordList = [\cf5 String\cf0 : [\cf5 AnyObject\cf0 ]]()\
+    \cf4 var\cf0  sortedNativeWordList = [\cf5 AnyObject\cf0 ]()\
+    \cf4 var\cf0  wordFromList = [\cf6 "word"\cf0 :\cf5 String\cf0 (),  \cf6 "wordFirst"\cf0 :\cf5 String\cf0 (), \cf6 "translation"\cf0 :\cf5 String\cf0 (), \cf6 "translationFirst"\cf0 :\cf5 String\cf0 (), \cf6 "gender"\cf0 :\cf5 String\cf0 (), \cf6 "category"\cf0 :\cf5 String\cf0 ()]\
+\
+    \
+    \cf4 override\cf0  \cf4 func\cf0  viewDidLoad() \{\
+        \cf4 super\cf0 .\cf7 viewDidLoad\cf0 ()\
+\cf2 //        title = "\\"The List\\""\
+\cf0 \
+        \cf2 // Do any additional setup after loading the view.\
+\cf0     \}\
+    \
+    \cf4 func\cf0  numberOfSectionsInTableView(tableView: \cf5 UITableView\cf0 ) -> \cf5 Int\cf0  \{\
+        \cf4 return\cf0  \cf8 1\cf0 \
+\cf2 //        return self.sortedNativeWordList.count\
+\cf0     \}\
+\
+    \cf4 func\cf0  tableView(tableView: \cf5 UITableView\cf0 , numberOfRowsInSection section: \cf5 Int\cf0 ) -> \cf5 Int\cf0  \{\
+        \cf4 return\cf0  \cf4 self\cf0 .\cf9 stringResultsArray\cf0 .\cf5 count\cf0 \
+\cf2 //            return self.sortedNativeWordList[section].count\
+\cf0     \}\
+\
+    \cf4 func\cf0  tableView(tableView: \cf5 UITableView\cf0 , cellForRowAtIndexPath indexPath: \cf5 NSIndexPath\cf0 ) -> \cf5 UITableViewCell\cf0  \{\
+        \cf4 let\cf0  cell = tableView.\cf7 dequeueReusableCellWithIdentifier\cf0 (\cf6 "wordCell"\cf0 ) \cf4 as\cf0 ! \cf5 UITableViewCell\cf0 \
+\cf2 //        let person: AnyObject! = self.sortedNativeWordList[indexPath.section][indexPath.row]\
+//\
+//        var wordGender = person.valueForKey("gender") as! String\
+\cf0         \
+        \
+        cell.\cf5 textLabel\cf0 !.\cf5 text\cf0  = \cf7 self\cf0 .\cf9 stringResultsArray\cf0 [indexPath.\cf5 row\cf0 ]\
+\cf2 //        cell.textLabel!.text = person.valueForKey("word") as? String\
+//        cell.detailTextLabel?.text = person.valueForKey("translation") as! String + " (" + wordGender + ")"\
+\cf0         \
+        \cf4 return\cf0  cell\
+        \
+        \}\
+    \
+    \cf4 func\cf0  tableView(tableView: \cf5 UITableView\cf0 , heightForRowAtIndexPath indexPath: \cf5 NSIndexPath\cf0 ) -> \cf5 CGFloat\cf0  \{\
+        \cf4 return\cf0  \cf8 45\cf0 \
+    \}\
+    \
+\cf2 //    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? \{\
+////        var sectionLetterHeader = self.sortedNativeWordList[section][0].objectForKey("wordFirst") as? String\
+////        return sectionLetterHeader?.uppercaseString\
+//        return "Test"\
+//    \}\
+\cf0     \
+    \
+    \cf4 override\cf0  \cf4 func\cf0  viewWillAppear(animated: \cf5 Bool\cf0 ) \{\
+        \cf4 super\cf0 .\cf7 viewWillAppear\cf0 (animated)\
+        \
+        \cf2 //1\
+\cf0         \cf4 let\cf0  appDelegate =\
+        \cf5 UIApplication\cf0 .\cf7 sharedApplication\cf0 ().\cf5 delegate\cf0  \cf4 as\cf0 ! \cf9 AppDelegate\cf0 \
+        \
+        \cf4 let\cf0  managedContext = appDelegate.\cf9 managedObjectContext\cf0 !\
+        \
+        \cf2 //2\
+\cf0         \
+        \cf4 let\cf0  fetchRequest = \cf5 NSFetchRequest\cf0 (entityName:\cf6 "WordEntry"\cf0 )\
+        \
+        \cf4 let\cf0  sortDescriptor = \cf5 NSSortDescriptor\cf0 (key: \cf6 "category"\cf0 , ascending: \cf4 true\cf0 )\
+        fetchRequest.\cf5 sortDescriptors\cf0  = [sortDescriptor]\
+\cf2 //        let filter = "geographie"\
+//        let predicate = NSPredicate(format: "category == %@", filter)\
+//        fetchRequest.predicate = predicate\
+//        fetchRequest.propertiesToGroupBy = ["category"]\
+\cf0         fetchRequest.\cf5 propertiesToFetch\cf0  = [\cf6 "category"\cf0 ]\
+        \cf2 //Here we are indicating that the fetchRequest will be an array of dictionaries\
+\cf0         fetchRequest.\cf5 resultType\cf0  = .DictionaryResultType\
+        fetchRequest.\cf5 returnsDistinctResults\cf0  = \cf4 true\cf0 \
+        \
+        \cf2 //3\
+\cf0         \cf4 var\cf0  error: \cf5 NSError\cf0 ?\
+        \
+\cf2 //        let fetchedResults =\
+//        managedContext.executeFetchRequest(fetchRequest,\
+//            error: &error)\
+\cf0         \
+\cf2 //        let fetchedResults =\
+//        managedContext.executeFetchRequest(fetchRequest,\
+//            error: &error) as? [NSManagedObject]\
+//        if let results = fetchedResults \{        \
+\cf0         \cf4 if\cf0  \cf4 let\cf0  results = managedContext.\cf7 executeFetchRequest\cf0 (fetchRequest,\
+            error: &error) \{\
+\cf2 //            words = results\
+\cf0             \cf7 println\cf0 (\cf6 "TestVC: inside results"\cf0 )\
+            \cf7 println\cf0 (\cf6 "TestVC: count is \cf0 \\\cf6 (\cf0 results.\cf5 count\cf6 )"\cf0 )\
+            \cf7 println\cf0 (\cf6 "TestVC: results list is \cf0 \\\cf6 (\cf0 results\cf6 )"\cf0 )\
+\
+                \cf4 for\cf0  i \cf4 in\cf0  \cf8 0\cf0 ...results.\cf5 count\cf0 -\cf8 1\cf0  \{\
+                    \cf4 if\cf0  \cf4 let\cf0  resultsDictionary = (results[i] \cf4 as\cf0 ? [\cf5 String\cf0  : \cf5 String\cf0 ])\{\
+                        \cf4 if\cf0  \cf4 let\cf0  categoryName = resultsDictionary[\cf6 "category"\cf0 ] \{\
+                            \cf4 self\cf0 .\cf9 stringResultsArray\cf0 .\cf7 append\cf0 (categoryName)\
+                        \}\
+                    \}\
+                \}\
+             \cf7 println\cf0 (\cf6 "TestVC: final array is \cf0 \\\cf6 (\cf4 self\cf0 .\cf9 stringResultsArray\cf6 )"\cf0 )\
+                \
+            \
+            \cf2 //Finding the number of times each letter appears as first letter in the native language.\
+\cf0             \cf2 //This is to help us create the lettered sections in the table\
+//            for word in words \{\
+//                var nativeFirst = word.valueForKey("wordFirst") as? String\
+//                self.nativeFirstArray.append(nativeFirst!)\
+//                println("TestVC: one category")\
+//\
+//            \}\
+\cf0             \
+            \
+            \cf2 //Create a sorted array listing each unique letter\
+//            uniqueNativeFirstArray = Array(Set(self.nativeFirstArray))\
+//            uniqueNativeFirstArray.sort()\{$0 <  $1\}\
+//            println("TestVC: uniqueNativeFirstArray is : \\(uniqueNativeFirstArray)")\
+\cf0 \
+            \
+            \cf2 //Add dictionaries to sorterNativeFirstArray that indicates each letter and how many words start by that letter \
+//            for firstLetter in uniqueNativeFirstArray \{\
+//                \
+//                for word in words \{\
+//                    if firstLetter == word.valueForKey("wordFirst") as! String \{\
+//                        wordFromList["word"] = word.valueForKey("word") as? String\
+//                        wordFromList["wordFirst"] = word.valueForKey("wordFirst") as? String\
+//                        wordFromList["translation"] = word.valueForKey("translation") as? String\
+//                        wordFromList["translationFirst"] = word.valueForKey("translationFirst") as? String\
+//                        wordFromList["gender"] = word.valueForKey("gender") as? String\
+//                        wordFromList["category"] = word.valueForKey("category") as? String\
+//                        \
+//                        if self.nativeWordList[firstLetter] == nil \{\
+//                            self.nativeWordList[firstLetter] = [wordFromList]\
+//                        \} else \{\
+//                            self.nativeWordList[firstLetter]!.append(wordFromList)\
+//                        \}\
+//                        \
+//                    \}\
+//                \}\
+//            \}\
+\cf0             \
+            \cf2 //Create the final list to use, sortedNativeWordList\
+//            for i in uniqueNativeFirstArray \{\
+//                for (key, value) in self.nativeWordList \{\
+//                    if key == i \{\
+//                        self.sortedNativeWordList.append(value)\
+//                        break\
+//                    \}\
+//                \}\
+//            \}\
+\cf0             \
+\cf2 //            println("TestVC: sortedNativeWordlist is: \\(self.sortedNativeWordList)")\
+\cf0 \
+        \} \cf4 else\cf0  \{\
+\cf2 //            println("Could not fetch \\(error), \\(error!.userInfo)")\
+\cf0             \cf7 println\cf0 (\cf6 "TestVC: there was an error"\cf0 )\
+        \}\
+    \}\
+    \
+    \
+    \cf4 override\cf0  \cf4 func\cf0  didReceiveMemoryWarning() \{\
+        \cf4 super\cf0 .\cf7 didReceiveMemoryWarning\cf0 ()\
+        \cf2 // Dispose of any resources that can be recreated.\
+\cf0     \}\
+\
+    \}\
+}
