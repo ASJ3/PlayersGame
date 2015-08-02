@@ -41,6 +41,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="2TH-Pd-bWf" kind="show" identifier="ShowWordsInDictionary" id="LzX-Pr-Wgz"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -63,7 +66,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DKP-vD-cyP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1189" y="-356"/>
+            <point key="canvasLocation" x="1857" y="361"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -83,7 +86,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="2TH-Pd-bWf" kind="show" id="oY0-JM-QN5"/>
+                                    <segue destination="bT0-EM-iHE" kind="show" id="0Zb-f8-BCc"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NWb-IK-T8T">
@@ -91,9 +94,6 @@
                                 <state key="normal" title="coreData">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="bT0-EM-iHE" kind="show" id="zwV-f5-L0F"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ce3-vL-INO">
                                 <rect key="frame" x="16" y="521" width="568" height="21"/>
@@ -198,7 +198,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="77q-Sp-Q7L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1987" y="572"/>
+            <point key="canvasLocation" x="2524" y="361"/>
         </scene>
         <!--TestVC-->
         <scene sceneID="Gns-oQ-oZe">
@@ -276,7 +276,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hwf-Td-VaO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="563" y="356"/>
+            <point key="canvasLocation" x="511" y="361"/>
         </scene>
     </scenes>
 </document>

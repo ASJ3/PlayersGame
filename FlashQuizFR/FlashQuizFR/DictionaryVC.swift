@@ -15,6 +15,8 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
 
     @IBOutlet weak var tableView: UITableView!
     var words = [NSManagedObject]()
+    var filter = "corps"
+//    var filterOverride = String()
     var nativeFirstArray = [String]()
     var uniqueNativeFirstArray = [String]()
     var nativeWordList = [String: [AnyObject]]()
@@ -103,7 +105,7 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         fetchRequest.sortDescriptors = [sortDescriptor]
         
         //Create a filter to only return the words of the selected category, defined in "filter"
-        let filter = "corps"
+        
         let predicate = NSPredicate(format: "category == %@", filter)
         fetchRequest.predicate = predicate
         

@@ -49,6 +49,14 @@ class DictListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return 45
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        let row = indexPath.row
+        let categorySelected = self.stringResultsArray[row]["category"] as! String
+        println("DictListVC: the category selected is: \(categorySelected)")
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -83,7 +91,7 @@ class DictListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         if let results = managedContext.executeFetchRequest(fetchRequest,
             error: &error) {
                 words = results
-                println("TestVC: count is \(words.count)")
+                println("DictListVC: count of categories to add to stringsResultArray: \(words.count)")
                 
                 for i in 0...results.count-1 {
                     categoryFromList["category"] = words[i]["category"] as? String
@@ -93,12 +101,11 @@ class DictListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                         categoryFromList["wordCount"] = String(intCount)
                     }
                     
-                    println("TestVC: \(categoryFromList)")
                     self.stringResultsArray.append(categoryFromList)
                 }
-                println("TestVC: final array is \(self.stringResultsArray)")
                 
-                
+                println("DictListVC: stringsResultArray now has \(self.stringResultsArray.count) categories")
+                println("DictListVC: stringsResultArray's first category is \(self.stringResultsArray[0])")
                 
                 
         } else {
@@ -107,6 +114,16 @@ class DictListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowWordsInDictionary" {
+            if let destination = segue.destinationViewController as? DictionaryVC {
+                if let tableIndex = tableView.indexPathForSelectedRow()?.row {
+                    destination.filter = self.stringResultsArray[tableIndex]["category"] as! String
+                }
+            }
+        }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
