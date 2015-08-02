@@ -19,6 +19,7 @@
 		7851F8C61B5B45310042557C /* wordDictionary.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7851F8C51B5B45310042557C /* wordDictionary.plist */; };
 		787DDC621B607FF9002FBB0A /* wordListStatus.plist in Resources */ = {isa = PBXBuildFile; fileRef = 787DDC611B607FF9002FBB0A /* wordListStatus.plist */; };
 		78A8E35B1B5FC72500E48ABB /* TestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A8E35A1B5FC72500E48ABB /* TestVC.swift */; };
+		78ABAE901B6DABA80005799C /* DictListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ABAE8F1B6DABA80005799C /* DictListVC.swift */; };
 		78D4CA281B5DD8BE0087841D /* dictionaryCount.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78D4CA271B5DD8BE0087841D /* dictionaryCount.plist */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 		7851F8C51B5B45310042557C /* wordDictionary.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = wordDictionary.plist; sourceTree = "<group>"; };
 		787DDC611B607FF9002FBB0A /* wordListStatus.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = wordListStatus.plist; path = ../wordListStatus.plist; sourceTree = "<group>"; };
 		78A8E35A1B5FC72500E48ABB /* TestVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestVC.swift; sourceTree = "<group>"; };
+		78ABAE8F1B6DABA80005799C /* DictListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictListVC.swift; sourceTree = "<group>"; };
 		78D4CA271B5DD8BE0087841D /* dictionaryCount.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = dictionaryCount.plist; path = ../dictionaryCount.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,6 +97,7 @@
 			children = (
 				7851F89A1B5AF12F0042557C /* AppDelegate.swift */,
 				7851F89F1B5AF12F0042557C /* ViewController.swift */,
+				78ABAE8F1B6DABA80005799C /* DictListVC.swift */,
 				7851F8C11B5AFB5A0042557C /* DictionaryVC.swift */,
 				78A8E35A1B5FC72500E48ABB /* TestVC.swift */,
 				7851F8A11B5AF12F0042557C /* Main.storyboard */,
@@ -243,6 +246,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78ABAE901B6DABA80005799C /* DictListVC.swift in Sources */,
 				78A8E35B1B5FC72500E48ABB /* TestVC.swift in Sources */,
 				7851F8C21B5AFB5A0042557C /* DictionaryVC.swift in Sources */,
 				7851F8A01B5AF12F0042557C /* ViewController.swift in Sources */,
