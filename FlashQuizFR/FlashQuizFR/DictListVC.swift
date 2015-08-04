@@ -17,11 +17,13 @@ class DictListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var words = [AnyObject]()
     var stringResultsArray = [AnyObject]()
     var categoryFromList = ["category": String(), "wordCount": String()]
+    var languageSelected = "English"
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //        title = "\"The List\""
+        println("DictListVC: language selected is \(self.languageSelected)")
         
     }
     
