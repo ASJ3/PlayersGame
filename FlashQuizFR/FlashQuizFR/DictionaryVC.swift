@@ -22,11 +22,28 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     var nativeWordList = [String: [AnyObject]]()
     var sortedNativeWordList = [AnyObject]()
     var wordFromList = ["word":String(),  "wordFirst":String(), "translation":String(), "translationFirst":String(), "gender":String(), "category":String()]
-    
+    var languageUsed = "English"
+    var titleSource = "word"
+    var subtitleSource = "translation"
+    var titleFirst = "wordFirst"
+    var subtitleFirst = "translationFirst"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //        title = "\"The List\""
+        
+        //Depending on the value of languageUsed the words in the title/subtitle will be either English or French
+        if self.languageUsed == "English" {
+            self.titleSource = "word"
+            self.subtitleSource = "translation"
+            self.titleFirst = "wordFirst"
+            self.subtitleFirst = "translationFirst"
+        } else {
+            self.titleSource = "translation"
+            self.subtitleSource = "word"
+            self.titleFirst = "translationFirst"
+            self.subtitleFirst = "wordFirst"
+        }
         
         // Do any additional setup after loading the view.
     }
@@ -101,7 +118,7 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         let fetchRequest = NSFetchRequest(entityName:"WordEntry")
         
         //Create a sortDescriptor to order the words in the list alphabetically
-        let sortDescriptor = NSSortDescriptor(key: "word", ascending: true)
+        let sortDescriptor = NSSortDescriptor(key: self.titleSource, ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         
         //Create a filter to only return the words of the selected category, defined in "filter"
@@ -121,13 +138,13 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             
             for word in words {
                 //Finding the number of times each letter appears as first letter in the native language. This is to help us create the lettered sections in the table
-                var nativeFirstLetter = word.valueForKey("wordFirst") as! String
+                var nativeFirstLetter = word.valueForKey(self.titleFirst) as! String
                 self.nativeFirstArray.append(nativeFirstLetter)
                 
-                wordFromList["word"] = word.valueForKey("word") as? String
-                wordFromList["wordFirst"] = word.valueForKey("wordFirst") as? String
-                wordFromList["translation"] = word.valueForKey("translation") as? String
-                wordFromList["translationFirst"] = word.valueForKey("translationFirst") as? String
+                wordFromList["word"] = word.valueForKey(self.titleSource) as? String
+                wordFromList["wordFirst"] = word.valueForKey(self.titleFirst) as? String
+                wordFromList["translation"] = word.valueForKey(self.subtitleSource) as? String
+                wordFromList["translationFirst"] = word.valueForKey(self.subtitleFirst) as? String
                 wordFromList["gender"] = word.valueForKey("gender") as? String
                 wordFromList["category"] = word.valueForKey("category") as? String
 

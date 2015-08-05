@@ -122,6 +122,7 @@ class DictListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             if let destination = segue.destinationViewController as? DictionaryVC {
                 if let tableIndex = tableView.indexPathForSelectedRow()?.row {
                     destination.filter = self.stringResultsArray[tableIndex]["category"] as! String
+                    destination.languageUsed = self.languageSelected
                 }
             }
         }
