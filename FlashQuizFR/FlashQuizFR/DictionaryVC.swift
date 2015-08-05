@@ -118,7 +118,7 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         let fetchRequest = NSFetchRequest(entityName:"WordEntry")
         
         //Create a sortDescriptor to order the words in the list alphabetically
-        let sortDescriptor = NSSortDescriptor(key: self.titleSource, ascending: true)
+        let sortDescriptor = NSSortDescriptor(key: self.titleSource, ascending: true, selector: "localizedCaseInsensitiveCompare:")
         fetchRequest.sortDescriptors = [sortDescriptor]
         
         //Create a filter to only return the words of the selected category, defined in "filter"
