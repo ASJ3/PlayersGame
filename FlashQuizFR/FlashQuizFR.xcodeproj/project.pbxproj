@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		782CC6441B76DA7100FB7AD7 /* QuizListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782CC6431B76DA7100FB7AD7 /* QuizListVC.swift */; };
 		783CC0831B7050B7001569DD /* LanguageSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783CC0821B7050B7001569DD /* LanguageSelectionVC.swift */; };
 		7851F89B1B5AF12F0042557C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7851F89A1B5AF12F0042557C /* AppDelegate.swift */; };
 		7851F89E1B5AF12F0042557C /* FlashQuizFR.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7851F89C1B5AF12F0042557C /* FlashQuizFR.xcdatamodeld */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		782CC6431B76DA7100FB7AD7 /* QuizListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizListVC.swift; sourceTree = "<group>"; };
 		783CC0821B7050B7001569DD /* LanguageSelectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LanguageSelectionVC.swift; path = ../LanguageSelectionVC.swift; sourceTree = "<group>"; };
 		7851F8951B5AF12F0042557C /* FlashQuizFR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashQuizFR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7851F8991B5AF12F0042557C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				78ABAE8F1B6DABA80005799C /* DictListVC.swift */,
 				7851F8C11B5AFB5A0042557C /* DictionaryVC.swift */,
 				7851F8A11B5AF12F0042557C /* Main.storyboard */,
+				782CC6431B76DA7100FB7AD7 /* QuizListVC.swift */,
 				7851F8A41B5AF12F0042557C /* Images.xcassets */,
 				7851F8A61B5AF12F0042557C /* LaunchScreen.xib */,
 				7851F89C1B5AF12F0042557C /* FlashQuizFR.xcdatamodeld */,
@@ -252,6 +255,7 @@
 				7851F8A01B5AF12F0042557C /* ViewController.swift in Sources */,
 				7851F89B1B5AF12F0042557C /* AppDelegate.swift in Sources */,
 				7851F89E1B5AF12F0042557C /* FlashQuizFR.xcdatamodeld in Sources */,
+				782CC6441B76DA7100FB7AD7 /* QuizListVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
