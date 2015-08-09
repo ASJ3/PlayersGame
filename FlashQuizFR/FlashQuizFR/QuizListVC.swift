@@ -18,14 +18,17 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var stringResultsArray = [AnyObject]()
     var categoryFromList = ["category": String(), "wordCount": String()]
     var languageSelected = "English"
+    var selectedLists = [String: String]()
+    var quizStartButton = UIBarButtonItem()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "List Selection"
         
-        var quizStartButton = UIBarButtonItem(title: "Start", style: .Plain, target: self, action: nil)
-        quizStartButton.enabled = false
+        self.quizStartButton = UIBarButtonItem(title: "Start", style: .Plain, target: self, action: nil)
+        self.quizStartButton.enabled = false
         self.navigationItem.setRightBarButtonItem(quizStartButton, animated: true)
+        
 
     }
     
@@ -53,17 +56,28 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         let mySelectedCell: UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
+        var textOfCell = mySelectedCell.textLabel!.text
         
         if mySelectedCell.accessoryType == UITableViewCellAccessoryType.Checkmark {
             mySelectedCell.accessoryType = UITableViewCellAccessoryType.None
+            self.selectedLists[textOfCell!] = nil
         }
         else {
             mySelectedCell.accessoryType = UITableViewCellAccessoryType.Checkmark
+            self.selectedLists[textOfCell!] = textOfCell
         }
         
-        let row = indexPath.row
-        let categorySelected = self.stringResultsArray[row]["category"] as! String
-        println("DictListVC: the category selected is: \(categorySelected)")
+        if self.selectedLists.count > 0 {
+            self.quizStartButton.enabled = true
+        } else {
+            self.quizStartButton.enabled = false
+        }
+        
+        println("QuizListVC: the list of selected words now has \(self.selectedLists.count) selections")
+        
+//        let row = indexPath.row
+//        let categorySelected = self.stringResultsArray[row]["category"] as! String
+//        println("DictListVC: the category selected is: \(categorySelected)")
     }
     
     

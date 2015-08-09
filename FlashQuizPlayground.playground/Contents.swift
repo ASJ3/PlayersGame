@@ -47,3 +47,12 @@ dicoArray
 var greetings = "hello"
 greetings
 var firstChar = Array(greetings)[0]
+var toppings = ["pepperoni": "spicy", "pepper": "mild", "jalapeno":"hot"]
+toppings["tomato"] = "sweet"
+toppings
+toppings["tomato"] = "zesty"
+toppings
+toppings["tomato"] = nil
+toppings
+toppings["parmesan"] = nil
+toppings
