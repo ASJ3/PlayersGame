@@ -23,6 +23,10 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         super.viewDidLoad()
         title = "List Selection"
         
+        var quizStartButton = UIBarButtonItem(title: "Start", style: .Plain, target: self, action: nil)
+        quizStartButton.enabled = false
+        self.navigationItem.setRightBarButtonItem(quizStartButton, animated: true)
+
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -40,8 +44,6 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         cell.textLabel!.text = categoryName
         cell.detailTextLabel?.text = self.stringResultsArray[indexPath.row]["wordCount"] as! String + " words"
-        
-//        cell.accessoryType = (self.lastSelectedIndexPath?.row == indexPath.row) ? .Checkmark : .None
         
         return cell
         
