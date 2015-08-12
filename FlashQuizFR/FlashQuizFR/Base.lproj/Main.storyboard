@@ -68,6 +68,47 @@
             </objects>
             <point key="canvasLocation" x="2515" y="361"/>
         </scene>
+        <!--QuizVC-->
+        <scene sceneID="BlQ-9y-G6A">
+            <objects>
+                <viewController storyboardIdentifier="QuizViewController" id="DQa-Xk-tGg" customClass="QuizVC" customModule="FlashQuizFR" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zRV-EN-19M"/>
+                        <viewControllerLayoutGuide type="bottom" id="Dh7-WS-rDD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Rlf-t5-eGi">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QuizVC" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxF-vO-QGX">
+                                <rect key="frame" x="271" y="161" width="58" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Rl-Q6-92G">
+                                <rect key="frame" x="273" y="204" width="54" height="30"/>
+                                <state key="normal" title="Dismiss">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeVC:" destination="DQa-Xk-tGg" eventType="touchUpInside" id="5LU-dk-ASu"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="7Rl-Q6-92G" secondAttribute="centerX" id="ALf-Qq-Obb"/>
+                            <constraint firstItem="gxF-vO-QGX" firstAttribute="top" secondItem="zRV-EN-19M" secondAttribute="bottom" constant="141" id="P4W-We-gFW"/>
+                            <constraint firstAttribute="centerX" secondItem="gxF-vO-QGX" secondAttribute="centerX" id="jfw-cH-h2p"/>
+                            <constraint firstItem="7Rl-Q6-92G" firstAttribute="top" secondItem="gxF-vO-QGX" secondAttribute="bottom" constant="22" id="rcS-Q8-J8z"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FG4-34-t3q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2537" y="1066"/>
+        </scene>
         <!--Language SelectionVC-->
         <scene sceneID="Z5Z-SR-gPO">
             <objects>
@@ -179,9 +220,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="oOE-YW-rDQ" firstAttribute="top" secondItem="Hzm-o6-gdD" secondAttribute="bottom" constant="8" id="4XS-lS-uGg"/>
                             <constraint firstItem="Hzm-o6-gdD" firstAttribute="top" secondItem="J2M-v5-RjY" secondAttribute="bottom" constant="-64" id="T35-hk-Uy0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Hzm-o6-gdD" secondAttribute="trailing" constant="-16" id="WQq-oE-B8J"/>
-                            <constraint firstItem="oOE-YW-rDQ" firstAttribute="top" secondItem="Hzm-o6-gdD" secondAttribute="bottom" constant="8" id="mcS-h7-R8u"/>
                             <constraint firstItem="Hzm-o6-gdD" firstAttribute="leading" secondItem="Cvk-jZ-QNk" secondAttribute="leadingMargin" constant="-16" id="tzv-X5-ccc"/>
                         </constraints>
                     </view>

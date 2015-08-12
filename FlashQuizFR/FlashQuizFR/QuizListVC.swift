@@ -25,11 +25,26 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         super.viewDidLoad()
         title = "List Selection"
         
-        self.quizStartButton = UIBarButtonItem(title: "Start", style: .Plain, target: self, action: nil)
+        self.quizStartButton = UIBarButtonItem(title: "Start", style: .Plain, target: self, action:"showQuiz:")
         self.quizStartButton.enabled = false
         self.navigationItem.setRightBarButtonItem(quizStartButton, animated: true)
-        
 
+    }
+    
+    func showQuiz(Sender: AnyObject) {
+        println("ShowQuiz started")
+//        let secondViewController:QuizVC = QuizVC()
+//        self.presentViewController(secondViewController, animated: true, completion: nil)
+        
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+        let QuizScreen = storyboard.instantiateViewControllerWithIdentifier("QuizViewController") as! QuizVC
+        //        // ALEXIS: Now we're passing to the 'authorInfoVC' AuthorViewController the author ID so that it knows what info to display
+        //        authorInfoVC.contributorID = self.authorInfo!
+        //        if let passingName = self.authorName.text {
+        //            authorInfoVC.textForAuthorName = passingName
+        //        }
+                self.presentViewController(QuizScreen, animated: true, completion: nil)
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

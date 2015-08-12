@@ -19,6 +19,7 @@
 		7851F8BE1B5AF1440042557C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7851F8BD1B5AF1440042557C /* StoreKit.framework */; };
 		7851F8C21B5AFB5A0042557C /* DictionaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7851F8C11B5AFB5A0042557C /* DictionaryVC.swift */; };
 		7851F8C61B5B45310042557C /* wordDictionary.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7851F8C51B5B45310042557C /* wordDictionary.plist */; };
+		7872F0041B7BF092001D1701 /* QuizVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7872F0031B7BF092001D1701 /* QuizVC.swift */; };
 		787DDC621B607FF9002FBB0A /* wordListStatus.plist in Resources */ = {isa = PBXBuildFile; fileRef = 787DDC611B607FF9002FBB0A /* wordListStatus.plist */; };
 		78ABAE901B6DABA80005799C /* DictListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ABAE8F1B6DABA80005799C /* DictListVC.swift */; };
 		78D4CA281B5DD8BE0087841D /* dictionaryCount.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78D4CA271B5DD8BE0087841D /* dictionaryCount.plist */; };
@@ -51,6 +52,7 @@
 		7851F8BD1B5AF1440042557C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		7851F8C11B5AFB5A0042557C /* DictionaryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryVC.swift; sourceTree = "<group>"; };
 		7851F8C51B5B45310042557C /* wordDictionary.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = wordDictionary.plist; sourceTree = "<group>"; };
+		7872F0031B7BF092001D1701 /* QuizVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizVC.swift; sourceTree = "<group>"; };
 		787DDC611B607FF9002FBB0A /* wordListStatus.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = wordListStatus.plist; path = ../wordListStatus.plist; sourceTree = "<group>"; };
 		78ABAE8F1B6DABA80005799C /* DictListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictListVC.swift; sourceTree = "<group>"; };
 		78D4CA271B5DD8BE0087841D /* dictionaryCount.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = dictionaryCount.plist; path = ../dictionaryCount.plist; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				78ABAE8F1B6DABA80005799C /* DictListVC.swift */,
 				7851F8C11B5AFB5A0042557C /* DictionaryVC.swift */,
 				7851F8A11B5AF12F0042557C /* Main.storyboard */,
+				7872F0031B7BF092001D1701 /* QuizVC.swift */,
 				782CC6431B76DA7100FB7AD7 /* QuizListVC.swift */,
 				7851F8A41B5AF12F0042557C /* Images.xcassets */,
 				7851F8A61B5AF12F0042557C /* LaunchScreen.xib */,
@@ -250,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				78ABAE901B6DABA80005799C /* DictListVC.swift in Sources */,
+				7872F0041B7BF092001D1701 /* QuizVC.swift in Sources */,
 				783CC0831B7050B7001569DD /* LanguageSelectionVC.swift in Sources */,
 				7851F8C21B5AFB5A0042557C /* DictionaryVC.swift in Sources */,
 				7851F8A01B5AF12F0042557C /* ViewController.swift in Sources */,
