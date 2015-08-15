@@ -68,6 +68,11 @@ class ViewController: UIViewController {
                 self.initializeQuizList("EmptyWord", wordFirst: "EmptyLetter", translation: "EmptyWord", translationFirst: "EmptyLetter", gender: "EmptyWord", category: "EmptyCategory", answeredRight: false, quizzedWord: false, shownAlready: false)
                 println(i)
             }
+            //Change the "loaded" status to true for the word list in wordListStatus plist
+            quizListStatusArray[0] = true
+            quizListStatusArray.writeToFile(quizListStatusPath!, atomically: true)
+        } else {
+            self.status.text = "quizlist now existing as CoreData"
         }
         
         
