@@ -24,6 +24,8 @@ class DictListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         super.viewDidLoad()
         //        title = "\"The List\""
         println("DictListVC: language selected is \(self.languageSelected)")
+        loadCoreData()
+        
         
     }
     
@@ -59,8 +61,8 @@ class DictListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         println("DictListVC: the category selected is: \(categorySelected)")
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
+    func loadCoreData() {
+        println("DictListVC: inside loadCoreData()")
         
         //1
         let appDelegate =
@@ -114,6 +116,13 @@ class DictListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             println("Could not fetch \(error), \(error!.userInfo)")
             
         }
+    }
+    
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        println("DictListVC: ViewWillAppear(): stringsResultArray now has \(self.stringResultsArray.count) categories")
+    
     }
     
     
