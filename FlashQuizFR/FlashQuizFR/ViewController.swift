@@ -48,7 +48,7 @@ class ViewController: UIViewController {
                 wordFromList["gender"] = word["gender"] as? String
                 wordFromList["category"] = word["category"] as? String
                 
-                self.saveName(wordFromList["word"]!, wordFirst: wordFromList["wordFirst"]!, translation: wordFromList["translation"]!, translationFirst: wordFromList["translationFirst"]!, gender: wordFromList["gender"]!, category: wordFromList["category"]!)
+                self.saveName(wordFromList["word"]!, wordFirst: wordFromList["wordFirst"]!, translation: wordFromList["translation"]!, translationFirst: wordFromList["translationFirst"]!, gender: wordFromList["gender"]!, category: wordFromList["category"]!, timesCorrect: 0, timesQuizzed: 0)
             }
             
             //Change the "loaded" status to true for the word list in wordListStatus plist
@@ -63,7 +63,7 @@ class ViewController: UIViewController {
         
     }
     
-    func saveName(word: String, wordFirst: String, translation: String, translationFirst: String, gender: String, category: String) {
+    func saveName(word: String, wordFirst: String, translation: String, translationFirst: String, gender: String, category: String, timesCorrect: Int, timesQuizzed: Int) {
         //1
         let appDelegate =
         UIApplication.sharedApplication().delegate as! AppDelegate
@@ -85,6 +85,8 @@ class ViewController: UIViewController {
         wordUnit.setValue(translationFirst, forKey: "translationFirst")
         wordUnit.setValue(gender, forKey: "gender")
         wordUnit.setValue(category, forKey: "category")
+        wordUnit.setValue(timesCorrect, forKey: "timesCorrect")
+        wordUnit.setValue(timesQuizzed, forKey: "timesQuizzed")
         
         //4
         var error: NSError?

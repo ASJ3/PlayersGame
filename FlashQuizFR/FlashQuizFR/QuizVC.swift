@@ -7,8 +7,26 @@
 //
 
 import UIKit
+import CoreData
 
 class QuizVC: UIViewController {
+    var words = [NSManagedObject]()
+    var filter = [String]()
+    var nativeFirstArray = [String]()
+    var uniqueNativeFirstArray = [String]()
+    var nativeWordList = [String: [AnyObject]]()
+    var sortedNativeWordList = [AnyObject]()
+    var wordFromList = ["word":String(),  "wordFirst":String(), "translation":String(), "translationFirst":String(), "gender":String(), "category":String()]
+
+    
+    
+    
+    var languageUsed = "English"
+    var titleSource = "word"
+    var subtitleSource = "translation"
+    var titleFirst = "wordFirst"
+    var subtitleFirst = "translationFirst"
+    
 
     @IBAction func closeVC(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -18,6 +36,80 @@ class QuizVC: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //1
+        let appDelegate =
+        UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext!
+        
+        //2
+        let fetchRequest = NSFetchRequest(entityName:"WordEntry")
+        
+        //Create a sortDescriptor to order the words in the list alphabetically
+        let sortDescriptor = NSSortDescriptor(key: self.titleSource, ascending: true, selector: "localizedCaseInsensitiveCompare:")
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        //Create a filter to only return the words of the categories in the 
+        //QuizListVC table, defined in "filter" variable
+        let predicate = NSPredicate(format: "category IN %@", filter)
+        fetchRequest.predicate = predicate
+        
+        //3
+        var error: NSError?
+        
+        let fetchedResults =
+        managedContext.executeFetchRequest(fetchRequest,
+            error: &error) as? [NSManagedObject]
+        
+        if let results = fetchedResults {
+            words = results
+            
+            for word in words {
+                //Finding the number of times each letter appears as first letter in the native language. This is to help us create the lettered sections in the table
+                var nativeFirstLetter = word.valueForKey(self.titleFirst) as! String
+                self.nativeFirstArray.append(nativeFirstLetter)
+                
+                wordFromList["word"] = word.valueForKey(self.titleSource) as? String
+                wordFromList["wordFirst"] = word.valueForKey(self.titleFirst) as? String
+                wordFromList["translation"] = word.valueForKey(self.subtitleSource) as? String
+                wordFromList["translationFirst"] = word.valueForKey(self.subtitleFirst) as? String
+                wordFromList["gender"] = word.valueForKey("gender") as? String
+                wordFromList["category"] = word.valueForKey("category") as? String
+                
+                //Append "word" to the array in the corresponding dictionary in nativeWordlist
+                if self.nativeWordList[nativeFirstLetter] == nil {
+                    self.nativeWordList[nativeFirstLetter] = [wordFromList]
+                } else {
+                    self.nativeWordList[nativeFirstLetter]!.append(wordFromList)
+                }
+                
+            }
+            
+            //Create a sorted array listing each unique letter
+            uniqueNativeFirstArray = Array(Set(self.nativeFirstArray))
+            uniqueNativeFirstArray.sort(){$0 <  $1}
+            println("DictionaryVC: uniqueNativeFirstArray is : \(uniqueNativeFirstArray)")
+            
+            for i in uniqueNativeFirstArray {
+                var wordArrayForLetter = self.nativeWordList[i]
+                self.sortedNativeWordList.append(wordArrayForLetter!)
+            }
+            
+            
+        } else {
+            println("Could not fetch \(error), \(error!.userInfo)")
+        }
+    }
+
+    
+    
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
