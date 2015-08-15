@@ -25,7 +25,6 @@ class ViewController: UIViewController {
         var ListStatusPath = NSBundle.mainBundle().pathForResource("wordListStatus", ofType: "plist")
         var ListStatusArray = NSMutableArray(contentsOfFile: ListStatusPath!)!
         
-        
         //If the "loaded" field of a list is true, then it means the words
         //in this list have been uploaded to CoreData.
         //If the field value is false, then we need to use wordDictionary plist
@@ -60,6 +59,18 @@ class ViewController: UIViewController {
             self.beforeLabel.text = "list now loaded onto CoreData"
         }
         
+        //Figuring out if a quizList (even an empty one) already exists, based on the value in quizListStatus
+        var quizListStatusPath = NSBundle.mainBundle().pathForResource("quizListStatus", ofType: "plist")
+        var quizListStatusArray = NSMutableArray(contentsOfFile: quizListStatusPath!)!
+        
+        if quizListStatusArray[0] as! Bool == false {
+            for i in 0...49 {
+                self.initializeQuizList("EmptyWord", wordFirst: "EmptyLetter", translation: "EmptyWord", translationFirst: "EmptyLetter", gender: "EmptyWord", category: "EmptyCategory", answeredRight: false, quizzedWord: false, shownAlready: false)
+                println(i)
+            }
+        }
+        
+        
         
     }
     
@@ -87,6 +98,43 @@ class ViewController: UIViewController {
         wordUnit.setValue(category, forKey: "category")
         wordUnit.setValue(timesCorrect, forKey: "timesCorrect")
         wordUnit.setValue(timesQuizzed, forKey: "timesQuizzed")
+        
+        //4
+        var error: NSError?
+        if !managedContext.save(&error) {
+            println("Could not save \(error), \(error?.userInfo)")
+        }
+        //5
+        words.append(wordUnit)
+    }
+    
+    
+    //This function is to create an initial quiz list of 50 entries, which are all "blank" and not real words
+    func initializeQuizList(word: String, wordFirst: String, translation: String, translationFirst: String, gender: String, category: String, answeredRight: Bool, quizzedWord: Bool, shownAlready: Bool) {
+        //1
+        let appDelegate =
+        UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext!
+        
+        //2
+        let entity =  NSEntityDescription.entityForName("QuizEntry",
+            inManagedObjectContext:
+            managedContext)
+        
+        let wordUnit = NSManagedObject(entity: entity!,
+            insertIntoManagedObjectContext:managedContext)
+        
+        //3
+        wordUnit.setValue(word, forKey: "word")
+        wordUnit.setValue(translation, forKey: "translation")
+        wordUnit.setValue(wordFirst, forKey: "wordFirst")
+        wordUnit.setValue(translationFirst, forKey: "translationFirst")
+        wordUnit.setValue(gender, forKey: "gender")
+        wordUnit.setValue(category, forKey: "category")
+        wordUnit.setValue(answeredRight, forKey: "answeredRight")
+        wordUnit.setValue(quizzedWord, forKey: "quizzedWord")
+        wordUnit.setValue(shownAlready, forKey: "shownAlready")
         
         //4
         var error: NSError?
