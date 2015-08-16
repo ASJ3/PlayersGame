@@ -60,3 +60,25 @@ var newDictArray = ["habits": "habits", "corps": "corps", "tranpsort": "transpor
 for (key,value) in newDictArray {
     print(value)
 }
+
+var numArray = [Int]()
+for i in 0...49 {
+    numArray.append(i)
+    
+}
+
+numArray
+
+swap(&numArray[0], &numArray[4])
+numArray
+swap(&numArray[0], &numArray[0])
+numArray
+
+func randRange (lower: Int , upper: Int) -> Int {
+    return lower + Int(arc4random_uniform(UInt32(upper - lower + 1)))
+}
+
+randRange(0, 30)
+randRange(0, 30)
+randRange(0, 30)
+randRange(0, 30)

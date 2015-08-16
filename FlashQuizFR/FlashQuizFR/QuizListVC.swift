@@ -11,7 +11,11 @@
 import UIKit
 import CoreData
 
+
+
+
 class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
     
     @IBOutlet weak var tableView: UITableView!
     var words = [AnyObject]()
@@ -145,7 +149,7 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         if let results = managedContext.executeFetchRequest(fetchRequest,
             error: &error) {
                 words = results
-                println("DictListVC: count of categories to add to stringsResultArray: \(words.count)")
+                println("QuizListVC: count of categories to add to stringsResultArray: \(words.count)")
                 
                 for i in 0...results.count-1 {
                     categoryFromList["category"] = words[i]["category"] as? String
@@ -158,8 +162,8 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     self.stringResultsArray.append(categoryFromList)
                 }
                 
-                println("DictListVC: stringsResultArray now has \(self.stringResultsArray.count) categories")
-                println("DictListVC: stringsResultArray's first category is \(self.stringResultsArray[0])")
+                println("QuizListVC: stringsResultArray now has \(self.stringResultsArray.count) categories")
+                println("QuizListVC: stringsResultArray's first category is \(self.stringResultsArray[0])")
                 
                 
         } else {
@@ -171,6 +175,9 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     //createQuizList() puts 50 words from the selected categories in the QuizEntry CoreData entity
     func createQuizList() {
+        
+        //Make quizListInitialArray empty, as we are going to put new words from the selected categories in it
+        self.quizListInitialArray = []
         
         //1
         let appDelegate =
@@ -186,7 +193,7 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         for (key, value) in self.selectedLists {
             filter.append(value)
         }
-        print("createQuizList(): filter is \(filter)")
+        println("createQuizList(): filter is \(filter)")
         
         //Use the categories in the "filter" array to only return the words of the categories selected 
         //in the QuizListVC table
@@ -208,7 +215,7 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 //                var nativeFirstLetter = word.valueForKey(self.titleFirst) as! String
 //                self.nativeFirstArray.append(nativeFirstLetter)
                 
-                var newWord = word.valueForKey("word") as! String
+                var wordProcessed = word.valueForKey("word") as! String
                 
                 wordFromList["word"] = word.valueForKey("word") as? String
                 wordFromList["wordFirst"] = word.valueForKey("wordFirst") as? String
@@ -217,7 +224,7 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 wordFromList["gender"] = word.valueForKey("gender") as? String
                 wordFromList["category"] = word.valueForKey("category") as? String
                 
-                println("appending word \(newWord)")
+                println("appending word \(wordProcessed)")
                 self.quizListInitialArray.append(wordFromList)
                 
                 //Append "word" to the array in the corresponding dictionary in nativeWordlist
@@ -230,6 +237,9 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             }
             
             println("createQuizList(): the number of words within the quizListInitialArray is \(self.quizListInitialArray.count)")
+            var finalNumberArray = randomArray(self.quizListInitialArray.count)
+            println("createQuizList(): the number of words within the finalNumberArray is \(finalNumberArray.count)")
+            println("createQuizList(): the values of words within the finalNumberArray is \(finalNumberArray)")
             
             //Create a sorted array listing each unique letter
 //            uniqueNativeFirstArray = Array(Set(self.nativeFirstArray))
@@ -247,6 +257,38 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
         
         
+    }
+    
+    //randomArray() will give an array containing 50 unique numbers that we'll then use to fetch random words from our quizListInitialArray
+    func randomArray(maxNum: Int) -> [Int] {
+        var numberArray = [Int]()
+        var firstNumToSwap = Int()
+        var secondNumToSwap = Int()
+        var smallerArray = [Int]()
+        
+        for i in 0..<maxNum {
+            numberArray.append(i)
+        }
+        
+        for i in 0..<numberArray.count {
+            firstNumToSwap = randRange(0, upper: maxNum-1)
+            secondNumToSwap = randRange(0, upper: maxNum-1)
+            
+            println("QuizListVC: The random numbers are \(firstNumToSwap) and \(secondNumToSwap)")
+            
+            swap(&numberArray[firstNumToSwap], &numberArray[secondNumToSwap])
+        }
+        
+        for i in 0...49 {
+            smallerArray.append(numberArray[i])
+        }
+
+        return smallerArray
+    }
+    
+    //randRange() returns a random positive Integer from within a range
+    func randRange (lower: Int , upper: Int) -> Int {
+        return lower + Int(arc4random_uniform(UInt32(upper - lower + 1)))
     }
     
 
