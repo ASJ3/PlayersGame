@@ -56,3 +56,7 @@ toppings["tomato"] = nil
 toppings
 toppings["parmesan"] = nil
 toppings
+var newDictArray = ["habits": "habits", "corps": "corps", "tranpsort": "transport"]
+for (key,value) in newDictArray {
+    print(value)
+}

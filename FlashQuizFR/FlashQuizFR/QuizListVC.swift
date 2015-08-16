@@ -17,9 +17,11 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var words = [AnyObject]()
     var stringResultsArray = [AnyObject]()
     var categoryFromList = ["category": String(), "wordCount": String()]
+    var quizListInitialArray = [AnyObject]()
     var languageSelected = "English"
     var selectedLists = [String: String]()
     var quizStartButton = UIBarButtonItem()
+    var wordFromList = ["word":String(),  "wordFirst":String(), "translation":String(), "translationFirst":String(), "gender":String(), "category":String()]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +34,9 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func showQuiz(Sender: AnyObject) {
-        println("ShowQuiz started")
+        println("ShowQuiz() started")
+        println("ShowQuiz(): now calling createQuizList()")
+        createQuizList()
 //        let secondViewController:QuizVC = QuizVC()
 //        self.presentViewController(secondViewController, animated: true, completion: nil)
         
@@ -162,6 +166,87 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             println("Could not fetch \(error), \(error!.userInfo)")
             
         }
+    }
+    
+    
+    //createQuizList() puts 50 words from the selected categories in the QuizEntry CoreData entity
+    func createQuizList() {
+        
+        //1
+        let appDelegate =
+        UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext!
+        
+        //2
+        let fetchRequest = NSFetchRequest(entityName:"WordEntry")
+    
+        //create an array "filter" which stores the name of the categories selected for the quiz
+        var filter = [String]()
+        for (key, value) in self.selectedLists {
+            filter.append(value)
+        }
+        print("createQuizList(): filter is \(filter)")
+        
+        //Use the categories in the "filter" array to only return the words of the categories selected 
+        //in the QuizListVC table
+        let predicate = NSPredicate(format: "category IN %@", filter)
+        fetchRequest.predicate = predicate
+        
+        //3
+        var error: NSError?
+        
+        let fetchedResults =
+        managedContext.executeFetchRequest(fetchRequest,
+            error: &error) as? [NSManagedObject]
+        
+        if let results = fetchedResults {
+            words = results
+            
+            for word in words {
+                //Finding the number of times each letter appears as first letter in the native language. This is to help us create the lettered sections in the table
+//                var nativeFirstLetter = word.valueForKey(self.titleFirst) as! String
+//                self.nativeFirstArray.append(nativeFirstLetter)
+                
+                var newWord = word.valueForKey("word") as! String
+                
+                wordFromList["word"] = word.valueForKey("word") as? String
+                wordFromList["wordFirst"] = word.valueForKey("wordFirst") as? String
+                wordFromList["translation"] = word.valueForKey("translation") as? String
+                wordFromList["translationFirst"] = word.valueForKey("translationFirst") as? String
+                wordFromList["gender"] = word.valueForKey("gender") as? String
+                wordFromList["category"] = word.valueForKey("category") as? String
+                
+                println("appending word \(newWord)")
+                self.quizListInitialArray.append(wordFromList)
+                
+                //Append "word" to the array in the corresponding dictionary in nativeWordlist
+//                if self.nativeWordList[nativeFirstLetter] == nil {
+//                    self.nativeWordList[nativeFirstLetter] = [wordFromList]
+//                } else {
+//                    self.nativeWordList[nativeFirstLetter]!.append(wordFromList)
+//                }
+                
+            }
+            
+            println("createQuizList(): the number of words within the quizListInitialArray is \(self.quizListInitialArray.count)")
+            
+            //Create a sorted array listing each unique letter
+//            uniqueNativeFirstArray = Array(Set(self.nativeFirstArray))
+//            uniqueNativeFirstArray.sort(){$0 <  $1}
+//            println("DictionaryVC: uniqueNativeFirstArray is : \(uniqueNativeFirstArray)")
+//            
+//            for i in uniqueNativeFirstArray {
+//                var wordArrayForLetter = self.nativeWordList[i]
+//                self.sortedNativeWordList.append(wordArrayForLetter!)
+//            }
+            
+            
+        } else {
+            println("Could not fetch \(error), \(error!.userInfo)")
+        }
+        
+        
     }
     
 
