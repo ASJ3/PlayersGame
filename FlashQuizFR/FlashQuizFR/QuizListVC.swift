@@ -22,7 +22,6 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var stringResultsArray = [AnyObject]()
     var categoryFromList = ["category": String(), "wordCount": String()]
     var quizListInitialArray = [AnyObject]()
-    var languageSelected = "English"
     var selectedLists = [String: String]()
     var quizStartButton = UIBarButtonItem()
     var quizWordFromList = ["word":String(),  "wordFirst":String(), "translation":String(), "translationFirst":String(), "gender":String(), "category":String(), "quizzedWord":String(), "shownAlready":String(), "answeredRight":String()]
@@ -104,12 +103,6 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 45
     }
@@ -117,6 +110,8 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        //Resetting stringResultsArray to empty
+        self.stringResultsArray = []
         
         //1
         let appDelegate =
@@ -193,7 +188,7 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         for (key, value) in self.selectedLists {
             filter.append(value)
         }
-        println("createQuizList(): filter is \(filter)")
+        println("QuizListVC: createQuizList(): filter is \(filter)")
         
         //Use the categories in the "filter" array to only return the words of the categories selected 
         //in the QuizListVC table
@@ -210,10 +205,9 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         if let results = fetchedResults {
             words = results
             
+            println("the number of fetched results is \(words.count)")
+            
             for word in words {
-                //Finding the number of times each letter appears as first letter in the native language. This is to help us create the lettered sections in the table
-//                var nativeFirstLetter = word.valueForKey(self.titleFirst) as! String
-//                self.nativeFirstArray.append(nativeFirstLetter)
                 
                 var wordProcessed = word.valueForKey("word") as! String
                 
@@ -227,35 +221,15 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 quizWordFromList["shownAlready"] = "No"
                 quizWordFromList["answeredRight"] = "No"
                 
-//                "quizzedWord":String(), "shownAlready":String(), "answeredRight"
-                
-                println("appending word \(wordProcessed)")
+//                println("appending word \(wordProcessed)")
                 self.quizListInitialArray.append(quizWordFromList)
-                
-                //Append "word" to the array in the corresponding dictionary in nativeWordlist
-//                if self.nativeWordList[nativeFirstLetter] == nil {
-//                    self.nativeWordList[nativeFirstLetter] = [wordFromList]
-//                } else {
-//                    self.nativeWordList[nativeFirstLetter]!.append(wordFromList)
-//                }
                 
             }
             
             println("createQuizList(): the number of words within the quizListInitialArray is \(self.quizListInitialArray.count)")
             var finalNumberArray = randomArray(self.quizListInitialArray.count)
             println("createQuizList(): the number of words within the finalNumberArray is \(finalNumberArray.count)")
-            println("createQuizList(): the values of words within the finalNumberArray is \(finalNumberArray)")
-            
-            //Create a sorted array listing each unique letter
-//            uniqueNativeFirstArray = Array(Set(self.nativeFirstArray))
-//            uniqueNativeFirstArray.sort(){$0 <  $1}
-//            println("DictionaryVC: uniqueNativeFirstArray is : \(uniqueNativeFirstArray)")
-//            
-//            for i in uniqueNativeFirstArray {
-//                var wordArrayForLetter = self.nativeWordList[i]
-//                self.sortedNativeWordList.append(wordArrayForLetter!)
-//            }
-            
+//            println("createQuizList(): the values of words within the finalNumberArray is \(finalNumberArray)")
             
         } else {
             println("Could not fetch \(error), \(error!.userInfo)")
@@ -294,6 +268,11 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     //randRange() returns a random positive Integer from within a range
     func randRange (lower: Int , upper: Int) -> Int {
         return lower + Int(arc4random_uniform(UInt32(upper - lower + 1)))
+    }
+    
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
     
 
