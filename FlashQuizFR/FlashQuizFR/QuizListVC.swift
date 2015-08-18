@@ -25,6 +25,7 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var selectedLists = [String: String]()
     var quizStartButton = UIBarButtonItem()
     var quizWordFromList = ["word":String(),  "wordFirst":String(), "translation":String(), "translationFirst":String(), "gender":String(), "category":String(), "quizzedWord":String(), "shownAlready":String(), "answeredRight":String()]
+    var wordList = [NSManagedObject]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,7 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.quizStartButton = UIBarButtonItem(title: "Start", style: .Plain, target: self, action:"showQuiz:")
         self.quizStartButton.enabled = false
         self.navigationItem.setRightBarButtonItem(quizStartButton, animated: true)
+        
 
     }
     
@@ -40,6 +42,9 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         println("ShowQuiz() started")
         println("ShowQuiz(): now calling createQuizList()")
         createQuizList()
+        
+        overWriteQuizList()
+        
 //        let secondViewController:QuizVC = QuizVC()
 //        self.presentViewController(secondViewController, animated: true, completion: nil)
         
@@ -269,6 +274,114 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func randRange (lower: Int , upper: Int) -> Int {
         return lower + Int(arc4random_uniform(UInt32(upper - lower + 1)))
     }
+    
+    
+    func overWriteQuizList() {
+        
+        //1
+        let appDelegate =
+        UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext!
+        
+        //2
+        let fetchRequest = NSFetchRequest(entityName:"QuizEntry")
+        
+        //3
+        var error: NSError?
+        
+        let fetchedResults =
+        managedContext.executeFetchRequest(fetchRequest,
+            error: &error) as! [NSManagedObject]
+        println("overWriteQuizList() number of words in QuizList is \(fetchedResults.count)")
+        
+        for entity in fetchedResults {
+            var newInfo = entity.valueForKey("word") as! String
+            println("newInfo is \(newInfo)")
+            managedContext.deleteObject(entity)
+        }
+        managedContext.save(nil)
+        
+        let fetchedResults2 =
+        managedContext.executeFetchRequest(fetchRequest,
+            error: &error) as! [NSManagedObject]
+        println("overWriteQuizList() number of words in fetchedResults is \(fetchedResults.count)")
+        
+        println("overWriteQuizList() now number of words in fetchedResults2 is \(fetchedResults2.count)")
+        
+//        let fetchedResults =
+//        managedContext.executeFetchRequest(fetchRequest,
+//            error: &error) as? [NSManagedObject]
+        
+//        if let results = fetchedResults {
+//            println("overWriteQuizList() number of words in QuizList is \(fetchedResults!.count)")
+//            
+//            var i = fetchedResults!.count
+//            
+//            //START LOOP
+//            for i ; i != 0 ; i-- {
+//                
+//                //delete one result per time
+//                var delete = fetchedResults![i - 1]
+//                managedContext.deleteObject(delete)
+//                if managedContext.save(&error){
+//                    println("Person is deleted \(i)")
+//                }else{
+//                    println("Could not delete \(error), \(error!.userInfo)")
+//                }
+//            }
+//            
+//            println("overWriteQuizList() Now number of words in QuizList is \(fetchedResults!.count)")
+
+            
+            
+//            for word in words {
+//                //Finding the number of times each letter appears as first letter in the native language. This is to help us create the lettered sections in the table
+//                var nativeFirstLetter = word.valueForKey("word") as! String
+//                self.nativeFirstArray.append(nativeFirstLetter)
+//                println("QuizListVC: overWriteQuizList(): the word is \(nativeFirstLetter)")
+                
+//                wordFromList["word"] = word.valueForKey(self.titleSource) as? String
+//                wordFromList["wordFirst"] = word.valueForKey(self.titleFirst) as? String
+//                wordFromList["translation"] = word.valueForKey(self.subtitleSource) as? String
+//                wordFromList["translationFirst"] = word.valueForKey(self.subtitleFirst) as? String
+//                wordFromList["gender"] = word.valueForKey("gender") as? String
+//                wordFromList["category"] = word.valueForKey("category") as? String
+                
+                //Append "word" to the array in the corresponding dictionary in nativeWordlist
+//                if self.nativeWordList[nativeFirstLetter] == nil {
+//                    self.nativeWordList[nativeFirstLetter] = [wordFromList]
+//                } else {
+//                    self.nativeWordList[nativeFirstLetter]!.append(wordFromList)
+//                }
+                
+//            }
+            
+            //Create a sorted array listing each unique letter
+//            uniqueNativeFirstArray = Array(Set(self.nativeFirstArray))
+//            uniqueNativeFirstArray.sort(){$0 <  $1}
+//            println("DictionaryVC: uniqueNativeFirstArray is : \(uniqueNativeFirstArray)")
+//            
+//            for i in uniqueNativeFirstArray {
+//                var wordArrayForLetter = self.nativeWordList[i]
+//                self.sortedNativeWordList.append(wordArrayForLetter!)
+//            }
+            
+            
+//        } else {
+//            println("Could not fetch \(error), \(error!.userInfo)")
+//        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     override func didReceiveMemoryWarning() {

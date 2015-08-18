@@ -65,7 +65,7 @@ class ViewController: UIViewController {
         
         if quizListStatusArray[0] as! Bool == false {
             for i in 0...49 {
-                self.initializeQuizList("EmptyWord", wordFirst: "EmptyLetter", translation: "EmptyWord", translationFirst: "EmptyLetter", gender: "EmptyWord", category: "EmptyCategory", answeredRight: false, quizzedWord: false, shownAlready: false)
+                self.initializeQuizList("EmptyWord", wordFirst: "EmptyLetter", translation: "EmptyWord", translationFirst: "EmptyLetter", gender: "EmptyWord", category: "EmptyCategory", answeredRight: "No", quizzedWord: "No", shownAlready: "No")
                 println(i)
             }
             //Change the "loaded" status to true for the word list in wordListStatus plist
@@ -115,7 +115,7 @@ class ViewController: UIViewController {
     
     
     //This function is to create an initial quiz list of 50 entries, which are all "blank" and not real words
-    func initializeQuizList(word: String, wordFirst: String, translation: String, translationFirst: String, gender: String, category: String, answeredRight: Bool, quizzedWord: Bool, shownAlready: Bool) {
+    func initializeQuizList(word: String, wordFirst: String, translation: String, translationFirst: String, gender: String, category: String, answeredRight: String, quizzedWord: String, shownAlready: String) {
         //1
         let appDelegate =
         UIApplication.sharedApplication().delegate as! AppDelegate
