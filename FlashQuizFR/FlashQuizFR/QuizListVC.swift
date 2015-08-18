@@ -35,14 +35,13 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.quizStartButton.enabled = false
         self.navigationItem.setRightBarButtonItem(quizStartButton, animated: true)
         
-
     }
     
     func showQuiz(Sender: AnyObject) {
         println("ShowQuiz() started")
         println("ShowQuiz(): now calling createQuizList()")
-        createQuizList()
         
+        createQuizList()
         overWriteQuizList()
         
 //        let secondViewController:QuizVC = QuizVC()
@@ -102,9 +101,6 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         println("QuizListVC: the list of selected words now has \(self.selectedLists.count) selections")
         
-//        let row = indexPath.row
-//        let categorySelected = self.stringResultsArray[row]["category"] as! String
-//        println("DictListVC: the category selected is: \(categorySelected)")
     }
     
     
@@ -163,7 +159,7 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 }
                 
                 println("QuizListVC: stringsResultArray now has \(self.stringResultsArray.count) categories")
-                println("QuizListVC: stringsResultArray's first category is \(self.stringResultsArray[0])")
+//                println("QuizListVC: stringsResultArray's first category is \(self.stringResultsArray[0])")
                 
                 
         } else {
