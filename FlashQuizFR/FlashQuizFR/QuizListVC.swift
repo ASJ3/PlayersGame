@@ -25,7 +25,7 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var languageSelected = "English"
     var selectedLists = [String: String]()
     var quizStartButton = UIBarButtonItem()
-    var wordFromList = ["word":String(),  "wordFirst":String(), "translation":String(), "translationFirst":String(), "gender":String(), "category":String()]
+    var quizWordFromList = ["word":String(),  "wordFirst":String(), "translation":String(), "translationFirst":String(), "gender":String(), "category":String(), "quizzedWord":String(), "shownAlready":String(), "answeredRight":String()]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -217,15 +217,20 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 
                 var wordProcessed = word.valueForKey("word") as! String
                 
-                wordFromList["word"] = word.valueForKey("word") as? String
-                wordFromList["wordFirst"] = word.valueForKey("wordFirst") as? String
-                wordFromList["translation"] = word.valueForKey("translation") as? String
-                wordFromList["translationFirst"] = word.valueForKey("translationFirst") as? String
-                wordFromList["gender"] = word.valueForKey("gender") as? String
-                wordFromList["category"] = word.valueForKey("category") as? String
+                quizWordFromList["word"] = word.valueForKey("word") as? String
+                quizWordFromList["wordFirst"] = word.valueForKey("wordFirst") as? String
+                quizWordFromList["translation"] = word.valueForKey("translation") as? String
+                quizWordFromList["translationFirst"] = word.valueForKey("translationFirst") as? String
+                quizWordFromList["gender"] = word.valueForKey("gender") as? String
+                quizWordFromList["category"] = word.valueForKey("category") as? String
+                quizWordFromList["quizzedWord"] = "Yes"
+                quizWordFromList["shownAlready"] = "No"
+                quizWordFromList["answeredRight"] = "No"
+                
+//                "quizzedWord":String(), "shownAlready":String(), "answeredRight"
                 
                 println("appending word \(wordProcessed)")
-                self.quizListInitialArray.append(wordFromList)
+                self.quizListInitialArray.append(quizWordFromList)
                 
                 //Append "word" to the array in the corresponding dictionary in nativeWordlist
 //                if self.nativeWordList[nativeFirstLetter] == nil {
@@ -274,7 +279,7 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             firstNumToSwap = randRange(0, upper: maxNum-1)
             secondNumToSwap = randRange(0, upper: maxNum-1)
             
-            println("QuizListVC: The random numbers are \(firstNumToSwap) and \(secondNumToSwap)")
+//            println("QuizListVC: The random numbers are \(firstNumToSwap) and \(secondNumToSwap)")
             
             swap(&numberArray[firstNumToSwap], &numberArray[secondNumToSwap])
         }
