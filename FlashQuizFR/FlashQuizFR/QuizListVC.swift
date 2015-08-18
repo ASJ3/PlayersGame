@@ -204,33 +204,13 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             error: &error) as? [NSManagedObject]
         
         if let results = fetchedResults {
-            words = results
+            wordList = results
             
-            println("the number of fetched results is \(words.count)")
-            
-            for word in words {
-                
-                var wordProcessed = word.valueForKey("word") as! String
-                
-                quizWordFromList["word"] = word.valueForKey("word") as? String
-                quizWordFromList["wordFirst"] = word.valueForKey("wordFirst") as? String
-                quizWordFromList["translation"] = word.valueForKey("translation") as? String
-                quizWordFromList["translationFirst"] = word.valueForKey("translationFirst") as? String
-                quizWordFromList["gender"] = word.valueForKey("gender") as? String
-                quizWordFromList["category"] = word.valueForKey("category") as? String
-                quizWordFromList["quizzedWord"] = "Yes"
-                quizWordFromList["shownAlready"] = "No"
-                quizWordFromList["answeredRight"] = "No"
-                
-//                println("appending word \(wordProcessed)")
-                self.quizListInitialArray.append(quizWordFromList)
-                
-            }
-            
-            println("createQuizList(): the number of words within the quizListInitialArray is \(self.quizListInitialArray.count)")
-            var finalNumberArray = randomArray(self.quizListInitialArray.count)
+            println("createQuizList(): the number of fetched words is \(wordList.count)")
+
+            var finalNumberArray = randomArray(self.wordList.count)
             println("createQuizList(): the number of words within the finalNumberArray is \(finalNumberArray.count)")
-//            println("createQuizList(): the values of words within the finalNumberArray is \(finalNumberArray)")
+            println("createQuizList(): the values of words within the finalNumberArray is \(finalNumberArray)")
             
         } else {
             println("Could not fetch \(error), \(error!.userInfo)")
@@ -273,7 +253,6 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     func overWriteQuizList() {
-        
         //1
         let appDelegate =
         UIApplication.sharedApplication().delegate as! AppDelegate
@@ -292,81 +271,16 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         println("overWriteQuizList() number of words in QuizList is \(fetchedResults.count)")
         
         for entity in fetchedResults {
-            var newInfo = entity.valueForKey("word") as! String
-            println("newInfo is \(newInfo)")
             managedContext.deleteObject(entity)
         }
         managedContext.save(nil)
         
-        let fetchedResults2 =
+        let fetchedResultsAfterDeletion =
         managedContext.executeFetchRequest(fetchRequest,
             error: &error) as! [NSManagedObject]
-        println("overWriteQuizList() number of words in fetchedResults is \(fetchedResults.count)")
         
-        println("overWriteQuizList() now number of words in fetchedResults2 is \(fetchedResults2.count)")
-        
-//        let fetchedResults =
-//        managedContext.executeFetchRequest(fetchRequest,
-//            error: &error) as? [NSManagedObject]
-        
-//        if let results = fetchedResults {
-//            println("overWriteQuizList() number of words in QuizList is \(fetchedResults!.count)")
-//            
-//            var i = fetchedResults!.count
-//            
-//            //START LOOP
-//            for i ; i != 0 ; i-- {
-//                
-//                //delete one result per time
-//                var delete = fetchedResults![i - 1]
-//                managedContext.deleteObject(delete)
-//                if managedContext.save(&error){
-//                    println("Person is deleted \(i)")
-//                }else{
-//                    println("Could not delete \(error), \(error!.userInfo)")
-//                }
-//            }
-//            
-//            println("overWriteQuizList() Now number of words in QuizList is \(fetchedResults!.count)")
+        println("overWriteQuizList() now number of words in fetchedResults2 is \(fetchedResultsAfterDeletion.count)")
 
-            
-            
-//            for word in words {
-//                //Finding the number of times each letter appears as first letter in the native language. This is to help us create the lettered sections in the table
-//                var nativeFirstLetter = word.valueForKey("word") as! String
-//                self.nativeFirstArray.append(nativeFirstLetter)
-//                println("QuizListVC: overWriteQuizList(): the word is \(nativeFirstLetter)")
-                
-//                wordFromList["word"] = word.valueForKey(self.titleSource) as? String
-//                wordFromList["wordFirst"] = word.valueForKey(self.titleFirst) as? String
-//                wordFromList["translation"] = word.valueForKey(self.subtitleSource) as? String
-//                wordFromList["translationFirst"] = word.valueForKey(self.subtitleFirst) as? String
-//                wordFromList["gender"] = word.valueForKey("gender") as? String
-//                wordFromList["category"] = word.valueForKey("category") as? String
-                
-                //Append "word" to the array in the corresponding dictionary in nativeWordlist
-//                if self.nativeWordList[nativeFirstLetter] == nil {
-//                    self.nativeWordList[nativeFirstLetter] = [wordFromList]
-//                } else {
-//                    self.nativeWordList[nativeFirstLetter]!.append(wordFromList)
-//                }
-                
-//            }
-            
-            //Create a sorted array listing each unique letter
-//            uniqueNativeFirstArray = Array(Set(self.nativeFirstArray))
-//            uniqueNativeFirstArray.sort(){$0 <  $1}
-//            println("DictionaryVC: uniqueNativeFirstArray is : \(uniqueNativeFirstArray)")
-//            
-//            for i in uniqueNativeFirstArray {
-//                var wordArrayForLetter = self.nativeWordList[i]
-//                self.sortedNativeWordList.append(wordArrayForLetter!)
-//            }
-            
-            
-//        } else {
-//            println("Could not fetch \(error), \(error!.userInfo)")
-//        }
     }
     
     
