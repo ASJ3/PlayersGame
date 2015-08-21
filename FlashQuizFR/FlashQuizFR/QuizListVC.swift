@@ -42,7 +42,7 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         println("ShowQuiz(): now calling createQuizList()")
         
         createQuizList()
-        overWriteQuizList()
+        emptyQuizList()
         
 //        let secondViewController:QuizVC = QuizVC()
 //        self.presentViewController(secondViewController, animated: true, completion: nil)
@@ -204,9 +204,10 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             error: &error) as? [NSManagedObject]
         
         if let results = fetchedResults {
-            wordList = results
+            //Storing in wordList all the words from the categories we chose to be quizzed on
+            self.wordList = results
             
-            println("createQuizList(): the number of fetched words is \(wordList.count)")
+            println("createQuizList(): the number of fetched words is \(self.wordList.count)")
 
             var finalNumberArray = randomArray(self.wordList.count)
             println("createQuizList(): the number of words within the finalNumberArray is \(finalNumberArray.count)")
@@ -252,7 +253,7 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     
-    func overWriteQuizList() {
+    func emptyQuizList() {
         //1
         let appDelegate =
         UIApplication.sharedApplication().delegate as! AppDelegate
@@ -268,7 +269,7 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let fetchedResults =
         managedContext.executeFetchRequest(fetchRequest,
             error: &error) as! [NSManagedObject]
-        println("overWriteQuizList() number of words in QuizList is \(fetchedResults.count)")
+        println("emptyQuizList() number of words in QuizList is \(fetchedResults.count)")
         
         for entity in fetchedResults {
             managedContext.deleteObject(entity)
@@ -279,7 +280,7 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         managedContext.executeFetchRequest(fetchRequest,
             error: &error) as! [NSManagedObject]
         
-        println("overWriteQuizList() now number of words in fetchedResults2 is \(fetchedResultsAfterDeletion.count)")
+        println("emptyQuizList() now number of words in fetchedResults2 is \(fetchedResultsAfterDeletion.count)")
 
     }
     
