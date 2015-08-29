@@ -27,6 +27,8 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var quizWordFromList = ["word":String(),  "wordFirst":String(), "translation":String(), "translationFirst":String(), "gender":String(), "category":String(), "quizzedWord":String(), "shownAlready":String(), "answeredRight":String()]
     var wordList = [NSManagedObject]()
     
+    var finalNumberArray = [Int]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "List Selection"
@@ -43,6 +45,21 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         createQuizList()
         emptyQuizList()
+        
+        //Now that the QuizEntry Core Data entity is empty, we're going to add to it the 50 words randomly selected
+        for i in self.finalNumberArray {
+            
+            var nativeWord = self.wordList[i].valueForKey("word") as? String
+            var nativeFirst = self.wordList[i].valueForKey("wordFirst") as? String
+            var translatedWord = self.wordList[i].valueForKey("translation") as? String
+            var translatedFirst = self.wordList[i].valueForKey("translationFirst") as? String
+            var translatedGender = self.wordList[i].valueForKey("gender") as? String
+            var wordCategory = self.wordList[i].valueForKey("category") as? String
+
+
+            addQuizWord(nativeWord!, wordFirst: nativeFirst!, translation: translatedWord!, translationFirst: translatedFirst!, gender: translatedGender!, category: wordCategory!, answeredRight: "No", quizzedWord: "No", shownAlready: "No")
+            println("ShowQuiz() Added \(nativeWord!) (\(translatedWord!))")
+        }
         
 //        let secondViewController:QuizVC = QuizVC()
 //        self.presentViewController(secondViewController, animated: true, completion: nil)
@@ -209,7 +226,7 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             
             println("createQuizList(): the number of fetched words is \(self.wordList.count)")
 
-            var finalNumberArray = randomArray(self.wordList.count)
+            self.finalNumberArray = randomArray(self.wordList.count)
             println("createQuizList(): the number of words within the finalNumberArray is \(finalNumberArray.count)")
             println("createQuizList(): the values of words within the finalNumberArray is \(finalNumberArray)")
             
@@ -283,6 +300,44 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         println("emptyQuizList() now number of words in fetchedResults2 is \(fetchedResultsAfterDeletion.count)")
 
     }
+    
+    
+    //This function is to create an initial quiz list of 1 entry, which is "blank" and not a real word
+    func addQuizWord(word: String, wordFirst: String, translation: String, translationFirst: String, gender: String, category: String, answeredRight: String, quizzedWord: String, shownAlready: String) {
+        //1
+        let appDelegate =
+        UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext!
+        
+        //2
+        let entity =  NSEntityDescription.entityForName("QuizEntry",
+            inManagedObjectContext:
+            managedContext)
+        
+        let wordUnit = NSManagedObject(entity: entity!,
+            insertIntoManagedObjectContext:managedContext)
+        
+        //3
+        wordUnit.setValue(word, forKey: "word")
+        wordUnit.setValue(translation, forKey: "translation")
+        wordUnit.setValue(wordFirst, forKey: "wordFirst")
+        wordUnit.setValue(translationFirst, forKey: "translationFirst")
+        wordUnit.setValue(gender, forKey: "gender")
+        wordUnit.setValue(category, forKey: "category")
+        wordUnit.setValue(answeredRight, forKey: "answeredRight")
+        wordUnit.setValue(quizzedWord, forKey: "quizzedWord")
+        wordUnit.setValue(shownAlready, forKey: "shownAlready")
+        
+        //4
+        var error: NSError?
+        if !managedContext.save(&error) {
+            println("Could not save \(error), \(error?.userInfo)")
+        }
+        //5
+        words.append(wordUnit)
+    }
+
     
     
     

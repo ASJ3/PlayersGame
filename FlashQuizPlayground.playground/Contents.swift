@@ -82,3 +82,6 @@ randRange(0, 30)
 randRange(0, 30)
 randRange(0, 30)
 randRange(0, 30)
+
+var superArray = ["Hello", "World", "How are", "YOU"]
+var part = superArray[1]
