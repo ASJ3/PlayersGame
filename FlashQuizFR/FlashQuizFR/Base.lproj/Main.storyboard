@@ -80,8 +80,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QuizVC" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxF-vO-QGX">
-                                <rect key="frame" x="271" y="161" width="58" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QuizVC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxF-vO-QGX">
+                                <rect key="frame" x="16" y="161" width="568" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -100,14 +100,24 @@
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="7Rl-Q6-92G" secondAttribute="centerX" id="ALf-Qq-Obb"/>
                             <constraint firstItem="gxF-vO-QGX" firstAttribute="top" secondItem="zRV-EN-19M" secondAttribute="bottom" constant="141" id="P4W-We-gFW"/>
+                            <constraint firstItem="gxF-vO-QGX" firstAttribute="trailing" secondItem="Rlf-t5-eGi" secondAttribute="trailingMargin" id="Z4u-2z-bx5"/>
                             <constraint firstAttribute="centerX" secondItem="gxF-vO-QGX" secondAttribute="centerX" id="jfw-cH-h2p"/>
+                            <constraint firstItem="gxF-vO-QGX" firstAttribute="leading" secondItem="Rlf-t5-eGi" secondAttribute="leadingMargin" id="mdE-3R-3m5"/>
                             <constraint firstItem="7Rl-Q6-92G" firstAttribute="top" secondItem="gxF-vO-QGX" secondAttribute="bottom" constant="22" id="rcS-Q8-J8z"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="jfw-cH-h2p"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="wordLabel" destination="gxF-vO-QGX" id="MOp-VM-E5z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FG4-34-t3q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2537" y="1066"/>
+            <point key="canvasLocation" x="2532" y="1066"/>
         </scene>
         <!--Language SelectionVC-->
         <scene sceneID="Z5Z-SR-gPO">

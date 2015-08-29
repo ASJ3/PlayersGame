@@ -335,7 +335,7 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             println("Could not save \(error), \(error?.userInfo)")
         }
         //5
-        words.append(wordUnit)
+//        words.append(wordUnit)
     }
 
     
