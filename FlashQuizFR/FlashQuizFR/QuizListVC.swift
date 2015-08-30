@@ -12,8 +12,6 @@ import UIKit
 import CoreData
 
 
-
-
 class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
@@ -24,8 +22,9 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var quizListInitialArray = [AnyObject]()
     var selectedLists = [String: String]()
     var quizStartButton = UIBarButtonItem()
-    var quizWordFromList = ["word":String(),  "wordFirst":String(), "translation":String(), "translationFirst":String(), "gender":String(), "category":String(), "quizzedWord":String(), "shownAlready":String(), "answeredRight":String()]
+
     var wordList = [NSManagedObject]()
+    
     
     var finalNumberArray = [Int]()
     

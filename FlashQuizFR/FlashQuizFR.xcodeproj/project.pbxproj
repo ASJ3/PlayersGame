@@ -22,6 +22,7 @@
 		7859B56A1B7FFFA400605EF7 /* quizListStatus.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7859B5691B7FFFA400605EF7 /* quizListStatus.plist */; };
 		7872F0041B7BF092001D1701 /* QuizVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7872F0031B7BF092001D1701 /* QuizVC.swift */; };
 		787DDC621B607FF9002FBB0A /* wordListStatus.plist in Resources */ = {isa = PBXBuildFile; fileRef = 787DDC611B607FF9002FBB0A /* wordListStatus.plist */; };
+		788C15F51B92A17700B0E81F /* QuizStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788C15F41B92A17700B0E81F /* QuizStruct.swift */; };
 		78ABAE901B6DABA80005799C /* DictListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ABAE8F1B6DABA80005799C /* DictListVC.swift */; };
 		78D4CA281B5DD8BE0087841D /* dictionaryCount.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78D4CA271B5DD8BE0087841D /* dictionaryCount.plist */; };
 /* End PBXBuildFile section */
@@ -56,6 +57,7 @@
 		7859B5691B7FFFA400605EF7 /* quizListStatus.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = quizListStatus.plist; sourceTree = "<group>"; };
 		7872F0031B7BF092001D1701 /* QuizVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizVC.swift; sourceTree = "<group>"; };
 		787DDC611B607FF9002FBB0A /* wordListStatus.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = wordListStatus.plist; path = ../wordListStatus.plist; sourceTree = "<group>"; };
+		788C15F41B92A17700B0E81F /* QuizStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizStruct.swift; sourceTree = "<group>"; };
 		78ABAE8F1B6DABA80005799C /* DictListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictListVC.swift; sourceTree = "<group>"; };
 		78D4CA271B5DD8BE0087841D /* dictionaryCount.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = dictionaryCount.plist; path = ../dictionaryCount.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -106,9 +108,10 @@
 				783CC0821B7050B7001569DD /* LanguageSelectionVC.swift */,
 				78ABAE8F1B6DABA80005799C /* DictListVC.swift */,
 				7851F8C11B5AFB5A0042557C /* DictionaryVC.swift */,
-				7851F8A11B5AF12F0042557C /* Main.storyboard */,
 				7872F0031B7BF092001D1701 /* QuizVC.swift */,
+				788C15F41B92A17700B0E81F /* QuizStruct.swift */,
 				782CC6431B76DA7100FB7AD7 /* QuizListVC.swift */,
+				7851F8A11B5AF12F0042557C /* Main.storyboard */,
 				7851F8A41B5AF12F0042557C /* Images.xcassets */,
 				7851F8A61B5AF12F0042557C /* LaunchScreen.xib */,
 				7851F89C1B5AF12F0042557C /* FlashQuizFR.xcdatamodeld */,
@@ -260,6 +263,7 @@
 				7872F0041B7BF092001D1701 /* QuizVC.swift in Sources */,
 				783CC0831B7050B7001569DD /* LanguageSelectionVC.swift in Sources */,
 				7851F8C21B5AFB5A0042557C /* DictionaryVC.swift in Sources */,
+				788C15F51B92A17700B0E81F /* QuizStruct.swift in Sources */,
 				7851F8A01B5AF12F0042557C /* ViewController.swift in Sources */,
 				7851F89B1B5AF12F0042557C /* AppDelegate.swift in Sources */,
 				7851F89E1B5AF12F0042557C /* FlashQuizFR.xcdatamodeld in Sources */,

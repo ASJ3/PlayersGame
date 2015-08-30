@@ -95,9 +95,20 @@
                                     <action selector="closeVC:" destination="DQa-Xk-tGg" eventType="touchUpInside" id="5LU-dk-ASu"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OAT-iT-nQA">
+                                <rect key="frame" x="284" y="285" width="32" height="30"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showNext:" destination="DQa-Xk-tGg" eventType="touchUpInside" id="vv2-yP-ON7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerX" secondItem="OAT-iT-nQA" secondAttribute="centerX" id="2m7-Zi-9Q3"/>
+                            <constraint firstItem="OAT-iT-nQA" firstAttribute="top" secondItem="7Rl-Q6-92G" secondAttribute="bottom" constant="51" id="7Ma-WD-cZv"/>
                             <constraint firstAttribute="centerX" secondItem="7Rl-Q6-92G" secondAttribute="centerX" id="ALf-Qq-Obb"/>
                             <constraint firstItem="gxF-vO-QGX" firstAttribute="top" secondItem="zRV-EN-19M" secondAttribute="bottom" constant="141" id="P4W-We-gFW"/>
                             <constraint firstItem="gxF-vO-QGX" firstAttribute="trailing" secondItem="Rlf-t5-eGi" secondAttribute="trailingMargin" id="Z4u-2z-bx5"/>

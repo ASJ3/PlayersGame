@@ -11,16 +11,21 @@ import CoreData
 
 class QuizVC: UIViewController {
     @IBOutlet weak var wordLabel: UILabel!
+    @IBAction func showNext(sender: AnyObject) {
+        displayWord()
+    }
     var wordsShown = 0
+    var rightAnswers = 0
+    var quizWordUnit = QuizStruct(word: String(), wordFirst: String(), translation: String(), translationFirst: String(), gender: String(), category: String(), shownAlready: String(), answeredRight: String(), quizzedWord: String())
     
     
     var words = [NSManagedObject]()
     var filter = [String]()
+    var quizzedWordList = [QuizStruct]()
     var nativeFirstArray = [String]()
     var uniqueNativeFirstArray = [String]()
     var nativeWordList = [String: [AnyObject]]()
     var sortedNativeWordList = [AnyObject]()
-    var wordFromList = ["word":String(),  "wordFirst":String(), "translation":String(), "translationFirst":String(), "gender":String(), "category":String()]
     
     var stringResultsArray = [AnyObject]()
     var categoryFromList = ["category": String(), "wordCount": String()]
@@ -54,15 +59,6 @@ class QuizVC: UIViewController {
         //2
         let fetchRequest = NSFetchRequest(entityName:"QuizEntry")
         
-//        //Create a sortDescriptor to order the words in the list alphabetically
-//        let sortDescriptor = NSSortDescriptor(key: self.titleSource, ascending: true, selector: "localizedCaseInsensitiveCompare:")
-//        fetchRequest.sortDescriptors = [sortDescriptor]
-//        
-//        //Create a filter to only return the words of the selected category, defined in "filter"
-//        
-//        let predicate = NSPredicate(format: "category == %@", filter)
-//        fetchRequest.predicate = predicate
-        
         //3
         var error: NSError?
         
@@ -74,47 +70,46 @@ class QuizVC: UIViewController {
             words = results
             
             for word in words {
-                var shownWord = word.valueForKey("quizzedWord") as! String
-                if shownWord == "No" {
-                    self.wordLabel.text = word.valueForKey("word") as? String
-                    break
-                } else {
+                var shownWord = word.valueForKey("shownAlready") as! String
+                var guessedRight = word.valueForKey("answeredRight") as! String
+                
+                self.quizWordUnit.word = word.valueForKey("word") as! String
+                self.quizWordUnit.wordFirst = word.valueForKey("wordFirst") as! String
+                self.quizWordUnit.translation = word.valueForKey("translation") as! String
+                self.quizWordUnit.translationFirst = word.valueForKey("translationFirst") as! String
+                self.quizWordUnit.gender = word.valueForKey("gender") as! String
+                self.quizWordUnit.category = word.valueForKey("category") as! String
+                self.quizWordUnit.answeredRight = word.valueForKey("answeredRight") as! String
+                self.quizWordUnit.quizzedWord = word.valueForKey("quizzedWord") as! String
+                self.quizWordUnit.shownAlready = word.valueForKey("shownAlready") as! String
+                
+                self.quizzedWordList.append(quizWordUnit)
+                
+                if self.quizWordUnit.shownAlready == "Yes" {
                     self.wordsShown += 1
+                    
+                    if self.quizWordUnit.answeredRight == "Yes" {
+                        self.rightAnswers += 1
+                    }
                 }
-               //var nativeWord = word.valueForKey("") as! String 
-//                //Finding the number of times each letter appears as first letter in the native language. This is to help us create the lettered sections in the table
-//                var nativeFirstLetter = word.valueForKey(self.titleFirst) as! String
-//                self.nativeFirstArray.append(nativeFirstLetter)
-//                
-//                wordFromList["word"] = word.valueForKey(self.titleSource) as? String
-//                wordFromList["wordFirst"] = word.valueForKey(self.titleFirst) as? String
-//                wordFromList["translation"] = word.valueForKey(self.subtitleSource) as? String
-//                wordFromList["translationFirst"] = word.valueForKey(self.subtitleFirst) as? String
-//                wordFromList["gender"] = word.valueForKey("gender") as? String
-//                wordFromList["category"] = word.valueForKey("category") as? String
-//                
-//                //Append "word" to the array in the corresponding dictionary in nativeWordlist
-//                if self.nativeWordList[nativeFirstLetter] == nil {
-//                    self.nativeWordList[nativeFirstLetter] = [wordFromList]
-//                } else {
-//                    self.nativeWordList[nativeFirstLetter]!.append(wordFromList)
-//                }
-//                
             }
-            
-            //Create a sorted array listing each unique letter
-            uniqueNativeFirstArray = Array(Set(self.nativeFirstArray))
-            uniqueNativeFirstArray.sort(){$0 <  $1}
-            println("DictionaryVC: uniqueNativeFirstArray is : \(uniqueNativeFirstArray)")
-            
-            for i in uniqueNativeFirstArray {
-                var wordArrayForLetter = self.nativeWordList[i]
-                self.sortedNativeWordList.append(wordArrayForLetter!)
-            }
-            
+            println("QuizVC: Score: \(self.rightAnswers) / \(self.wordsShown)")
+            displayWord()
             
         } else {
             println("Could not fetch \(error), \(error!.userInfo)")
+        }
+    }
+    
+    func displayWord() {
+        for i in 0..<self.quizzedWordList.count {
+            println("displayWord() Looking at \(self.quizzedWordList[i])")
+            var shownStatus = self.quizzedWordList[i].shownAlready as String
+            if shownStatus == "No" {
+                self.wordLabel.text = self.quizzedWordList[i].word as String
+                self.quizzedWordList[i].shownAlready = "Yes"
+                break
+            }
         }
     }
     

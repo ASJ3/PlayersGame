@@ -85,3 +85,23 @@ randRange(0, 30)
 
 var superArray = ["Hello", "World", "How are", "YOU"]
 var part = superArray[1]
+
+struct QuizStruct {
+    var word: String
+    var wordFirst: String
+    var translation: String
+    var translationFirst: String
+    var gender: String
+    var category: String
+    var shownAlready: String
+    var answeredRight: String
+    
+    var quizzedWord: String
+    
+}
+
+var quizContainer = QuizStruct(word: "hello", wordFirst: "h", translation: "bonjounr", translationFirst: "b", gender: "m", category: "word", shownAlready: "No", answeredRight: "Yes", quizzedWord: "Yes")
+
+var arrayQuizWord = [QuizStruct]()
+arrayQuizWord.append(quizContainer)
+
