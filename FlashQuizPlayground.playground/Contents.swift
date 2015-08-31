@@ -105,3 +105,8 @@ var quizContainer = QuizStruct(word: "hello", wordFirst: "h", translation: "bonj
 var arrayQuizWord = [QuizStruct]()
 arrayQuizWord.append(quizContainer)
 
+
+
+
+
+

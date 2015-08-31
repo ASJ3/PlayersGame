@@ -11,7 +11,14 @@ import CoreData
 
 class QuizVC: UIViewController {
     @IBOutlet weak var wordLabel: UILabel!
-    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var wordsDisplayed: UILabel!
+    @IBOutlet weak var answerButton01: UIButton!
+    @IBOutlet weak var answerButton02: UIButton!
+    @IBOutlet weak var answerButton03: UIButton!
+    @IBOutlet weak var answerButton04: UIButton!
+    @IBOutlet weak var answerButton05: UIButton!
+    
+        @IBOutlet weak var nextButton: UIButton!
     @IBAction func showNext(sender: UIButton) {
         //When we click on the button to reach the last word of quizWordList then the "Next" button needs to disappear 
         //as it is not needed anymore
@@ -20,7 +27,7 @@ class QuizVC: UIViewController {
         }
         
         self.wordsShown += 1
-        displayWord(wordsShown)
+        displayQuestion(wordsShown)
         
     }
     @IBAction func checkAnswer(sender: UIButton) {
@@ -89,21 +96,59 @@ class QuizVC: UIViewController {
                     }
                 }
             }
-            println("QuizVC: Score: \(self.rightAnswers) / \(self.wordsShown)")
-            displayWord(wordsShown)
+
+            displayQuestion(wordsShown)
             
         } else {
             println("Could not fetch \(error), \(error!.userInfo)")
         }
     }
     
-    func displayWord(wordPosition: Int) {
+    func displayQuestion(wordPosition: Int) {
         self.wordLabel.text = self.quizWordList[wordPosition].word as String
         self.quizWordList[wordPosition].shownAlready = "Yes"
-        println("displayWord() Looking at \(self.quizWordList[wordPosition].word)")
-
+        self.wordsDisplayed.text = String(self.wordsShown)
+        
+        updateAnswerButtons()
+        
     }
     
+    func updateAnswerButtons() {
+        //Get the positions of 4 random words in quizWordList
+        //Random start point after the current word's position
+        var startPoint = randomNumberInRange(2, upper: 4)
+        //Random start point after the current word's position
+        var wordInterval = randomNumberInRange(2, upper: 5)
+        var listOfWrongAnswers = [Int]()
+        var nextWrongAnswer = wordsShown + startPoint
+        
+        for i in 0...3 {
+            //nextWrongAnswer number cannot be > the number of words in quizWordList
+            if nextWrongAnswer >= self.quizWordList.count {
+                nextWrongAnswer -= self.quizWordList.count
+            }
+            listOfWrongAnswers.append(nextWrongAnswer)
+            nextWrongAnswer += wordInterval
+        }
+        
+        //Random index at which to put the right answer
+        var rightAnswerPosition = randomNumberInRange(0, upper: 4)
+        listOfWrongAnswers.insert(self.wordsShown, atIndex: rightAnswerPosition)
+        
+        println("updateAnswerButtons() the list is: \(listOfWrongAnswers)")
+        
+        var buttonList = [self.answerButton01, self.answerButton02, self.answerButton03, self.answerButton04, self.answerButton05]
+        
+        //Assigns the words to each button
+        for i in 0..<buttonList.count {
+            var textLabel = self.quizWordList[listOfWrongAnswers[i]].word as String
+            buttonList[i].setTitle(textLabel, forState: .Normal)
+        }
+    }
+    
+    func randomNumberInRange (lower: Int , upper: Int) -> Int {
+        return lower + Int(arc4random_uniform(UInt32(upper - lower + 1)))
+    }
     
     
     override func didReceiveMemoryWarning() {
