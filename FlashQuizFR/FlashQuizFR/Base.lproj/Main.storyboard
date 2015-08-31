@@ -87,7 +87,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Rl-Q6-92G">
-                                <rect key="frame" x="273" y="204" width="54" height="30"/>
+                                <rect key="frame" x="273" y="28" width="54" height="30"/>
                                 <state key="normal" title="Dismiss">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -96,7 +96,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OAT-iT-nQA">
-                                <rect key="frame" x="284" y="285" width="32" height="30"/>
+                                <rect key="frame" x="284" y="244" width="32" height="30"/>
                                 <state key="normal" title="Next">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -104,17 +104,28 @@
                                     <action selector="showNext:" destination="DQa-Xk-tGg" eventType="touchUpInside" id="vv2-yP-ON7"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AMN-Wl-OWm">
+                                <rect key="frame" x="281" y="336" width="51" height="30"/>
+                                <state key="normal" title="Answer">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="checkAnswer:" destination="DQa-Xk-tGg" eventType="touchUpInside" id="S3q-TT-Kh7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="OAT-iT-nQA" secondAttribute="centerX" id="2m7-Zi-9Q3"/>
-                            <constraint firstItem="OAT-iT-nQA" firstAttribute="top" secondItem="7Rl-Q6-92G" secondAttribute="bottom" constant="51" id="7Ma-WD-cZv"/>
+                            <constraint firstItem="gxF-vO-QGX" firstAttribute="top" secondItem="7Rl-Q6-92G" secondAttribute="bottom" constant="103" id="74z-nO-fzj"/>
                             <constraint firstAttribute="centerX" secondItem="7Rl-Q6-92G" secondAttribute="centerX" id="ALf-Qq-Obb"/>
-                            <constraint firstItem="gxF-vO-QGX" firstAttribute="top" secondItem="zRV-EN-19M" secondAttribute="bottom" constant="141" id="P4W-We-gFW"/>
+                            <constraint firstAttribute="centerX" secondItem="AMN-Wl-OWm" secondAttribute="centerX" constant="-6.5" id="Tks-nl-SxV"/>
                             <constraint firstItem="gxF-vO-QGX" firstAttribute="trailing" secondItem="Rlf-t5-eGi" secondAttribute="trailingMargin" id="Z4u-2z-bx5"/>
+                            <constraint firstItem="OAT-iT-nQA" firstAttribute="top" secondItem="gxF-vO-QGX" secondAttribute="bottom" constant="62" id="a4c-5b-eUf"/>
+                            <constraint firstItem="AMN-Wl-OWm" firstAttribute="top" secondItem="OAT-iT-nQA" secondAttribute="bottom" constant="62" id="hed-Ns-Wa9"/>
                             <constraint firstAttribute="centerX" secondItem="gxF-vO-QGX" secondAttribute="centerX" id="jfw-cH-h2p"/>
                             <constraint firstItem="gxF-vO-QGX" firstAttribute="leading" secondItem="Rlf-t5-eGi" secondAttribute="leadingMargin" id="mdE-3R-3m5"/>
-                            <constraint firstItem="7Rl-Q6-92G" firstAttribute="top" secondItem="gxF-vO-QGX" secondAttribute="bottom" constant="22" id="rcS-Q8-J8z"/>
+                            <constraint firstItem="7Rl-Q6-92G" firstAttribute="top" secondItem="zRV-EN-19M" secondAttribute="bottom" constant="8" id="mke-Cs-SDF"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -123,6 +134,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="nextButton" destination="OAT-iT-nQA" id="tMH-5S-xvc"/>
                         <outlet property="wordLabel" destination="gxF-vO-QGX" id="MOp-VM-E5z"/>
                     </connections>
                 </viewController>

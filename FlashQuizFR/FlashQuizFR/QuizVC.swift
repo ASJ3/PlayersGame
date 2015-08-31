@@ -11,15 +11,30 @@ import CoreData
 
 class QuizVC: UIViewController {
     @IBOutlet weak var wordLabel: UILabel!
-    @IBAction func showNext(sender: AnyObject) {
-        displayWord()
+    @IBOutlet weak var nextButton: UIButton!
+    @IBAction func showNext(sender: UIButton) {
+        //When we click on the button to reach the last word of quizWordList then the "Next" button needs to disappear 
+        //as it is not needed anymore
+        if self.wordsShown == self.quizWordList.count-2 {
+            self.nextButton.hidden = true
+        }
+        
+        self.wordsShown += 1
+        displayWord(wordsShown)
+        
     }
+    @IBAction func checkAnswer(sender: UIButton) {
+    }
+    
+    var quizWordUnit = QuizStruct(word: String(), wordFirst: String(), translation: String(), translationFirst: String(), gender: String(), category: String(), shownAlready: String(), answeredRight: String(), quizzedWord: String())
+    var quizWordList = [QuizStruct]()
+    
+    //When quizWordList is created from the QuizEntry CoreData entity, we store the numbers of words already shown and how many
+    //of these words shown where answered correctly
     var wordsShown = 0
     var rightAnswers = 0
-    var quizWordUnit = QuizStruct(word: String(), wordFirst: String(), translation: String(), translationFirst: String(), gender: String(), category: String(), shownAlready: String(), answeredRight: String(), quizzedWord: String())
-    var quizzedWordList = [QuizStruct]()
-
     
+
     @IBAction func closeVC(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -31,7 +46,11 @@ class QuizVC: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
+        //If we're at the last word of quizWordList then the "Next" button needs to disappear as it is not needed anymore
+        if self.wordsShown == self.quizWordList.count-2 {
+            self.nextButton.hidden = true
+        }
+
         //1
         let appDelegate =
         UIApplication.sharedApplication().delegate as! AppDelegate
@@ -44,9 +63,7 @@ class QuizVC: UIViewController {
         //3
         var error: NSError?
         
-        let fetchedResults =
-        managedContext.executeFetchRequest(fetchRequest,
-            error: &error) as? [NSManagedObject]
+        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as? [NSManagedObject]
         
         if let results = fetchedResults {
             
@@ -61,8 +78,9 @@ class QuizVC: UIViewController {
                 self.quizWordUnit.quizzedWord = word.valueForKey("quizzedWord") as! String
                 self.quizWordUnit.shownAlready = word.valueForKey("shownAlready") as! String
                 
-                self.quizzedWordList.append(quizWordUnit)
+                self.quizWordList.append(quizWordUnit)
                 
+                //Increase the values of wordShown and rightAnswers, based on what's store in QuizEntry CoreData entity
                 if self.quizWordUnit.shownAlready == "Yes" {
                     self.wordsShown += 1
                     
@@ -72,23 +90,18 @@ class QuizVC: UIViewController {
                 }
             }
             println("QuizVC: Score: \(self.rightAnswers) / \(self.wordsShown)")
-            displayWord()
+            displayWord(wordsShown)
             
         } else {
             println("Could not fetch \(error), \(error!.userInfo)")
         }
     }
     
-    func displayWord() {
-        for i in 0..<self.quizzedWordList.count {
-            println("displayWord() Looking at \(self.quizzedWordList[i])")
-            var shownStatus = self.quizzedWordList[i].shownAlready as String
-            if shownStatus == "No" {
-                self.wordLabel.text = self.quizzedWordList[i].word as String
-                self.quizzedWordList[i].shownAlready = "Yes"
-                break
-            }
-        }
+    func displayWord(wordPosition: Int) {
+        self.wordLabel.text = self.quizWordList[wordPosition].word as String
+        self.quizWordList[wordPosition].shownAlready = "Yes"
+        println("displayWord() Looking at \(self.quizWordList[wordPosition].word)")
+
     }
     
     
