@@ -17,35 +17,17 @@ class QuizVC: UIViewController {
     var wordsShown = 0
     var rightAnswers = 0
     var quizWordUnit = QuizStruct(word: String(), wordFirst: String(), translation: String(), translationFirst: String(), gender: String(), category: String(), shownAlready: String(), answeredRight: String(), quizzedWord: String())
-    
-    
-    var words = [NSManagedObject]()
-    var filter = [String]()
     var quizzedWordList = [QuizStruct]()
-    var nativeFirstArray = [String]()
-    var uniqueNativeFirstArray = [String]()
-    var nativeWordList = [String: [AnyObject]]()
-    var sortedNativeWordList = [AnyObject]()
-    
-    var stringResultsArray = [AnyObject]()
-    var categoryFromList = ["category": String(), "wordCount": String()]
-    
 
+    
     @IBAction func closeVC(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -67,12 +49,8 @@ class QuizVC: UIViewController {
             error: &error) as? [NSManagedObject]
         
         if let results = fetchedResults {
-            words = results
             
-            for word in words {
-                var shownWord = word.valueForKey("shownAlready") as! String
-                var guessedRight = word.valueForKey("answeredRight") as! String
-                
+            for word in results {
                 self.quizWordUnit.word = word.valueForKey("word") as! String
                 self.quizWordUnit.wordFirst = word.valueForKey("wordFirst") as! String
                 self.quizWordUnit.translation = word.valueForKey("translation") as! String
@@ -111,6 +89,13 @@ class QuizVC: UIViewController {
                 break
             }
         }
+    }
+    
+    
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
 
