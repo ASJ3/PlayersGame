@@ -18,7 +18,7 @@ class QuizVC: UIViewController {
     @IBOutlet weak var answerButton04: UIButton!
     @IBOutlet weak var answerButton05: UIButton!
     
-        @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
     @IBAction func showNext(sender: UIButton) {
         //When we click on the button to reach the last word of quizWordList then the "Next" button needs to disappear 
         //as it is not needed anymore
@@ -110,26 +110,11 @@ class QuizVC: UIViewController {
         self.wordsDisplayed.text = String(self.wordsShown)
         
         updateAnswerButtons()
-        
     }
     
+    
     func updateAnswerButtons() {
-        //Get the positions of 4 random words in quizWordList
-        //Random start point after the current word's position
-        var startPoint = randomNumberInRange(2, upper: 4)
-        //Random start point after the current word's position
-        var wordInterval = randomNumberInRange(2, upper: 5)
-        var listOfWrongAnswers = [Int]()
-        var nextWrongAnswer = wordsShown + startPoint
-        
-        for i in 0...3 {
-            //nextWrongAnswer number cannot be > the number of words in quizWordList
-            if nextWrongAnswer >= self.quizWordList.count {
-                nextWrongAnswer -= self.quizWordList.count
-            }
-            listOfWrongAnswers.append(nextWrongAnswer)
-            nextWrongAnswer += wordInterval
-        }
+        var listOfWrongAnswers = randomWrongAnswers()
         
         //Random index at which to put the right answer
         var rightAnswerPosition = randomNumberInRange(0, upper: 4)
@@ -142,12 +127,30 @@ class QuizVC: UIViewController {
         //Assigns the words to each button
         for i in 0..<buttonList.count {
             var textLabel = self.quizWordList[listOfWrongAnswers[i]].word as String
-//            UIView.performWithoutAnimation {
             buttonList[i].setTitle(textLabel, forState: .Normal)
-//            buttonList[i].layer.removeAllAnimations()
-//            }
         }
     }
+    
+    
+    //randomWrongAnswers returns Int index of words to use to provide wrong-answer choices
+    func randomWrongAnswers()->[Int] {
+        var listToReturn = [Int]()
+        var sourceList = [Int]()
+        for i in 0..<self.quizWordList.count {
+            if i != self.wordsShown {
+                sourceList.append(i)
+            }
+        }
+        
+        for i in 1...4 {
+            var randomWrongAnswer = randomNumberInRange(0, upper: sourceList.count-1)
+            listToReturn.append(sourceList[randomWrongAnswer])
+            sourceList.removeAtIndex(randomWrongAnswer)
+        }
+
+        return listToReturn
+    }
+    
     
     func randomNumberInRange (lower: Int , upper: Int) -> Int {
         return lower + Int(arc4random_uniform(UInt32(upper - lower + 1)))
