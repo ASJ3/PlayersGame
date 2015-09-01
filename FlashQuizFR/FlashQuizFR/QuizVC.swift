@@ -142,7 +142,10 @@ class QuizVC: UIViewController {
         //Assigns the words to each button
         for i in 0..<buttonList.count {
             var textLabel = self.quizWordList[listOfWrongAnswers[i]].word as String
+//            UIView.performWithoutAnimation {
             buttonList[i].setTitle(textLabel, forState: .Normal)
+//            buttonList[i].layer.removeAllAnimations()
+//            }
         }
     }
     
