@@ -12,6 +12,7 @@ import CoreData
 class QuizVC: UIViewController {
     @IBOutlet weak var wordLabel: UILabel!
     @IBOutlet weak var wordsDisplayed: UILabel!
+    @IBOutlet weak var correctAnswers: UILabel!
     @IBOutlet weak var answerButton01: UIButton!
     @IBOutlet weak var answerButton02: UIButton!
     @IBOutlet weak var answerButton03: UIButton!
@@ -31,6 +32,14 @@ class QuizVC: UIViewController {
         
     }
     @IBAction func checkAnswer(sender: UIButton) {
+        var answerChosen = sender.titleLabel!.text!
+        var correctWord = self.quizWordList[self.wordsShown].word as String
+        if answerChosen == correctWord {
+            self.rightAnswers += 1
+            self.correctAnswers.text = String(self.rightAnswers)
+        } else {
+            println("checkAnswer() \(answerChosen) is a wrong answer")
+        }
     }
     
     var quizWordUnit = QuizStruct(word: String(), wordFirst: String(), translation: String(), translationFirst: String(), gender: String(), category: String(), shownAlready: String(), answeredRight: String(), quizzedWord: String())

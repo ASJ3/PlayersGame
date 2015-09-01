@@ -95,14 +95,22 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCS-yg-cWV">
+                                        <rect key="frame" x="501" y="8" width="10" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.98039215686274506" green="0.9882352941176471" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="kGo-vu-kLH" firstAttribute="leading" secondItem="YCS-yg-cWV" secondAttribute="trailing" constant="39" id="KAo-td-Peg"/>
                                     <constraint firstItem="kGo-vu-kLH" firstAttribute="top" secondItem="C3S-re-2FL" secondAttribute="top" constant="8" id="Mgc-Ja-cL8"/>
                                     <constraint firstItem="gxF-vO-QGX" firstAttribute="leading" secondItem="C3S-re-2FL" secondAttribute="leading" constant="8" id="QJC-fu-m5U"/>
                                     <constraint firstAttribute="centerY" secondItem="gxF-vO-QGX" secondAttribute="centerY" constant="-0.5" id="VOn-pP-NbH"/>
                                     <constraint firstAttribute="trailing" secondItem="kGo-vu-kLH" secondAttribute="trailing" constant="8" id="dii-Zc-h7G"/>
                                     <constraint firstAttribute="trailing" secondItem="gxF-vO-QGX" secondAttribute="trailing" constant="8" id="hWM-7J-D4M"/>
+                                    <constraint firstItem="YCS-yg-cWV" firstAttribute="top" secondItem="C3S-re-2FL" secondAttribute="top" constant="8" id="vEN-Xr-yac"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Rl-Q6-92G">
@@ -197,6 +205,7 @@
                         <outlet property="answerButton03" destination="dHA-7d-Cwt" id="gdD-BM-sP0"/>
                         <outlet property="answerButton04" destination="lwg-oM-rVD" id="Nmp-Ip-Udb"/>
                         <outlet property="answerButton05" destination="eBN-Op-8sV" id="8V7-3w-kSF"/>
+                        <outlet property="correctAnswers" destination="YCS-yg-cWV" id="dFN-OI-WW4"/>
                         <outlet property="nextButton" destination="OAT-iT-nQA" id="tMH-5S-xvc"/>
                         <outlet property="wordLabel" destination="gxF-vO-QGX" id="MOp-VM-E5z"/>
                         <outlet property="wordsDisplayed" destination="kGo-vu-kLH" id="u84-Rp-MkU"/>
