@@ -20,35 +20,59 @@ class QuizVC: UIViewController {
     @IBOutlet weak var answerButton05: UIButton!
     
     @IBOutlet weak var nextButton: UIButton!
-    @IBAction func showNext(sender: UIButton) {
-        //When we click on the button to reach the last word of quizWordList then the "Next" button needs to disappear 
-        //as it is not needed anymore
-        if self.wordsShown == self.quizWordList.count-2 {
-            self.nextButton.hidden = true
-        }
-        
-        self.wordsShown += 1
-        displayQuestion(wordsShown)
-        
-    }
-    @IBAction func checkAnswer(sender: UIButton) {
-        var answerChosen = sender.titleLabel!.text!
-        var correctWord = self.quizWordList[self.wordsShown].word as String
-        if answerChosen == correctWord {
-            self.rightAnswers += 1
-            self.correctAnswers.text = String(self.rightAnswers)
-        } else {
-            println("checkAnswer() \(answerChosen) is a wrong answer")
-        }
-    }
     
     var quizWordUnit = QuizStruct(word: String(), wordFirst: String(), translation: String(), translationFirst: String(), gender: String(), category: String(), shownAlready: String(), answeredRight: String(), quizzedWord: String())
     var quizWordList = [QuizStruct]()
+    var currentQuestion = QuizStruct(word: String(), wordFirst: String(), translation: String(), translationFirst: String(), gender: String(), category: String(), shownAlready: String(), answeredRight: String(), quizzedWord: String())
+    var nativeLanguagePicked = true
+    var wrongAnswersList = [QuizStruct]()
     
     //When quizWordList is created from the QuizEntry CoreData entity, we store the numbers of words already shown and how many
     //of these words shown where answered correctly
     var wordsShown = 0
     var rightAnswers = 0
+    
+    
+    @IBAction func showNext(sender: UIButton) {
+        //When we reach the last word of quizWordList, "Next" button needs to disappear
+//        if self.wordsShown == self.quizWordList.count-2 {
+//            self.nextButton.hidden = true
+//        }
+        
+        self.wordsShown += 1
+        displayQuestion(wordsShown)
+        self.nextButton.hidden = true
+    }
+    
+    @IBAction func checkAnswer(sender: UIButton) {
+        var AnswerChosenOtherLanguage = String()
+
+        if self.nativeLanguagePicked == true {
+            for i in self.wrongAnswersList {
+                if i.translation == sender.titleLabel!.text! {
+                    AnswerChosenOtherLanguage = i.word as String
+                }
+            }
+        } else {
+            for i in self.wrongAnswersList {
+                if i.word == sender.titleLabel!.text! {
+                    AnswerChosenOtherLanguage = i.translation as String
+                }
+            }
+        }
+        
+        println("AnswerChosenOtherLanguage is \(AnswerChosenOtherLanguage)")
+            if AnswerChosenOtherLanguage == self.wordLabel.text! {
+            self.rightAnswers += 1
+            self.correctAnswers.text = String(self.rightAnswers)
+        } else {
+
+        }
+        var score = self.wordsShown + 1
+        self.wordsDisplayed.text = String(score)
+        self.nextButton.hidden = false
+        
+    }
     
 
     @IBAction func closeVC(sender: AnyObject) {
@@ -114,8 +138,21 @@ class QuizVC: UIViewController {
     }
     
     func displayQuestion(wordPosition: Int) {
-        self.wordLabel.text = self.quizWordList[wordPosition].word as String
-        self.quizWordList[wordPosition].shownAlready = "Yes"
+        self.currentQuestion = self.quizWordList[wordPosition]
+        var randomLanguage = randomNumberInRange(0, upper: 1)
+        if randomLanguage == 0 {
+            self.nativeLanguagePicked = false
+        } else {
+            self.nativeLanguagePicked = true
+        }
+        
+        if self.nativeLanguagePicked == true {
+            self.wordLabel.text = self.currentQuestion.word as String
+        } else {
+            self.wordLabel.text = self.currentQuestion.translation as String
+        }
+        
+        self.currentQuestion.shownAlready = "Yes"
         self.wordsDisplayed.text = String(self.wordsShown)
         
         updateAnswerButtons()
@@ -129,15 +166,27 @@ class QuizVC: UIViewController {
         var rightAnswerPosition = randomNumberInRange(0, upper: 4)
         listOfWrongAnswers.insert(self.wordsShown, atIndex: rightAnswerPosition)
         
+        for i in listOfWrongAnswers {
+            self.wrongAnswersList.append(self.quizWordList[i])
+        }
+        
         println("updateAnswerButtons() the list is: \(listOfWrongAnswers)")
         
         var buttonList = [self.answerButton01, self.answerButton02, self.answerButton03, self.answerButton04, self.answerButton05]
         
         //Assigns the words to each button
-        for i in 0..<buttonList.count {
-            var textLabel = self.quizWordList[listOfWrongAnswers[i]].word as String
-            buttonList[i].setTitle(textLabel, forState: .Normal)
+        if self.nativeLanguagePicked == true {
+            for i in 0..<buttonList.count {
+                var textLabel = self.quizWordList[listOfWrongAnswers[i]].translation as String
+                buttonList[i].setTitle(textLabel, forState: .Normal)
+            }
+        } else {
+            for i in 0..<buttonList.count {
+                var textLabel = self.quizWordList[listOfWrongAnswers[i]].word as String
+                buttonList[i].setTitle(textLabel, forState: .Normal)
+            }
         }
+
     }
     
     

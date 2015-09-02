@@ -236,7 +236,7 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
     }
     
-    //randomArray() will give an array containing 50 unique numbers that we'll then use to fetch random words from our quizListInitialArray
+    //randomArray() will give an array containing 20 unique numbers that we'll then use to fetch random words from our quizListInitialArray
     func randomArray(maxNum: Int) -> [Int] {
         var numberArray = [Int]()
         var firstNumToSwap = Int()
@@ -256,7 +256,7 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             swap(&numberArray[firstNumToSwap], &numberArray[secondNumToSwap])
         }
         
-        for i in 0...49 {
+        for i in 0...19 {
             smallerArray.append(numberArray[i])
         }
 
