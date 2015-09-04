@@ -33,6 +33,8 @@ class QuizVC: UIViewController {
     var wordsShown = 0
     var rightAnswers = 0
     
+    var answerButtonPushed = false
+    
     var defaultButtonColor = UIColor(red: 203.0/255, green: 229.0/255, blue: 250.0/255, alpha: 1.0)
     var wrongButtonColor = UIColor(red: 248.0/255, green: 208.0/255, blue: 205.0/255, alpha: 1.0)
     var rightButtonColor = UIColor(red: 219.0/255, green: 248.0/255, blue: 199.0/255, alpha: 1.0)
@@ -44,6 +46,7 @@ class QuizVC: UIViewController {
         self.wordsShown += 1
         displayQuestion(wordsShown)
         self.nextButton.hidden = true
+        self.answerButtonPushed = false
         //Reset all the buttons' background color to original color
         for i in buttonList {
             i.backgroundColor = self.defaultButtonColor
@@ -54,59 +57,65 @@ class QuizVC: UIViewController {
     
     
     @IBAction func checkAnswer(sender: UIButton) {
-        var AnswerChosenOtherLanguage = String()
-        var buttonList = [self.answerButton01, self.answerButton02, self.answerButton03, self.answerButton04, self.answerButton05]
-        
-        //Determine the word on the button pressed by the user
-        if self.nativeLanguagePicked == true {
-            for i in self.wrongAnswersList {
-                if i.translation == sender.titleLabel!.text! {
-                    AnswerChosenOtherLanguage = i.word as String
+        //checkAnswer() should only work once per turn. After an answer button has been pushed it should be de-activated
+        //until the "Next" button is pushed
+        if self.answerButtonPushed == false {
+            self.answerButtonPushed = true
+            var AnswerChosenOtherLanguage = String()
+            var buttonList = [self.answerButton01, self.answerButton02, self.answerButton03, self.answerButton04, self.answerButton05]
+            
+            //Determine the word on the button pressed by the user
+            if self.nativeLanguagePicked == true {
+                for i in self.wrongAnswersList {
+                    if i.translation == sender.titleLabel!.text! {
+                        AnswerChosenOtherLanguage = i.word as String
+                    }
+                }
+            } else {
+                for i in self.wrongAnswersList {
+                    if i.word == sender.titleLabel!.text! {
+                        AnswerChosenOtherLanguage = i.translation as String
+                    }
                 }
             }
-        } else {
-            for i in self.wrongAnswersList {
-                if i.word == sender.titleLabel!.text! {
-                    AnswerChosenOtherLanguage = i.translation as String
-                }
-            }
-        }
-        
-        println("AnswerChosenOtherLanguage is \(AnswerChosenOtherLanguage)")
-        //if the button with the correct translation was chosen do the following
-        if AnswerChosenOtherLanguage == self.wordLabel.text! {
+            
+            println("AnswerChosenOtherLanguage is \(AnswerChosenOtherLanguage)")
+            //if the button with the correct translation was chosen do the following
+            if AnswerChosenOtherLanguage == self.wordLabel.text! {
                 self.rightAnswers += 1
                 self.correctAnswers.text = String(self.rightAnswers)
-        } else {
-            sender.backgroundColor = self.wrongButtonColor
-        }
-        
-        //Change the color of the button with the right answer to green
-        if self.nativeLanguagePicked == true {
-            for i in 0..<self.wrongAnswersList.count {
-                println("native i is now \(i)")
-                if self.wrongAnswersList[i].word == self.wordLabel.text! {
-                    buttonList[i].backgroundColor = self.rightButtonColor
-                    break
+            } else {
+                sender.backgroundColor = self.wrongButtonColor
+            }
+            
+            //Change the color of the button with the right answer to green
+            if self.nativeLanguagePicked == true {
+                for i in 0..<self.wrongAnswersList.count {
+                    println("native i is now \(i)")
+                    if self.wrongAnswersList[i].word == self.wordLabel.text! {
+                        buttonList[i].backgroundColor = self.rightButtonColor
+                        break
+                    }
+                }
+            } else {
+                for i in 0..<self.wrongAnswersList.count {
+                    println("not Native i is now \(i)")
+                    if self.wrongAnswersList[i].translation == self.wordLabel.text! {
+                        buttonList[i].backgroundColor = self.rightButtonColor
+                        break
+                    }
                 }
             }
-        } else {
-            for i in 0..<self.wrongAnswersList.count {
-                println("not Native i is now \(i)")
-                if self.wrongAnswersList[i].translation == self.wordLabel.text! {
-                    buttonList[i].backgroundColor = self.rightButtonColor
-                    break
-                }
+            
+            var score = self.wordsShown + 1
+            self.wordsDisplayed.text = String(score)
+            
+            //When we've reached the last word of quizWordList, the "Next" button can not appear when the user choses an answer
+            if self.wordsShown < self.quizWordList.count-1 {
+                self.nextButton.hidden = false
             }
         }
         
-        var score = self.wordsShown + 1
-        self.wordsDisplayed.text = String(score)
-        
-        //When we've reached the last word of quizWordList, the "Next" button can not appear when the user choses an answer
-        if self.wordsShown < self.quizWordList.count-1 {
-            self.nextButton.hidden = false
-        }
     }
     
 
@@ -121,10 +130,6 @@ class QuizVC: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        //If we're at the last word of quizWordList then the "Next" button needs to disappear as it is not needed anymore
-        if self.wordsShown == self.quizWordList.count-2 {
-            self.nextButton.hidden = true
-        }
 
         //1
         let appDelegate =
@@ -169,6 +174,12 @@ class QuizVC: UIViewController {
             
         } else {
             println("Could not fetch \(error), \(error!.userInfo)")
+        }
+        
+        
+        //If we're at the first word of quizWordList then the "Next" button needs to be hidden
+        if self.wordsShown == 0 {
+            self.nextButton.hidden = true
         }
     }
     
