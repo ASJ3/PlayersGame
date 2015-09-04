@@ -32,21 +32,35 @@ class QuizVC: UIViewController {
     var wordsShown = 0
     var rightAnswers = 0
     
+    var defaultButtonColor = UIColor(red: 203.0/255, green: 229.0/255, blue: 250.0/255, alpha: 1.0)
+    var wrongButtonColor = UIColor(red: 248.0/255, green: 208.0/255, blue: 205.0/255, alpha: 1.0)
+    var rightButtonColor = UIColor(red: 219.0/255, green: 248.0/255, blue: 199.0/255, alpha: 1.0)
     
     @IBAction func showNext(sender: UIButton) {
         //When we reach the last word of quizWordList, "Next" button needs to disappear
 //        if self.wordsShown == self.quizWordList.count-2 {
 //            self.nextButton.hidden = true
 //        }
+        var buttonList = [self.answerButton01, self.answerButton02, self.answerButton03, self.answerButton04, self.answerButton05]
         
         self.wordsShown += 1
         displayQuestion(wordsShown)
         self.nextButton.hidden = true
+        //Reset all the buttons' background color to original color
+        for i in buttonList {
+            i.backgroundColor = self.defaultButtonColor
+        }
+        //Reset wrongAnswerList to null
+//        self.wrongAnswersList = []
+        println("wrongAnswerList is now \(self.wrongAnswersList.count)")
     }
+    
     
     @IBAction func checkAnswer(sender: UIButton) {
         var AnswerChosenOtherLanguage = String()
-
+        var buttonList = [self.answerButton01, self.answerButton02, self.answerButton03, self.answerButton04, self.answerButton05]
+        
+        //Determine the word on the button pressed by the user
         if self.nativeLanguagePicked == true {
             for i in self.wrongAnswersList {
                 if i.translation == sender.titleLabel!.text! {
@@ -62,16 +76,36 @@ class QuizVC: UIViewController {
         }
         
         println("AnswerChosenOtherLanguage is \(AnswerChosenOtherLanguage)")
-            if AnswerChosenOtherLanguage == self.wordLabel.text! {
-            self.rightAnswers += 1
-            self.correctAnswers.text = String(self.rightAnswers)
+        //if the button with the correct translation was chosen do the following
+        if AnswerChosenOtherLanguage == self.wordLabel.text! {
+                self.rightAnswers += 1
+                self.correctAnswers.text = String(self.rightAnswers)
         } else {
-
+            sender.backgroundColor = self.wrongButtonColor
         }
+        
+        //Change the color of the button with the right answer to green
+        if self.nativeLanguagePicked == true {
+            for i in 0..<self.wrongAnswersList.count {
+                println("native i is now \(i)")
+                if self.wrongAnswersList[i].word == self.wordLabel.text! {
+                    buttonList[i].backgroundColor = self.rightButtonColor
+                    break
+                }
+            }
+        } else {
+            for i in 0..<self.wrongAnswersList.count {
+                println("not Native i is now \(i)")
+                if self.wrongAnswersList[i].translation == self.wordLabel.text! {
+                    buttonList[i].backgroundColor = self.rightButtonColor
+                    break
+                }
+            }
+        }
+        
         var score = self.wordsShown + 1
         self.wordsDisplayed.text = String(score)
         self.nextButton.hidden = false
-        
     }
     
 
@@ -161,6 +195,7 @@ class QuizVC: UIViewController {
     
     func updateAnswerButtons() {
         var listOfWrongAnswers = randomWrongAnswers()
+        self.wrongAnswersList = []
         
         //Random index at which to put the right answer
         var rightAnswerPosition = randomNumberInRange(0, upper: 4)
@@ -170,7 +205,8 @@ class QuizVC: UIViewController {
             self.wrongAnswersList.append(self.quizWordList[i])
         }
         
-        println("updateAnswerButtons() the list is: \(listOfWrongAnswers)")
+        println("updateAnswerButtons() listOfWrongAnswers is: \(listOfWrongAnswers)")
+        println("updateAnswerButtons() wrongAnswersList is: \(wrongAnswersList.count)")
         
         var buttonList = [self.answerButton01, self.answerButton02, self.answerButton03, self.answerButton04, self.answerButton05]
         
