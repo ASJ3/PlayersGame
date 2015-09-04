@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import QuartzCore
 
 class QuizVC: UIViewController {
     @IBOutlet weak var wordLabel: UILabel!
@@ -37,10 +38,7 @@ class QuizVC: UIViewController {
     var rightButtonColor = UIColor(red: 219.0/255, green: 248.0/255, blue: 199.0/255, alpha: 1.0)
     
     @IBAction func showNext(sender: UIButton) {
-        //When we reach the last word of quizWordList, "Next" button needs to disappear
-//        if self.wordsShown == self.quizWordList.count-2 {
-//            self.nextButton.hidden = true
-//        }
+
         var buttonList = [self.answerButton01, self.answerButton02, self.answerButton03, self.answerButton04, self.answerButton05]
         
         self.wordsShown += 1
@@ -50,8 +48,7 @@ class QuizVC: UIViewController {
         for i in buttonList {
             i.backgroundColor = self.defaultButtonColor
         }
-        //Reset wrongAnswerList to null
-//        self.wrongAnswersList = []
+
         println("wrongAnswerList is now \(self.wrongAnswersList.count)")
     }
     
@@ -105,7 +102,11 @@ class QuizVC: UIViewController {
         
         var score = self.wordsShown + 1
         self.wordsDisplayed.text = String(score)
-        self.nextButton.hidden = false
+        
+        //When we've reached the last word of quizWordList, the "Next" button can not appear when the user choses an answer
+        if self.wordsShown < self.quizWordList.count-1 {
+            self.nextButton.hidden = false
+        }
     }
     
 
