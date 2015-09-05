@@ -56,7 +56,7 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             var wordCategory = self.wordList[i].valueForKey("category") as? String
 
 
-            addQuizWord(nativeWord!, wordFirst: nativeFirst!, translation: translatedWord!, translationFirst: translatedFirst!, gender: translatedGender!, category: wordCategory!, answeredRight: "No", quizzedWord: "No", shownAlready: "No")
+            addQuizWord(nativeWord!, wordFirst: nativeFirst!, translation: translatedWord!, translationFirst: translatedFirst!, gender: translatedGender!, category: wordCategory!, answeredRight: false, quizzedWord: "No", shownAlready: false)
             println("ShowQuiz() Added \(nativeWord!) (\(translatedWord!))")
         }
         
@@ -302,7 +302,7 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     //This function is to create an initial quiz list of 1 entry, which is "blank" and not a real word
-    func addQuizWord(word: String, wordFirst: String, translation: String, translationFirst: String, gender: String, category: String, answeredRight: String, quizzedWord: String, shownAlready: String) {
+    func addQuizWord(word: String, wordFirst: String, translation: String, translationFirst: String, gender: String, category: String, answeredRight: Bool, quizzedWord: String, shownAlready: Bool) {
         //1
         let appDelegate =
         UIApplication.sharedApplication().delegate as! AppDelegate

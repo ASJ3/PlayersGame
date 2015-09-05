@@ -15,8 +15,8 @@ struct QuizStruct {
     var translationFirst: String
     var gender: String
     var category: String
-    var shownAlready: String
-    var answeredRight: String
+    var shownAlready: Bool
+    var answeredRight: Bool
     
     var quizzedWord: String
     

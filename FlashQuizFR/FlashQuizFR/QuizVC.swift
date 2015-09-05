@@ -22,9 +22,9 @@ class QuizVC: UIViewController {
     
     @IBOutlet weak var nextButton: UIButton!
     
-    var quizWordUnit = QuizStruct(word: String(), wordFirst: String(), translation: String(), translationFirst: String(), gender: String(), category: String(), shownAlready: String(), answeredRight: String(), quizzedWord: String())
+    var quizWordUnit = QuizStruct(word: String(), wordFirst: String(), translation: String(), translationFirst: String(), gender: String(), category: String(), shownAlready: Bool(), answeredRight: Bool(), quizzedWord: String())
     var quizWordList = [QuizStruct]()
-    var currentQuestion = QuizStruct(word: String(), wordFirst: String(), translation: String(), translationFirst: String(), gender: String(), category: String(), shownAlready: String(), answeredRight: String(), quizzedWord: String())
+    var currentQuestion = QuizStruct(word: String(), wordFirst: String(), translation: String(), translationFirst: String(), gender: String(), category: String(), shownAlready: Bool(), answeredRight: Bool(), quizzedWord: String())
     var nativeLanguagePicked = true
     var wrongAnswersList = [QuizStruct]()
     
@@ -53,6 +53,12 @@ class QuizVC: UIViewController {
         }
 
         println("wrongAnswerList is now \(self.wrongAnswersList.count)")
+        
+        //Looking at the shownAlready and answeredRight values of each word on the list
+        for i in self.wrongAnswersList {
+            println("\(i.word): shownAlready = \(i.shownAlready) and answeredRight: \(i.answeredRight)")
+        }
+        
     }
     
     
@@ -84,6 +90,8 @@ class QuizVC: UIViewController {
             if AnswerChosenOtherLanguage == self.wordLabel.text! {
                 self.rightAnswers += 1
                 self.correctAnswers.text = String(self.rightAnswers)
+                self.quizWordList[self.wordsShown].answeredRight = true
+                
             } else {
                 sender.backgroundColor = self.wrongButtonColor
             }
@@ -91,7 +99,6 @@ class QuizVC: UIViewController {
             //Change the color of the button with the right answer to green
             if self.nativeLanguagePicked == true {
                 for i in 0..<self.wrongAnswersList.count {
-                    println("native i is now \(i)")
                     if self.wrongAnswersList[i].word == self.wordLabel.text! {
                         buttonList[i].backgroundColor = self.rightButtonColor
                         break
@@ -99,7 +106,6 @@ class QuizVC: UIViewController {
                 }
             } else {
                 for i in 0..<self.wrongAnswersList.count {
-                    println("not Native i is now \(i)")
                     if self.wrongAnswersList[i].translation == self.wordLabel.text! {
                         buttonList[i].backgroundColor = self.rightButtonColor
                         break
@@ -107,6 +113,7 @@ class QuizVC: UIViewController {
                 }
             }
             
+            self.quizWordList[self.wordsShown].shownAlready = true
             var score = self.wordsShown + 1
             self.wordsDisplayed.text = String(score)
             
@@ -154,17 +161,17 @@ class QuizVC: UIViewController {
                 self.quizWordUnit.translationFirst = word.valueForKey("translationFirst") as! String
                 self.quizWordUnit.gender = word.valueForKey("gender") as! String
                 self.quizWordUnit.category = word.valueForKey("category") as! String
-                self.quizWordUnit.answeredRight = word.valueForKey("answeredRight") as! String
+                self.quizWordUnit.answeredRight = word.valueForKey("answeredRight") as! Bool
                 self.quizWordUnit.quizzedWord = word.valueForKey("quizzedWord") as! String
-                self.quizWordUnit.shownAlready = word.valueForKey("shownAlready") as! String
+                self.quizWordUnit.shownAlready = word.valueForKey("shownAlready") as! Bool
                 
                 self.quizWordList.append(quizWordUnit)
                 
                 //Increase the values of wordShown and rightAnswers, based on what's store in QuizEntry CoreData entity
-                if self.quizWordUnit.shownAlready == "Yes" {
+                if self.quizWordUnit.shownAlready == true {
                     self.wordsShown += 1
                     
-                    if self.quizWordUnit.answeredRight == "Yes" {
+                    if self.quizWordUnit.answeredRight == true {
                         self.rightAnswers += 1
                     }
                 }
@@ -198,7 +205,7 @@ class QuizVC: UIViewController {
             self.wordLabel.text = self.currentQuestion.translation as String
         }
         
-        self.currentQuestion.shownAlready = "Yes"
+        self.currentQuestion.shownAlready = true
         self.wordsDisplayed.text = String(self.wordsShown)
         
         updateAnswerButtons()

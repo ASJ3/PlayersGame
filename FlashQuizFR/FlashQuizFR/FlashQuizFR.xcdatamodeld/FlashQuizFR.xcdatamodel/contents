@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14E46" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="QuizEntry" syncable="YES">
-        <attribute name="answeredRight" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="answeredRight" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="quizzedWord" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="shownAlready" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shownAlready" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="translation" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="translationFirst" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="word" optional="YES" attributeType="String" syncable="YES"/>
