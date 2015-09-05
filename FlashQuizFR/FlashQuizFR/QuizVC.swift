@@ -22,9 +22,9 @@ class QuizVC: UIViewController {
     
     @IBOutlet weak var nextButton: UIButton!
     
-    var quizWordUnit = QuizStruct(word: String(), wordFirst: String(), translation: String(), translationFirst: String(), gender: String(), category: String(), shownAlready: Bool(), answeredRight: Bool(), quizzedWord: String())
+    var quizWordUnit = QuizStruct(word: String(), wordFirst: String(), translation: String(), translationFirst: String(), gender: String(), category: String(), shownAlready: Bool(), answeredRight: Bool())
     var quizWordList = [QuizStruct]()
-    var currentQuestion = QuizStruct(word: String(), wordFirst: String(), translation: String(), translationFirst: String(), gender: String(), category: String(), shownAlready: Bool(), answeredRight: Bool(), quizzedWord: String())
+    var currentQuestion = QuizStruct(word: String(), wordFirst: String(), translation: String(), translationFirst: String(), gender: String(), category: String(), shownAlready: Bool(), answeredRight: Bool())
     var nativeLanguagePicked = true
     var wrongAnswersList = [QuizStruct]()
     
@@ -162,7 +162,7 @@ class QuizVC: UIViewController {
                 self.quizWordUnit.gender = word.valueForKey("gender") as! String
                 self.quizWordUnit.category = word.valueForKey("category") as! String
                 self.quizWordUnit.answeredRight = word.valueForKey("answeredRight") as! Bool
-                self.quizWordUnit.quizzedWord = word.valueForKey("quizzedWord") as! String
+//                self.quizWordUnit.quizzedWord = word.valueForKey("quizzedWord") as! String
                 self.quizWordUnit.shownAlready = word.valueForKey("shownAlready") as! Bool
                 
                 self.quizWordList.append(quizWordUnit)

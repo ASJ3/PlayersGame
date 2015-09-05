@@ -4,7 +4,6 @@
         <attribute name="answeredRight" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="quizzedWord" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="shownAlready" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="translation" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="translationFirst" optional="YES" attributeType="String" syncable="YES"/>
@@ -22,7 +21,7 @@
         <attribute name="wordFirst" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="QuizEntry" positionX="-63" positionY="45" width="128" height="180"/>
+        <element name="QuizEntry" positionX="-63" positionY="45" width="128" height="165"/>
         <element name="WordEntry" positionX="-63" positionY="-18" width="128" height="165"/>
     </elements>
 </model>

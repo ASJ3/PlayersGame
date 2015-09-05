@@ -18,6 +18,4 @@ struct QuizStruct {
     var shownAlready: Bool
     var answeredRight: Bool
     
-    var quizzedWord: String
-    
 }

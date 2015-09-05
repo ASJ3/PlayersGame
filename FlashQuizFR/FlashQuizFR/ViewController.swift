@@ -65,7 +65,7 @@ class ViewController: UIViewController {
         
         if quizListStatusArray[0] as! Bool == false {
             //Call initializeQuizList() to create the quiz list in coreData by adding one "empty" entry in it
-                self.initializeQuizList("EmptyWord", wordFirst: "EmptyLetter", translation: "EmptyWord", translationFirst: "EmptyLetter", gender: "EmptyWord", category: "EmptyCategory", answeredRight: false, quizzedWord: "No", shownAlready: false)
+                self.initializeQuizList("EmptyWord", wordFirst: "EmptyLetter", translation: "EmptyWord", translationFirst: "EmptyLetter", gender: "EmptyWord", category: "EmptyCategory", answeredRight: false, shownAlready: false)
 
             //Change the "loaded" status to true for the word list in wordListStatus plist
             quizListStatusArray[0] = true
@@ -114,7 +114,7 @@ class ViewController: UIViewController {
     
     
     //This function is to create an initial quiz list of 1 entry, which is "blank" and not a real word
-    func initializeQuizList(word: String, wordFirst: String, translation: String, translationFirst: String, gender: String, category: String, answeredRight: Bool, quizzedWord: String, shownAlready: Bool) {
+    func initializeQuizList(word: String, wordFirst: String, translation: String, translationFirst: String, gender: String, category: String, answeredRight: Bool, shownAlready: Bool) {
         //1
         let appDelegate =
         UIApplication.sharedApplication().delegate as! AppDelegate
@@ -137,7 +137,7 @@ class ViewController: UIViewController {
         wordUnit.setValue(gender, forKey: "gender")
         wordUnit.setValue(category, forKey: "category")
         wordUnit.setValue(answeredRight, forKey: "answeredRight")
-        wordUnit.setValue(quizzedWord, forKey: "quizzedWord")
+//        wordUnit.setValue(quizzedWord, forKey: "quizzedWord")
         wordUnit.setValue(shownAlready, forKey: "shownAlready")
         
         //4
