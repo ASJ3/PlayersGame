@@ -10,6 +10,10 @@ import UIKit
 import CoreData
 import QuartzCore
 
+protocol QuizVCDelegate {
+    func closeOwnVC()
+}
+
 class QuizVC: UIViewController {
     @IBOutlet weak var wordLabel: UILabel!
     @IBOutlet weak var wordsDisplayed: UILabel!
@@ -33,6 +37,9 @@ class QuizVC: UIViewController {
     var wordsShown = 0
     var rightAnswers = 0
     
+    var quizListVCOrigin = false
+    var delegate:QuizVCDelegate? = nil
+    
     var answerButtonPushed = false
     
     var defaultButtonColor = UIColor(red: 203.0/255, green: 229.0/255, blue: 250.0/255, alpha: 1.0)
@@ -55,9 +62,9 @@ class QuizVC: UIViewController {
         println("wrongAnswerList is now \(self.wrongAnswersList.count)")
         
         //Looking at the shownAlready and answeredRight values of each word on the list
-        for i in self.wrongAnswersList {
-            println("\(i.word): shownAlready = \(i.shownAlready) and answeredRight: \(i.answeredRight)")
-        }
+//        for i in self.wrongAnswersList {
+//            println("\(i.word): shownAlready = \(i.shownAlready) and answeredRight: \(i.answeredRight)")
+//        }
         
     }
     
@@ -127,11 +134,14 @@ class QuizVC: UIViewController {
     
 
     @IBAction func closeVC(sender: AnyObject) {
+        self.delegate?.closeOwnVC()
         self.dismissViewControllerAnimated(true, completion: nil)
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        println("quizListVCOrigin: \(self.quizListVCOrigin)")
 
     }
     

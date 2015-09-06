@@ -12,7 +12,7 @@ import UIKit
 import CoreData
 
 
-class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, QuizVCDelegate {
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -57,7 +57,7 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
 
             addQuizWord(nativeWord!, wordFirst: nativeFirst!, translation: translatedWord!, translationFirst: translatedFirst!, gender: translatedGender!, category: wordCategory!, answeredRight: false, shownAlready: false)
-            println("ShowQuiz() Added \(nativeWord!) (\(translatedWord!))")
+//            println("ShowQuiz() Added \(nativeWord!) (\(translatedWord!))")
         }
         
 //        let secondViewController:QuizVC = QuizVC()
@@ -71,7 +71,10 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         //        if let passingName = self.authorName.text {
         //            authorInfoVC.textForAuthorName = passingName
         //        }
-                self.presentViewController(QuizScreen, animated: true, completion: nil)
+        QuizScreen.quizListVCOrigin = true
+        QuizScreen.delegate = self
+        self.presentViewController(QuizScreen, animated: true, completion: nil)
+        
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -338,7 +341,14 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
 
     
-    
+    func closeOwnVC() {
+        println("QuizListVC closeOwnVC()")
+        
+        //Pop the QuizListVC so that when the user will close the view in QuizVC they will be going directly to the main menu and not back to QuizListVC
+        if let navController = self.navigationController {
+            navController.popViewControllerAnimated(false)
+        }
+    }
     
     
     
