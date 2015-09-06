@@ -11,8 +11,8 @@
 import UIKit
 import CoreData
 
-
-class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, QuizVCDelegate {
+//class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, QuizVCDelegate {
+class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -72,8 +72,9 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         //            authorInfoVC.textForAuthorName = passingName
         //        }
         QuizScreen.quizListVCOrigin = true
-        QuizScreen.delegate = self
-        self.presentViewController(QuizScreen, animated: true, completion: nil)
+//        QuizScreen.delegate = self
+//        self.presentViewController(QuizScreen, animated: true, completion: nil)
+        self.navigationController?.pushViewController(QuizScreen, animated: true)
         
     }
     
@@ -328,7 +329,6 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         wordUnit.setValue(gender, forKey: "gender")
         wordUnit.setValue(category, forKey: "category")
         wordUnit.setValue(answeredRight, forKey: "answeredRight")
-//        wordUnit.setValue(quizzedWord, forKey: "quizzedWord")
         wordUnit.setValue(shownAlready, forKey: "shownAlready")
         
         //4
@@ -341,14 +341,14 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     }
 
     
-    func closeOwnVC() {
-        println("QuizListVC closeOwnVC()")
-        
-        //Pop the QuizListVC so that when the user will close the view in QuizVC they will be going directly to the main menu and not back to QuizListVC
-        if let navController = self.navigationController {
-            navController.popViewControllerAnimated(false)
-        }
-    }
+//    func closeOwnVC() {
+//        println("QuizListVC closeOwnVC()")
+//        
+//        //Pop the QuizListVC so that when the user will close the view in QuizVC they will be going directly to the main menu and not back to QuizListVC
+//        if let navController = self.navigationController {
+//            navController.popViewControllerAnimated(false)
+//        }
+//    }
     
     
     
