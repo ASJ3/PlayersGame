@@ -41,6 +41,7 @@ class QuizVC: UIViewController {
     var delegate:QuizVCDelegate? = nil
     
     var answerButtonPushed = false
+    var goBackMenuButton = UIBarButtonItem()
     
     var defaultButtonColor = UIColor(red: 203.0/255, green: 229.0/255, blue: 250.0/255, alpha: 1.0)
     var wrongButtonColor = UIColor(red: 248.0/255, green: 208.0/255, blue: 205.0/255, alpha: 1.0)
@@ -142,7 +143,18 @@ class QuizVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         println("quizListVCOrigin: \(self.quizListVCOrigin)")
-
+        
+        
+        //        title = "List Selection"
+        
+        self.navigationItem.hidesBackButton = true
+        self.goBackMenuButton = UIBarButtonItem(title: "Main Menu", style: .Plain , target: self, action: "goBackToMainMenu")
+        self.goBackMenuButton.enabled = true
+        self.navigationItem.setLeftBarButtonItem(goBackMenuButton, animated: true)
+    }
+    
+    func goBackToMainMenu() {
+        self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
     override func viewWillAppear(animated: Bool) {

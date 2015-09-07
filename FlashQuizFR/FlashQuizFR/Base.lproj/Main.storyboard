@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="GLj-Nj-pxf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="GLj-Nj-pxf">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -81,7 +81,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C3S-re-2FL">
-                                <rect key="frame" x="42" y="66" width="516" height="204"/>
+                                <rect key="frame" x="42" y="72" width="516" height="198"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="score:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8KR-qs-WA6">
                                         <rect key="frame" x="394" y="8" width="48" height="21"/>
@@ -114,7 +114,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QuizVC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxF-vO-QGX">
-                                        <rect key="frame" x="0.0" y="84" width="516" height="35"/>
+                                        <rect key="frame" x="0.0" y="82" width="516" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="rUo-ql-LcD"/>
                                         </constraints>
@@ -153,15 +153,6 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Rl-Q6-92G">
-                                <rect key="frame" x="273" y="28" width="54" height="30"/>
-                                <state key="normal" title="Dismiss">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="closeVC:" destination="DQa-Xk-tGg" eventType="touchUpInside" id="5LU-dk-ASu"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ko0-JA-SP9">
                                 <rect key="frame" x="42" y="383" width="516" height="34"/>
                                 <color key="backgroundColor" red="0.79716051099999996" green="0.89688094610000002" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -268,7 +259,7 @@
                             <constraint firstAttribute="centerX" secondItem="OAT-iT-nQA" secondAttribute="centerX" id="2m7-Zi-9Q3"/>
                             <constraint firstItem="lwg-oM-rVD" firstAttribute="top" secondItem="dHA-7d-Cwt" secondAttribute="bottom" constant="17" id="3Zf-Io-kuA"/>
                             <constraint firstItem="Ko0-JA-SP9" firstAttribute="top" secondItem="AMN-Wl-OWm" secondAttribute="bottom" constant="17" id="52h-UZ-UcK"/>
-                            <constraint firstAttribute="centerX" secondItem="7Rl-Q6-92G" secondAttribute="centerX" id="ALf-Qq-Obb"/>
+                            <constraint firstItem="C3S-re-2FL" firstAttribute="top" secondItem="zRV-EN-19M" secondAttribute="bottom" constant="8" id="E9a-7a-Mw6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lwg-oM-rVD" secondAttribute="trailing" constant="26" id="HBP-v6-Lab"/>
                             <constraint firstItem="lwg-oM-rVD" firstAttribute="leading" secondItem="Rlf-t5-eGi" secondAttribute="leadingMargin" constant="26" id="I55-YR-13p"/>
                             <constraint firstItem="AMN-Wl-OWm" firstAttribute="leading" secondItem="Rlf-t5-eGi" secondAttribute="leadingMargin" constant="26" id="J8X-Eh-HXG"/>
@@ -281,12 +272,10 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Ko0-JA-SP9" secondAttribute="trailing" constant="26" id="aOG-Qh-isZ"/>
                             <constraint firstItem="C3S-re-2FL" firstAttribute="trailing" secondItem="Rlf-t5-eGi" secondAttribute="trailingMargin" constant="-26" id="dVa-Y3-dkT"/>
                             <constraint firstItem="C3S-re-2FL" firstAttribute="leading" secondItem="Rlf-t5-eGi" secondAttribute="leadingMargin" constant="26" id="dmw-JD-ejE"/>
-                            <constraint firstItem="C3S-re-2FL" firstAttribute="top" secondItem="7Rl-Q6-92G" secondAttribute="bottom" constant="8" id="fvM-cY-Z7G"/>
                             <constraint firstItem="dHA-7d-Cwt" firstAttribute="top" secondItem="Ko0-JA-SP9" secondAttribute="bottom" constant="17" id="gUn-sF-26U"/>
                             <constraint firstAttribute="trailingMargin" secondItem="AMN-Wl-OWm" secondAttribute="trailing" constant="26" id="i8W-hl-xfc"/>
                             <constraint firstItem="Dh7-WS-rDD" firstAttribute="top" secondItem="eBN-Op-8sV" secondAttribute="bottom" constant="30" id="jqg-9F-d3U"/>
                             <constraint firstItem="OAT-iT-nQA" firstAttribute="top" secondItem="C3S-re-2FL" secondAttribute="bottom" constant="16" id="jrQ-0e-rYD"/>
-                            <constraint firstItem="7Rl-Q6-92G" firstAttribute="top" secondItem="zRV-EN-19M" secondAttribute="bottom" constant="8" id="mke-Cs-SDF"/>
                             <constraint firstItem="AMN-Wl-OWm" firstAttribute="top" secondItem="OAT-iT-nQA" secondAttribute="bottom" constant="16" id="p4m-Ic-HHA"/>
                             <constraint firstItem="eBN-Op-8sV" firstAttribute="top" secondItem="lwg-oM-rVD" secondAttribute="bottom" constant="17" id="wVc-uL-CFn"/>
                         </constraints>
@@ -432,6 +421,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="Hzm-o6-gdD" id="gMj-V7-hd3"/>
+                        <segue destination="DQa-Xk-tGg" kind="show" identifier="ShowQuizVC" id="bMH-20-Xah"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KQ4-m6-DhZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
