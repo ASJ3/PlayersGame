@@ -60,7 +60,7 @@ class QuizVC: UIViewController {
             i.backgroundColor = self.defaultButtonColor
         }
 
-        println("wrongAnswerList is now \(self.wrongAnswersList.count)")
+//        println("wrongAnswerList is now \(self.wrongAnswersList.count)")
         
         //Looking at the shownAlready and answeredRight values of each word on the list
 //        for i in self.wrongAnswersList {
@@ -124,10 +124,46 @@ class QuizVC: UIViewController {
             self.quizWordList[self.wordsShown].shownAlready = true
             var score = self.wordsShown + 1
             self.wordsDisplayed.text = String(score)
+            saveAnswer()
             
             //When we've reached the last word of quizWordList, the "Next" button can not appear when the user choses an answer
             if self.wordsShown < self.quizWordList.count-1 {
                 self.nextButton.hidden = false
+            }
+        }
+    }
+    
+    func saveAnswer() {
+        println("QuizVC: saveAnswer()")
+        //1
+        let appDelegate =
+        UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext!
+        
+        //2
+        let fetchRequest = NSFetchRequest(entityName:"QuizEntry")
+        
+        //3
+        var error: NSError?
+        
+        var wordQuizzed = self.currentQuestion.word as String
+        var shownStatus = self.currentQuestion.shownAlready as Bool
+        var correctness = self.currentQuestion.answeredRight as Bool
+        
+        fetchRequest.predicate = NSPredicate(format: "word = %@", wordQuizzed)
+        
+        if let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as? [NSManagedObject] {
+            if fetchedResults.count != 0 {
+                var managedObject = fetchedResults[0]
+                managedObject.setValue(shownStatus, forKey: "shownAlready")
+                managedObject.setValue(correctness, forKey: "answeredRight")
+                
+                if managedContext.save(&error) {
+                    println("\(wordQuizzed) is updated")
+                } else {
+                    println("could not save \(error)")
+                }
             }
         }
         
@@ -247,7 +283,7 @@ class QuizVC: UIViewController {
         }
         
         println("updateAnswerButtons() listOfWrongAnswers is: \(listOfWrongAnswers)")
-        println("updateAnswerButtons() wrongAnswersList is: \(wrongAnswersList.count)")
+//        println("updateAnswerButtons() wrongAnswersList is: \(wrongAnswersList.count)")
         
         var buttonList = [self.answerButton01, self.answerButton02, self.answerButton03, self.answerButton04, self.answerButton05]
         

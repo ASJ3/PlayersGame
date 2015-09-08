@@ -300,7 +300,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FG4-34-t3q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2532" y="1066"/>
+            <point key="canvasLocation" x="1189" y="1185"/>
         </scene>
         <!--Language SelectionVC-->
         <scene sceneID="Z5Z-SR-gPO">
@@ -426,7 +426,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KQ4-m6-DhZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1853" y="1066"/>
+            <point key="canvasLocation" x="2049" y="1185"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -470,6 +470,15 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0d3-BW-nEo">
+                                <rect key="frame" x="252" y="326" width="97" height="30"/>
+                                <state key="normal" title="Continue Quiz">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="DQa-Xk-tGg" kind="show" id="07l-pR-mGi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -483,8 +492,10 @@
                             <constraint firstItem="ce3-vL-INO" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="Jm8-uQ-2ac"/>
                             <constraint firstItem="N0a-Kh-ajx" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="Q3Q-d0-Rx2"/>
                             <constraint firstAttribute="centerX" secondItem="NWb-IK-T8T" secondAttribute="centerX" id="aKt-US-weQ"/>
+                            <constraint firstItem="0d3-BW-nEo" firstAttribute="top" secondItem="NWb-IK-T8T" secondAttribute="bottom" constant="26" id="bl6-h4-h5L"/>
                             <constraint firstItem="ce3-vL-INO" firstAttribute="top" secondItem="NWb-IK-T8T" secondAttribute="bottom" constant="31" id="dNn-Uk-OoX"/>
                             <constraint firstAttribute="centerX" secondItem="saW-u4-jXC" secondAttribute="centerX" constant="-0.5" id="n1o-CF-Atd"/>
+                            <constraint firstAttribute="centerX" secondItem="0d3-BW-nEo" secondAttribute="centerX" constant="-0.5" id="sLT-em-LD6"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -582,4 +593,7 @@
             <point key="canvasLocation" x="511" y="361"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="bMH-20-Xah"/>
+    </inferredMetricsTieBreakers>
 </document>
