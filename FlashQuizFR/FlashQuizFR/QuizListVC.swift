@@ -39,8 +39,7 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func showQuiz(Sender: AnyObject) {
-        println("ShowQuiz() started")
-        println("ShowQuiz(): now calling createQuizList()")
+        println("QuizListVC: ShowQuiz(): calling createQuizList() then emptyQuizList()")
         
         createQuizList()
         emptyQuizList()
@@ -71,7 +70,7 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         //        if let passingName = self.authorName.text {
         //            authorInfoVC.textForAuthorName = passingName
         //        }
-        QuizScreen.quizListVCOrigin = true
+
 //        QuizScreen.delegate = self
 //        self.presentViewController(QuizScreen, animated: true, completion: nil)
         self.navigationController?.pushViewController(QuizScreen, animated: true)
@@ -165,7 +164,6 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         if let results = managedContext.executeFetchRequest(fetchRequest,
             error: &error) {
                 words = results
-                println("QuizListVC: count of categories to add to stringsResultArray: \(words.count)")
                 
                 for i in 0...results.count-1 {
                     categoryFromList["category"] = words[i]["category"] as? String
@@ -209,7 +207,7 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         for (key, value) in self.selectedLists {
             filter.append(value)
         }
-        println("QuizListVC: createQuizList(): filter is \(filter)")
+        println("QuizListVC: createQuizList() filter is \(filter)")
         
         //Use the categories in the "filter" array to only return the words of the categories selected 
         //in the QuizListVC table
@@ -227,11 +225,10 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             //Storing in wordList all the words from the categories we chose to be quizzed on
             self.wordList = results
             
-            println("createQuizList(): the number of fetched words is \(self.wordList.count)")
+            println("QuizListVC: createQuizList() the number of fetched words is \(self.wordList.count)")
 
             self.finalNumberArray = randomArray(self.wordList.count)
-            println("createQuizList(): the number of words within the finalNumberArray is \(finalNumberArray.count)")
-            println("createQuizList(): the values of words within the finalNumberArray is \(finalNumberArray)")
+            println("QuizListVC: createQuizList() finalNumberArray has \(finalNumberArray.count) words whose values are \(finalNumberArray)")
             
         } else {
             println("Could not fetch \(error), \(error!.userInfo)")
