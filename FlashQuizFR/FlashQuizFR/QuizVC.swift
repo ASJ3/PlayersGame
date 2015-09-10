@@ -179,8 +179,6 @@ class QuizVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("QuizVC: viewDidLoad() wordsShown is \(self.wordsShown)")
-        
         
         //        title = "List Selection"
         
@@ -196,7 +194,6 @@ class QuizVC: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-
 
         //1
         let appDelegate =
@@ -222,7 +219,6 @@ class QuizVC: UIViewController {
                 self.quizWordUnit.gender = word.valueForKey("gender") as! String
                 self.quizWordUnit.category = word.valueForKey("category") as! String
                 self.quizWordUnit.answeredRight = word.valueForKey("answeredRight") as! Bool
-//                self.quizWordUnit.quizzedWord = word.valueForKey("quizzedWord") as! String
                 self.quizWordUnit.shownAlready = word.valueForKey("shownAlready") as! Bool
                 
                 self.quizWordList.append(quizWordUnit)
@@ -230,30 +226,48 @@ class QuizVC: UIViewController {
                 //Increase the values of wordShown and rightAnswers, based on what's store in QuizEntry CoreData entity
                 if self.quizWordUnit.shownAlready == true {
                     self.wordsShown += 1
-                    
-                    if self.quizWordUnit.answeredRight == true {
-                        self.rightAnswers += 1
-                    }
+                }
+                if self.quizWordUnit.answeredRight == true {
+                    self.rightAnswers += 1
                 }
             }
             
-            println("QuizVC: viewWillAppear() after loop: wordsShown is \(self.wordsShown) and answeredRight is \(self.rightAnswers)")
-
-            displayQuestion(wordsShown)
+            println("QuizVC: viewWillAppear() wordsShown is \(self.wordsShown)")
+            
+            
+            //Calling displayQuestion() using wordsShown ensures the latest unanswered word is shown any time the view appears
+            //However if we've reached the end of the array of questions (i.e. wordsShown = array count) 
+            //then using wordShown means that displayQuestion() is looking for an index value that is greater than what's in the array 
+            //of questions. If this is the case, we need to show wordsShown - 1 instead. 
+            //We also need to disable the answer buttons otherwise the app will crash
+            if self.wordsShown == self.quizWordList.count {
+                println("QuizVC: viewWillAppear() showing last word only")
+                displayQuestion(wordsShown - 1)
+                self.answerButtonPushed = true
+            } else {
+                displayQuestion(wordsShown)
+            }
             
         } else {
             println("Could not fetch \(error), \(error!.userInfo)")
         }
         
         
-        //If we're at the first word of quizWordList then the "Next" button needs to be hidden
-//        if self.wordsShown == 0 {
-            self.nextButton.hidden = true
+        //Since we're showing a new question, the "Next" button needs to be hidden until an answer has been provided
+        self.nextButton.hidden = true
+        
+        //If we're showing the last word in the array of questions AND it has already been answered 
+        //then
+//        if self.wordsShown == self.quizWordList.count {
+//            
+//            println("QuizVC: viewWillAppear() showing last word only")
 //        }
+        
+
     }
     
     func displayQuestion(wordPosition: Int) {
-        println("QuizVC: displayQuestion() called")
+        println("QuizVC: displayQuestion() called with wordPosition \(wordPosition) & quizWordList count is \(self.quizWordList.count)")
         self.currentQuestion = self.quizWordList[wordPosition]
         var randomLanguage = randomNumberInRange(0, upper: 1)
         if randomLanguage == 0 {
@@ -280,9 +294,18 @@ class QuizVC: UIViewController {
         var listOfWrongAnswers = randomWrongAnswers()
         self.wrongAnswersList = []
         
-        //Random index at which to put the right answer
+        //Random index at which to put the index of the right answer
+        //Note: that index is wordsShown, unless we've reached the end of the array of questions, in which case it will be wordsShown - 1
         var rightAnswerPosition = randomNumberInRange(0, upper: 4)
-        listOfWrongAnswers.insert(self.wordsShown, atIndex: rightAnswerPosition)
+        var indexOfQuizWord = Int()
+        
+        if self.wordsShown == self.quizWordList.count {
+            indexOfQuizWord = self.wordsShown - 1
+        } else {
+            indexOfQuizWord = self.wordsShown
+        }
+        
+        listOfWrongAnswers.insert(indexOfQuizWord, atIndex: rightAnswerPosition)
         
         for i in listOfWrongAnswers {
             self.wrongAnswersList.append(self.quizWordList[i])
