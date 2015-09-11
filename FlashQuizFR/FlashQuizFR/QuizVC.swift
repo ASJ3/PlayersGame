@@ -30,7 +30,7 @@ class QuizVC: UIViewController {
     var quizWordList = [QuizStruct]()
     var currentQuestion = QuizStruct(word: String(), wordFirst: String(), translation: String(), translationFirst: String(), gender: String(), category: String(), shownAlready: Bool(), answeredRight: Bool())
     var nativeLanguagePicked = true
-    var wrongAnswersList = [QuizStruct]()
+    var multipleChoiceList = [QuizStruct]()
     
     //When quizWordList is created from the QuizEntry CoreData entity, we store the numbers of words already shown and how many
     //of these words shown where answered correctly
@@ -59,10 +59,10 @@ class QuizVC: UIViewController {
             i.backgroundColor = self.defaultButtonColor
         }
 
-//        println("wrongAnswerList is now \(self.wrongAnswersList.count)")
+//        println("wrongAnswerList is now \(self.multipleChoiceList.count)")
         
         //Looking at the shownAlready and answeredRight values of each word on the list
-//        for i in self.wrongAnswersList {
+//        for i in self.multipleChoiceList {
 //            println("\(i.word): shownAlready = \(i.shownAlready) and answeredRight: \(i.answeredRight)")
 //        }
         
@@ -79,13 +79,13 @@ class QuizVC: UIViewController {
             
             //Determine the word on the button pressed by the user
             if self.nativeLanguagePicked == true {
-                for i in self.wrongAnswersList {
+                for i in self.multipleChoiceList {
                     if i.translation == sender.titleLabel!.text! {
                         AnswerChosenOtherLanguage = i.word as String
                     }
                 }
             } else {
-                for i in self.wrongAnswersList {
+                for i in self.multipleChoiceList {
                     if i.word == sender.titleLabel!.text! {
                         AnswerChosenOtherLanguage = i.translation as String
                     }
@@ -106,15 +106,15 @@ class QuizVC: UIViewController {
             
             //Change the color of the button with the right answer to green
             if self.nativeLanguagePicked == true {
-                for i in 0..<self.wrongAnswersList.count {
-                    if self.wrongAnswersList[i].word == self.wordLabel.text! {
+                for i in 0..<self.multipleChoiceList.count {
+                    if self.multipleChoiceList[i].word == self.wordLabel.text! {
                         buttonList[i].backgroundColor = self.rightButtonColor
                         break
                     }
                 }
             } else {
-                for i in 0..<self.wrongAnswersList.count {
-                    if self.wrongAnswersList[i].translation == self.wordLabel.text! {
+                for i in 0..<self.multipleChoiceList.count {
+                    if self.multipleChoiceList[i].translation == self.wordLabel.text! {
                         buttonList[i].backgroundColor = self.rightButtonColor
                         break
                     }
@@ -123,12 +123,15 @@ class QuizVC: UIViewController {
             self.quizWordList[self.wordsShown].shownAlready = true
             var score = self.wordsShown + 1
             self.wordsDisplayed.text = String(score)
-//            println("checkAnswer() for \(self.quizWordList[self.wordsShown].word) answeredRight is:\(self.quizWordList[self.wordsShown].answeredRight) and shownAlready is:\(self.quizWordList[self.wordsShown].shownAlready)")
+            println("checkAnswer() for \(self.quizWordList[self.wordsShown].word) answeredRight is:\(self.quizWordList[self.wordsShown].answeredRight) and shownAlready is:\(self.quizWordList[self.wordsShown].shownAlready)")
             saveAnswer(self.quizWordList[self.wordsShown])
             
             //When we've reached the last word of quizWordList, the "Next" button can not appear when the user choses an answer
             if self.wordsShown < self.quizWordList.count-1 {
                 self.nextButton.hidden = false
+                
+            } else {
+                presentCongratulationsVC()
             }
         }
     }
@@ -171,11 +174,11 @@ class QuizVC: UIViewController {
     }
     
 
-    @IBAction func closeVC(sender: AnyObject) {
-        self.delegate?.closeOwnVC()
-        self.dismissViewControllerAnimated(true, completion: nil)
-        
-    }
+//    @IBAction func closeVC(sender: AnyObject) {
+//        self.delegate?.closeOwnVC()
+//        self.dismissViewControllerAnimated(true, completion: nil)
+//        
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -292,7 +295,7 @@ class QuizVC: UIViewController {
     
     func updateAnswerButtons() {
         var listOfWrongAnswers = randomWrongAnswers()
-        self.wrongAnswersList = []
+        self.multipleChoiceList = []
         
         //Random index at which to put the index of the right answer
         //Note: that index is wordsShown, unless we've reached the end of the array of questions, in which case it will be wordsShown - 1
@@ -308,11 +311,11 @@ class QuizVC: UIViewController {
         listOfWrongAnswers.insert(indexOfQuizWord, atIndex: rightAnswerPosition)
         
         for i in listOfWrongAnswers {
-            self.wrongAnswersList.append(self.quizWordList[i])
+            self.multipleChoiceList.append(self.quizWordList[i])
         }
         
         println("QuizVC: updateAnswerButtons() listOfWrongAnswers is: \(listOfWrongAnswers)")
-//        println("updateAnswerButtons() wrongAnswersList is: \(wrongAnswersList.count)")
+//        println("updateAnswerButtons() multipleChoiceList is: \(multipleChoiceList.count)")
         
         var buttonList = [self.answerButton01, self.answerButton02, self.answerButton03, self.answerButton04, self.answerButton05]
         
@@ -354,6 +357,22 @@ class QuizVC: UIViewController {
     
     func randomNumberInRange (lower: Int , upper: Int) -> Int {
         return lower + Int(arc4random_uniform(UInt32(upper - lower + 1)))
+    }
+    
+    func presentCongratulationsVC() {
+        println("QuizVC presentCongratulations() started")
+//        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+//        let QuizScreen = storyboard.instantiateViewControllerWithIdentifier("QuizViewController") as! QuizVC
+        //        // ALEXIS: Now we're passing to the 'authorInfoVC' AuthorViewController the author ID so that it knows what info to display
+        //        authorInfoVC.contributorID = self.authorInfo!
+        //        if let passingName = self.authorName.text {
+        //            authorInfoVC.textForAuthorName = passingName
+        //        }
+        
+        //        QuizScreen.delegate = self
+        //        self.presentViewController(QuizScreen, animated: true, completion: nil)
+//        self.navigationController?.pushViewController(QuizScreen, animated: true)
+        
     }
     
     
