@@ -25,6 +25,7 @@ class QuizVC: UIViewController {
     @IBOutlet weak var answerButton05: UIButton!
     
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var scoreView: UIView!
     
     var quizWordUnit = QuizStruct(word: String(), wordFirst: String(), translation: String(), translationFirst: String(), gender: String(), category: String(), shownAlready: Bool(), answeredRight: Bool())
     var quizWordList = [QuizStruct]()
@@ -132,6 +133,8 @@ class QuizVC: UIViewController {
                 
             } else {
                 presentCongratulationsVC()
+                //Hide the score labels as they add to themselves when CongratulationsVC is dismissed
+                self.scoreView.hidden = true
             }
         }
     }
@@ -170,15 +173,8 @@ class QuizVC: UIViewController {
                 }
             }
         }
-        
     }
-    
 
-//    @IBAction func closeVC(sender: AnyObject) {
-//        self.delegate?.closeOwnVC()
-//        self.dismissViewControllerAnimated(true, completion: nil)
-//        
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -361,18 +357,14 @@ class QuizVC: UIViewController {
     
     func presentCongratulationsVC() {
         println("QuizVC presentCongratulations() started")
-//        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-//        let QuizScreen = storyboard.instantiateViewControllerWithIdentifier("QuizViewController") as! QuizVC
-        //        // ALEXIS: Now we're passing to the 'authorInfoVC' AuthorViewController the author ID so that it knows what info to display
-        //        authorInfoVC.contributorID = self.authorInfo!
-        //        if let passingName = self.authorName.text {
-        //            authorInfoVC.textForAuthorName = passingName
-        //        }
+        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+        let congratsScreen = storyboard.instantiateViewControllerWithIdentifier("CongratsVC") as! CongratulationsVC
+        congratsScreen.quizLength = self.wordsShown + 1
+        congratsScreen.rightAnswers = self.rightAnswers
         
         //        QuizScreen.delegate = self
-        //        self.presentViewController(QuizScreen, animated: true, completion: nil)
+                self.presentViewController(congratsScreen, animated: true, completion: nil)
 //        self.navigationController?.pushViewController(QuizScreen, animated: true)
-        
     }
     
     
