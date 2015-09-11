@@ -11,16 +11,42 @@ import UIKit
 class CongratulationsVC: UIViewController {
     var quizLength = Int()
     var rightAnswers = Int()
+    var pepTalkList = [". Don’t be discouraged! Keep practicing and you’ll get better at it.", "! Keep practicing and you’ll increase your score!", "! You’re halfway there!", "! You’re getting close to perfection!", "! Awesome!!"]
+    var pepTalkIntro = "You've correctly answered "
+    var pepTalkEnding = ""
+
     
     @IBAction func dismissView(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    @IBOutlet weak var bannerText: UILabel!
+    @IBOutlet weak var textBox: UITextView!
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         println("CongratsVC: viewDidLoad() points: \(self.rightAnswers) length: \(self.quizLength)")
+        
+        switch self.rightAnswers {
+        case 0...4:
+            self.bannerText.text = "Keep Going!"
+            self.pepTalkEnding = self.pepTalkList[0]
+        case 5...9:
+            self.pepTalkEnding = self.pepTalkList[1]
+        case 10:
+            self.pepTalkEnding = self.pepTalkList[2]
+        case 11...19:
+            self.pepTalkEnding = self.pepTalkList[3]
+        case 20:
+            self.pepTalkEnding = self.pepTalkList[4]
+        default:
+            self.pepTalkEnding = "."
+        }
+        
+        var textIntro = self.pepTalkIntro + String(self.rightAnswers) + " out of " + String(self.quizLength) + " words"
+        
+        self.textBox.text = textIntro + self.pepTalkEnding
     }
 
     override func didReceiveMemoryWarning() {

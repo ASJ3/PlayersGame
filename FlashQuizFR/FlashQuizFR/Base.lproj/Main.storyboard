@@ -382,6 +382,10 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="bannerText" destination="nZd-8v-8Vg" id="zIh-r8-3Nd"/>
+                        <outlet property="textBox" destination="hpy-pf-SL2" id="tf5-mR-kwO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YYQ-iM-DK4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
