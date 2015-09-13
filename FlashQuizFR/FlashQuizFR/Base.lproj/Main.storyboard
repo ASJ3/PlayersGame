@@ -596,6 +596,7 @@
                     <navigationItem key="navigationItem" id="GVh-w3-T45"/>
                     <connections>
                         <outlet property="beforeLabel" destination="N0a-Kh-ajx" id="KMQ-6C-vuh"/>
+                        <outlet property="continueQuizButton" destination="0d3-BW-nEo" id="yRm-3t-NuL"/>
                         <outlet property="status" destination="ce3-vL-INO" id="lkI-FI-Hjf"/>
                     </connections>
                 </viewController>
@@ -683,6 +684,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="bMH-20-Xah"/>
+        <segue reference="07l-pR-mGi"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var beforeLabel: UILabel!
     @IBOutlet weak var status: UILabel!
+    @IBOutlet weak var continueQuizButton: UIButton!
     var wordListArray = NSMutableArray()
     var wordFromList = ["word":String(),  "wordFirst":String(), "translation":String(), "translationFirst":String(), "gender":String(), "category":String()]
     
@@ -59,20 +60,49 @@ class ViewController: UIViewController {
             self.beforeLabel.text = "list now loaded onto CoreData"
         }
         
-        //Figuring out if a quizList (even an empty one) already exists, based on the value in quizListStatus
-        var quizListStatusPath = NSBundle.mainBundle().pathForResource("quizListStatus", ofType: "plist")
-        var quizListStatusArray = NSMutableArray(contentsOfFile: quizListStatusPath!)!
         
-        if quizListStatusArray[0] as! Bool == false {
-            //Call initializeQuizList() to create the quiz list in coreData by adding one "empty" entry in it
-                self.initializeQuizList("EmptyWord", wordFirst: "EmptyLetter", translation: "EmptyWord", translationFirst: "EmptyLetter", gender: "EmptyWord", category: "EmptyCategory", answeredRight: false, shownAlready: false)
-
-            //Change the "loaded" status to true for the word list in wordListStatus plist
-            quizListStatusArray[0] = true
-            quizListStatusArray.writeToFile(quizListStatusPath!, atomically: true)
+        //Figuring out if a real quizList (i.e. one with a list > 1 word) already exists
+        //1
+        let appDelegate =
+        UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext!
+        
+        //2
+        let fetchRequest = NSFetchRequest(entityName:"QuizEntry")
+        
+        //3
+        var error: NSError?
+        
+        let fetchedResults =
+        managedContext.executeFetchRequest(fetchRequest,
+            error: &error) as! [NSManagedObject]
+        if fetchedResults.count <= 1 {
+            println("ViewController viewDidLoad() no QuizEntry core data table")
+            self.initializeQuizList("EmptyWord", wordFirst: "EmptyLetter", translation: "EmptyWord", translationFirst: "EmptyLetter", gender: "EmptyWord", category: "EmptyCategory", answeredRight: false, shownAlready: false)
+            self.continueQuizButton.hidden = true
         } else {
-            self.status.text = "quizlist now existing as CoreData"
+            self.continueQuizButton.hidden = false
         }
+        
+        
+        println("ViewController viewDidLoad() number of words in QuizList is \(fetchedResults.count)")
+        
+        //******
+        //Figuring out if a quizList (even an empty one) already exists, based on the value in quizListStatus
+//        var quizListStatusPath = NSBundle.mainBundle().pathForResource("quizListStatus", ofType: "plist")
+//        var quizListStatusArray = NSMutableArray(contentsOfFile: quizListStatusPath!)!
+//        
+//        if quizListStatusArray[0] as! Bool == false {
+//            //Call initializeQuizList() to create the quiz list in coreData by adding one "empty" entry in it
+//                self.initializeQuizList("EmptyWord", wordFirst: "EmptyLetter", translation: "EmptyWord", translationFirst: "EmptyLetter", gender: "EmptyWord", category: "EmptyCategory", answeredRight: false, shownAlready: false)
+//
+//            //Change the "loaded" status to true for the word list in wordListStatus plist
+//            quizListStatusArray[0] = true
+//            quizListStatusArray.writeToFile(quizListStatusPath!, atomically: true)
+//        } else {
+//            self.status.text = "quizlist now existing as CoreData"
+//        }
         
         
         
@@ -137,7 +167,6 @@ class ViewController: UIViewController {
         wordUnit.setValue(gender, forKey: "gender")
         wordUnit.setValue(category, forKey: "category")
         wordUnit.setValue(answeredRight, forKey: "answeredRight")
-//        wordUnit.setValue(quizzedWord, forKey: "quizzedWord")
         wordUnit.setValue(shownAlready, forKey: "shownAlready")
         
         //4
