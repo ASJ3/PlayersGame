@@ -59,7 +59,11 @@ class ViewController: UIViewController {
         } else {
             self.beforeLabel.text = "list now loaded onto CoreData"
         }
-        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        println("ViewController viewWillAppear() started")
         
         //Figuring out if a real quizList (i.e. one with a list > 1 word) already exists
         //1
@@ -85,27 +89,7 @@ class ViewController: UIViewController {
             self.continueQuizButton.hidden = false
         }
         
-        
-        println("ViewController viewDidLoad() number of words in QuizList is \(fetchedResults.count)")
-        
-        //******
-        //Figuring out if a quizList (even an empty one) already exists, based on the value in quizListStatus
-//        var quizListStatusPath = NSBundle.mainBundle().pathForResource("quizListStatus", ofType: "plist")
-//        var quizListStatusArray = NSMutableArray(contentsOfFile: quizListStatusPath!)!
-//        
-//        if quizListStatusArray[0] as! Bool == false {
-//            //Call initializeQuizList() to create the quiz list in coreData by adding one "empty" entry in it
-//                self.initializeQuizList("EmptyWord", wordFirst: "EmptyLetter", translation: "EmptyWord", translationFirst: "EmptyLetter", gender: "EmptyWord", category: "EmptyCategory", answeredRight: false, shownAlready: false)
-//
-//            //Change the "loaded" status to true for the word list in wordListStatus plist
-//            quizListStatusArray[0] = true
-//            quizListStatusArray.writeToFile(quizListStatusPath!, atomically: true)
-//        } else {
-//            self.status.text = "quizlist now existing as CoreData"
-//        }
-        
-        
-        
+        println("ViewController viewWillAppear() number of words in QuizList is \(fetchedResults.count)")
     }
     
     func saveName(word: String, wordFirst: String, translation: String, translationFirst: String, gender: String, category: String, timesCorrect: Int, timesQuizzed: Int) {
