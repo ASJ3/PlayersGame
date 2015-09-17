@@ -14,8 +14,11 @@ class CongratulationsVC: UIViewController {
     var pepTalkList = [". Don’t be discouraged! Keep practicing and you’ll get better at it.", "! Keep practicing and you’ll increase your score!", "! You’re halfway there!", "! You’re getting close to perfection!", "! Awesome!!"]
     var pepTalkIntro = "You've correctly answered "
     var pepTalkEnding = ""
-
+    var gradient = CAGradientLayer()
+    var bottomColor = UIColor(red: 141.0/255.0, green: 195.0/255/0, blue: 238.0/255.0, alpha: 1.0).CGColor as CGColorRef
+    var topColor = UIColor(red: 229.0/255.0, green: 241.0/255/0, blue: 250.0/255.0, alpha: 0.5).CGColor as CGColorRef
     
+    @IBOutlet var mainView: UIView!
     @IBAction func dismissView(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -25,6 +28,11 @@ class CongratulationsVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.gradient.frame = self.mainView.bounds
+        self.gradient.colors = [UIColor.whiteColor().CGColor,self.topColor, self.bottomColor]
+        self.gradient.locations = [0.0, 0.75, 1.0]
+//        self.mainView.layer.insertSublayer(self.gradient, atIndex: 0)
         
         println("CongratsVC: viewDidLoad() points: \(self.rightAnswers) length: \(self.quizLength)")
         

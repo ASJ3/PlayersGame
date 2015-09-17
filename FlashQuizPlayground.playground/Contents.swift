@@ -104,7 +104,16 @@ var quizContainer = QuizStruct(word: "hello", wordFirst: "h", translation: "bonj
 
 var arrayQuizWord = [QuizStruct]()
 arrayQuizWord.append(quizContainer)
+var color = UIColor.redColor()
+var bottomColor = UIColor(red: 248.0/255.0, green: 244.0/255/0, blue: 120.0/255.0, alpha: 1.0)
+var topColor = UIColor(red: 120.0/255.0, green: 244.0/255/0, blue: 200.0/255.0, alpha: 1.0)
 
+var view = UIView(frame: CGRectMake(0.0, 0.0, 320.0, 10.0))
+var gradient = CAGradientLayer()
+gradient.frame = view.bounds
+gradient.colors = [UIColor.redColor().CGColor, UIColor.whiteColor().CGColor]
+gradient.locations = [0.0, 1.0]
+view.layer.insertSublayer(gradient, atIndex: 0)
 
 
 

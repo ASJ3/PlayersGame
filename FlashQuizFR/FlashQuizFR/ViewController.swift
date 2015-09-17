@@ -10,6 +10,13 @@ import UIKit
 import CoreData
 
 class ViewController: UIViewController {
+    //**********
+    var gradient = CAGradientLayer()
+//    var bottomColor = UIColor(red: 248.0/255.0, green: 244.0/255/0, blue: 120.0/255.0, alpha: 1.0).CGColor as CGColorRef
+    var bottomColor = UIColor(red: 215.0/255.0, green: 226.0/255/0, blue: 235.0/255.0, alpha: 1.0).CGColor as CGColorRef
+    var topColor = UIColor(red: 229.0/255.0, green: 241.0/255/0, blue: 250.0/255.0, alpha: 1.0).CGColor as CGColorRef
+    @IBOutlet var mainView: UIView!
+    //**********
     
     @IBOutlet weak var beforeLabel: UILabel!
     @IBOutlet weak var status: UILabel!
@@ -63,6 +70,14 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        //**********
+        self.gradient.frame = self.mainView.bounds
+        self.gradient.colors = [UIColor.whiteColor().CGColor,self.topColor, self.bottomColor]
+        self.gradient.locations = [0.0, 0.75, 1.0]
+//        self.mainView.layer.insertSublayer(self.gradient, atIndex: 0)
+        //**********
+        
         println("ViewController viewWillAppear() started")
         
         //Figuring out if a real quizList (i.e. one with a list > 1 word) already exists
