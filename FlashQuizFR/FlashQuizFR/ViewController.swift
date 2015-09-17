@@ -12,9 +12,8 @@ import CoreData
 class ViewController: UIViewController {
     //**********
     var gradient = CAGradientLayer()
-//    var bottomColor = UIColor(red: 248.0/255.0, green: 244.0/255/0, blue: 120.0/255.0, alpha: 1.0).CGColor as CGColorRef
-    var bottomColor = UIColor(red: 215.0/255.0, green: 226.0/255/0, blue: 235.0/255.0, alpha: 1.0).CGColor as CGColorRef
-    var topColor = UIColor(red: 229.0/255.0, green: 241.0/255/0, blue: 250.0/255.0, alpha: 1.0).CGColor as CGColorRef
+    var bottomColor = UIColor(red: 244.0/255.0, green: 244.0/255.0, blue: 219.0/255.0, alpha: 1.0).CGColor as CGColorRef
+    var topColor = UIColor(red: 251.0/255.0, green: 251.0/255.0, blue: 242.0/255.0, alpha: 0.5).CGColor as CGColorRef
     @IBOutlet var mainView: UIView!
     //**********
     
@@ -73,8 +72,8 @@ class ViewController: UIViewController {
         
         //**********
         self.gradient.frame = self.mainView.bounds
-        self.gradient.colors = [UIColor.whiteColor().CGColor,self.topColor, self.bottomColor]
-        self.gradient.locations = [0.0, 0.75, 1.0]
+        self.gradient.colors = [self.topColor, self.bottomColor]
+        self.gradient.locations = [0.5, 0.9]
 //        self.mainView.layer.insertSublayer(self.gradient, atIndex: 0)
         //**********
         

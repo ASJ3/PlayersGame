@@ -9,6 +9,12 @@
 import UIKit
 
 class CongratulationsVC: UIViewController {
+    var gradient = CAGradientLayer()
+    //    var bottomColor = UIColor(red: 248.0/255.0, green: 244.0/255/0, blue: 120.0/255.0, alpha: 1.0).CGColor as CGColorRef
+    var bottomColor = UIColor(red: 244.0/255.0, green: 244.0/255.0, blue: 219.0/255.0, alpha: 1.0).CGColor as CGColorRef
+    //       var bottomColor = UIColor(red: 215.0/255.0, green: 226.0/255/0, blue: 235.0/255.0, alpha: 1.0).CGColor as CGColorRef
+    var topColor = UIColor(red: 251.0/255.0, green: 251.0/255.0, blue: 242.0/255.0, alpha: 0.5).CGColor as CGColorRef
+    
     var quizLength = Int()
     var rightAnswers = Int()
     var pepTalkList = [". Don’t be discouraged! Keep practicing and you’ll get better at it.", "! Keep practicing and you’ll increase your score!", "! You’re halfway there!", "! You’re getting close to perfection!", "! Awesome!!"]
@@ -26,6 +32,12 @@ class CongratulationsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         println("CongratsVC: viewDidLoad() points: \(self.rightAnswers) length: \(self.quizLength)")
+        
+        self.gradient.frame = self.mainView.bounds
+        //UIColor.whiteColor().CGColor
+        self.gradient.colors = [self.topColor, self.bottomColor]
+        self.gradient.locations = [0.5, 0.9]
+        self.mainView.layer.insertSublayer(self.gradient, atIndex: 0)
         
         switch self.rightAnswers {
         case 0...4:

@@ -369,6 +369,11 @@
                                     <constraint firstAttribute="centerX" secondItem="nZd-8v-8Vg" secondAttribute="centerX" id="Gdl-k6-c4Y"/>
                                     <constraint firstAttribute="height" constant="76" id="Rfm-od-Dss"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
