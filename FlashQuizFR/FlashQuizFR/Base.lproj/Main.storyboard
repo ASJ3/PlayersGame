@@ -548,19 +548,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Results" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UTs-Kq-4L8">
-                                <rect key="frame" x="272" y="82" width="57" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="5pj-OT-d9w">
+                                <rect key="frame" x="0.0" y="0.0" width="608" height="580"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="wordCell" textLabel="Igx-vg-Rfi" detailTextLabel="Ec2-ox-3rV" style="IBUITableViewCellStyleSubtitle" id="yuB-rT-Jnh">
+                                        <rect key="frame" x="0.0" y="0.0" width="608" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yuB-rT-Jnh" id="ekg-NP-xld">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Igx-vg-Rfi">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ec2-ox-3rV">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="49o-TE-hv8" id="MtC-CD-eVI"/>
+                                    <outlet property="delegate" destination="49o-TE-hv8" id="Dkm-5w-B8e"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="UTs-Kq-4L8" firstAttribute="top" secondItem="D1T-zk-UWX" secondAttribute="bottom" constant="18" id="Z9U-Zd-uWW"/>
-                            <constraint firstAttribute="centerX" secondItem="UTs-Kq-4L8" secondAttribute="centerX" constant="-0.5" id="tqz-rP-TUd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5pj-OT-d9w" secondAttribute="trailing" constant="-24" id="NoV-3w-vgk"/>
+                            <constraint firstItem="5pj-OT-d9w" firstAttribute="leading" secondItem="Vwj-0e-n6Q" secondAttribute="leadingMargin" constant="-16" id="e9J-aQ-ouH"/>
+                            <constraint firstItem="5pj-OT-d9w" firstAttribute="top" secondItem="D1T-zk-UWX" secondAttribute="bottom" constant="-64" id="fpe-Th-x9H"/>
+                            <constraint firstItem="86v-ak-9OD" firstAttribute="top" secondItem="5pj-OT-d9w" secondAttribute="bottom" constant="20" id="gte-W3-DcD"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="5pj-OT-d9w" id="cTe-nB-aAd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LUV-Xr-cNh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -734,6 +764,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="07l-pR-mGi"/>
+        <segue reference="bMH-20-Xah"/>
     </inferredMetricsTieBreakers>
 </document>
