@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7800EF8F1BA2C8B500A78F99 /* CongratulationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7800EF8E1BA2C8B500A78F99 /* CongratulationsVC.swift */; };
+		782B9BC31BABB32F00D1F5A0 /* ResultsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782B9BC21BABB32E00D1F5A0 /* ResultsVC.swift */; };
 		782CC6441B76DA7100FB7AD7 /* QuizListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782CC6431B76DA7100FB7AD7 /* QuizListVC.swift */; };
 		783CC0831B7050B7001569DD /* LanguageSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783CC0821B7050B7001569DD /* LanguageSelectionVC.swift */; };
 		7851F89B1B5AF12F0042557C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7851F89A1B5AF12F0042557C /* AppDelegate.swift */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		7800EF8E1BA2C8B500A78F99 /* CongratulationsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CongratulationsVC.swift; sourceTree = "<group>"; };
+		782B9BC21BABB32E00D1F5A0 /* ResultsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsVC.swift; sourceTree = "<group>"; };
 		782CC6431B76DA7100FB7AD7 /* QuizListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizListVC.swift; sourceTree = "<group>"; };
 		783CC0821B7050B7001569DD /* LanguageSelectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LanguageSelectionVC.swift; path = ../LanguageSelectionVC.swift; sourceTree = "<group>"; };
 		7851F8951B5AF12F0042557C /* FlashQuizFR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashQuizFR.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,6 +117,7 @@
 				7800EF8E1BA2C8B500A78F99 /* CongratulationsVC.swift */,
 				788C15F41B92A17700B0E81F /* QuizStruct.swift */,
 				7851F8A11B5AF12F0042557C /* Main.storyboard */,
+				782B9BC21BABB32E00D1F5A0 /* ResultsVC.swift */,
 				7851F8A41B5AF12F0042557C /* Images.xcassets */,
 				7851F8A61B5AF12F0042557C /* LaunchScreen.xib */,
 				7851F89C1B5AF12F0042557C /* FlashQuizFR.xcdatamodeld */,
@@ -269,6 +272,7 @@
 				7800EF8F1BA2C8B500A78F99 /* CongratulationsVC.swift in Sources */,
 				788C15F51B92A17700B0E81F /* QuizStruct.swift in Sources */,
 				7851F8A01B5AF12F0042557C /* ViewController.swift in Sources */,
+				782B9BC31BABB32F00D1F5A0 /* ResultsVC.swift in Sources */,
 				7851F89B1B5AF12F0042557C /* AppDelegate.swift in Sources */,
 				7851F89E1B5AF12F0042557C /* FlashQuizFR.xcdatamodeld in Sources */,
 				782CC6441B76DA7100FB7AD7 /* QuizListVC.swift in Sources */,

@@ -14,7 +14,7 @@ protocol QuizVCDelegate {
     func closeOwnVC()
 }
 
-class QuizVC: UIViewController {
+class QuizVC: UIViewController, CongratsVCDelegate {
     @IBOutlet weak var wordLabel: UILabel!
     @IBOutlet weak var wordsDisplayed: UILabel!
     @IBOutlet weak var correctAnswers: UILabel!
@@ -362,11 +362,24 @@ class QuizVC: UIViewController {
         congratsScreen.quizLength = self.wordsShown + 1
         congratsScreen.rightAnswers = self.rightAnswers
         
-        //        QuizScreen.delegate = self
-                self.presentViewController(congratsScreen, animated: true, completion: nil)
+        congratsScreen.delegate = self
+        self.presentViewController(congratsScreen, animated: true, completion: nil)
 //        self.navigationController?.pushViewController(QuizScreen, animated: true)
     }
     
+    func goToResults() {
+        println("QuizVC: goToResults()")
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+        let resultsScreen = storyboard.instantiateViewControllerWithIdentifier("Results") as! ResultsVC
+//        congratsScreen.quizLength = self.wordsShown + 1
+//        congratsScreen.rightAnswers = self.rightAnswers
+        
+//        congratsScreen.delegate = self
+//        self.presentViewController(resultsScreen, animated: true, completion: nil)
+        self.navigationController?.pushViewController(resultsScreen, animated: true)
+        
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

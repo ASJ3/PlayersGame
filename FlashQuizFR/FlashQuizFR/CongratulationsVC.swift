@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol CongratsVCDelegate {
+    func goToResults()
+}
+
 class CongratulationsVC: UIViewController {
     var gradient = CAGradientLayer()
     //    var bottomColor = UIColor(red: 248.0/255.0, green: 244.0/255/0, blue: 120.0/255.0, alpha: 1.0).CGColor as CGColorRef
@@ -17,12 +21,15 @@ class CongratulationsVC: UIViewController {
     
     var quizLength = Int()
     var rightAnswers = Int()
-    var pepTalkList = [". Don’t be discouraged! Keep practicing and you’ll get better at it.", "! Keep practicing and you’ll increase your score!", "! You’re halfway there!", "! You’re getting close to perfection!", "! Awesome!!"]
+    var pepTalkList = [". Don’t give up! Keep practicing and you’ll get better at it.", "! Keep practicing and you’ll increase your score!", "! You’re halfway there!", "! You’re getting close to perfection!", "! Awesome!!"]
     var pepTalkIntro = "You've correctly answered "
     var pepTalkEnding = ""
     
+    var delegate:CongratsVCDelegate? = nil
+    
     @IBOutlet var mainView: UIView!
     @IBAction func dismissView(sender: AnyObject) {
+        self.delegate?.goToResults()
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     @IBOutlet weak var bannerText: UILabel!
@@ -33,8 +40,14 @@ class CongratulationsVC: UIViewController {
         super.viewDidLoad()
         println("CongratsVC: viewDidLoad() points: \(self.rightAnswers) length: \(self.quizLength)")
         
+        //Working on line spacing and font attributes in textBox
+        var style = NSMutableParagraphStyle()
+        style.lineSpacing = 18
+        style.alignment = .Center
+        let font = UIFont(name: self.textBox.font.fontName, size: 18.0) ?? UIFont.systemFontOfSize(18.0)
+        let attributes = [NSParagraphStyleAttributeName : style, NSFontAttributeName:font]
+        
         self.gradient.frame = self.mainView.bounds
-        //UIColor.whiteColor().CGColor
         self.gradient.colors = [self.topColor, self.bottomColor]
         self.gradient.locations = [0.5, 0.9]
         self.mainView.layer.insertSublayer(self.gradient, atIndex: 0)
@@ -57,7 +70,9 @@ class CongratulationsVC: UIViewController {
         
         var textIntro = self.pepTalkIntro + String(self.rightAnswers) + " out of " + String(self.quizLength) + " words"
         
-        self.textBox.text = textIntro + self.pepTalkEnding
+        var finalText = textIntro + self.pepTalkEnding
+        
+        self.textBox.attributedText = NSAttributedString(string: finalText, attributes: attributes)
     }
 
     override func didReceiveMemoryWarning() {

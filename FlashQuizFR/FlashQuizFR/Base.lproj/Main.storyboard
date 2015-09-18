@@ -320,6 +320,7 @@
                         <outlet property="scoreView" destination="eDW-ck-pQV" id="CzX-Bg-Xnf"/>
                         <outlet property="wordLabel" destination="gxF-vO-QGX" id="MOp-VM-E5z"/>
                         <outlet property="wordsDisplayed" destination="kGo-vu-kLH" id="u84-Rp-MkU"/>
+                        <segue destination="49o-TE-hv8" kind="show" identifier="ShowResults" id="5wW-eo-lwN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FG4-34-t3q" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -347,7 +348,7 @@
                                     <action selector="dismissView:" destination="dcy-j7-Qhx" eventType="touchUpInside" id="Kkr-Xm-DFu"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="You have answered correctly 10 out 20 words! Keep going!!" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hpy-pf-SL2">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="You have answered correctly 10 out 20 words! Keep going!! Practice makes perfect..." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hpy-pf-SL2">
                                 <rect key="frame" x="16" y="224" width="568" height="338"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -534,6 +535,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KQ4-m6-DhZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2049" y="1185"/>
+        </scene>
+        <!--ResultsVC-->
+        <scene sceneID="Hev-Sv-ax2">
+            <objects>
+                <viewController storyboardIdentifier="Results" id="49o-TE-hv8" customClass="ResultsVC" customModule="FlashQuizFR" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="D1T-zk-UWX"/>
+                        <viewControllerLayoutGuide type="bottom" id="86v-ak-9OD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Vwj-0e-n6Q">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Results" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UTs-Kq-4L8">
+                                <rect key="frame" x="272" y="82" width="57" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="UTs-Kq-4L8" firstAttribute="top" secondItem="D1T-zk-UWX" secondAttribute="bottom" constant="18" id="Z9U-Zd-uWW"/>
+                            <constraint firstAttribute="centerX" secondItem="UTs-Kq-4L8" secondAttribute="centerX" constant="-0.5" id="tqz-rP-TUd"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LUV-Xr-cNh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2049" y="1889"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
