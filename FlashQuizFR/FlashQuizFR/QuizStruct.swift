@@ -13,7 +13,7 @@ struct QuizStruct {
     var wordFirst: String
     var translation: String
     var translationFirst: String
-    var gender: String
+    var details: String
     var category: String
     var shownAlready: Bool
     var answeredRight: Bool

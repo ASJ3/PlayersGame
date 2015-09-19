@@ -21,12 +21,14 @@ class ViewController: UIViewController {
 //    @IBOutlet weak var status: UILabel!
     @IBOutlet weak var continueQuizButton: UIButton!
     var wordListArray = NSMutableArray()
-    var wordFromList = ["word":String(),  "wordFirst":String(), "translation":String(), "translationFirst":String(), "gender":String(), "category":String()]
+    var wordFromList = ["word":String(),  "wordFirst":String(), "translation":String(), "translationFirst":String(), "details":String(), "category":String()]
     
     var words = [NSManagedObject]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        title = "Main Menu"
         
         //TRIAL: figuring out which lists of words have been purchased/loaded to CoreData from wordListStatus plist
         var ListStatusPath = NSBundle.mainBundle().pathForResource("wordListStatus", ofType: "plist")
@@ -51,10 +53,10 @@ class ViewController: UIViewController {
                 wordFromList["wordFirst"] = word["wordFirst"] as? String
                 wordFromList["translation"] = word["translation"] as? String
                 wordFromList["translationFirst"] = word["translationFirst"] as? String
-                wordFromList["gender"] = word["gender"] as? String
+                wordFromList["details"] = word["details"] as? String
                 wordFromList["category"] = word["category"] as? String
                 
-                self.saveName(wordFromList["word"]!, wordFirst: wordFromList["wordFirst"]!, translation: wordFromList["translation"]!, translationFirst: wordFromList["translationFirst"]!, gender: wordFromList["gender"]!, category: wordFromList["category"]!, timesCorrect: 0, timesQuizzed: 0)
+                self.saveName(wordFromList["word"]!, wordFirst: wordFromList["wordFirst"]!, translation: wordFromList["translation"]!, translationFirst: wordFromList["translationFirst"]!, details: wordFromList["details"]!, category: wordFromList["category"]!, timesCorrect: 0, timesQuizzed: 0)
             }
             
             //Change the "loaded" status to true for the word list in wordListStatus plist
@@ -97,7 +99,7 @@ class ViewController: UIViewController {
             error: &error) as! [NSManagedObject]
         if fetchedResults.count <= 1 {
             println("ViewController viewDidLoad() no QuizEntry core data table")
-            self.initializeQuizList("EmptyWord", wordFirst: "EmptyLetter", translation: "EmptyWord", translationFirst: "EmptyLetter", gender: "EmptyWord", category: "EmptyCategory", answeredRight: false, shownAlready: false)
+            self.initializeQuizList("EmptyWord", wordFirst: "EmptyLetter", translation: "EmptyWord", translationFirst: "EmptyLetter", details: "EmptyWord", category: "EmptyCategory", answeredRight: false, shownAlready: false)
             self.continueQuizButton.hidden = true
         } else {
             self.continueQuizButton.hidden = false
@@ -106,7 +108,7 @@ class ViewController: UIViewController {
         println("ViewController viewWillAppear() number of words in QuizList is \(fetchedResults.count)")
     }
     
-    func saveName(word: String, wordFirst: String, translation: String, translationFirst: String, gender: String, category: String, timesCorrect: Int, timesQuizzed: Int) {
+    func saveName(word: String, wordFirst: String, translation: String, translationFirst: String, details: String, category: String, timesCorrect: Int, timesQuizzed: Int) {
         //1
         let appDelegate =
         UIApplication.sharedApplication().delegate as! AppDelegate
@@ -126,7 +128,7 @@ class ViewController: UIViewController {
         wordUnit.setValue(translation, forKey: "translation")
         wordUnit.setValue(wordFirst, forKey: "wordFirst")
         wordUnit.setValue(translationFirst, forKey: "translationFirst")
-        wordUnit.setValue(gender, forKey: "gender")
+        wordUnit.setValue(details, forKey: "details")
         wordUnit.setValue(category, forKey: "category")
         wordUnit.setValue(timesCorrect, forKey: "timesCorrect")
         wordUnit.setValue(timesQuizzed, forKey: "timesQuizzed")
@@ -142,7 +144,7 @@ class ViewController: UIViewController {
     
     
     //This function is to create an initial quiz list of 1 entry, which is "blank" and not a real word
-    func initializeQuizList(word: String, wordFirst: String, translation: String, translationFirst: String, gender: String, category: String, answeredRight: Bool, shownAlready: Bool) {
+    func initializeQuizList(word: String, wordFirst: String, translation: String, translationFirst: String, details: String, category: String, answeredRight: Bool, shownAlready: Bool) {
         //1
         let appDelegate =
         UIApplication.sharedApplication().delegate as! AppDelegate
@@ -162,7 +164,7 @@ class ViewController: UIViewController {
         wordUnit.setValue(translation, forKey: "translation")
         wordUnit.setValue(wordFirst, forKey: "wordFirst")
         wordUnit.setValue(translationFirst, forKey: "translationFirst")
-        wordUnit.setValue(gender, forKey: "gender")
+        wordUnit.setValue(details, forKey: "details")
         wordUnit.setValue(category, forKey: "category")
         wordUnit.setValue(answeredRight, forKey: "answeredRight")
         wordUnit.setValue(shownAlready, forKey: "shownAlready")

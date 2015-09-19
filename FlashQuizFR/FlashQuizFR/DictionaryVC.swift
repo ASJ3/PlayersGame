@@ -71,7 +71,7 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         let cell = tableView.dequeueReusableCellWithIdentifier("wordCell") as! UITableViewCell
         let person: AnyObject! = self.sortedNativeWordList[indexPath.section][indexPath.row]
         
-        var wordGender = person.valueForKey("gender") as! String
+        var wordGender = person.valueForKey("details") as! String
         var colorOfCell = cellColorPicker(wordGender)
         
         cell.backgroundColor = colorOfCell
@@ -145,7 +145,7 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                 wordFromList["wordFirst"] = word.valueForKey(self.titleFirst) as? String
                 wordFromList["translation"] = word.valueForKey(self.subtitleSource) as? String
                 wordFromList["translationFirst"] = word.valueForKey(self.subtitleFirst) as? String
-                wordFromList["gender"] = word.valueForKey("gender") as? String
+                wordFromList["details"] = word.valueForKey("details") as? String
                 wordFromList["category"] = word.valueForKey("category") as? String
 
                 //Append "word" to the array in the corresponding dictionary in nativeWordlist

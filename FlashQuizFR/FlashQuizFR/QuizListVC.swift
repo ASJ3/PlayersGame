@@ -51,11 +51,11 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             var nativeFirst = self.wordList[i].valueForKey("wordFirst") as? String
             var translatedWord = self.wordList[i].valueForKey("translation") as? String
             var translatedFirst = self.wordList[i].valueForKey("translationFirst") as? String
-            var translatedGender = self.wordList[i].valueForKey("gender") as? String
+            var translatedGender = self.wordList[i].valueForKey("details") as? String
             var wordCategory = self.wordList[i].valueForKey("category") as? String
 
 
-            addQuizWord(nativeWord!, wordFirst: nativeFirst!, translation: translatedWord!, translationFirst: translatedFirst!, gender: translatedGender!, category: wordCategory!, answeredRight: false, shownAlready: false)
+            addQuizWord(nativeWord!, wordFirst: nativeFirst!, translation: translatedWord!, translationFirst: translatedFirst!, details: translatedGender!, category: wordCategory!, answeredRight: false, shownAlready: false)
 //            println("ShowQuiz() Added \(nativeWord!) (\(translatedWord!))")
         }
         
@@ -303,7 +303,7 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     //This function is to create an initial quiz list of 1 entry, which is "blank" and not a real word
-    func addQuizWord(word: String, wordFirst: String, translation: String, translationFirst: String, gender: String, category: String, answeredRight: Bool, shownAlready: Bool) {
+    func addQuizWord(word: String, wordFirst: String, translation: String, translationFirst: String, details: String, category: String, answeredRight: Bool, shownAlready: Bool) {
         //1
         let appDelegate =
         UIApplication.sharedApplication().delegate as! AppDelegate
@@ -323,7 +323,7 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         wordUnit.setValue(translation, forKey: "translation")
         wordUnit.setValue(wordFirst, forKey: "wordFirst")
         wordUnit.setValue(translationFirst, forKey: "translationFirst")
-        wordUnit.setValue(gender, forKey: "gender")
+        wordUnit.setValue(details, forKey: "details")
         wordUnit.setValue(category, forKey: "category")
         wordUnit.setValue(answeredRight, forKey: "answeredRight")
         wordUnit.setValue(shownAlready, forKey: "shownAlready")

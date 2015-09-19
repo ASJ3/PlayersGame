@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class ResultsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    var quizWordUnit = QuizStruct(word: String(), wordFirst: String(), translation: String(), translationFirst: String(), gender: String(), category: String(), shownAlready: Bool(), answeredRight: Bool())
+    var quizWordUnit = QuizStruct(word: String(), wordFirst: String(), translation: String(), translationFirst: String(), details: String(), category: String(), shownAlready: Bool(), answeredRight: Bool())
     var quizWordList = [QuizStruct]()
     var goBackMenuButton = UIBarButtonItem()
 
@@ -40,7 +40,7 @@ class ResultsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 self.quizWordUnit.wordFirst = word.valueForKey("wordFirst") as! String
                 self.quizWordUnit.translation = word.valueForKey("translation") as! String
                 self.quizWordUnit.translationFirst = word.valueForKey("translationFirst") as! String
-                self.quizWordUnit.gender = word.valueForKey("gender") as! String
+                self.quizWordUnit.details = word.valueForKey("details") as! String
                 self.quizWordUnit.category = word.valueForKey("category") as! String
                 self.quizWordUnit.answeredRight = word.valueForKey("answeredRight") as! Bool
                 self.quizWordUnit.shownAlready = word.valueForKey("shownAlready") as! Bool
