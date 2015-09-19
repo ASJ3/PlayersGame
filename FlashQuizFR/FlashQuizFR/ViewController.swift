@@ -24,6 +24,7 @@ class ViewController: UIViewController {
     var wordFromList = ["word":String(),  "wordFirst":String(), "translation":String(), "translationFirst":String(), "details":String(), "category":String()]
     
     var words = [NSManagedObject]()
+    var countsInQuizList = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,7 +98,9 @@ class ViewController: UIViewController {
         let fetchedResults =
         managedContext.executeFetchRequest(fetchRequest,
             error: &error) as! [NSManagedObject]
-        if fetchedResults.count <= 1 {
+        self.countsInQuizList = fetchedResults.count
+        
+        if self.countsInQuizList <= 5 {
             println("ViewController viewDidLoad() no QuizEntry core data table")
             self.initializeQuizList("EmptyWord", wordFirst: "EmptyLetter", translation: "EmptyWord", translationFirst: "EmptyLetter", details: "EmptyWord", category: "EmptyCategory", answeredRight: false, shownAlready: false)
             self.continueQuizButton.hidden = true
@@ -145,37 +148,40 @@ class ViewController: UIViewController {
     
     //This function is to create an initial quiz list of 1 entry, which is "blank" and not a real word
     func initializeQuizList(word: String, wordFirst: String, translation: String, translationFirst: String, details: String, category: String, answeredRight: Bool, shownAlready: Bool) {
-        //1
-        let appDelegate =
-        UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        let managedContext = appDelegate.managedObjectContext!
-        
-        //2
-        let entity =  NSEntityDescription.entityForName("QuizEntry",
-            inManagedObjectContext:
-            managedContext)
-        
-        let wordUnit = NSManagedObject(entity: entity!,
-            insertIntoManagedObjectContext:managedContext)
-        
-        //3
-        wordUnit.setValue(word, forKey: "word")
-        wordUnit.setValue(translation, forKey: "translation")
-        wordUnit.setValue(wordFirst, forKey: "wordFirst")
-        wordUnit.setValue(translationFirst, forKey: "translationFirst")
-        wordUnit.setValue(details, forKey: "details")
-        wordUnit.setValue(category, forKey: "category")
-        wordUnit.setValue(answeredRight, forKey: "answeredRight")
-        wordUnit.setValue(shownAlready, forKey: "shownAlready")
-        
-        //4
-        var error: NSError?
-        if !managedContext.save(&error) {
-            println("Could not save \(error), \(error?.userInfo)")
+        if self.countsInQuizList <= 2 {
+            println("***VC: adding one to quizEntry")
+            //1
+            let appDelegate =
+            UIApplication.sharedApplication().delegate as! AppDelegate
+            
+            let managedContext = appDelegate.managedObjectContext!
+            
+            //2
+            let entity =  NSEntityDescription.entityForName("QuizEntry",
+                inManagedObjectContext:
+                managedContext)
+            
+            let wordUnit = NSManagedObject(entity: entity!,
+                insertIntoManagedObjectContext:managedContext)
+            
+            //3
+            wordUnit.setValue(word, forKey: "word")
+            wordUnit.setValue(translation, forKey: "translation")
+            wordUnit.setValue(wordFirst, forKey: "wordFirst")
+            wordUnit.setValue(translationFirst, forKey: "translationFirst")
+            wordUnit.setValue(details, forKey: "details")
+            wordUnit.setValue(category, forKey: "category")
+            wordUnit.setValue(answeredRight, forKey: "answeredRight")
+            wordUnit.setValue(shownAlready, forKey: "shownAlready")
+            
+            //4
+            var error: NSError?
+            if !managedContext.save(&error) {
+                println("Could not save \(error), \(error?.userInfo)")
+            }
+            //5
+            words.append(wordUnit)
         }
-        //5
-        words.append(wordUnit)
     }
 
     override func didReceiveMemoryWarning() {

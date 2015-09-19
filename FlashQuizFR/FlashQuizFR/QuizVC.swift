@@ -182,9 +182,23 @@ class QuizVC: UIViewController, CongratsVCDelegate {
         //        title = "List Selection"
         
         self.navigationItem.hidesBackButton = true
+        
+        //Create a back arrow on the nav bar
+        var arrowbutton = UIButton.buttonWithType(.System)  as! UIButton
+        var image = UIImage(named: "back_arrow.png")?.imageWithRenderingMode(.AlwaysTemplate)
+        arrowbutton.setImage(image, forState: .Normal)
+        //        custombutton.sizeToFit()
+        arrowbutton.frame.size = CGSizeMake(10, 20)
+        arrowbutton.frame.size = CGSizeMake(6, 21)
+        var imageInsets = UIEdgeInsetsMake(0.0, -7.0, 0.0, 0.0)
+        arrowbutton.imageEdgeInsets = imageInsets
+        arrowbutton.addTarget(self, action: "goBackToMainMenu", forControlEvents:.TouchUpInside)
+        var arrowBarButtonItem = UIBarButtonItem(customView: arrowbutton)
+        
+        
         self.goBackMenuButton = UIBarButtonItem(title: "Main Menu", style: .Plain , target: self, action: "goBackToMainMenu")
         self.goBackMenuButton.enabled = true
-        self.navigationItem.setLeftBarButtonItem(goBackMenuButton, animated: true)
+        self.navigationItem.setLeftBarButtonItems([arrowBarButtonItem, self.goBackMenuButton], animated: true)
     }
     
     func goBackToMainMenu() {

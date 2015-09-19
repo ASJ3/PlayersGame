@@ -26,6 +26,7 @@
 		787DDC621B607FF9002FBB0A /* wordListStatus.plist in Resources */ = {isa = PBXBuildFile; fileRef = 787DDC611B607FF9002FBB0A /* wordListStatus.plist */; };
 		788C15F51B92A17700B0E81F /* QuizStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788C15F41B92A17700B0E81F /* QuizStruct.swift */; };
 		78ABAE901B6DABA80005799C /* DictListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ABAE8F1B6DABA80005799C /* DictListVC.swift */; };
+		78AEA86F1BADAE4C005699BD /* back_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 78AEA86E1BADAE4C005699BD /* back_arrow.png */; };
 		78D4CA281B5DD8BE0087841D /* dictionaryCount.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78D4CA271B5DD8BE0087841D /* dictionaryCount.plist */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		787DDC611B607FF9002FBB0A /* wordListStatus.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = wordListStatus.plist; path = ../wordListStatus.plist; sourceTree = "<group>"; };
 		788C15F41B92A17700B0E81F /* QuizStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizStruct.swift; sourceTree = "<group>"; };
 		78ABAE8F1B6DABA80005799C /* DictListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictListVC.swift; sourceTree = "<group>"; };
+		78AEA86E1BADAE4C005699BD /* back_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_arrow.png; sourceTree = "<group>"; };
 		78D4CA271B5DD8BE0087841D /* dictionaryCount.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = dictionaryCount.plist; path = ../dictionaryCount.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,6 +120,7 @@
 				788C15F41B92A17700B0E81F /* QuizStruct.swift */,
 				782B9BC21BABB32E00D1F5A0 /* ResultsVC.swift */,
 				7851F8A11B5AF12F0042557C /* Main.storyboard */,
+				78AEA86E1BADAE4C005699BD /* back_arrow.png */,
 				7851F8A41B5AF12F0042557C /* Images.xcassets */,
 				7851F8A61B5AF12F0042557C /* LaunchScreen.xib */,
 				7851F89C1B5AF12F0042557C /* FlashQuizFR.xcdatamodeld */,
@@ -245,6 +248,7 @@
 				787DDC621B607FF9002FBB0A /* wordListStatus.plist in Resources */,
 				7851F8C61B5B45310042557C /* wordDictionary.plist in Resources */,
 				7851F8A31B5AF12F0042557C /* Main.storyboard in Resources */,
+				78AEA86F1BADAE4C005699BD /* back_arrow.png in Resources */,
 				7851F8A81B5AF12F0042557C /* LaunchScreen.xib in Resources */,
 				7859B56A1B7FFFA400605EF7 /* quizListStatus.plist in Resources */,
 				7851F8A51B5AF12F0042557C /* Images.xcassets in Resources */,
