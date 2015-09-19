@@ -17,8 +17,8 @@ class ViewController: UIViewController {
     @IBOutlet var mainView: UIView!
     //**********
     
-    @IBOutlet weak var beforeLabel: UILabel!
-    @IBOutlet weak var status: UILabel!
+//    @IBOutlet weak var beforeLabel: UILabel!
+//    @IBOutlet weak var status: UILabel!
     @IBOutlet weak var continueQuizButton: UIButton!
     var wordListArray = NSMutableArray()
     var wordFromList = ["word":String(),  "wordFirst":String(), "translation":String(), "translationFirst":String(), "gender":String(), "category":String()]
@@ -37,7 +37,7 @@ class ViewController: UIViewController {
         //If the field value is false, then we need to use wordDictionary plist
         //and upload the words from that list to CoreData
         if ListStatusArray[0].valueForKey("loaded") as? Bool == false {
-            self.beforeLabel.text = "list not yet loaded onto CoreData"
+//            self.beforeLabel.text = "list not yet loaded onto CoreData"
             
             //Loading all words and their translation from the wordDictionary plist
             var wordListPath = NSBundle.mainBundle().pathForResource("wordDictionary", ofType: "plist")
@@ -60,10 +60,10 @@ class ViewController: UIViewController {
             //Change the "loaded" status to true for the word list in wordListStatus plist
             ListStatusArray[0].setValue(true, forKey: "loaded")
             ListStatusArray.writeToFile(ListStatusPath!, atomically: true)
-            self.status.text = "list now loaded onto CoreData"
+//            self.status.text = "list now loaded onto CoreData"
             
         } else {
-            self.beforeLabel.text = "list now loaded onto CoreData"
+//            self.beforeLabel.text = "list now loaded onto CoreData"
         }
     }
     

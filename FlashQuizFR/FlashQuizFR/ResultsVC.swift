@@ -59,6 +59,8 @@ class ResultsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.goBackMenuButton = UIBarButtonItem(title: "Main Menu", style: .Plain , target: self, action: "goBackToMainMenu")
         self.goBackMenuButton.enabled = true
         self.navigationItem.setLeftBarButtonItem(goBackMenuButton, animated: true)
+        
+        emptyQuizList()
     }
     
     func goBackToMainMenu() {
@@ -105,8 +107,37 @@ class ResultsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return colorToReturn
     }
     
-    
-    
+    //Now that the results of the quiz are shown, the QuizEntry Core Data attribute needs to be emptied using emtyQuizList()
+    //This way, the "continue quiz" button will disappear from ViewController
+    func emptyQuizList() {
+        //1
+        let appDelegate =
+        UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext!
+        
+        //2
+        let fetchRequest = NSFetchRequest(entityName:"QuizEntry")
+        
+        //3
+        var error: NSError?
+        
+        let fetchedResults =
+        managedContext.executeFetchRequest(fetchRequest,
+            error: &error) as! [NSManagedObject]
+        
+        for entity in fetchedResults {
+            managedContext.deleteObject(entity)
+        }
+        managedContext.save(nil)
+        
+        let fetchedResultsAfterDeletion =
+        managedContext.executeFetchRequest(fetchRequest,
+            error: &error) as! [NSManagedObject]
+        
+        println("ResultsVC: emptyQuizList() now number of words in fetchedResults is \(fetchedResultsAfterDeletion.count)")
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
