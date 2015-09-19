@@ -14,6 +14,7 @@
 		78AEA8551BAD552F005699BD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78AEA8531BAD552F005699BD /* LaunchScreen.xib */; };
 		78AEA8611BAD5530005699BD /* navBarTrialTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AEA8601BAD5530005699BD /* navBarTrialTests.swift */; };
 		78AEA86B1BAD5574005699BD /* SecondVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AEA86A1BAD5574005699BD /* SecondVC.swift */; };
+		78AEA86D1BAD5689005699BD /* back_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 78AEA86C1BAD5689005699BD /* back_arrow.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		78AEA85F1BAD5530005699BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		78AEA8601BAD5530005699BD /* navBarTrialTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navBarTrialTests.swift; sourceTree = "<group>"; };
 		78AEA86A1BAD5574005699BD /* SecondVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondVC.swift; sourceTree = "<group>"; };
+		78AEA86C1BAD5689005699BD /* back_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_arrow.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				78AEA84A1BAD552F005699BD /* AppDelegate.swift */,
 				78AEA84C1BAD552F005699BD /* ViewController.swift */,
 				78AEA84E1BAD552F005699BD /* Main.storyboard */,
+				78AEA86C1BAD5689005699BD /* back_arrow.png */,
 				78AEA86A1BAD5574005699BD /* SecondVC.swift */,
 				78AEA8511BAD552F005699BD /* Images.xcassets */,
 				78AEA8531BAD552F005699BD /* LaunchScreen.xib */,
@@ -195,6 +198,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78AEA86D1BAD5689005699BD /* back_arrow.png in Resources */,
 				78AEA8501BAD552F005699BD /* Main.storyboard in Resources */,
 				78AEA8551BAD552F005699BD /* LaunchScreen.xib in Resources */,
 				78AEA8521BAD552F005699BD /* Images.xcassets in Resources */,
