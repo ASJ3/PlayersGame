@@ -12,6 +12,7 @@ import CoreData
 class ResultsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var quizWordUnit = QuizStruct(word: String(), wordFirst: String(), translation: String(), translationFirst: String(), gender: String(), category: String(), shownAlready: Bool(), answeredRight: Bool())
     var quizWordList = [QuizStruct]()
+    var goBackMenuButton = UIBarButtonItem()
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -45,49 +46,25 @@ class ResultsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 self.quizWordUnit.shownAlready = word.valueForKey("shownAlready") as! Bool
                 
                 self.quizWordList.append(quizWordUnit)
-                
-                //Increase the values of wordShown and rightAnswers, based on what's store in QuizEntry CoreData entity
-//                if self.quizWordUnit.shownAlready == true {
-//                    self.wordsShown += 1
-//                }
-//                if self.quizWordUnit.answeredRight == true {
-//                    self.rightAnswers += 1
-//                }
             }
-            
             println("ResultsVC: viewDidLoad() quizWordList is \(self.quizWordList.count)")
-            
-            
-            //Calling displayQuestion() using wordsShown ensures the latest unanswered word is shown any time the view appears
-            //However if we've reached the end of the array of questions (i.e. wordsShown = array count)
-            //then using wordShown means that displayQuestion() is looking for an index value that is greater than what's in the array
-            //of questions. If this is the case, we need to show wordsShown - 1 instead.
-            //We also need to disable the answer buttons otherwise the app will crash
-//            if self.wordsShown == self.quizWordList.count {
-//                println("QuizVC: viewWillAppear() showing last word only")
-//                displayQuestion(wordsShown - 1)
-//                self.answerButtonPushed = true
-//            } else {
-//                displayQuestion(wordsShown)
-//            }
             
         } else {
             println("Could not fetch \(error), \(error!.userInfo)")
         }
         
+        title = "Results"
         
-        //Since we're showing a new question, the "Next" button needs to be hidden until an answer has been provided
-//        self.nextButton.hidden = true
-        
-        //If we're showing the last word in the array of questions AND it has already been answered
-        //then
-        //        if self.wordsShown == self.quizWordList.count {
-        //
-        //            println("QuizVC: viewWillAppear() showing last word only")
-        //        }
-        
+        self.navigationItem.hidesBackButton = true
+        self.goBackMenuButton = UIBarButtonItem(title: "Main Menu", style: .Plain , target: self, action: "goBackToMainMenu")
+        self.goBackMenuButton.enabled = true
+        self.navigationItem.setLeftBarButtonItem(goBackMenuButton, animated: true)
     }
     
+    func goBackToMainMenu() {
+        self.navigationController?.popToRootViewControllerAnimated(true)
+    }
+
     
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -101,13 +78,31 @@ class ResultsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("wordCell") as! UITableViewCell
         
-//        var categoryName = self.quizWordList[indexPath.row]["category"] as! String
+        var wordAnswer = self.quizWordList[indexPath.row].answeredRight
+        var colorOfCell = cellColorPicker(wordAnswer)
+        
+        cell.backgroundColor = colorOfCell
         
         cell.textLabel!.text = self.quizWordList[indexPath.row].word
         cell.detailTextLabel?.text = self.quizWordList[indexPath.row].translation
         
         return cell
+    }
+    
+    
+    //cellColorPicker() indicate what background color a given cell in the table should have
+    //based on whether the word was answered right in the quiz
+    func cellColorPicker(answeredRight: Bool) -> UIColor {
+        var colorToReturn = UIColor()
         
+        if answeredRight == false {
+            colorToReturn = UIColor(red: 248.0/255.0, green: 208.0/255.0, blue: 205.0/255.0, alpha: 1.0)
+        } else if answeredRight == true {
+            colorToReturn = UIColor(red: 219.0/255.0, green: 248.0/255.0, blue: 199.0/255.0, alpha: 1.0)
+        } else {
+            colorToReturn = UIColor.clearColor()
+        }
+        return colorToReturn
     }
     
     
