@@ -21,7 +21,8 @@ class ViewController: UIViewController {
 //    @IBOutlet weak var status: UILabel!
     @IBOutlet weak var continueQuizButton: UIButton!
     var wordListArray = NSMutableArray()
-    var wordFromList = ["word":String(),  "wordFirst":String(), "translation":String(), "translationFirst":String(), "details":String(), "category":String()]
+    var wordFromList = WordStruct(identifierNumber: String(), group: String(), subgroup: String(), word: String(), wordFirst: String(), translation: String(), translationFirst: String(), details: String(), category: String())
+//        var wordFromList = ["word":String(),  "wordFirst":String(), "translation":String(), "translationFirst":String(), "details":String(), "category":String()]
     
     var words = [NSManagedObject]()
     var countsInQuizList = 0
@@ -46,18 +47,30 @@ class ViewController: UIViewController {
             var wordListPath = NSBundle.mainBundle().pathForResource("wordDictionary", ofType: "plist")
             wordListArray = NSMutableArray(contentsOfFile: wordListPath!)!
             
-            println("ViewVC: count of words in wordListArray is \(wordListArray.count)")
+            println("ViewVC: count of words in wordListArray is \(wordListArray.count) and first word is \(wordListArray[0])")
             
             for word in wordListArray {
                 
-                wordFromList["word"] = word["word"] as? String
-                wordFromList["wordFirst"] = word["wordFirst"] as? String
-                wordFromList["translation"] = word["translation"] as? String
-                wordFromList["translationFirst"] = word["translationFirst"] as? String
-                wordFromList["details"] = word["details"] as? String
-                wordFromList["category"] = word["category"] as? String
+                wordFromList.identifierNumber = word["identifierNum"] as! String
+                wordFromList.group = word["group"] as! String
+                wordFromList.subgroup = word["subgroup"] as! String
+                wordFromList.word = word["word"] as! String
+                wordFromList.wordFirst = word["wordFirst"] as! String
+                wordFromList.translation = word["translation"] as! String
+                wordFromList.translationFirst = word["translationFirst"] as! String
+                wordFromList.details = word["details"] as! String
+                wordFromList.category = word["category"] as! String
                 
-                self.saveName(wordFromList["word"]!, wordFirst: wordFromList["wordFirst"]!, translation: wordFromList["translation"]!, translationFirst: wordFromList["translationFirst"]!, details: wordFromList["details"]!, category: wordFromList["category"]!, timesCorrect: 0, timesQuizzed: 0)
+                if wordFromList.word == "train station" {
+                    println("ViewController just before saveName(): identifierNumber: \(wordFromList.identifierNumber), group: \(wordFromList.group), subgroup: \(wordFromList.subgroup), word: \(wordFromList.word), translation: \(wordFromList.translation)")
+                }
+                
+                if wordFromList.word == "scarf" {
+                    println("ViewController just before saveName(): identifierNumber: \(wordFromList.identifierNumber), group: \(wordFromList.group), subgroup: \(wordFromList.subgroup), word: \(wordFromList.word), translation: \(wordFromList.translation)")
+                }
+                
+                
+                self.saveName(wordFromList.identifierNumber, group: wordFromList.group, subgroup: wordFromList.subgroup, word: wordFromList.word, wordFirst: wordFromList.wordFirst, translation: wordFromList.translation, translationFirst: wordFromList.translationFirst, details: wordFromList.details, category: wordFromList.category, timesCorrect: 0, timesQuizzed: 0)
             }
             
             //Change the "loaded" status to true for the word list in wordListStatus plist
@@ -111,7 +124,8 @@ class ViewController: UIViewController {
         println("ViewController viewWillAppear() number of words in QuizList is \(fetchedResults.count)")
     }
     
-    func saveName(word: String, wordFirst: String, translation: String, translationFirst: String, details: String, category: String, timesCorrect: Int, timesQuizzed: Int) {
+    func saveName(identifierNumber: String, group: String, subgroup: String, word: String, wordFirst: String, translation: String, translationFirst: String, details: String, category: String, timesCorrect: Int, timesQuizzed: Int) {
+        println("ViewController: beginning of saveName()")
         //1
         let appDelegate =
         UIApplication.sharedApplication().delegate as! AppDelegate
@@ -127,6 +141,9 @@ class ViewController: UIViewController {
             insertIntoManagedObjectContext:managedContext)
         
         //3
+        wordUnit.setValue(word, forKey: "identifierNumber")
+        wordUnit.setValue(word, forKey: "group")
+        wordUnit.setValue(word, forKey: "subgroup")
         wordUnit.setValue(word, forKey: "word")
         wordUnit.setValue(translation, forKey: "translation")
         wordUnit.setValue(wordFirst, forKey: "wordFirst")

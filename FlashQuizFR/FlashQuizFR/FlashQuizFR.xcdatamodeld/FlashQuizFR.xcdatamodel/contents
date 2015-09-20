@@ -13,6 +13,9 @@
     <entity name="WordEntry" syncable="YES">
         <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="details" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="group" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="identifierNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subgroup" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timesCorrect" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="timesQuizzed" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="translation" optional="YES" attributeType="String" syncable="YES"/>
@@ -22,6 +25,6 @@
     </entity>
     <elements>
         <element name="QuizEntry" positionX="-63" positionY="45" width="128" height="165"/>
-        <element name="WordEntry" positionX="-63" positionY="-18" width="128" height="165"/>
+        <element name="WordEntry" positionX="-63" positionY="-18" width="128" height="210"/>
     </elements>
 </model>

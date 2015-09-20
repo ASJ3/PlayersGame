@@ -27,6 +27,7 @@
 		788C15F51B92A17700B0E81F /* QuizStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788C15F41B92A17700B0E81F /* QuizStruct.swift */; };
 		78ABAE901B6DABA80005799C /* DictListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ABAE8F1B6DABA80005799C /* DictListVC.swift */; };
 		78AEA86F1BADAE4C005699BD /* back_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 78AEA86E1BADAE4C005699BD /* back_arrow.png */; };
+		78AEA8711BAE4EA8005699BD /* WordStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AEA8701BAE4EA8005699BD /* WordStruct.swift */; };
 		78D4CA281B5DD8BE0087841D /* dictionaryCount.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78D4CA271B5DD8BE0087841D /* dictionaryCount.plist */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,7 @@
 		788C15F41B92A17700B0E81F /* QuizStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizStruct.swift; sourceTree = "<group>"; };
 		78ABAE8F1B6DABA80005799C /* DictListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictListVC.swift; sourceTree = "<group>"; };
 		78AEA86E1BADAE4C005699BD /* back_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_arrow.png; sourceTree = "<group>"; };
+		78AEA8701BAE4EA8005699BD /* WordStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordStruct.swift; sourceTree = "<group>"; };
 		78D4CA271B5DD8BE0087841D /* dictionaryCount.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = dictionaryCount.plist; path = ../dictionaryCount.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,6 +120,7 @@
 				7872F0031B7BF092001D1701 /* QuizVC.swift */,
 				7800EF8E1BA2C8B500A78F99 /* CongratulationsVC.swift */,
 				788C15F41B92A17700B0E81F /* QuizStruct.swift */,
+				78AEA8701BAE4EA8005699BD /* WordStruct.swift */,
 				782B9BC21BABB32E00D1F5A0 /* ResultsVC.swift */,
 				7851F8A11B5AF12F0042557C /* Main.storyboard */,
 				78AEA86E1BADAE4C005699BD /* back_arrow.png */,
@@ -277,6 +280,7 @@
 				788C15F51B92A17700B0E81F /* QuizStruct.swift in Sources */,
 				7851F8A01B5AF12F0042557C /* ViewController.swift in Sources */,
 				782B9BC31BABB32F00D1F5A0 /* ResultsVC.swift in Sources */,
+				78AEA8711BAE4EA8005699BD /* WordStruct.swift in Sources */,
 				7851F89B1B5AF12F0042557C /* AppDelegate.swift in Sources */,
 				7851F89E1B5AF12F0042557C /* FlashQuizFR.xcdatamodeld in Sources */,
 				782CC6441B76DA7100FB7AD7 /* QuizListVC.swift in Sources */,
