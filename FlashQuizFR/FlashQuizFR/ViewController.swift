@@ -125,7 +125,6 @@ class ViewController: UIViewController {
     }
     
     func saveName(identifierNumber: String, group: String, subgroup: String, word: String, wordFirst: String, translation: String, translationFirst: String, details: String, category: String, timesCorrect: Int, timesQuizzed: Int) {
-        println("ViewController: beginning of saveName()")
         //1
         let appDelegate =
         UIApplication.sharedApplication().delegate as! AppDelegate
