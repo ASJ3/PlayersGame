@@ -27,6 +27,7 @@ class QuizVC: UIViewController, CongratsVCDelegate {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var scoreView: UIView!
     
+    var staticScore = 20
     var quizWordUnit = QuizStruct(word: String(), wordFirst: String(), translation: String(), translationFirst: String(), details: String(), category: String(), shownAlready: Bool(), answeredRight: Bool())
     var quizWordList = [QuizStruct]()
     var currentQuestion = QuizStruct(word: String(), wordFirst: String(), translation: String(), translationFirst: String(), details: String(), category: String(), shownAlready: Bool(), answeredRight: Bool())
@@ -123,7 +124,8 @@ class QuizVC: UIViewController, CongratsVCDelegate {
             }
             self.quizWordList[self.wordsShown].shownAlready = true
             var score = self.wordsShown + 1
-            self.wordsDisplayed.text = String(score)
+//            self.wordsDisplayed.text = String(score)
+            self.wordsDisplayed.text = String(staticScore)
             println("checkAnswer() for \(self.quizWordList[self.wordsShown].word) answeredRight is:\(self.quizWordList[self.wordsShown].answeredRight) and shownAlready is:\(self.quizWordList[self.wordsShown].shownAlready)")
             saveAnswer(self.quizWordList[self.wordsShown])
             
@@ -296,7 +298,9 @@ class QuizVC: UIViewController, CongratsVCDelegate {
         }
         
         self.currentQuestion.shownAlready = true
-        self.wordsDisplayed.text = String(self.wordsShown)
+//        self.wordsDisplayed.text = String(self.wordsShown)
+        self.wordsDisplayed.text = String(self.staticScore)
+
         self.correctAnswers.text = String(self.rightAnswers)
         
         updateAnswerButtons()

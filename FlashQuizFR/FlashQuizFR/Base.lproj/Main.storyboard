@@ -83,8 +83,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C3S-re-2FL">
                                 <rect key="frame" x="42" y="72" width="516" height="198"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QuizVC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxF-vO-QGX">
-                                        <rect key="frame" x="0.0" y="82" width="516" height="35"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QuizVC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="gxF-vO-QGX">
+                                        <rect key="frame" x="8" y="82" width="500" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="rUo-ql-LcD"/>
                                         </constraints>
@@ -156,9 +156,9 @@
                                 <color key="backgroundColor" white="0.97999999999999998" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="eDW-ck-pQV" secondAttribute="width" id="0Yh-7x-0Q7"/>
-                                    <constraint firstItem="gxF-vO-QGX" firstAttribute="leading" secondItem="C3S-re-2FL" secondAttribute="leading" id="2x6-R9-All"/>
+                                    <constraint firstItem="gxF-vO-QGX" firstAttribute="leading" secondItem="C3S-re-2FL" secondAttribute="leading" constant="8" id="2x6-R9-All"/>
                                     <constraint firstItem="gxF-vO-QGX" firstAttribute="leading" secondItem="C3S-re-2FL" secondAttribute="leading" constant="-18" id="QJC-fu-m5U"/>
-                                    <constraint firstAttribute="trailing" secondItem="gxF-vO-QGX" secondAttribute="trailing" id="Y32-L9-xOd"/>
+                                    <constraint firstAttribute="trailing" secondItem="gxF-vO-QGX" secondAttribute="trailing" constant="8" id="Y32-L9-xOd"/>
                                     <constraint firstItem="eDW-ck-pQV" firstAttribute="top" secondItem="C3S-re-2FL" secondAttribute="top" constant="4" id="cf9-YW-8vt"/>
                                     <constraint firstAttribute="trailing" secondItem="gxF-vO-QGX" secondAttribute="trailing" constant="-18" id="hWM-7J-D4M"/>
                                     <constraint firstAttribute="centerY" secondItem="gxF-vO-QGX" secondAttribute="centerY" id="o8P-H0-mMi"/>
@@ -619,28 +619,55 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="saW-u4-jXC">
-                                <rect key="frame" x="266" y="221" width="69" height="30"/>
+                                <rect key="frame" x="200" y="225" width="200" height="30"/>
+                                <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="PoU-0O-QgR"/>
+                                </constraints>
                                 <state key="normal" title="Dictionary">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="O4j-ST-YWk" kind="show" id="X20-SW-ht6"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NWb-IK-T8T">
-                                <rect key="frame" x="267" y="270" width="66" height="30"/>
+                                <rect key="frame" x="200" y="285" width="200" height="30"/>
+                                <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="UiX-zQ-kev"/>
+                                </constraints>
                                 <state key="normal" title="New Quiz">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="bNL-W6-2z2" kind="show" id="XvU-Wf-0TT"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0d3-BW-nEo">
-                                <rect key="frame" x="252" y="326" width="97" height="30"/>
+                                <rect key="frame" x="200" y="345" width="200" height="30"/>
+                                <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="D2C-NP-TTL"/>
+                                </constraints>
                                 <state key="normal" title="Continue Quiz">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="DQa-Xk-tGg" kind="show" id="07l-pR-mGi"/>
                                 </connections>
@@ -648,10 +675,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="NWb-IK-T8T" firstAttribute="top" secondItem="saW-u4-jXC" secondAttribute="bottom" constant="19" id="83u-am-1GV"/>
-                            <constraint firstItem="saW-u4-jXC" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="157" id="JiJ-gN-ger"/>
+                            <constraint firstItem="NWb-IK-T8T" firstAttribute="top" secondItem="saW-u4-jXC" secondAttribute="bottom" constant="30" id="83u-am-1GV"/>
+                            <constraint firstAttribute="centerY" secondItem="NWb-IK-T8T" secondAttribute="centerY" id="UJf-Rz-fsn"/>
                             <constraint firstAttribute="centerX" secondItem="NWb-IK-T8T" secondAttribute="centerX" id="aKt-US-weQ"/>
-                            <constraint firstItem="0d3-BW-nEo" firstAttribute="top" secondItem="NWb-IK-T8T" secondAttribute="bottom" constant="26" id="bl6-h4-h5L"/>
+                            <constraint firstItem="0d3-BW-nEo" firstAttribute="top" secondItem="NWb-IK-T8T" secondAttribute="bottom" constant="30" id="bl6-h4-h5L"/>
                             <constraint firstAttribute="centerX" secondItem="saW-u4-jXC" secondAttribute="centerX" constant="-0.5" id="n1o-CF-Atd"/>
                             <constraint firstAttribute="centerX" secondItem="0d3-BW-nEo" secondAttribute="centerX" constant="-0.5" id="sLT-em-LD6"/>
                         </constraints>

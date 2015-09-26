@@ -30,7 +30,7 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "List Selection"
+        title = "Select One or More"
         
         self.quizStartButton = UIBarButtonItem(title: "Start", style: .Plain, target: self, action:"showQuiz:")
         self.quizStartButton.enabled = false
