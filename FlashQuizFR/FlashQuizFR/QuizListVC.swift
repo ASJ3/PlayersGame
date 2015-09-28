@@ -258,7 +258,7 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             numberArray.append(i)
         }
         
-        for i in 0..<numberArray.count {
+        for _ in 0..<numberArray.count {
             firstNumToSwap = randRange(0, upper: maxNum-1)
             secondNumToSwap = randRange(0, upper: maxNum-1)
             
@@ -303,7 +303,7 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let fetchRequest = NSFetchRequest(entityName:"QuizEntry")
         
         //3
-        var error: NSError?
+//        var error: NSError?
         
         let fetchedResults =
         (try! managedContext.executeFetchRequest(fetchRequest)) as! [NSManagedObject]
