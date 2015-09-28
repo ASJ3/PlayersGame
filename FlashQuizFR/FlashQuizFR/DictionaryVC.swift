@@ -57,7 +57,7 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     //2: Indicate the title of each section (i.e. the letter by which each word in section begins)
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        var sectionLetterHeader = self.sortedNativeWordList[section][0].objectForKey("wordFirst") as? String
+        let sectionLetterHeader = self.sortedNativeWordList[section][0].objectForKey("wordFirst") as? String
         return sectionLetterHeader?.uppercaseString
     }
     
@@ -68,11 +68,11 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     //4: Indicate the values for the title/subtitle of each cell in the table
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("wordCell") as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("wordCell")!
         let person: AnyObject! = self.sortedNativeWordList[indexPath.section][indexPath.row]
         
-        var wordGender = person.valueForKey("details") as! String
-        var colorOfCell = cellColorPicker(wordGender)
+        let wordGender = person.valueForKey("details") as! String
+        let colorOfCell = cellColorPicker(wordGender)
         
         cell.backgroundColor = colorOfCell
         cell.textLabel!.text = person.valueForKey("word") as? String
@@ -127,50 +127,55 @@ class DictionaryVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         fetchRequest.predicate = predicate
         
         //3
-        var error: NSError?
+        let error: NSError?
         
-        let fetchedResults =
-        managedContext.executeFetchRequest(fetchRequest,
-            error: &error) as? [NSManagedObject]
-        
-        if let results = fetchedResults {
-            words = results
+        do {
+            let fetchedResults = try managedContext.executeFetchRequest(fetchRequest) as? [NSManagedObject]
             
-            for word in words {
-                //Finding the number of times each letter appears as first letter in the native language. This is to help us create the lettered sections in the table
-                var nativeFirstLetter = word.valueForKey(self.titleFirst) as! String
-                self.nativeFirstArray.append(nativeFirstLetter)
+            if let results = fetchedResults {
+                words = results
                 
-                wordFromList["word"] = word.valueForKey(self.titleSource) as? String
-                wordFromList["wordFirst"] = word.valueForKey(self.titleFirst) as? String
-                wordFromList["translation"] = word.valueForKey(self.subtitleSource) as? String
-                wordFromList["translationFirst"] = word.valueForKey(self.subtitleFirst) as? String
-                wordFromList["details"] = word.valueForKey("details") as? String
-                wordFromList["category"] = word.valueForKey("category") as? String
-
-                //Append "word" to the array in the corresponding dictionary in nativeWordlist
-                if self.nativeWordList[nativeFirstLetter] == nil {
-                    self.nativeWordList[nativeFirstLetter] = [wordFromList]
-                } else {
-                    self.nativeWordList[nativeFirstLetter]!.append(wordFromList)
+                for word in words {
+                    //Finding the number of times each letter appears as first letter in the native language. This is to help us create the lettered sections in the table
+                    let nativeFirstLetter = word.valueForKey(self.titleFirst) as! String
+                    self.nativeFirstArray.append(nativeFirstLetter)
+                    
+                    wordFromList["word"] = word.valueForKey(self.titleSource) as? String
+                    wordFromList["wordFirst"] = word.valueForKey(self.titleFirst) as? String
+                    wordFromList["translation"] = word.valueForKey(self.subtitleSource) as? String
+                    wordFromList["translationFirst"] = word.valueForKey(self.subtitleFirst) as? String
+                    wordFromList["details"] = word.valueForKey("details") as? String
+                    wordFromList["category"] = word.valueForKey("category") as? String
+                    
+                    //Append "word" to the array in the corresponding dictionary in nativeWordlist
+                    if self.nativeWordList[nativeFirstLetter] == nil {
+                        self.nativeWordList[nativeFirstLetter] = [wordFromList]
+                    } else {
+                        self.nativeWordList[nativeFirstLetter]!.append(wordFromList)
+                    }
                 }
                 
+                //Create a sorted array listing each unique letter
+                uniqueNativeFirstArray = Array(Set(self.nativeFirstArray))
+                uniqueNativeFirstArray.sortInPlace(){$0 <  $1}
+                print("DictionaryVC: uniqueNativeFirstArray is : \(uniqueNativeFirstArray)")
+                
+                for i in uniqueNativeFirstArray {
+                    let wordArrayForLetter = self.nativeWordList[i]
+                    self.sortedNativeWordList.append(wordArrayForLetter!)
+                }
             }
             
-            //Create a sorted array listing each unique letter
-            uniqueNativeFirstArray = Array(Set(self.nativeFirstArray))
-            uniqueNativeFirstArray.sort(){$0 <  $1}
-            println("DictionaryVC: uniqueNativeFirstArray is : \(uniqueNativeFirstArray)")
-            
-            for i in uniqueNativeFirstArray {
-                var wordArrayForLetter = self.nativeWordList[i]
-                self.sortedNativeWordList.append(wordArrayForLetter!)
-            }
-            
-            
-        } else {
-            println("Could not fetch \(error), \(error!.userInfo)")
+        } catch let error1 as NSError {
+            error = error1
+            print("saveAnswer() could not save \(error)")
         }
+        
+        
+        
+//        else {
+//            print("Could not fetch \(error), \(error!.userInfo)")
+//        }
     }
     
     override func didReceiveMemoryWarning() {

@@ -39,7 +39,7 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func showQuiz(Sender: AnyObject) {
-        println("QuizListVC: ShowQuiz(): calling createQuizList() then emptyQuizList()")
+        print("QuizListVC: ShowQuiz(): calling createQuizList() then emptyQuizList()")
         
         createQuizList()
         emptyQuizList()
@@ -47,12 +47,12 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         //Now that the QuizEntry Core Data entity is empty, we're going to add to it the 50 words randomly selected
         for i in self.finalNumberArray {
             
-            var nativeWord = self.wordList[i].valueForKey("word") as? String
-            var nativeFirst = self.wordList[i].valueForKey("wordFirst") as? String
-            var translatedWord = self.wordList[i].valueForKey("translation") as? String
-            var translatedFirst = self.wordList[i].valueForKey("translationFirst") as? String
-            var translatedGender = self.wordList[i].valueForKey("details") as? String
-            var wordCategory = self.wordList[i].valueForKey("category") as? String
+            let nativeWord = self.wordList[i].valueForKey("word") as? String
+            let nativeFirst = self.wordList[i].valueForKey("wordFirst") as? String
+            let translatedWord = self.wordList[i].valueForKey("translation") as? String
+            let translatedFirst = self.wordList[i].valueForKey("translationFirst") as? String
+            let translatedGender = self.wordList[i].valueForKey("details") as? String
+            let wordCategory = self.wordList[i].valueForKey("category") as? String
 
 
             addQuizWord(nativeWord!, wordFirst: nativeFirst!, translation: translatedWord!, translationFirst: translatedFirst!, details: translatedGender!, category: wordCategory!, answeredRight: false, shownAlready: false)
@@ -86,9 +86,9 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("wordCell") as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("wordCell")!
         
-        var categoryName = self.stringResultsArray[indexPath.row]["category"] as! String
+        let categoryName = self.stringResultsArray[indexPath.row]["category"] as! String
         
         cell.textLabel!.text = categoryName
         cell.detailTextLabel?.text = self.stringResultsArray[indexPath.row]["wordCount"] as! String + " words"
@@ -101,7 +101,7 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         let mySelectedCell: UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
-        var textOfCell = mySelectedCell.textLabel!.text
+        let textOfCell = mySelectedCell.textLabel!.text
         
         if mySelectedCell.accessoryType == UITableViewCellAccessoryType.Checkmark {
             mySelectedCell.accessoryType = UITableViewCellAccessoryType.None
@@ -118,7 +118,7 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             self.quizStartButton.enabled = false
         }
         
-        println("QuizListVC: the list of selected words now has \(self.selectedLists.count) selections")
+        print("QuizListVC: the list of selected words now has \(self.selectedLists.count) selections")
         
     }
     
@@ -161,8 +161,8 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         //3
         var error: NSError?
         
-        if let results = managedContext.executeFetchRequest(fetchRequest,
-            error: &error) {
+        do {
+            let results = try managedContext.executeFetchRequest(fetchRequest)
                 words = results
                 
                 for i in 0...results.count-1 {
@@ -176,12 +176,13 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     self.stringResultsArray.append(categoryFromList)
                 }
                 
-                println("QuizListVC: stringsResultArray now has \(self.stringResultsArray.count) categories")
+                print("QuizListVC: stringsResultArray now has \(self.stringResultsArray.count) categories")
 //                println("QuizListVC: stringsResultArray's first category is \(self.stringResultsArray[0])")
                 
                 
-        } else {
-            println("Could not fetch \(error), \(error!.userInfo)")
+        } catch let error1 as NSError {
+            error = error1
+            print("Could not fetch \(error), \(error!.userInfo)")
             
         }
     }
@@ -205,9 +206,10 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         //create an array "filter" which stores the name of the categories selected for the quiz
         var filter = [String]()
         for (key, value) in self.selectedLists {
+            print(key)
             filter.append(value)
         }
-        println("QuizListVC: createQuizList() filter is \(filter)")
+        print("QuizListVC: createQuizList() filter is \(filter)")
         
         //Use the categories in the "filter" array to only return the words of the categories selected 
         //in the QuizListVC table
@@ -215,24 +217,32 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         fetchRequest.predicate = predicate
         
         //3
-        var error: NSError?
+        let error: NSError?
         
-        let fetchedResults =
-        managedContext.executeFetchRequest(fetchRequest,
-            error: &error) as? [NSManagedObject]
-        
-        if let results = fetchedResults {
-            //Storing in wordList all the words from the categories we chose to be quizzed on
-            self.wordList = results
+        do {
+            let fetchedResults = try managedContext.executeFetchRequest(fetchRequest) as? [NSManagedObject]
             
-            println("QuizListVC: createQuizList() the number of fetched words is \(self.wordList.count)")
-
-            self.finalNumberArray = randomArray(self.wordList.count)
-            println("QuizListVC: createQuizList() finalNumberArray has \(finalNumberArray.count) words whose values are \(finalNumberArray)")
+            if let results = fetchedResults {
+                //Storing in wordList all the words from the categories we chose to be quizzed on
+                self.wordList = results
+                
+                print("QuizListVC: createQuizList() the number of fetched words is \(self.wordList.count)")
+                
+                self.finalNumberArray = randomArray(self.wordList.count)
+                print("QuizListVC: createQuizList() finalNumberArray has \(finalNumberArray.count) words whose values are \(finalNumberArray)")
+                
+            }
             
-        } else {
-            println("Could not fetch \(error), \(error!.userInfo)")
+        } catch let error1 as NSError {
+            error = error1
+            print("Could not fetch \(error), \(error!.userInfo)")
+            
         }
+        
+
+//        else {
+//            print("Could not fetch \(error), \(error!.userInfo)")
+//        }
         
         
     }
@@ -252,7 +262,19 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             firstNumToSwap = randRange(0, upper: maxNum-1)
             secondNumToSwap = randRange(0, upper: maxNum-1)
             
-//            println("QuizListVC: The random numbers are \(firstNumToSwap) and \(secondNumToSwap)")
+            //If firstNumToSwap and secondNumToSwap are the same random number, we get an error in swap() below
+            //because we cannot swap a location with itself.
+            //So in that case we change secondNumToSwap
+            if secondNumToSwap  == firstNumToSwap {
+                if secondNumToSwap == 0 {
+                    secondNumToSwap += 1
+                } else {
+                    secondNumToSwap -= 1
+                }
+            }
+            
+            
+            print("QuizListVC: The random numbers are \(firstNumToSwap) and \(secondNumToSwap)")
             
             swap(&numberArray[firstNumToSwap], &numberArray[secondNumToSwap])
         }
@@ -284,20 +306,21 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         var error: NSError?
         
         let fetchedResults =
-        managedContext.executeFetchRequest(fetchRequest,
-            error: &error) as! [NSManagedObject]
-        println("emptyQuizList() number of words in QuizList is \(fetchedResults.count)")
+        (try! managedContext.executeFetchRequest(fetchRequest)) as! [NSManagedObject]
+        print("emptyQuizList() number of words in QuizList is \(fetchedResults.count)")
         
         for entity in fetchedResults {
             managedContext.deleteObject(entity)
         }
-        managedContext.save(nil)
+        do {
+            try managedContext.save()
+        } catch _ {
+        }
         
         let fetchedResultsAfterDeletion =
-        managedContext.executeFetchRequest(fetchRequest,
-            error: &error) as! [NSManagedObject]
+        (try! managedContext.executeFetchRequest(fetchRequest)) as! [NSManagedObject]
         
-        println("emptyQuizList() now number of words in fetchedResults2 is \(fetchedResultsAfterDeletion.count)")
+        print("emptyQuizList() now number of words in fetchedResults2 is \(fetchedResultsAfterDeletion.count)")
 
     }
     
@@ -330,8 +353,11 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         //4
         var error: NSError?
-        if !managedContext.save(&error) {
-            println("Could not save \(error), \(error?.userInfo)")
+        do {
+            try managedContext.save()
+        } catch let error1 as NSError {
+            error = error1
+            print("Could not save \(error), \(error?.userInfo)")
         }
         //5
 //        words.append(wordUnit)

@@ -50,7 +50,7 @@ class QuizVC: UIViewController, CongratsVCDelegate {
     
     @IBAction func showNext(sender: UIButton) {
 
-        var buttonList = [self.answerButton01, self.answerButton02, self.answerButton03, self.answerButton04, self.answerButton05]
+        let buttonList = [self.answerButton01, self.answerButton02, self.answerButton03, self.answerButton04, self.answerButton05]
         
         self.wordsShown += 1
         displayQuestion(wordsShown)
@@ -94,7 +94,7 @@ class QuizVC: UIViewController, CongratsVCDelegate {
                 }
             }
             
-            println("AnswerChosenOtherLanguage is \(AnswerChosenOtherLanguage)")
+            print("AnswerChosenOtherLanguage is \(AnswerChosenOtherLanguage)")
             //if the button with the correct translation was chosen do the following
             if AnswerChosenOtherLanguage == self.wordLabel.text! {
                 self.rightAnswers += 1
@@ -123,10 +123,11 @@ class QuizVC: UIViewController, CongratsVCDelegate {
                 }
             }
             self.quizWordList[self.wordsShown].shownAlready = true
-            var score = self.wordsShown + 1
+            let score = self.wordsShown + 1
+            print(score)
 //            self.wordsDisplayed.text = String(score)
             self.wordsDisplayed.text = String(staticScore)
-            println("checkAnswer() for \(self.quizWordList[self.wordsShown].word) answeredRight is:\(self.quizWordList[self.wordsShown].answeredRight) and shownAlready is:\(self.quizWordList[self.wordsShown].shownAlready)")
+            print("checkAnswer() for \(self.quizWordList[self.wordsShown].word) answeredRight is:\(self.quizWordList[self.wordsShown].answeredRight) and shownAlready is:\(self.quizWordList[self.wordsShown].shownAlready)")
             saveAnswer(self.quizWordList[self.wordsShown])
             
             //When we've reached the last word of quizWordList, the "Next" button can not appear when the user choses an answer
@@ -154,27 +155,57 @@ class QuizVC: UIViewController, CongratsVCDelegate {
         //3
         var error: NSError?
         
-        var wordQuizzed = wordToSave.word as String
-        var shownStatus = wordToSave.shownAlready as Bool
-        var correctness = wordToSave.answeredRight as Bool
+        let wordQuizzed = wordToSave.word as String
+        let shownStatus = wordToSave.shownAlready as Bool
+        let correctness = wordToSave.answeredRight as Bool
         
-        println("QuizVC: saveAnswer() shownAlready for \(wordQuizzed) is \(shownStatus) and answeredRight is \(correctness) ")
+        print("QuizVC: saveAnswer() shownAlready for \(wordQuizzed) is \(shownStatus) and answeredRight is \(correctness) ")
         
         fetchRequest.predicate = NSPredicate(format: "word = %@", wordQuizzed)
         
-        if let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as? [NSManagedObject] {
-            if fetchedResults.count != 0 {
-                var managedObject = fetchedResults[0]
+        do {
+            let fetchedResults = try managedContext.executeFetchRequest(fetchRequest) as? [NSManagedObject]
+            if fetchedResults!.count != 0 {
+                print("QuizVC: saveAnswe() there are \(fetchedResults!.count) results")
+                let managedObject = fetchedResults![0]
                 managedObject.setValue(shownStatus, forKey: "shownAlready")
                 managedObject.setValue(correctness, forKey: "answeredRight")
                 
-                if managedContext.save(&error) {
-                    println("saveAnswer() \(wordQuizzed) is updated")
-                } else {
-                    println("saveAnswer() could not save \(error)")
+                do {
+                    try managedContext.save()
+                    print("saveAnswer() \(wordQuizzed) is updated")
+                } catch let error1 as NSError {
+                    error = error1
+                    print("saveAnswer() could not save \(error)")
                 }
+                
+//                if managedContext.save(&error) {
+//                    print("saveAnswer() \(wordQuizzed) is updated")
+//                } else {
+//                    print("saveAnswer() could not save \(error)")
+//                }
             }
+            
+        } catch let error1 as NSError {
+            error = error1
+            print("saveAnswer() could not save \(error)")
         }
+        
+//        if let fetchedResults = managedContext.executeFetchRequest(fetchRequest) as? [NSManagedObject] {
+//            if fetchedResults.count != 0 {
+//                let managedObject = fetchedResults[0]
+//                managedObject.setValue(shownStatus, forKey: "shownAlready")
+//                managedObject.setValue(correctness, forKey: "answeredRight")
+//                
+//                do {
+//                    try managedContext.save()
+//                    print("saveAnswer() \(wordQuizzed) is updated")
+//                } catch let error1 as NSError {
+//                    error = error1
+//                    print("saveAnswer() could not save \(error)")
+//                }
+//            }
+//        }
     }
 
     
@@ -186,16 +217,16 @@ class QuizVC: UIViewController, CongratsVCDelegate {
         self.navigationItem.hidesBackButton = true
         
         //Create a back arrow on the nav bar
-        var arrowbutton = UIButton.buttonWithType(.System)  as! UIButton
-        var image = UIImage(named: "back_arrow.png")?.imageWithRenderingMode(.AlwaysTemplate)
+        let arrowbutton = UIButton(type: .System)
+        let image = UIImage(named: "back_arrow.png")?.imageWithRenderingMode(.AlwaysTemplate)
         arrowbutton.setImage(image, forState: .Normal)
         //        custombutton.sizeToFit()
         arrowbutton.frame.size = CGSizeMake(10, 20)
         arrowbutton.frame.size = CGSizeMake(6, 21)
-        var imageInsets = UIEdgeInsetsMake(0.0, -7.0, 0.0, 0.0)
+        let imageInsets = UIEdgeInsetsMake(0.0, -7.0, 0.0, 0.0)
         arrowbutton.imageEdgeInsets = imageInsets
         arrowbutton.addTarget(self, action: "goBackToMainMenu", forControlEvents:.TouchUpInside)
-        var arrowBarButtonItem = UIBarButtonItem(customView: arrowbutton)
+        let arrowBarButtonItem = UIBarButtonItem(customView: arrowbutton)
         
         
         self.goBackMenuButton = UIBarButtonItem(title: "Main Menu", style: .Plain , target: self, action: "goBackToMainMenu")
@@ -220,52 +251,61 @@ class QuizVC: UIViewController, CongratsVCDelegate {
         let fetchRequest = NSFetchRequest(entityName:"QuizEntry")
         
         //3
-        var error: NSError?
+        let error: NSError?
         
-        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as? [NSManagedObject]
-        
-        if let results = fetchedResults {
+        do {
+            let fetchedResults = try managedContext.executeFetchRequest(fetchRequest) as? [NSManagedObject]
             
-            for word in results {
-                self.quizWordUnit.word = word.valueForKey("word") as! String
-                self.quizWordUnit.wordFirst = word.valueForKey("wordFirst") as! String
-                self.quizWordUnit.translation = word.valueForKey("translation") as! String
-                self.quizWordUnit.translationFirst = word.valueForKey("translationFirst") as! String
-                self.quizWordUnit.details = word.valueForKey("details") as! String
-                self.quizWordUnit.category = word.valueForKey("category") as! String
-                self.quizWordUnit.answeredRight = word.valueForKey("answeredRight") as! Bool
-                self.quizWordUnit.shownAlready = word.valueForKey("shownAlready") as! Bool
+            if let results = fetchedResults {
                 
-                self.quizWordList.append(quizWordUnit)
+                for word in results {
+                    self.quizWordUnit.word = word.valueForKey("word") as! String
+                    self.quizWordUnit.wordFirst = word.valueForKey("wordFirst") as! String
+                    self.quizWordUnit.translation = word.valueForKey("translation") as! String
+                    self.quizWordUnit.translationFirst = word.valueForKey("translationFirst") as! String
+                    self.quizWordUnit.details = word.valueForKey("details") as! String
+                    self.quizWordUnit.category = word.valueForKey("category") as! String
+                    self.quizWordUnit.answeredRight = word.valueForKey("answeredRight") as! Bool
+                    self.quizWordUnit.shownAlready = word.valueForKey("shownAlready") as! Bool
+                    
+                    self.quizWordList.append(quizWordUnit)
+                    
+                    //Increase the values of wordShown and rightAnswers, based on what's store in QuizEntry CoreData entity
+                    if self.quizWordUnit.shownAlready == true {
+                        self.wordsShown += 1
+                    }
+                    if self.quizWordUnit.answeredRight == true {
+                        self.rightAnswers += 1
+                    }
+                }
                 
-                //Increase the values of wordShown and rightAnswers, based on what's store in QuizEntry CoreData entity
-                if self.quizWordUnit.shownAlready == true {
-                    self.wordsShown += 1
+                print("QuizVC: viewWillAppear() wordsShown is \(self.wordsShown)")
+                
+                
+                //Calling displayQuestion() using wordsShown ensures the latest unanswered word is shown any time the view appears
+                //However if we've reached the end of the array of questions (i.e. wordsShown = array count)
+                //then using wordShown means that displayQuestion() is looking for an index value that is greater than what's in the array
+                //of questions. If this is the case, we need to show wordsShown - 1 instead.
+                //We also need to disable the answer buttons otherwise the app will crash
+                if self.wordsShown == self.quizWordList.count {
+                    print("QuizVC: viewWillAppear() showing last word only")
+                    displayQuestion(wordsShown - 1)
+                    self.answerButtonPushed = true
+                } else {
+                    displayQuestion(wordsShown)
                 }
-                if self.quizWordUnit.answeredRight == true {
-                    self.rightAnswers += 1
-                }
+                
             }
             
-            println("QuizVC: viewWillAppear() wordsShown is \(self.wordsShown)")
-            
-            
-            //Calling displayQuestion() using wordsShown ensures the latest unanswered word is shown any time the view appears
-            //However if we've reached the end of the array of questions (i.e. wordsShown = array count) 
-            //then using wordShown means that displayQuestion() is looking for an index value that is greater than what's in the array 
-            //of questions. If this is the case, we need to show wordsShown - 1 instead. 
-            //We also need to disable the answer buttons otherwise the app will crash
-            if self.wordsShown == self.quizWordList.count {
-                println("QuizVC: viewWillAppear() showing last word only")
-                displayQuestion(wordsShown - 1)
-                self.answerButtonPushed = true
-            } else {
-                displayQuestion(wordsShown)
-            }
-            
-        } else {
-            println("Could not fetch \(error), \(error!.userInfo)")
+        } catch let error1 as NSError {
+            error = error1
+            print("saveAnswer() could not save \(error)")
         }
+        
+
+//        else {
+//            print("Could not fetch \(error), \(error!.userInfo)")
+//        }
         
         
         //Since we're showing a new question, the "Next" button needs to be hidden until an answer has been provided
@@ -282,9 +322,9 @@ class QuizVC: UIViewController, CongratsVCDelegate {
     }
     
     func displayQuestion(wordPosition: Int) {
-        println("QuizVC: displayQuestion() called with wordPosition \(wordPosition) & quizWordList count is \(self.quizWordList.count)")
+        print("QuizVC: displayQuestion() called with wordPosition \(wordPosition) & quizWordList count is \(self.quizWordList.count)")
         self.currentQuestion = self.quizWordList[wordPosition]
-        var randomLanguage = randomNumberInRange(0, upper: 1)
+        let randomLanguage = randomNumberInRange(0, upper: 1)
         if randomLanguage == 0 {
             self.nativeLanguagePicked = false
         } else {
@@ -313,7 +353,7 @@ class QuizVC: UIViewController, CongratsVCDelegate {
         
         //Random index at which to put the index of the right answer
         //Note: that index is wordsShown, unless we've reached the end of the array of questions, in which case it will be wordsShown - 1
-        var rightAnswerPosition = randomNumberInRange(0, upper: 4)
+        let rightAnswerPosition = randomNumberInRange(0, upper: 4)
         var indexOfQuizWord = Int()
         
         if self.wordsShown == self.quizWordList.count {
@@ -328,7 +368,7 @@ class QuizVC: UIViewController, CongratsVCDelegate {
             self.multipleChoiceList.append(self.quizWordList[i])
         }
         
-        println("QuizVC: updateAnswerButtons() listOfWrongAnswers is: \(listOfWrongAnswers)")
+        print("QuizVC: updateAnswerButtons() listOfWrongAnswers is: \(listOfWrongAnswers)")
 //        println("updateAnswerButtons() multipleChoiceList is: \(multipleChoiceList.count)")
         
         var buttonList = [self.answerButton01, self.answerButton02, self.answerButton03, self.answerButton04, self.answerButton05]
@@ -336,12 +376,12 @@ class QuizVC: UIViewController, CongratsVCDelegate {
         //Assigns the words to each button
         if self.nativeLanguagePicked == true {
             for i in 0..<buttonList.count {
-                var textLabel = self.quizWordList[listOfWrongAnswers[i]].translation as String
+                let textLabel = self.quizWordList[listOfWrongAnswers[i]].translation as String
                 buttonList[i].setTitle(textLabel, forState: .Normal)
             }
         } else {
             for i in 0..<buttonList.count {
-                var textLabel = self.quizWordList[listOfWrongAnswers[i]].word as String
+                let textLabel = self.quizWordList[listOfWrongAnswers[i]].word as String
                 buttonList[i].setTitle(textLabel, forState: .Normal)
             }
         }
@@ -360,7 +400,8 @@ class QuizVC: UIViewController, CongratsVCDelegate {
         }
         
         for i in 1...4 {
-            var randomWrongAnswer = randomNumberInRange(0, upper: sourceList.count-1)
+            print("QuizVC: randomWrongAnswers() loop \(i)")
+            let randomWrongAnswer = randomNumberInRange(0, upper: sourceList.count-1)
             listToReturn.append(sourceList[randomWrongAnswer])
             sourceList.removeAtIndex(randomWrongAnswer)
         }
@@ -374,7 +415,7 @@ class QuizVC: UIViewController, CongratsVCDelegate {
     }
     
     func presentCongratulationsVC() {
-        println("QuizVC presentCongratulations() started")
+        print("QuizVC presentCongratulations() started")
         let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
         let congratsScreen = storyboard.instantiateViewControllerWithIdentifier("CongratsVC") as! CongratulationsVC
         congratsScreen.quizLength = self.wordsShown + 1
@@ -386,7 +427,7 @@ class QuizVC: UIViewController, CongratsVCDelegate {
     }
     
     func goToResults() {
-        println("QuizVC: goToResults()")
+        print("QuizVC: goToResults()")
         
         let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
         let resultsScreen = storyboard.instantiateViewControllerWithIdentifier("Results") as! ResultsVC

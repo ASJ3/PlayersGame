@@ -33,8 +33,8 @@ class ViewController: UIViewController {
 //        title = "Main Menu"
         
         //TRIAL: figuring out which lists of words have been purchased/loaded to CoreData from wordListStatus plist
-        var ListStatusPath = NSBundle.mainBundle().pathForResource("wordListStatus", ofType: "plist")
-        var ListStatusArray = NSMutableArray(contentsOfFile: ListStatusPath!)!
+        let ListStatusPath = NSBundle.mainBundle().pathForResource("wordListStatus", ofType: "plist")
+        let ListStatusArray = NSMutableArray(contentsOfFile: ListStatusPath!)!
         
         //If the "loaded" field of a list is true, then it means the words
         //in this list have been uploaded to CoreData.
@@ -44,10 +44,10 @@ class ViewController: UIViewController {
 //            self.beforeLabel.text = "list not yet loaded onto CoreData"
             
             //Loading all words and their translation from the wordDictionary plist
-            var wordListPath = NSBundle.mainBundle().pathForResource("wordDictionary", ofType: "plist")
+            let wordListPath = NSBundle.mainBundle().pathForResource("wordDictionary", ofType: "plist")
             wordListArray = NSMutableArray(contentsOfFile: wordListPath!)!
             
-            println("ViewVC: count of words in wordListArray is \(wordListArray.count) and first word is \(wordListArray[0])")
+            print("ViewVC: count of words in wordListArray is \(wordListArray.count) and first word is \(wordListArray[0])")
             
             for word in wordListArray {
                 
@@ -62,11 +62,11 @@ class ViewController: UIViewController {
                 wordFromList.category = word["category"] as! String
                 
                 if wordFromList.word == "train station" {
-                    println("ViewController just before saveName(): identifierNumber: \(wordFromList.identifierNumber), group: \(wordFromList.group), subgroup: \(wordFromList.subgroup), word: \(wordFromList.word), translation: \(wordFromList.translation)")
+                    print("ViewController just before saveName(): identifierNumber: \(wordFromList.identifierNumber), group: \(wordFromList.group), subgroup: \(wordFromList.subgroup), word: \(wordFromList.word), translation: \(wordFromList.translation)")
                 }
                 
                 if wordFromList.word == "scarf" {
-                    println("ViewController just before saveName(): identifierNumber: \(wordFromList.identifierNumber), group: \(wordFromList.group), subgroup: \(wordFromList.subgroup), word: \(wordFromList.word), translation: \(wordFromList.translation)")
+                    print("ViewController just before saveName(): identifierNumber: \(wordFromList.identifierNumber), group: \(wordFromList.group), subgroup: \(wordFromList.subgroup), word: \(wordFromList.word), translation: \(wordFromList.translation)")
                 }
                 
                 
@@ -93,7 +93,7 @@ class ViewController: UIViewController {
 //        self.mainView.layer.insertSublayer(self.gradient, atIndex: 0)
         //**********
         
-        println("ViewController viewWillAppear() started")
+        print("ViewController viewWillAppear() started")
         
         //Figuring out if a real quizList (i.e. one with a list > 1 word) already exists
         //1
@@ -106,22 +106,21 @@ class ViewController: UIViewController {
         let fetchRequest = NSFetchRequest(entityName:"QuizEntry")
         
         //3
-        var error: NSError?
+//        var error: NSError?
         
         let fetchedResults =
-        managedContext.executeFetchRequest(fetchRequest,
-            error: &error) as! [NSManagedObject]
+        (try! managedContext.executeFetchRequest(fetchRequest)) as! [NSManagedObject]
         self.countsInQuizList = fetchedResults.count
         
         if self.countsInQuizList <= 5 {
-            println("ViewController viewDidLoad() no QuizEntry core data table")
+            print("ViewController viewDidLoad() no QuizEntry core data table")
             self.initializeQuizList("EmptyWord", wordFirst: "EmptyLetter", translation: "EmptyWord", translationFirst: "EmptyLetter", details: "EmptyWord", category: "EmptyCategory", answeredRight: false, shownAlready: false)
             self.continueQuizButton.hidden = true
         } else {
             self.continueQuizButton.hidden = false
         }
         
-        println("ViewController viewWillAppear() number of words in QuizList is \(fetchedResults.count)")
+        print("ViewController viewWillAppear() number of words in QuizList is \(fetchedResults.count)")
     }
     
     func saveName(identifierNumber: String, group: String, subgroup: String, word: String, wordFirst: String, translation: String, translationFirst: String, details: String, category: String, timesCorrect: Int, timesQuizzed: Int) {
@@ -154,8 +153,11 @@ class ViewController: UIViewController {
         
         //4
         var error: NSError?
-        if !managedContext.save(&error) {
-            println("Could not save \(error), \(error?.userInfo)")
+        do {
+            try managedContext.save()
+        } catch let error1 as NSError {
+            error = error1
+            print("Could not save \(error), \(error?.userInfo)")
         }
         //5
         words.append(wordUnit)
@@ -165,7 +167,7 @@ class ViewController: UIViewController {
     //This function is to create an initial quiz list of 1 entry, which is "blank" and not a real word
     func initializeQuizList(word: String, wordFirst: String, translation: String, translationFirst: String, details: String, category: String, answeredRight: Bool, shownAlready: Bool) {
         if self.countsInQuizList <= 2 {
-            println("***VC: adding one to quizEntry")
+            print("***VC: adding one to quizEntry")
             //1
             let appDelegate =
             UIApplication.sharedApplication().delegate as! AppDelegate
@@ -192,8 +194,11 @@ class ViewController: UIViewController {
             
             //4
             var error: NSError?
-            if !managedContext.save(&error) {
-                println("Could not save \(error), \(error?.userInfo)")
+            do {
+                try managedContext.save()
+            } catch let error1 as NSError {
+                error = error1
+                print("Could not save \(error), \(error?.userInfo)")
             }
             //5
             words.append(wordUnit)

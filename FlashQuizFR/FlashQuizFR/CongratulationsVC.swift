@@ -38,13 +38,13 @@ class CongratulationsVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("CongratsVC: viewDidLoad() points: \(self.rightAnswers) length: \(self.quizLength)")
+        print("CongratsVC: viewDidLoad() points: \(self.rightAnswers) length: \(self.quizLength)")
         
         //Working on line spacing and font attributes in textBox
-        var style = NSMutableParagraphStyle()
+        let style = NSMutableParagraphStyle()
         style.lineSpacing = 18
         style.alignment = .Center
-        let font = UIFont(name: self.textBox.font.fontName, size: 18.0) ?? UIFont.systemFontOfSize(18.0)
+        let font = UIFont(name: self.textBox.font!.fontName, size: 18.0) ?? UIFont.systemFontOfSize(18.0)
         let attributes = [NSParagraphStyleAttributeName : style, NSFontAttributeName:font]
         
         self.gradient.frame = self.mainView.bounds
@@ -68,9 +68,9 @@ class CongratulationsVC: UIViewController {
             self.pepTalkEnding = "."
         }
         
-        var textIntro = self.pepTalkIntro + String(self.rightAnswers) + " out of " + String(self.quizLength) + " words"
+        let textIntro = self.pepTalkIntro + String(self.rightAnswers) + " out of " + String(self.quizLength) + " words"
         
-        var finalText = textIntro + self.pepTalkEnding
+        let finalText = textIntro + self.pepTalkEnding
         
         self.textBox.attributedText = NSAttributedString(string: finalText, attributes: attributes)
     }

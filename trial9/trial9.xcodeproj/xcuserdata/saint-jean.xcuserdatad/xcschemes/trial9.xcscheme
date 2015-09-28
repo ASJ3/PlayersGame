@@ -14,24 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7851F8941B5AF12F0042557C"
-               BuildableName = "FlashQuizFR.app"
-               BlueprintName = "FlashQuizFR"
-               ReferencedContainer = "container:FlashQuizFR.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7851F8AC1B5AF12F0042557C"
-               BuildableName = "FlashQuizFRTests.xctest"
-               BlueprintName = "FlashQuizFRTests"
-               ReferencedContainer = "container:FlashQuizFR.xcodeproj">
+               BlueprintIdentifier = "7806C40C1BB943D100369AA5"
+               BuildableName = "trial9.app"
+               BlueprintName = "trial9"
+               ReferencedContainer = "container:trial9.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,20 +32,30 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7851F8AC1B5AF12F0042557C"
-               BuildableName = "FlashQuizFRTests.xctest"
-               BlueprintName = "FlashQuizFRTests"
-               ReferencedContainer = "container:FlashQuizFR.xcodeproj">
+               BlueprintIdentifier = "7806C4231BB943D100369AA5"
+               BuildableName = "trial9Tests.xctest"
+               BlueprintName = "trial9Tests"
+               ReferencedContainer = "container:trial9.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7806C42E1BB943D200369AA5"
+               BuildableName = "trial9UITests.xctest"
+               BlueprintName = "trial9UITests"
+               ReferencedContainer = "container:trial9.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7851F8941B5AF12F0042557C"
-            BuildableName = "FlashQuizFR.app"
-            BlueprintName = "FlashQuizFR"
-            ReferencedContainer = "container:FlashQuizFR.xcodeproj">
+            BlueprintIdentifier = "7806C40C1BB943D100369AA5"
+            BuildableName = "trial9.app"
+            BlueprintName = "trial9"
+            ReferencedContainer = "container:trial9.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -79,10 +75,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7851F8941B5AF12F0042557C"
-            BuildableName = "FlashQuizFR.app"
-            BlueprintName = "FlashQuizFR"
-            ReferencedContainer = "container:FlashQuizFR.xcodeproj">
+            BlueprintIdentifier = "7806C40C1BB943D100369AA5"
+            BuildableName = "trial9.app"
+            BlueprintName = "trial9"
+            ReferencedContainer = "container:trial9.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -98,10 +94,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7851F8941B5AF12F0042557C"
-            BuildableName = "FlashQuizFR.app"
-            BlueprintName = "FlashQuizFR"
-            ReferencedContainer = "container:FlashQuizFR.xcodeproj">
+            BlueprintIdentifier = "7806C40C1BB943D100369AA5"
+            BuildableName = "trial9.app"
+            BlueprintName = "trial9"
+            ReferencedContainer = "container:trial9.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -23,7 +23,7 @@ class DictListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         //        title = "\"The List\""
-        println("DictListVC: language selected is \(self.languageSelected)")
+        print("DictListVC: language selected is \(self.languageSelected)")
         loadCoreData()
         
         
@@ -38,9 +38,9 @@ class DictListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("wordCell") as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("wordCell")!
         
-        var categoryName = self.stringResultsArray[indexPath.row]["category"] as! String
+        let categoryName = self.stringResultsArray[indexPath.row]["category"] as! String
         
         cell.textLabel!.text = categoryName
         cell.detailTextLabel?.text = self.stringResultsArray[indexPath.row]["wordCount"] as! String + " words"
@@ -58,11 +58,11 @@ class DictListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         let row = indexPath.row
         let categorySelected = self.stringResultsArray[row]["category"] as! String
-        println("DictListVC: the category selected is: \(categorySelected)")
+        print("DictListVC: the category selected is: \(categorySelected)")
     }
     
     func loadCoreData() {
-        println("DictListVC: inside loadCoreData()")
+        print("DictListVC: inside loadCoreData()")
         
         //1
         let appDelegate =
@@ -92,10 +92,10 @@ class DictListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         //3
         var error: NSError?
         
-        if let results = managedContext.executeFetchRequest(fetchRequest,
-            error: &error) {
+        do {
+            let results = try managedContext.executeFetchRequest(fetchRequest)
                 words = results
-                println("DictListVC: count of categories to add to stringsResultArray: \(words.count)")
+                print("DictListVC: count of categories to add to stringsResultArray: \(words.count)")
                 
                 for i in 0...results.count-1 {
                     categoryFromList["category"] = words[i]["category"] as? String
@@ -108,12 +108,13 @@ class DictListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     self.stringResultsArray.append(categoryFromList)
                 }
                 
-                println("DictListVC: stringsResultArray now has \(self.stringResultsArray.count) categories")
-                println("DictListVC: stringsResultArray's first category is \(self.stringResultsArray[0])")
+                print("DictListVC: stringsResultArray now has \(self.stringResultsArray.count) categories")
+                print("DictListVC: stringsResultArray's first category is \(self.stringResultsArray[0])")
                 
                 
-        } else {
-            println("Could not fetch \(error), \(error!.userInfo)")
+        } catch let error1 as NSError {
+            error = error1
+            print("Could not fetch \(error), \(error!.userInfo)")
             
         }
     }
@@ -121,7 +122,7 @@ class DictListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        println("DictListVC: ViewWillAppear(): stringsResultArray now has \(self.stringResultsArray.count) categories")
+        print("DictListVC: ViewWillAppear(): stringsResultArray now has \(self.stringResultsArray.count) categories")
     
     }
     
@@ -129,7 +130,7 @@ class DictListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ShowWordsInDictionary" {
             if let destination = segue.destinationViewController as? DictionaryVC {
-                if let tableIndex = tableView.indexPathForSelectedRow()?.row {
+                if let tableIndex = tableView.indexPathForSelectedRow?.row {
                     destination.filter = self.stringResultsArray[tableIndex]["category"] as! String
                     destination.languageUsed = self.languageSelected
                 }

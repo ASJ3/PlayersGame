@@ -29,7 +29,7 @@ class LanguageSelectionVC: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("languageCell") as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("languageCell")!
         
         
         cell.textLabel!.text = self.languagesArray[indexPath.row][0]
@@ -47,7 +47,7 @@ class LanguageSelectionVC: UIViewController, UITableViewDelegate, UITableViewDat
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ShowCategories" {
             if let destination = segue.destinationViewController as? DictListVC {
-                if let tableIndex = tableView.indexPathForSelectedRow()?.row {
+                if let tableIndex = tableView.indexPathForSelectedRow?.row {
                     destination.languageSelected = self.languagesArray[tableIndex][0]
                 }
             }

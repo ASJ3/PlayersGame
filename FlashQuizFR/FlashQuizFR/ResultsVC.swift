@@ -29,45 +29,55 @@ class ResultsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let fetchRequest = NSFetchRequest(entityName:"QuizEntry")
         
         //3
-        var error: NSError?
+        let error: NSError?
         
-        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as? [NSManagedObject]
-        
-        if let results = fetchedResults {
+        do {
+            let fetchedResults = try managedContext.executeFetchRequest(fetchRequest) as? [NSManagedObject]
             
-            for word in results {
-                self.quizWordUnit.word = word.valueForKey("word") as! String
-                self.quizWordUnit.wordFirst = word.valueForKey("wordFirst") as! String
-                self.quizWordUnit.translation = word.valueForKey("translation") as! String
-                self.quizWordUnit.translationFirst = word.valueForKey("translationFirst") as! String
-                self.quizWordUnit.details = word.valueForKey("details") as! String
-                self.quizWordUnit.category = word.valueForKey("category") as! String
-                self.quizWordUnit.answeredRight = word.valueForKey("answeredRight") as! Bool
-                self.quizWordUnit.shownAlready = word.valueForKey("shownAlready") as! Bool
+            if let results = fetchedResults {
                 
-                self.quizWordList.append(quizWordUnit)
+                for word in results {
+                    self.quizWordUnit.word = word.valueForKey("word") as! String
+                    self.quizWordUnit.wordFirst = word.valueForKey("wordFirst") as! String
+                    self.quizWordUnit.translation = word.valueForKey("translation") as! String
+                    self.quizWordUnit.translationFirst = word.valueForKey("translationFirst") as! String
+                    self.quizWordUnit.details = word.valueForKey("details") as! String
+                    self.quizWordUnit.category = word.valueForKey("category") as! String
+                    self.quizWordUnit.answeredRight = word.valueForKey("answeredRight") as! Bool
+                    self.quizWordUnit.shownAlready = word.valueForKey("shownAlready") as! Bool
+                    
+                    self.quizWordList.append(quizWordUnit)
+                }
+                print("ResultsVC: viewDidLoad() quizWordList is \(self.quizWordList.count)")
+                
             }
-            println("ResultsVC: viewDidLoad() quizWordList is \(self.quizWordList.count)")
             
-        } else {
-            println("Could not fetch \(error), \(error!.userInfo)")
+            
+        } catch let error1 as NSError {
+            error = error1
+            print("saveAnswer() could not save \(error)")
         }
+        
+        
+//        else {
+//            print("Could not fetch \(error), \(error!.userInfo)")
+//        }
         
         title = "Results"
         
         self.navigationItem.hidesBackButton = true
         
         //Create a back arrow on the nav bar
-        var arrowbutton = UIButton.buttonWithType(.System)  as! UIButton
-        var image = UIImage(named: "back_arrow.png")?.imageWithRenderingMode(.AlwaysTemplate)
+        let arrowbutton = UIButton(type: .System)
+        let image = UIImage(named: "back_arrow.png")?.imageWithRenderingMode(.AlwaysTemplate)
         arrowbutton.setImage(image, forState: .Normal)
         //        custombutton.sizeToFit()
         arrowbutton.frame.size = CGSizeMake(10, 20)
         arrowbutton.frame.size = CGSizeMake(6, 21)
-        var imageInsets = UIEdgeInsetsMake(0.0, -7.0, 0.0, 0.0)
+        let imageInsets = UIEdgeInsetsMake(0.0, -7.0, 0.0, 0.0)
         arrowbutton.imageEdgeInsets = imageInsets
         arrowbutton.addTarget(self, action: "goBackToMainMenu", forControlEvents:.TouchUpInside)
-        var arrowBarButtonItem = UIBarButtonItem(customView: arrowbutton)
+        let arrowBarButtonItem = UIBarButtonItem(customView: arrowbutton)
         
         
         self.goBackMenuButton = UIBarButtonItem(title: "Main Menu", style: .Plain , target: self, action: "goBackToMainMenu")
@@ -92,10 +102,10 @@ class ResultsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("wordCell") as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("wordCell")!
         
-        var wordAnswer = self.quizWordList[indexPath.row].answeredRight
-        var colorOfCell = cellColorPicker(wordAnswer)
+        let wordAnswer = self.quizWordList[indexPath.row].answeredRight
+        let colorOfCell = cellColorPicker(wordAnswer)
         
         cell.backgroundColor = colorOfCell
         
@@ -134,22 +144,23 @@ class ResultsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let fetchRequest = NSFetchRequest(entityName:"QuizEntry")
         
         //3
-        var error: NSError?
+//        var error: NSError?
         
         let fetchedResults =
-        managedContext.executeFetchRequest(fetchRequest,
-            error: &error) as! [NSManagedObject]
+        (try! managedContext.executeFetchRequest(fetchRequest)) as! [NSManagedObject]
         
         for entity in fetchedResults {
             managedContext.deleteObject(entity)
         }
-        managedContext.save(nil)
+        do {
+            try managedContext.save()
+        } catch _ {
+        }
         
         let fetchedResultsAfterDeletion =
-        managedContext.executeFetchRequest(fetchRequest,
-            error: &error) as! [NSManagedObject]
+        (try! managedContext.executeFetchRequest(fetchRequest)) as! [NSManagedObject]
         
-        println("ResultsVC: emptyQuizList() now number of words in fetchedResults is \(fetchedResultsAfterDeletion.count)")
+        print("ResultsVC: emptyQuizList() now number of words in fetchedResults is \(fetchedResultsAfterDeletion.count)")
         
     }
 
