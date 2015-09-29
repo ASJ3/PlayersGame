@@ -26,60 +26,81 @@ class ViewController: UIViewController {
     
     var words = [NSManagedObject]()
     var countsInQuizList = 0
+    var countsInWordEntryList = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
 //        title = "Main Menu"
         
-        //TRIAL: figuring out which lists of words have been purchased/loaded to CoreData from wordListStatus plist
-        let ListStatusPath = NSBundle.mainBundle().pathForResource("wordListStatus", ofType: "plist")
-        let ListStatusArray = NSMutableArray(contentsOfFile: ListStatusPath!)!
+        //1
+        let appDelegate =
+        UIApplication.sharedApplication().delegate as! AppDelegate
         
-        //If the "loaded" field of a list is true, then it means the words
-        //in this list have been uploaded to CoreData.
-        //If the field value is false, then we need to use wordDictionary plist
-        //and upload the words from that list to CoreData
-        if ListStatusArray[0].valueForKey("loaded") as? Bool == false {
-//            self.beforeLabel.text = "list not yet loaded onto CoreData"
+        let managedContext = appDelegate.managedObjectContext!
+        
+        //2
+        let fetchRequest = NSFetchRequest(entityName:"WordEntry")
+        
+        //3
+        //        var error: NSError?
+        
+        let fetchedResults =
+        (try! managedContext.executeFetchRequest(fetchRequest)) as! [NSManagedObject]
+        self.countsInWordEntryList = fetchedResults.count
+        
+        if self.countsInWordEntryList == 0 {
             
-            //Loading all words and their translation from the wordDictionary plist
-            let wordListPath = NSBundle.mainBundle().pathForResource("wordDictionary", ofType: "plist")
-            wordListArray = NSMutableArray(contentsOfFile: wordListPath!)!
+            //TRIAL: figuring out which lists of words have been purchased/loaded to CoreData from wordListStatus plist
+            let ListStatusPath = NSBundle.mainBundle().pathForResource("wordListStatus", ofType: "plist")
+            let ListStatusArray = NSMutableArray(contentsOfFile: ListStatusPath!)!
             
-            print("ViewVC: count of words in wordListArray is \(wordListArray.count) and first word is \(wordListArray[0])")
+            //If the "loaded" field of a list is true, then it means the words
+            //in this list have been uploaded to CoreData.
+            //If the field value is false, then we need to use wordDictionary plist
+            //and upload the words from that list to CoreData
             
-            for word in wordListArray {
+//            if ListStatusArray[0].valueForKey("loaded") as? Bool == false {
+                //            self.beforeLabel.text = "list not yet loaded onto CoreData"
                 
-                wordFromList.identifierNumber = word["identifierNum"] as! String
-                wordFromList.group = word["group"] as! String
-                wordFromList.subgroup = word["subgroup"] as! String
-                wordFromList.word = word["word"] as! String
-                wordFromList.wordFirst = word["wordFirst"] as! String
-                wordFromList.translation = word["translation"] as! String
-                wordFromList.translationFirst = word["translationFirst"] as! String
-                wordFromList.details = word["details"] as! String
-                wordFromList.category = word["category"] as! String
+                //Loading all words and their translation from the wordDictionary plist
+                let wordListPath = NSBundle.mainBundle().pathForResource("wordDictionary", ofType: "plist")
+                wordListArray = NSMutableArray(contentsOfFile: wordListPath!)!
                 
-                if wordFromList.word == "train station" {
-                    print("ViewController just before saveName(): identifierNumber: \(wordFromList.identifierNumber), group: \(wordFromList.group), subgroup: \(wordFromList.subgroup), word: \(wordFromList.word), translation: \(wordFromList.translation)")
+                print("ViewVC: count of words in wordListArray is \(wordListArray.count) and first word is \(wordListArray[0])")
+                
+                for word in wordListArray {
+                    
+                    wordFromList.identifierNumber = word["identifierNum"] as! String
+                    wordFromList.group = word["group"] as! String
+                    wordFromList.subgroup = word["subgroup"] as! String
+                    wordFromList.word = word["word"] as! String
+                    wordFromList.wordFirst = word["wordFirst"] as! String
+                    wordFromList.translation = word["translation"] as! String
+                    wordFromList.translationFirst = word["translationFirst"] as! String
+                    wordFromList.details = word["details"] as! String
+                    wordFromList.category = word["category"] as! String
+                    
+                    if wordFromList.word == "train station" {
+                        print("ViewController just before saveName(): identifierNumber: \(wordFromList.identifierNumber), group: \(wordFromList.group), subgroup: \(wordFromList.subgroup), word: \(wordFromList.word), translation: \(wordFromList.translation)")
+                    }
+                    
+                    if wordFromList.word == "scarf" {
+                        print("ViewController just before saveName(): identifierNumber: \(wordFromList.identifierNumber), group: \(wordFromList.group), subgroup: \(wordFromList.subgroup), word: \(wordFromList.word), translation: \(wordFromList.translation)")
+                    }
+                    
+                    
+                    self.saveName(wordFromList.identifierNumber, group: wordFromList.group, subgroup: wordFromList.subgroup, word: wordFromList.word, wordFirst: wordFromList.wordFirst, translation: wordFromList.translation, translationFirst: wordFromList.translationFirst, details: wordFromList.details, category: wordFromList.category, timesCorrect: 0, timesQuizzed: 0)
                 }
                 
-                if wordFromList.word == "scarf" {
-                    print("ViewController just before saveName(): identifierNumber: \(wordFromList.identifierNumber), group: \(wordFromList.group), subgroup: \(wordFromList.subgroup), word: \(wordFromList.word), translation: \(wordFromList.translation)")
-                }
-                
-                
-                self.saveName(wordFromList.identifierNumber, group: wordFromList.group, subgroup: wordFromList.subgroup, word: wordFromList.word, wordFirst: wordFromList.wordFirst, translation: wordFromList.translation, translationFirst: wordFromList.translationFirst, details: wordFromList.details, category: wordFromList.category, timesCorrect: 0, timesQuizzed: 0)
-            }
-            
-            //Change the "loaded" status to true for the word list in wordListStatus plist
-            ListStatusArray[0].setValue(true, forKey: "loaded")
-            ListStatusArray.writeToFile(ListStatusPath!, atomically: true)
-//            self.status.text = "list now loaded onto CoreData"
+                //Change the "loaded" status to true for the word list in wordListStatus plist
+                ListStatusArray[0].setValue(true, forKey: "loaded")
+                ListStatusArray.writeToFile(ListStatusPath!, atomically: true)
+                //            self.status.text = "list now loaded onto CoreData"
+//            }
             
         } else {
-//            self.beforeLabel.text = "list now loaded onto CoreData"
+//            self.beforeLabel.text = "WordEntry list now loaded onto CoreData"
         }
     }
     
@@ -113,7 +134,7 @@ class ViewController: UIViewController {
         self.countsInQuizList = fetchedResults.count
         
         if self.countsInQuizList <= 5 {
-            print("ViewController viewDidLoad() no QuizEntry core data table")
+            print("ViewController viewWillAppear() no QuizEntry core data table")
             self.initializeQuizList("EmptyWord", wordFirst: "EmptyLetter", translation: "EmptyWord", translationFirst: "EmptyLetter", details: "EmptyWord", category: "EmptyCategory", answeredRight: false, shownAlready: false)
             self.continueQuizButton.hidden = true
         } else {
