@@ -18,6 +18,8 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     var words = [AnyObject]()
     var stringResultsArray = [AnyObject]()
+    var stringResultsSelected = [Bool()]
+//    var categoryFromList = ["category": String(), "wordCount": String(), "selected": String()]
     var categoryFromList = ["category": String(), "wordCount": String()]
     var quizListInitialArray = [AnyObject]()
     var selectedLists = [String: String]()
@@ -44,7 +46,7 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         createQuizList()
         emptyQuizList()
         
-        //Now that the QuizEntry Core Data entity is empty, we're going to add to it the 50 words randomly selected
+        //Now that the QuizEntry Core Data entity is empty, we're going to add to it the 20 words randomly selected
         for i in self.finalNumberArray {
             
             let nativeWord = self.wordList[i].valueForKey("word") as? String
@@ -89,6 +91,15 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCellWithIdentifier("wordCell")!
         
         let categoryName = self.stringResultsArray[indexPath.row]["category"] as! String
+//        let selectionStatus = self.stringResultsArray[indexPath.row]["selected"] as! String
+        self.stringResultsSelected.append(false)
+        
+        
+        if self.stringResultsSelected[indexPath.row] == true {
+            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryType.None
+        }
         
         cell.textLabel!.text = categoryName
         cell.detailTextLabel?.text = self.stringResultsArray[indexPath.row]["wordCount"] as! String + " words"
@@ -106,10 +117,12 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         if mySelectedCell.accessoryType == UITableViewCellAccessoryType.Checkmark {
             mySelectedCell.accessoryType = UITableViewCellAccessoryType.None
             self.selectedLists[textOfCell!] = nil
+            self.stringResultsSelected[indexPath.row] = false
         }
         else {
             mySelectedCell.accessoryType = UITableViewCellAccessoryType.Checkmark
             self.selectedLists[textOfCell!] = textOfCell
+            self.stringResultsSelected[indexPath.row] = true
         }
         
         if self.selectedLists.count > 0 {
@@ -167,6 +180,7 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 
                 for i in 0...results.count-1 {
                     categoryFromList["category"] = words[i]["category"] as? String
+                    categoryFromList["selected"] = "No"
                     
                     
                     if let intCount = words[i]["wordCount"]! as? Int {
@@ -362,39 +376,10 @@ class QuizListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         //5
 //        words.append(wordUnit)
     }
-
-    
-//    func closeOwnVC() {
-//        println("QuizListVC closeOwnVC()")
-//        
-//        //Pop the QuizListVC so that when the user will close the view in QuizVC they will be going directly to the main menu and not back to QuizListVC
-//        if let navController = self.navigationController {
-//            navController.popViewControllerAnimated(false)
-//        }
-//    }
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
